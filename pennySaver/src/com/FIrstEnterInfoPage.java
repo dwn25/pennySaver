@@ -16,12 +16,6 @@ import javax.swing.JOptionPane;
  * @author DNartey
  */
 public class FIrstEnterInfoPage extends javax.swing.JFrame {
-    Connection con;
-    Statement stmt;
-    ResultSet rs;
-    String url;
-    String pwd;
-    String username;
     /**
      * Creates new form ReturningUserPage
      */
@@ -282,25 +276,9 @@ public class FIrstEnterInfoPage extends javax.swing.JFrame {
      
     }//GEN-LAST:event_netWorthFieldActionPerformed
 
-    public void DoConnect(){
-        try{
-            //Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            //Class.forName("org.apache.derby.jdbc.ClientDriver");
-            String url= "jdbc:derby://localhost:1527/pennySaverDatabase";
-            username="root";
-            pwd="password";
-            con= DriverManager.getConnection(url, username, pwd);
-            stmt=con.createStatement();
-        }catch (SQLException err){
-        System.out.println(err.getMessage());
-        }
-        catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
-  }
     
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
-        DoConnect();
+        Constant.DoConnect();
         double netWorth=0, monthlyIncome=0, monthlySavings=0;
         try{
             try{
@@ -327,7 +305,7 @@ public class FIrstEnterInfoPage extends javax.swing.JFrame {
                     System.out.println(monthlyIncome);
                     System.out.println(monthlySavings);
                     String sql = ("UPDATE ROOT.PUSERS SET employment_status = ?, net_income = ?, net_worth = ?, monthly_savings = ? WHERE username= ?");
-                    PreparedStatement statement = con.prepareStatement(sql);
+                    PreparedStatement statement = Constant.con.prepareStatement(sql);
                     statement.setString(1, status);
                     statement.setDouble(2, monthlyIncome);
                     statement.setDouble(3, netWorth);

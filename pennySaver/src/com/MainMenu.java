@@ -13,12 +13,6 @@ import javax.swing.JOptionPane;
  * @author DNartey
  */
 public class MainMenu extends javax.swing.JFrame {
-    Connection con;
-    Statement stmt;
-    ResultSet rs;
-    String url;
-    String pwd;
-    String usr;
     /**
      * Creates new form MainMenu
      */
@@ -29,28 +23,12 @@ public class MainMenu extends javax.swing.JFrame {
         onRun();
     }
     
-    public void DoConnect(){
-        try{
-            //Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            //Class.forName("org.apache.derby.jdbc.ClientDriver");
-            String url= "jdbc:derby://localhost:1527/pennySaverDatabase";
-            usr="root";
-            pwd="password";
-            con= DriverManager.getConnection(url, usr, pwd);
-            stmt=con.createStatement();
-        }catch (SQLException err){
-        System.out.println(err.getMessage());
-        }
-        catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
-  }
     
 
     public void getField(javax.swing.JLabel label1, String column){
         try{
             String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
-            ResultSet rs = stmt.executeQuery(SQL);
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
                 label1.setText("$ " + val);
@@ -66,7 +44,7 @@ public class MainMenu extends javax.swing.JFrame {
    public void getFieldString(javax.swing.JLabel label1, String column){
         try{
             String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
-            ResultSet rs = stmt.executeQuery(SQL);
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
                 label1.setText(val);
@@ -80,7 +58,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     public void onRun(){
-        DoConnect();
+        Constant.DoConnect();
         getFieldString(firstName,"firstname");
         getField(netWorthLabel,"net_worth");
         getFieldString(employmentStatusLabel,"employment_status");

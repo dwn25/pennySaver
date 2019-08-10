@@ -18,12 +18,6 @@ import java.util.regex.Matcher;
  * @author DNartey
  */
 public class RegisterForm extends javax.swing.JFrame {
-    Connection con;
-    Statement stmt;
-    ResultSet rs;
-    String url;
-    String pwd;
-    String usr;
     private Pattern pattern;
     private Matcher matcher;
  
@@ -357,20 +351,7 @@ public class RegisterForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void DoConnect(){
-        try{
-            String url= "jdbc:derby://localhost:1527/pennySaverDatabase";
-            usr="root";
-            pwd="password";
-            con= DriverManager.getConnection(url, usr, pwd);
-            stmt=con.createStatement();
-        }catch (SQLException err){
-            System.out.println(err.getMessage());
-        }
-        catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
-  }
+
     private void firstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameActionPerformed
     }//GEN-LAST:event_firstNameActionPerformed
 
@@ -448,7 +429,7 @@ public class RegisterForm extends javax.swing.JFrame {
     public boolean isUsernameRegistered(String username) {
         String query = "SELECT username FROM ROOT.PUSERS WHERE username= '" + username + "'"; //get username
         try {
-            ResultSet rs2 = stmt.executeQuery(query) ;
+            ResultSet rs2 = Constant.stmt.executeQuery(query) ;
             if(rs2.next()){
                 return true;
             }else{
@@ -461,7 +442,7 @@ public class RegisterForm extends javax.swing.JFrame {
        }
         
     private void RegisterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterBtnActionPerformed
-        DoConnect();
+        Constant.DoConnect();
         try {
             String fn = firstName.getText();
             String ln = lastName.getText();
@@ -520,7 +501,7 @@ public class RegisterForm extends javax.swing.JFrame {
                     byte[] encodedBytes = Base64.getEncoder().encode(pwd.getBytes());
                     String finalPWD = new String(encodedBytes);
                     String sql = ("INSERT INTO ROOT.PUSERS( USERNAME , PASSWORD ,FIRSTNAME,  LASTNAME ,  EMAILADDRESS  )values(?,?,?,?,?)" );
-                    PreparedStatement statement = con.prepareStatement(sql);
+                    PreparedStatement statement = Constant.con.prepareStatement(sql);
                     statement.setString(1, user);
                     statement.setString(2, finalPWD);
                     statement.setString(3, fn);

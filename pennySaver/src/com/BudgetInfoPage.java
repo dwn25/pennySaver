@@ -28,12 +28,6 @@ import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 import org.jfree.util.Rotation;
 public class BudgetInfoPage extends javax.swing.JFrame {
-    Connection con;
-    Statement stmt;
-    ResultSet rs;
-    String url;
-    String pwd;
-    String username;
     Double home, shopping, dineAndDrinks, auto, travel, billsAndUtils,
         entertainment, fees, personalCare, loans, education, other;
     Double netIncome, needs, wants;
@@ -496,25 +490,9 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void DoConnect(){
-        try{
-            //Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            //Class.forName("org.apache.derby.jdbc.ClientDriver");
-            String url= "jdbc:derby://localhost:1527/pennySaverDatabase";
-            username="root";
-            pwd="password";
-            con= DriverManager.getConnection(url, username, pwd);
-            stmt=con.createStatement();
-        }catch (SQLException err){
-        System.out.println(err.getMessage());
-        }
-        catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
-  }
     
    public void onRun(){
-       DoConnect();
+       Constant.DoConnect();
        calcs();
        updateBar(budgetNeeds, budgetWants, budgetSavings);
    }
@@ -543,7 +521,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     public void getFieldString(javax.swing.JTextField JtexTield, String column){
         try{
             String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
-            ResultSet rs = stmt.executeQuery(SQL);
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
                 JtexTield.setText(val);
@@ -559,7 +537,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     public Double getIncome(){
         try{
             String SQL= "SELECT net_income From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
-            ResultSet rs = stmt.executeQuery(SQL);
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 Double val = rs.getDouble("net_income");
                 return val;
@@ -576,7 +554,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
    public Double getField(String column){
         try{
             String SQL= "SELECT " + column +" From ROOT.PBUDGET WHERE username= '"+Constant.currentUser+"'";    
-            ResultSet rs = stmt.executeQuery(SQL);
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 Double var = rs.getDouble(column); 
                 return var;

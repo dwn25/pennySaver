@@ -29,12 +29,6 @@ import org.jfree.data.general.DefaultPieDataset;
  * @author DNartey
  */
 public class EditBudgetPage extends javax.swing.JFrame {
-    Connection con;
-    Statement stmt;
-    ResultSet rs;
-    String url;
-    String pwd;
-    String username;
     String mainAdvice;
     Double home, shopping, dineAndDrinks, auto, travel, billsAndUtils,
         entertainment, fees, personalCare, loans, education, other;
@@ -51,7 +45,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
     }
     
    public void onRun(){
-       DoConnect();
+       Constant.DoConnect();
        calcs();
        putFieldString(incomeField,"net_income");
        homeField.setText(null);
@@ -113,28 +107,12 @@ public class EditBudgetPage extends javax.swing.JFrame {
        budgetWants = (wants*0.6);
        budgetSavings = (wants*0.4);
    }
-  public void DoConnect(){
-        try{
-            //Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            //Class.forName("org.apache.derby.jdbc.ClientDriver");
-            String url= "jdbc:derby://localhost:1527/pennySaverDatabase";
-            username="root";
-            pwd="password";
-            con= DriverManager.getConnection(url, username, pwd);
-            stmt=con.createStatement();
-        }catch (SQLException err){
-        System.out.println(err.getMessage());
-        }
-        catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
-  }
   
      
     public void putFieldString(javax.swing.JTextField JtexTield, String column){
         try{
             String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
-            ResultSet rs = stmt.executeQuery(SQL);
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
                 JtexTield.setText(val);
@@ -152,7 +130,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
     public Double getIncome(){
         try{
             String SQL= "SELECT net_income From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
-            ResultSet rs = stmt.executeQuery(SQL);
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 Double val = rs.getDouble("net_income");
                 return val;
@@ -196,7 +174,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
    public Double getField(String column){
         try{
             String SQL= "SELECT " + column +" From ROOT.PBUDGET WHERE username= '"+Constant.currentUser+"'";    
-            ResultSet rs = stmt.executeQuery(SQL);
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 Double var = rs.getDouble(column); 
                 return var;
@@ -633,6 +611,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
         int dialogResult = JOptionPane.showConfirmDialog (null, "Are you sure you want to leave without saving","Warning",dialogButton);
         if(dialogResult == JOptionPane.YES_OPTION){
             BudgetInfoPage m = new BudgetInfoPage();
+            m.setLocationRelativeTo(null);
             m.setVisible(true);
             this.hide();
         }
@@ -700,7 +679,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutMenuItemActionPerformed
 
     private void updateBTnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBTnActionPerformed
-        DoConnect();
+        Constant.DoConnect();
         try{
             String income1 = incomeField.getText();
             String home1 = homeField.getText();
@@ -785,7 +764,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
     }//GEN-LAST:event_updateBTnActionPerformed
 
     private void saveBTnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBTnActionPerformed
-        DoConnect();
+        Constant.DoConnect();
         try{
             String home1 = homeField.getText();
             String shopping1 = shoppingField.getText();
@@ -852,7 +831,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
                 int t =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Save?", "Confirm Save", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
                 if(t==JOptionPane.YES_OPTION){
                     String sql = "UPDATE ROOT.PBUDGET SET \"HOME\" = ?, \"SHOPPING\" = ?, \"DINING_AND_DRINKS\" = ?, \"AUTO\" = ?, \"TRAVEL\" = ?, \"BILLS\" = ?, \"ENTERTAINMENT\" = ?, \"FEES\" = ?, \"PERSONAL\" = ?, \"LOANS\" = ?, \"EDUCATION\" = ?, \"OTHER\" = ? WHERE USERNAME = ?" +"";
-                    PreparedStatement statement = con.prepareStatement(sql);
+                    PreparedStatement statement = Constant.con.prepareStatement(sql);
                     statement.setDouble(1, home);
                     statement.setDouble(2, shopping);
                     statement.setDouble(3, dineAndDrinks);

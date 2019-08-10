@@ -27,12 +27,6 @@ public class Main extends javax.swing.JFrame {
     static Rectangle2D.Double splashTextArea;
     static Rectangle2D.Double splashProgressArea;
     static Font font;
-    Connection con;
-    Statement stmt;
-    ResultSet rs;
-    String url;
-    String pwd;
-    String username;
     /**
      * Creates new form Main
      */
@@ -183,22 +177,6 @@ public class Main extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void DoConnect(){
-        try{
-            //Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            //Class.forName("org.apache.derby.jdbc.ClientDriver");
-            String url= "jdbc:derby://localhost:1527/pennySaverDatabase";
-            username="root";
-            pwd="password";
-            con= DriverManager.getConnection(url, username, pwd);
-            stmt=con.createStatement();
-        }catch (SQLException err){
-        System.out.println(err.getMessage());
-        }
-        catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
-  }
          
     private void signUpBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpBtnMouseClicked
             RegisterForm reg = new RegisterForm();
@@ -213,8 +191,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelBtnActionPerformed
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-
-        DoConnect();
+        Constant.DoConnect();
         try{
             String User1= usernameField.getText();
             String password1= jPasswordField1.getText();
@@ -226,7 +203,7 @@ public class Main extends javax.swing.JFrame {
             }
             else{
             String SQL= "SELECT password From ROOT.PUSERS WHERE username= '"+User1+"'";    
-            ResultSet rs = stmt.executeQuery(SQL);
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String hj = rs.getString("Password");
                 byte[] encodedBytes = hj.getBytes();
