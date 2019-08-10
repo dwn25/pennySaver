@@ -63,7 +63,7 @@ public class MainMenu extends javax.swing.JFrame {
         }        
     }
     
-   public void getFieldEmploy(javax.swing.JLabel label1, String column){
+   public void getFieldString(javax.swing.JLabel label1, String column){
         try{
             String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = stmt.executeQuery(SQL);
@@ -81,9 +81,9 @@ public class MainMenu extends javax.swing.JFrame {
 
     public void onRun(){
         DoConnect();
-        getField(firstName,"firstname");
+        getFieldString(firstName,"firstname");
         getField(netWorthLabel,"net_worth");
-        getFieldEmploy(employmentStatusLabel,"employment_status");
+        getFieldString(employmentStatusLabel,"employment_status");
         getField(takeHomeIncomeLabel,"net_income");
         getField(amountLabel,"monthly_savings");
     }
@@ -375,6 +375,9 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_savingsForecastActionPerformed
 
     private void budgetButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetButton1ActionPerformed
+                    //PieChart demo = new PieChart("Comparison", "Which operating system are you using?");
+            //demo.pack();
+            //demo.setVisible(true);
         BudgetInfoPage m = new BudgetInfoPage();
         m.setLocationRelativeTo(null);
         m.setVisible(true);
