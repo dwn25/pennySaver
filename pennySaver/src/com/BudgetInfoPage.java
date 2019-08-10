@@ -37,8 +37,9 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     Double home, shopping, dineAndDrinks, auto, travel, billsAndUtils,
         entertainment, fees, personalCare, loans, education, other;
     Double netIncome, needs, wants;
-    private static final String KEY1 = "Datum 1";
-    public static final String KEY2 = "Datum 2";
+    Double budgetWants, budgetNeeds, budgetSavings;
+    //private static final String KEY1 = "Datum 1";
+    //public static final String KEY2 = "Datum 2";
     /**
      * Creates new form BudgettingInfoPage
      */
@@ -48,20 +49,25 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         setResizable(false);
         initComponents();
         onRun();
+        
+    }
+    
+    public void updateBar(Double needs1, Double wants1, Double savings1){
         DefaultPieDataset dataset = new DefaultPieDataset();
-        dataset.setValue("Necessary", needs);
-        dataset.setValue("Wants", wants);
-        dataset.setValue("Other", 90);
+        dataset.setValue("Necessary", needs1);
+        dataset.setValue("Wants", wants1);
+        dataset.setValue("Savings", savings1);
         JFreeChart barChart = ChartFactory.createPieChart(
         "Budget For The Week",
         dataset,
         false, true, false);
-        barChart.setBackgroundPaint(new Color(222, 222, 255));
+        barChart.setBackgroundPaint(new Color(51, 51, 51));
         
         PiePlot plot = (PiePlot) barChart.getPlot();
         plot.setLabelFont(new Font("SansSerif", Font.PLAIN, 12));
+        
         plot.setNoDataMessage("No data available");
-        plot.setCircular(true);
+        plot.setCircular(false);
         plot.setLabelGap(0.02);
         plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} = {2}", NumberFormat.getNumberInstance(), NumberFormat.getPercentInstance()));
         
@@ -71,7 +77,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         myChartPanel.add(chartPanel);
         myChartPanel.validate();
     }
-    
     /*
         DefaultPieDataset dataset = new DefaultPieDataset();
         dataset.setValue("Necessary", needs);
@@ -125,14 +130,36 @@ public class BudgetInfoPage extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        homeField = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
         Edit = new javax.swing.JButton();
-        jLabel18 = new javax.swing.JLabel();
-        otherField = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         myChartPanel = new javax.swing.JPanel();
+        autoAndCommutingField = new javax.swing.JTextField();
+        feesField = new javax.swing.JTextField();
+        entertainmentField = new javax.swing.JTextField();
+        homeField = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        diningAndDrinksField = new javax.swing.JTextField();
+        personalCareField = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        shoppingField = new javax.swing.JTextField();
+        educationField = new javax.swing.JTextField();
+        loansField = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        billsAndUtilitiesField = new javax.swing.JTextField();
+        travelField = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        otherField = new javax.swing.JTextField();
+        homeField1 = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mainMenuItemBtn = new javax.swing.JMenuItem();
@@ -150,15 +177,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
 
-        homeField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeFieldActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel7.setText("Home:");
-
         backBtn.setText("Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,63 +191,229 @@ public class BudgetInfoPage extends javax.swing.JFrame {
             }
         });
 
-        jLabel18.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel18.setText("Other:");
-
         jLabel19.setForeground(new java.awt.Color(153, 153, 153));
         jLabel19.setText("Your Budget Has Been Calculated Below");
 
         myChartPanel.setLayout(new java.awt.BorderLayout());
 
+        autoAndCommutingField.setEditable(false);
+
+        feesField.setEditable(false);
+
+        entertainmentField.setEditable(false);
+
+        homeField.setEditable(false);
+        homeField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel17.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel17.setText("Loans:");
+
+        jLabel16.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel16.setText("Education:");
+
+        jLabel15.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel15.setText("Personal Care:");
+
+        jLabel14.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel14.setText("Fees:");
+
+        jLabel13.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel13.setText("Entertainment:");
+
+        diningAndDrinksField.setEditable(false);
+
+        personalCareField.setEditable(false);
+
+        jLabel9.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel9.setText("Shopping:");
+
+        jLabel18.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel18.setText("Other:");
+
+        jLabel8.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel8.setText("Dining & Drinks:");
+
+        shoppingField.setEditable(false);
+        shoppingField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                shoppingFieldActionPerformed(evt);
+            }
+        });
+
+        educationField.setEditable(false);
+
+        loansField.setEditable(false);
+
+        jLabel7.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel7.setText("Home:");
+
+        billsAndUtilitiesField.setEditable(false);
+
+        travelField.setEditable(false);
+
+        jLabel12.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel12.setText("Bills & Utilities:");
+
+        jLabel11.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel11.setText("Travel:");
+
+        jLabel10.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel10.setText("Auto & Commuting:");
+
+        otherField.setEditable(false);
+
+        homeField1.setEditable(false);
+        homeField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeField1ActionPerformed(evt);
+            }
+        });
+
+        jLabel20.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel20.setText("Income:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(jLabel4)
+                        .addGap(84, 84, 84))
+                    .addComponent(jLabel19))
+                .addGap(280, 280, 280))
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addComponent(jLabel19))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
+                        .addComponent(myChartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(myChartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel18)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addComponent(Edit)
-                        .addGap(27, 27, 27)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(29, 29, 29)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(homeField, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
-                                .addComponent(otherField))
-                            .addComponent(backBtn)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(shoppingField, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(diningAndDrinksField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(feesField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(entertainmentField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(billsAndUtilitiesField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(travelField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(autoAndCommutingField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(personalCareField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(loansField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(otherField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(educationField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(homeField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(234, 234, 234)
-                        .addComponent(jLabel4)))
-                .addGap(0, 85, Short.MAX_VALUE))
+                        .addGap(0, 284, Short.MAX_VALUE)
+                        .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(402, 402, 402)))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(324, 324, 324)
+                .addComponent(jLabel20)
+                .addGap(18, 18, 18)
+                .addComponent(homeField1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel19)
-                .addGap(18, 18, 18)
-                .addComponent(myChartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(homeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(otherField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(backBtn)
-                    .addComponent(Edit))
+                    .addComponent(homeField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel20))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel9)
+                                .addGap(72, 72, 72)
+                                .addComponent(jLabel11))
+                            .addComponent(myChartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Edit)
+                            .addComponent(backBtn)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(homeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(shoppingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(diningAndDrinksField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(autoAndCommutingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(travelField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(billsAndUtilitiesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(entertainmentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(feesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(personalCareField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(loansField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(educationField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(otherField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18))))
                 .addContainerGap())
         );
 
@@ -302,11 +486,11 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 584, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 822, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -332,6 +516,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
    public void onRun(){
        DoConnect();
        calcs();
+       updateBar(budgetNeeds, budgetWants, budgetSavings);
    }
    
    public void calcs(){
@@ -350,9 +535,28 @@ public class BudgetInfoPage extends javax.swing.JFrame {
        netIncome = getIncome();
        needs = home + dineAndDrinks + auto+ billsAndUtils  + loans+ fees + education ;
        wants = shopping + travel + entertainment +personalCare + other;
+       budgetNeeds = needs;
+       budgetWants = (wants*0.6);
+       budgetSavings = (wants*0.4);
    }
    
-   public Double getIncome(){
+    public void getFieldString(javax.swing.JTextField JtexTield, String column){
+        try{
+            String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            ResultSet rs = stmt.executeQuery(SQL);
+            if(rs.next()){
+                String val = rs.getString(column);
+                JtexTield.setText(val);
+                }
+            else{
+                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+            } 
+        }catch(SQLException err){
+        System.out.println("Unable to fetch "+ column);
+        }        
+    }
+
+    public Double getIncome(){
         try{
             String SQL= "SELECT net_income From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = stmt.executeQuery(SQL);
@@ -438,121 +642,34 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     this.hide();
     }//GEN-LAST:event_mainMenuItemBtnMouseClicked
 
-    private void homeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeFieldActionPerformed
-
-    }//GEN-LAST:event_homeFieldActionPerformed
+    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
+    EditBudgetPage m = new EditBudgetPage();
+    m.setLocationRelativeTo(null);
+    m.setVisible(true);
+    this.hide();
+    }//GEN-LAST:event_EditActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         int dialogButton = JOptionPane.YES_NO_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog (null, "Are you sure you want to leave without saving","Warning",dialogButton);
         if(dialogResult == JOptionPane.YES_OPTION){
-            Main m = new Main();
+            MainMenu m = new MainMenu();
             m.setVisible(true);
             this.hide();
         }
     }//GEN-LAST:event_backBtnActionPerformed
 
-    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
-        DoConnect();/*
-        Double home, shopping, dineAndDrinks, auto, travel, billsAndUtils,
-        entertainment, fees, personalCare, loans, education, other;
-        try{
-            String home1 = homeField.getText();
-            String shopping1 = shoppingField.getText();
-            String dine1 = diningAndDrinksField.getText();
-            String auto1 = autoAndCommutingField.getText();
-            String travel1 = travelField.getText();
-            String bills1 = billsAndUtilitiesField.getText();
-            String ent1 = entertainmentField.getText();
-            String fees1 = feesField.getText();
-            String personal1 = personalCareField.getText();
-            String loans1 = loansField.getText();
-            String edu1 = educationField.getText();
-            String other1 = otherField.getText();
-            if(home1.isEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Home Cannot Be Empty");
-            }
-            else if(shopping1.isEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Shopping Cannot Be Empty");
-            }
-            else if(dine1.isEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Dining & Drinks Cannot Be Empty");
-            }
-            else if(auto1.isEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Auto & Commuting Cannot Be Empty");
-            }
-            else if(travel1.isEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Travel Cannot Be Empty");
-            }
-            else if(bills1.isEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Bills & Utilities Cannot Be Empty");
-            }
-            else if(ent1.isEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Entertainment Cannot Be Empty");
-            }
-            else if(fees1.isEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Fees Cannot Be Empty");
-            }
-            else if(personal1.isEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Personal Care Cannot Be Empty");
-            }
-            else if(loans1.isEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Loans Cannot Be Empty");
-            }
-            else if(edu1.isEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Education Cannot Be Empty");
-            }
-            else if(other1.isEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Other Cannot Be Empty");
-            }
-            else{
-                home = Double.parseDouble(home1);
-                shopping = Double.parseDouble(shopping1);
-                dineAndDrinks = Double.parseDouble(dine1);
-                auto = Double.parseDouble(auto1);
-                travel = Double.parseDouble(travel1);
-                billsAndUtils = Double.parseDouble(bills1);
-                entertainment = Double.parseDouble(ent1);
-                fees = Double.parseDouble(fees1);
-                personalCare = Double.parseDouble(personal1);
-                loans = Double.parseDouble(loans1);
-                education = Double.parseDouble(edu1);
-                other = Double.parseDouble(other1);
-                String[] options={"Yes", "No"};
-                int t =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Save?", "Confirm Save", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-                if(t==JOptionPane.YES_OPTION){
-                    String sql = ("INSERT INTO ROOT.PBUDGET( USERNAME , HOME , SHOPPING , DINING_AND_DRINKS , AUTO , TRAVEL , BILLS , ENTERTAINMENT , FEES , PERSONAL , LOANS , EDUCATION, OTHER )values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
-                    //String sql = ("INSERT INTO ROOT.PUSERS( USERNAME , PASSWORD ,FIRSTNAME,  LASTNAME ,  EMAILADDRESS  )values(?,?,?,?,?)" );
-                    PreparedStatement statement = con.prepareStatement(sql);
-                    statement.setString(1, Constant.currentUser);
-                    statement.setDouble(2, home);
-                    statement.setDouble(3, shopping);
-                    statement.setDouble(4, dineAndDrinks);
-                    statement.setDouble(5, auto);
-                    statement.setDouble(6, travel);
-                    statement.setDouble(7, billsAndUtils);
-                    statement.setDouble(8, entertainment);
-                    statement.setDouble(9, fees);
-                    statement.setDouble(10, personalCare);
-                    statement.setDouble(11, loans);
-                    statement.setDouble(12, education);
-                    statement.setDouble(13, other);
-                    int rowsInserted = statement.executeUpdate();
-                    if(rowsInserted > 0){
-                        System.out.println("A new user was inserted successfully!");
-                        JOptionPane.showMessageDialog(null, "Save Succesful");
-                        SavingsPlanPage eP = new SavingsPlanPage();
-                        eP.setVisible(true);
-                        this.hide();
-                    }
-                }
-            }
-        }catch(NumberFormatException err){
-            JOptionPane.showMessageDialog(rootPane, "Please Enter Only Numbers");
-        }catch(Exception ex){
-            JOptionPane.showMessageDialog(rootPane, "An Error Occurred");
-        }*/
-    }//GEN-LAST:event_EditActionPerformed
+    private void homeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeFieldActionPerformed
+
+    }//GEN-LAST:event_homeFieldActionPerformed
+
+    private void shoppingFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shoppingFieldActionPerformed
+
+    }//GEN-LAST:event_shoppingFieldActionPerformed
+
+    private void homeField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_homeField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -592,23 +709,45 @@ public class BudgetInfoPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Edit;
+    private javax.swing.JTextField autoAndCommutingField;
     private javax.swing.JButton backBtn;
+    private javax.swing.JTextField billsAndUtilitiesField;
     private javax.swing.JMenuItem budgetMenuItem;
     private javax.swing.JMenuItem cryptoMenuItem;
+    private javax.swing.JTextField diningAndDrinksField;
+    private javax.swing.JTextField educationField;
+    private javax.swing.JTextField entertainmentField;
+    private javax.swing.JTextField feesField;
     private javax.swing.JTextField homeField;
+    private javax.swing.JTextField homeField1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField loansField;
     private javax.swing.JMenuItem logoutMenuItem;
     private javax.swing.JMenuItem mainMenuItemBtn;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JPanel myChartPanel;
     private javax.swing.JTextField otherField;
+    private javax.swing.JTextField personalCareField;
     private javax.swing.JMenuItem savingsMenutItem;
+    private javax.swing.JTextField shoppingField;
     private javax.swing.JMenuItem stocksMenuItem;
+    private javax.swing.JTextField travelField;
     // End of variables declaration//GEN-END:variables
 }
