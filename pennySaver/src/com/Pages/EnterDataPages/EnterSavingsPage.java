@@ -575,8 +575,8 @@ public class EnterSavingsPage extends javax.swing.JFrame {
                         statement.setDouble(2, final_principal);
                         statement.setDouble(3, rate);
                         statement.setDouble(4, time);
-                        statement.setDouble(5, amount);
-                        statement.setDouble(6, interest);
+                        statement.setDouble(5, interest);
+                        statement.setDouble(6, amount);
                         int rowsInserted = statement.executeUpdate();
                         if(rowsInserted > 0){
                             System.out.println("A new user was inserted successfully!");

@@ -25,7 +25,6 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     }
 
     public void onRun(){
-        Constant.currentUser = "bcroy";
         Constant.DoConnect();
         final_principal = getFieldDouble("principal");
         rate = getFieldDouble("rate");

@@ -1,18 +1,41 @@
 package com.Pages.EditPages;
 
+import com.Pages.MainMenu.SavingsInfoPage;
+import com.Support.Constant;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DNartey
  */
 public class EditSavingsPage extends javax.swing.JFrame {
-
+    Double amount, final_principal, rate, time, interest;
     /**
      * Creates new form EditSavingsPage
      */
     public EditSavingsPage() {
+        setLocationRelativeTo(null);
+        setResizable(false);
         initComponents();
     }
 
+   public void compoundInterest(double amount1, double principle1, double rate1, double time1, double ci1){
+	amount1=principle1*((1+rate1/100)*(1+rate1/100)*(1+rate1/100));
+ 	ci1=amount1-principle1;
+        amount = amount1;
+        final_principal = principle1;
+        rate = rate1;
+        time = time1;
+        interest = ci1;
+	System.out.println("amount="+amount1);
+ 	System.out.println("principle= "+principle1);
+	System.out.println("rate="+rate1);
+	System.out.println("time="+time1);
+	System.out.println("compound interest="+ci1);
+    }
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -22,21 +45,386 @@ public class EditSavingsPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        wholePanel = new javax.swing.JPanel();
+        updateBtn = new javax.swing.JButton();
+        dataEntryPanel = new javax.swing.JPanel();
+        rateField = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        interestField = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        principalField = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        amountField = new javax.swing.JTextField();
+        timeField = new javax.swing.JTextField();
+        headerPanel = new javax.swing.JPanel();
+        firstName1 = new javax.swing.JLabel();
+        firstName2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea = new javax.swing.JTextArea();
+        backBtn = new javax.swing.JButton();
+        calculateBtn = new javax.swing.JButton();
+        resetBtn = new javax.swing.JButton();
+        SIdeBarPanel = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        wholePanel.setBackground(new java.awt.Color(240, 235, 216));
+        wholePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        updateBtn.setBackground(new java.awt.Color(63, 64, 76));
+        updateBtn.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        updateBtn.setForeground(new java.awt.Color(255, 255, 255));
+        updateBtn.setText("Update");
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
+            }
+        });
+        wholePanel.add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 480, 150, 50));
+
+        dataEntryPanel.setBackground(new java.awt.Color(240, 235, 216));
+
+        rateField.setBackground(new java.awt.Color(240, 235, 216));
+        rateField.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        rateField.setForeground(new java.awt.Color(63, 64, 76));
+        rateField.setText("2.15");
+        rateField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rateFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel18.setBackground(new java.awt.Color(240, 235, 216));
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(63, 64, 76));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel18.setText("Rate:");
+
+        interestField.setBackground(new java.awt.Color(240, 235, 216));
+        interestField.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        interestField.setForeground(new java.awt.Color(63, 64, 76));
+        interestField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                interestFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setBackground(new java.awt.Color(240, 235, 216));
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(63, 64, 76));
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel19.setText("Compound Interest:");
+
+        jLabel12.setBackground(new java.awt.Color(240, 235, 216));
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(63, 64, 76));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel12.setText("Amount:");
+
+        jLabel7.setBackground(new java.awt.Color(240, 235, 216));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(63, 64, 76));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel7.setText("Principal:");
+
+        principalField.setBackground(new java.awt.Color(240, 235, 216));
+        principalField.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        principalField.setForeground(new java.awt.Color(63, 64, 76));
+        principalField.setText("5000");
+        principalField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                principalFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setBackground(new java.awt.Color(240, 235, 216));
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(63, 64, 76));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel8.setText("Time:");
+
+        amountField.setBackground(new java.awt.Color(240, 235, 216));
+        amountField.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        amountField.setForeground(new java.awt.Color(63, 64, 76));
+        amountField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                amountFieldActionPerformed(evt);
+            }
+        });
+
+        timeField.setBackground(new java.awt.Color(240, 235, 216));
+        timeField.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        timeField.setForeground(new java.awt.Color(63, 64, 76));
+        timeField.setText("1");
+        timeField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                timeFieldActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dataEntryPanelLayout = new javax.swing.GroupLayout(dataEntryPanel);
+        dataEntryPanel.setLayout(dataEntryPanelLayout);
+        dataEntryPanelLayout.setHorizontalGroup(
+            dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dataEntryPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dataEntryPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(amountField, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dataEntryPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(interestField, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(dataEntryPanelLayout.createSequentialGroup()
+                        .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(rateField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(principalField)
+                            .addComponent(timeField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE))))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        dataEntryPanelLayout.setVerticalGroup(
+            dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dataEntryPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(principalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(rateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(timeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
+                .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addComponent(amountField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel19)
+                    .addComponent(interestField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
+
+        wholePanel.add(dataEntryPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 215, 430, 200));
+
+        headerPanel.setBackground(new java.awt.Color(91, 139, 151));
+
+        firstName1.setBackground(new java.awt.Color(32, 33, 35));
+        firstName1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        firstName1.setForeground(new java.awt.Color(255, 255, 255));
+        firstName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        firstName1.setText("Try Out Different Values");
+
+        firstName2.setBackground(new java.awt.Color(32, 33, 35));
+        firstName2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        firstName2.setForeground(new java.awt.Color(255, 255, 255));
+        firstName2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        firstName2.setText("Savings Forecast");
+
+        javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
+        headerPanel.setLayout(headerPanelLayout);
+        headerPanelLayout.setHorizontalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(firstName2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(firstName1, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
+        );
+        headerPanelLayout.setVerticalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(firstName2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(firstName1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        wholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 440, 80));
+
+        jTextArea.setEditable(false);
+        jTextArea.setBackground(new java.awt.Color(240, 235, 216));
+        jTextArea.setColumns(20);
+        jTextArea.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        jTextArea.setForeground(new java.awt.Color(63, 64, 76));
+        jTextArea.setRows(5);
+        jScrollPane1.setViewportView(jTextArea);
+
+        wholePanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 440, 140));
+
+        backBtn.setBackground(new java.awt.Color(63, 64, 76));
+        backBtn.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        backBtn.setForeground(new java.awt.Color(255, 255, 255));
+        backBtn.setText("Back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
+        wholePanel.add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 480, 150, 50));
+
+        calculateBtn.setBackground(new java.awt.Color(63, 64, 76));
+        calculateBtn.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        calculateBtn.setForeground(new java.awt.Color(255, 255, 255));
+        calculateBtn.setText("Calculate");
+        calculateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calculateBtnActionPerformed(evt);
+            }
+        });
+        wholePanel.add(calculateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 150, 50));
+
+        resetBtn.setBackground(new java.awt.Color(63, 64, 76));
+        resetBtn.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        resetBtn.setForeground(new java.awt.Color(255, 255, 255));
+        resetBtn.setText("Reset");
+        resetBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetBtnActionPerformed(evt);
+            }
+        });
+        wholePanel.add(resetBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 430, 150, 50));
+
+        SIdeBarPanel.setBackground(new java.awt.Color(29, 45, 68));
+        SIdeBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
+        SIdeBarPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        wholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 560));
+
+        getContentPane().add(wholePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+        Constant.DoConnect();
+        Constant.currentUser = "bcroy";
+        try{
+            String prin = principalField.getText();
+            String rat1 = rateField.getText();
+            String tim1 = timeField.getText();
+            if(prin.isEmpty()){
+                JOptionPane.showMessageDialog(rootPane, "Principal Cannot Be Empty");
+            }
+            else if(rat1.isEmpty()){
+                JOptionPane.showMessageDialog(rootPane, "Rate Cannot Be Empty");
+            }
+            else if(tim1.isEmpty()){
+                JOptionPane.showMessageDialog(rootPane, "Time Cannot Be Empty");
+            }
+            else{
+                amount = 0.0;
+                interest = 0.0;
+                final_principal = Double.parseDouble(prin);
+                rate = Double.parseDouble(rat1);
+                time = Double.parseDouble(tim1);
+                compoundInterest(amount,final_principal, rate, time,interest);
+                String[] options={"Yes", "No"};
+                int f =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Save These Values?", "Confirm Save", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+                if(f==JOptionPane.YES_OPTION){
+                    System.out.println(interest);
+                    System.out.println(amount);
+                    String sql = "UPDATE ROOT.PBANK SET \"PRINCIPAL\" = ?, \"RATE\" = ?, \"TIME\"  = ?, \"SAVED_INTEREST\" = ?, \"SAVED_AMOUNT\" = ? WHERE USERNAME = ?";
+                    PreparedStatement statement = Constant.con.prepareStatement(sql);
+                    statement.setDouble(1,final_principal);
+                    statement.setDouble(2,rate);
+                    statement.setDouble(3,time);
+                    statement.setDouble(4,interest);
+                    statement.setDouble(5,amount);
+                    statement.setString(6,Constant.currentUser);
+                    int rowsInserted = statement.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Save Succesful");                    
+                }
+                
+            }
+        }catch(NumberFormatException err){
+            JOptionPane.showMessageDialog(rootPane, "Please Enter Only Numbers");
+        }catch(SQLException ex){
+            System.out.println(ex.toString());
+            JOptionPane.showMessageDialog(rootPane, "An Error Occurred");
+        }        Constant.DoConnect();
+    }//GEN-LAST:event_updateBtnActionPerformed
+
+    private void rateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rateFieldActionPerformed
+    }//GEN-LAST:event_rateFieldActionPerformed
+
+    private void interestFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_interestFieldActionPerformed
+    }//GEN-LAST:event_interestFieldActionPerformed
+
+    private void principalFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_principalFieldActionPerformed
+
+    }//GEN-LAST:event_principalFieldActionPerformed
+
+    private void amountFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amountFieldActionPerformed
+    }//GEN-LAST:event_amountFieldActionPerformed
+
+    private void timeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeFieldActionPerformed
+    }//GEN-LAST:event_timeFieldActionPerformed
+
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        SavingsInfoPage m = new SavingsInfoPage();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_backBtnActionPerformed
+
+    private void calculateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateBtnActionPerformed
+        try{
+            String princ1 = principalField.getText();
+            String rate1 = rateField.getText();
+            String time1 = timeField.getText();
+            if(princ1.isEmpty()){
+                JOptionPane.showMessageDialog(rootPane, "Principal Cannot Be Empty");
+            }
+            else if(rate1.isEmpty()){
+                JOptionPane.showMessageDialog(rootPane, "Rate Cannot Be Empty");
+            }
+            else if(time1.isEmpty()){
+                JOptionPane.showMessageDialog(rootPane, "Time Cannot Be Empty");
+            }
+            else{
+                amount = 0.0;
+                interest = 0.0;
+                final_principal = Double.parseDouble(princ1);
+                rate = Double.parseDouble(rate1);
+                time = Double.parseDouble(time1);
+                compoundInterest(amount,final_principal, rate, time,interest);
+                amountField.setText(null);
+                amountField.setText(amount.toString());
+                interestField.setText(null);
+                interestField.setText(interest.toString());
+            }
+        }catch(NumberFormatException err){
+            JOptionPane.showMessageDialog(rootPane, "Please Enter Only Numbers");
+        }
+    }//GEN-LAST:event_calculateBtnActionPerformed
+
+    private void resetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetBtnActionPerformed
+        principalField.setText(null);
+        principalField.setText(final_principal.toString());
+        rateField.setText(null);
+        rateField.setText("2.15");
+        timeField.setText(null);
+        timeField.setText(time.toString());
+        amountField.setText(null); 
+        amountField.setText(amount.toString());
+        interestField.setText(null);
+        interestField.setText(interest.toString());
+    }//GEN-LAST:event_resetBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -74,5 +462,28 @@ public class EditSavingsPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel SIdeBarPanel;
+    private javax.swing.JTextField amountField;
+    private javax.swing.JButton backBtn;
+    private javax.swing.JButton calculateBtn;
+    private javax.swing.JPanel dataEntryPanel;
+    private javax.swing.JLabel firstName1;
+    private javax.swing.JLabel firstName2;
+    private javax.swing.JPanel headerPanel;
+    private javax.swing.JTextField interestField;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea;
+    private javax.swing.JTextField principalField;
+    private javax.swing.JTextField rateField;
+    private javax.swing.JButton resetBtn;
+    private javax.swing.JTextField timeField;
+    private javax.swing.JButton updateBtn;
+    private javax.swing.JPanel wholePanel;
     // End of variables declaration//GEN-END:variables
 }
