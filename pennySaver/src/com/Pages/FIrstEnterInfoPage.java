@@ -26,22 +26,23 @@ public class FIrstEnterInfoPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         initComponents();
-        String text = "Thank You for choosing PennySaver. PennySaver is a financial application with a variety of services. The services that we offer include:\n" +
-"» Financial Consultancy\n" +
-"» Budgetting\n" +
-"» Stock Tracking\n" +
-"» CryptoCurrency Tracking\n" +
-"» Savings Forecast\n" +
-"In order to proceed, we require some information about your current financial status. Please fill out the short form below in order to get started.";
+        String text = "\n"
+                + "\n"
+                + "Thank You for choosing PennySaver. PennySaver is a financial application with"
+                + " a variety of services. The services that we offer include:\n" +
+                "» Financial Consultancy\n" +
+                "» Budgetting\n" +
+                "» Stock Tracking\n" +
+                "» CryptoCurrency Tracking\n" +
+                "» Savings Forecast\n" +
+                "In order to proceed, we require some information about your current financial status."
+                    + " Please fill out the short form below in order to get started.";
         jTextArea.setText(text);
         jTextArea.setWrapStyleWord(true);
         jTextArea.setLineWrap(true);
         jTextArea.setOpaque(false);
         jTextArea.setEditable(false);
         jTextArea.setFocusable(false);
-        jTextArea.setBackground(UIManager.getColor("Label.background"));
-        jTextArea.setFont(UIManager.getFont("Label.font"));
-        jTextArea.setBorder(UIManager.getBorder("Label.border"));
     }
 
     /**
@@ -54,14 +55,20 @@ public class FIrstEnterInfoPage extends javax.swing.JFrame {
     private void initComponents() {
 
         formatted = new javax.swing.JFormattedTextField();
+        jPanel1 = new javax.swing.JPanel();
         wholePanel = new javax.swing.JPanel();
+        SIdeBarPanel = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        budgetPanel = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        budgetLabel = new javax.swing.JLabel();
         pageInfoPanel = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea = new javax.swing.JTextArea();
+        divider = new javax.swing.JPanel();
         headerPanel = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         dataEntryPanel = new javax.swing.JPanel();
         employmentStatus = new javax.swing.JComboBox<>();
         monthlySavingsField = new javax.swing.JTextField();
@@ -85,39 +92,88 @@ public class FIrstEnterInfoPage extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         wholePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pageInfoPanel.setBackground(new java.awt.Color(32, 33, 35));
+        SIdeBarPanel.setBackground(new java.awt.Color(29, 45, 68));
+        SIdeBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
+        SIdeBarPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 100, 100));
+
+        budgetPanel.setBackground(new java.awt.Color(240, 235, 216));
+        budgetPanel.setForeground(new java.awt.Color(63, 64, 76));
+        budgetPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                budgetPanelMouseClicked(evt);
+            }
+        });
+        budgetPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel11.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        budgetPanel.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
+
+        budgetLabel.setBackground(new java.awt.Color(240, 235, 216));
+        budgetLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        budgetLabel.setForeground(new java.awt.Color(63, 64, 76));
+        budgetLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        budgetLabel.setText("Personal Info");
+        budgetLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                budgetLabelMouseClicked(evt);
+            }
+        });
+        budgetPanel.add(budgetLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
+
+        SIdeBarPanel.add(budgetPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 120, 40));
+
+        wholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 550));
+
+        pageInfoPanel.setBackground(new java.awt.Color(240, 235, 216));
         pageInfoPanel.setForeground(new java.awt.Color(255, 255, 255));
+        pageInfoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextArea.setEditable(false);
-        jTextArea.setBackground(new java.awt.Color(32, 33, 35));
+        jTextArea.setBackground(new java.awt.Color(240, 235, 216));
         jTextArea.setColumns(20);
-        jTextArea.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jTextArea.setForeground(new java.awt.Color(255, 255, 255));
+        jTextArea.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jTextArea.setForeground(new java.awt.Color(63, 64, 76));
         jTextArea.setRows(5);
-        jScrollPane1.setViewportView(jTextArea);
+        jTextArea.setBorder(null);
+        jScrollPane2.setViewportView(jTextArea);
 
-        javax.swing.GroupLayout pageInfoPanelLayout = new javax.swing.GroupLayout(pageInfoPanel);
-        pageInfoPanel.setLayout(pageInfoPanelLayout);
-        pageInfoPanelLayout.setHorizontalGroup(
-            pageInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pageInfoPanelLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 20, Short.MAX_VALUE))
+        pageInfoPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 440));
+
+        divider.setBackground(new java.awt.Color(29, 45, 68));
+
+        javax.swing.GroupLayout dividerLayout = new javax.swing.GroupLayout(divider);
+        divider.setLayout(dividerLayout);
+        dividerLayout.setHorizontalGroup(
+            dividerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 27, Short.MAX_VALUE)
         );
-        pageInfoPanelLayout.setVerticalGroup(
-            pageInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pageInfoPanelLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+        dividerLayout.setVerticalGroup(
+            dividerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        wholePanel.add(pageInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 103, 360, 380));
+        pageInfoPanel.add(divider, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        wholePanel.add(pageInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 330, 440));
 
         headerPanel.setBackground(new java.awt.Color(91, 139, 151));
 
@@ -133,41 +189,33 @@ public class FIrstEnterInfoPage extends javax.swing.JFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Please enter your details below");
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
-
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
         headerPanel.setLayout(headerPanelLayout);
         headerPanelLayout.setHorizontalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE))
                 .addContainerGap())
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
-                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(headerPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel5))
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
                 .addContainerGap())
         );
 
-        wholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, 620, 100));
+        wholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 620, 100));
 
-        dataEntryPanel.setBackground(new java.awt.Color(32, 33, 35));
+        dataEntryPanel.setBackground(new java.awt.Color(240, 235, 216));
         dataEntryPanel.setForeground(new java.awt.Color(255, 255, 255));
 
-        employmentStatus.setBackground(new java.awt.Color(32, 33, 35));
+        employmentStatus.setBackground(new java.awt.Color(240, 235, 216));
         employmentStatus.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        employmentStatus.setForeground(new java.awt.Color(255, 255, 255));
+        employmentStatus.setForeground(new java.awt.Color(63, 64, 76));
         employmentStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Unemployed", "Student", "Employed Part Time", "Employed Full TIme", "Self-Employed" }));
         employmentStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,9 +223,9 @@ public class FIrstEnterInfoPage extends javax.swing.JFrame {
             }
         });
 
-        monthlySavingsField.setBackground(new java.awt.Color(32, 33, 35));
+        monthlySavingsField.setBackground(new java.awt.Color(240, 235, 216));
         monthlySavingsField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        monthlySavingsField.setForeground(new java.awt.Color(255, 255, 255));
+        monthlySavingsField.setForeground(new java.awt.Color(63, 64, 76));
         monthlySavingsField.setBorder(null);
         monthlySavingsField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,24 +233,24 @@ public class FIrstEnterInfoPage extends javax.swing.JFrame {
             }
         });
 
-        jLabel19.setBackground(new java.awt.Color(32, 33, 35));
+        jLabel19.setBackground(new java.awt.Color(240, 235, 216));
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setForeground(new java.awt.Color(63, 64, 76));
         jLabel19.setText("Amount Willing to Save Every Month:");
 
-        jLabel7.setBackground(new java.awt.Color(32, 33, 35));
+        jLabel7.setBackground(new java.awt.Color(240, 235, 216));
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setForeground(new java.awt.Color(63, 64, 76));
         jLabel7.setText("Net Worth:");
 
-        jLabel8.setBackground(new java.awt.Color(32, 33, 35));
+        jLabel8.setBackground(new java.awt.Color(240, 235, 216));
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setForeground(new java.awt.Color(63, 64, 76));
         jLabel8.setText("Employment Status:");
 
-        netWorthField.setBackground(new java.awt.Color(32, 33, 35));
+        netWorthField.setBackground(new java.awt.Color(240, 235, 216));
         netWorthField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        netWorthField.setForeground(new java.awt.Color(255, 255, 255));
+        netWorthField.setForeground(new java.awt.Color(63, 64, 76));
         netWorthField.setBorder(null);
         netWorthField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,7 +258,7 @@ public class FIrstEnterInfoPage extends javax.swing.JFrame {
             }
         });
 
-        nextBtn.setBackground(new java.awt.Color(91, 139, 151));
+        nextBtn.setBackground(new java.awt.Color(63, 64, 76));
         nextBtn.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         nextBtn.setForeground(new java.awt.Color(255, 255, 255));
         nextBtn.setText("Next");
@@ -220,7 +268,7 @@ public class FIrstEnterInfoPage extends javax.swing.JFrame {
             }
         });
 
-        Cancel.setBackground(new java.awt.Color(91, 139, 151));
+        Cancel.setBackground(new java.awt.Color(63, 64, 76));
         Cancel.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         Cancel.setForeground(new java.awt.Color(255, 255, 255));
         Cancel.setText("Cancel");
@@ -230,9 +278,9 @@ public class FIrstEnterInfoPage extends javax.swing.JFrame {
             }
         });
 
-        incomeField.setBackground(new java.awt.Color(32, 33, 35));
+        incomeField.setBackground(new java.awt.Color(240, 235, 216));
         incomeField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        incomeField.setForeground(new java.awt.Color(255, 255, 255));
+        incomeField.setForeground(new java.awt.Color(63, 64, 76));
         incomeField.setBorder(null);
         incomeField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -240,17 +288,21 @@ public class FIrstEnterInfoPage extends javax.swing.JFrame {
             }
         });
 
-        jLabel18.setBackground(new java.awt.Color(32, 33, 35));
+        jLabel18.setBackground(new java.awt.Color(240, 235, 216));
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setForeground(new java.awt.Color(63, 64, 76));
         jLabel18.setText("Monhtly Take Home Income:");
 
+        jSeparator1.setBackground(new java.awt.Color(29, 45, 68));
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
 
+        jSeparator2.setBackground(new java.awt.Color(29, 45, 68));
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
 
+        jSeparator3.setBackground(new java.awt.Color(29, 45, 68));
         jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
 
+        jSeparator4.setBackground(new java.awt.Color(29, 45, 68));
         jSeparator4.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout dataEntryPanelLayout = new javax.swing.GroupLayout(dataEntryPanel);
@@ -315,12 +367,12 @@ public class FIrstEnterInfoPage extends javax.swing.JFrame {
                 .addComponent(nextBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Cancel)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
-        wholePanel.add(dataEntryPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, -1, 410));
+        wholePanel.add(dataEntryPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, -1, 450));
 
-        getContentPane().add(wholePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 480));
+        getContentPane().add(wholePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(-7, 0, 740, 540));
 
         pack();
         setLocationRelativeTo(null);
@@ -403,6 +455,20 @@ public class FIrstEnterInfoPage extends javax.swing.JFrame {
     private void formattedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formattedActionPerformed
     }//GEN-LAST:event_formattedActionPerformed
 
+    private void budgetLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetLabelMouseClicked
+        BudgetInfoPage m = new BudgetInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_budgetLabelMouseClicked
+
+    private void budgetPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetPanelMouseClicked
+        BudgetInfoPage m = new BudgetInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_budgetPanelMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -441,7 +507,11 @@ public class FIrstEnterInfoPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancel;
+    private javax.swing.JPanel SIdeBarPanel;
+    private javax.swing.JLabel budgetLabel;
+    private javax.swing.JPanel budgetPanel;
     private javax.swing.JPanel dataEntryPanel;
+    private javax.swing.JPanel divider;
     private javax.swing.JComboBox<String> employmentStatus;
     private javax.swing.JFormattedTextField formatted;
     private javax.swing.JPanel headerPanel;
@@ -449,11 +519,13 @@ public class FIrstEnterInfoPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;

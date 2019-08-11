@@ -1,5 +1,8 @@
 package com.Pages;
 
+import com.Support.Constant;
+import com.Support.Stocks;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -8,18 +11,14 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import yahoofinance.Stock;
+import yahoofinance.YahooFinance;
 
 /**
  *
  * @author DNartey
  */
 public class EnterStocksPage extends javax.swing.JFrame {
-    Connection con;
-    Statement stmt;
-    ResultSet rs;
-    String url;
-    String pwd;
-    String usr;
     /**
      * Creates new form EnterStocksPage
      */
@@ -40,16 +39,26 @@ public class EnterStocksPage extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        wholePanel = new javax.swing.JPanel();
+        SIdeBarPanel = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        personalinfoPanel = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        budgetLabel = new javax.swing.JLabel();
+        stockPanel = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
+        budgetLabel1 = new javax.swing.JLabel();
+        EnterInfoPanel = new javax.swing.JPanel();
         symbol = new javax.swing.JTextField();
         number = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         nextBtn = new javax.swing.JButton();
-        Cancel = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
         addBtn = new javax.swing.JButton();
+        headerPanel = new javax.swing.JPanel();
+        firstName = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        firstName1 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(637, 434));
@@ -73,30 +82,108 @@ public class EnterStocksPage extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel2.setPreferredSize(new java.awt.Dimension(637, 434));
+        wholePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        SIdeBarPanel.setBackground(new java.awt.Color(29, 45, 68));
+        SIdeBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
+        SIdeBarPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 100));
+
+        personalinfoPanel.setBackground(new java.awt.Color(29, 45, 68));
+        personalinfoPanel.setForeground(new java.awt.Color(160, 170, 178));
+        personalinfoPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                personalinfoPanelMouseClicked(evt);
+            }
+        });
+        personalinfoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel11.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel11.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        personalinfoPanel.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
+
+        budgetLabel.setBackground(new java.awt.Color(41, 57, 80));
+        budgetLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        budgetLabel.setForeground(new java.awt.Color(255, 255, 255));
+        budgetLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        budgetLabel.setText("Personal Info");
+        budgetLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                budgetLabelMouseClicked(evt);
+            }
+        });
+        personalinfoPanel.add(budgetLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
+
+        SIdeBarPanel.add(personalinfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 120, 40));
+
+        stockPanel.setBackground(new java.awt.Color(240, 235, 216));
+        stockPanel.setForeground(new java.awt.Color(63, 64, 76));
+        stockPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                stockPanelMouseClicked(evt);
+            }
+        });
+        stockPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel12.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel12.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        stockPanel.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
+
+        budgetLabel1.setBackground(new java.awt.Color(240, 235, 216));
+        budgetLabel1.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        budgetLabel1.setForeground(new java.awt.Color(63, 64, 76));
+        budgetLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        budgetLabel1.setText("Stock Input");
+        budgetLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                budgetLabel1MouseClicked(evt);
+            }
+        });
+        stockPanel.add(budgetLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
+
+        SIdeBarPanel.add(stockPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, -1, 40));
+
+        wholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 320));
+
+        EnterInfoPanel.setBackground(new java.awt.Color(240, 235, 216));
+        EnterInfoPanel.setPreferredSize(new java.awt.Dimension(637, 434));
+
+        symbol.setBackground(new java.awt.Color(240, 235, 216));
+        symbol.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        symbol.setForeground(new java.awt.Color(63, 64, 76));
         symbol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 symbolActionPerformed(evt);
             }
         });
 
+        number.setBackground(new java.awt.Color(240, 235, 216));
+        number.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        number.setForeground(new java.awt.Color(63, 64, 76));
         number.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numberActionPerformed(evt);
             }
         });
 
-        jLabel3.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel3.setBackground(new java.awt.Color(240, 235, 216));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(63, 64, 76));
         jLabel3.setText("Stock Symbol:");
 
-        jLabel5.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel5.setBackground(new java.awt.Color(240, 235, 216));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(63, 64, 76));
         jLabel5.setText("Stock Number:");
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
-
+        nextBtn.setBackground(new java.awt.Color(29, 45, 68));
+        nextBtn.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        nextBtn.setForeground(new java.awt.Color(255, 255, 255));
         nextBtn.setText("Next");
         nextBtn.setMaximumSize(new java.awt.Dimension(72, 32));
         nextBtn.setMinimumSize(new java.awt.Dimension(72, 32));
@@ -107,17 +194,9 @@ public class EnterStocksPage extends javax.swing.JFrame {
             }
         });
 
-        Cancel.setText("Cancel");
-        Cancel.setSize(new java.awt.Dimension(72, 32));
-        Cancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelActionPerformed(evt);
-            }
-        });
-
-        jLabel13.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel13.setText("Please enter the stock symbol and the number that you own");
-
+        addBtn.setBackground(new java.awt.Color(29, 45, 68));
+        addBtn.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        addBtn.setForeground(new java.awt.Color(255, 255, 255));
         addBtn.setText("Add");
         addBtn.setMaximumSize(new java.awt.Dimension(72, 32));
         addBtn.setMinimumSize(new java.awt.Dimension(72, 32));
@@ -128,99 +207,103 @@ public class EnterStocksPage extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(261, 261, 261)
-                .addComponent(jLabel9)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(130, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48)
-                        .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(71, 71, 71)
-                        .addComponent(Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel13)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel5))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(number, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                                .addComponent(symbol, javax.swing.GroupLayout.Alignment.TRAILING)))))
-                .addGap(130, 130, 130))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        headerPanel.setBackground(new java.awt.Color(91, 139, 151));
+
+        firstName.setBackground(new java.awt.Color(32, 33, 35));
+        firstName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        firstName.setForeground(new java.awt.Color(255, 255, 255));
+        firstName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        firstName.setText("and the number that you own");
+
+        jLabel13.setForeground(new java.awt.Color(63, 64, 76));
+
+        firstName1.setBackground(new java.awt.Color(32, 33, 35));
+        firstName1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        firstName1.setForeground(new java.awt.Color(255, 255, 255));
+        firstName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        firstName1.setText("Please enter the stock symbol ");
+
+        javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
+        headerPanel.setLayout(headerPanelLayout);
+        headerPanelLayout.setHorizontalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addGap(424, 424, 424)
                 .addComponent(jLabel13)
+                .addContainerGap(538, Short.MAX_VALUE))
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(firstName1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        headerPanelLayout.setVerticalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(headerPanelLayout.createSequentialGroup()
+                        .addComponent(firstName1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(headerPanelLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel13)))
+                .addGap(23, 23, 23))
+        );
+
+        javax.swing.GroupLayout EnterInfoPanelLayout = new javax.swing.GroupLayout(EnterInfoPanel);
+        EnterInfoPanel.setLayout(EnterInfoPanelLayout);
+        EnterInfoPanelLayout.setHorizontalGroup(
+            EnterInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EnterInfoPanelLayout.createSequentialGroup()
+                .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(EnterInfoPanelLayout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addGroup(EnterInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(EnterInfoPanelLayout.createSequentialGroup()
+                        .addGroup(EnterInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(EnterInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(symbol, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(number, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(EnterInfoPanelLayout.createSequentialGroup()
+                        .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        EnterInfoPanelLayout.setVerticalGroup(
+            EnterInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EnterInfoPanelLayout.createSequentialGroup()
+                .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addGroup(EnterInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(symbol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(symbol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(EnterInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(number, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Cancel)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addGroup(EnterInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nextBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        wholePanel.add(EnterInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 410, 320));
+
+        getContentPane().add(wholePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 320));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void DoConnect(){
-        try{
-            String url= "jdbc:derby://localhost:1527/pennySaverDatabase";
-            usr="root";
-            pwd="password";
-            con= DriverManager.getConnection(url, usr, pwd);
-            stmt=con.createStatement();
-        }catch (SQLException err){
-            System.out.println(err.getMessage());
-        }
-        catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
-  }
     private void numberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numberActionPerformed
     }//GEN-LAST:event_numberActionPerformed
-
-    private void CancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelActionPerformed
-        int dialogButton = JOptionPane.YES_NO_OPTION;
-        int dialogResult = JOptionPane.showConfirmDialog (null, "Are you sure you want to leave without saving","Warning",dialogButton);
-        if(dialogResult == JOptionPane.YES_OPTION){
-            CryptoQuestionPage m = new CryptoQuestionPage();
-            m.setVisible(true);
-            this.hide();
-        }
-    }//GEN-LAST:event_CancelActionPerformed
 
     private void symbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_symbolActionPerformed
 
@@ -242,9 +325,27 @@ public class EnterStocksPage extends javax.swing.JFrame {
         return name.matches("[a-zA-Z]+");
     }
     
+    public static boolean isStock(String name){
+        boolean isStock = false;
+        try{
+            Stock stock = YahooFinance.get(name);
+            BigDecimal price = stock.getQuote(true).getPrice();
+            if(price.equals(null)){
+                isStock = false;
+            }
+            else{
+                isStock = true;
+            }
+        }catch(Exception er){
+            System.out.println("Failed to get " + name);
+        }
+        return isStock;
+    } 
+        
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        DoConnect();
+        Constant.DoConnect();
         String stockSymbol,stockNumber;
+        String stock[] = {"APPL","AMZN"};
         int finalStockNumber;
         try{
             stockSymbol = symbol.getText();
@@ -258,7 +359,11 @@ public class EnterStocksPage extends javax.swing.JFrame {
             else if(stockNumber.isEmpty()){
                    JOptionPane.showMessageDialog(rootPane, "Please Enter The Number");
             }
+            /*else if(!Stocks.isStock(stockSymbol)){
+                JOptionPane.showMessageDialog(rootPane, "Not a valid symbol");
+            }*/
             else{
+                Stocks.getStock(stock);
                 finalStockNumber = Integer.parseInt(stockNumber);
                 }
         }catch(NumberFormatException er){
@@ -270,6 +375,34 @@ public class EnterStocksPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "ERROR OCCURED");
         }
     }//GEN-LAST:event_addBtnActionPerformed
+
+    private void budgetLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetLabelMouseClicked
+        BudgetInfoPage m = new BudgetInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_budgetLabelMouseClicked
+
+    private void personalinfoPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_personalinfoPanelMouseClicked
+        BudgetInfoPage m = new BudgetInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_personalinfoPanelMouseClicked
+
+    private void budgetLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetLabel1MouseClicked
+        BudgetInfoPage m = new BudgetInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_budgetLabel1MouseClicked
+
+    private void stockPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stockPanelMouseClicked
+        BudgetInfoPage m = new BudgetInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_stockPanelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -307,17 +440,27 @@ public class EnterStocksPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Cancel;
+    private javax.swing.JPanel EnterInfoPanel;
+    private javax.swing.JPanel SIdeBarPanel;
     private javax.swing.JButton addBtn;
+    private javax.swing.JLabel budgetLabel;
+    private javax.swing.JLabel budgetLabel1;
+    private javax.swing.JLabel firstName;
+    private javax.swing.JLabel firstName1;
+    private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JButton nextBtn;
     private javax.swing.JTextField number;
+    private javax.swing.JPanel personalinfoPanel;
+    private javax.swing.JPanel stockPanel;
     private javax.swing.JTextField symbol;
+    private javax.swing.JPanel wholePanel;
     // End of variables declaration//GEN-END:variables
 }
