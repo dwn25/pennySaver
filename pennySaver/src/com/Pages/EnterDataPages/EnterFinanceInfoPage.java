@@ -1,5 +1,6 @@
-package com.Pages;
+package com.Pages.EnterDataPages;
 
+import com.Pages.Main.Main;
 import com.Pages.MainMenu.BudgetInfoPage;
 import com.Pages.AskQuestionPage.StocksQuestionPage;
 import com.Support.Constant;
@@ -20,11 +21,11 @@ import javax.swing.UIManager;
  *
  * @author DNartey
  */
-public class FIrstEnterInfoPage extends javax.swing.JFrame {
+public class EnterFinanceInfoPage extends javax.swing.JFrame {
     /**
      * Creates new form ReturningUserPage
      */
-    public FIrstEnterInfoPage() {
+    public EnterFinanceInfoPage() {
         setLocationRelativeTo(null);
         setResizable(false);
         initComponents();
@@ -488,21 +489,23 @@ public class FIrstEnterInfoPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FIrstEnterInfoPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EnterFinanceInfoPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FIrstEnterInfoPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EnterFinanceInfoPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FIrstEnterInfoPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EnterFinanceInfoPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FIrstEnterInfoPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EnterFinanceInfoPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FIrstEnterInfoPage().setVisible(true);
+                new EnterFinanceInfoPage().setVisible(true);
             }
         });
     }

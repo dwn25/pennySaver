@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.Pages;
+package com.Pages.Main;
+import com.Pages.EnterDataPages.EnterFinanceInfoPage;
  import com.Support.Constant;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -492,7 +493,7 @@ public class RegisterForm extends javax.swing.JFrame {
                         System.out.println("A new user was inserted successfully!");
                         JOptionPane.showMessageDialog(null, "Registration Succesful");
                         Constant.IDS +=1;
-                        FIrstEnterInfoPage eP = new FIrstEnterInfoPage();
+                        EnterFinanceInfoPage eP = new EnterFinanceInfoPage();
                         eP.setVisible(true);
                         this.hide();
                     }
