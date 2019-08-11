@@ -1,19 +1,20 @@
-package com.Pages.AskQuestionPage;
+package com.Pages.Main;
 
-import com.Pages.EnterDataPages.EnterBudgetPage;
+import com.Pages.AskQuestionPage.StocksQuestionPage;
 import com.Support.Constant;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author DNartey
  */
-public class BudgetQuestionPage extends javax.swing.JFrame {
+public class NoUseMain extends javax.swing.JFrame {
 
     /**
-     * Creates new form BudgetQuestionPage
+     * Creates new form NoUseMain
      */
-    public BudgetQuestionPage() {
-        setLocationRelativeTo(null);
+    public NoUseMain() {
         setResizable(false);
         initComponents();
     }
@@ -31,9 +32,11 @@ public class BudgetQuestionPage extends javax.swing.JFrame {
         questionPanel = new javax.swing.JPanel();
         headerPanel = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        NoBtn = new javax.swing.JButton();
-        yesBTn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        YEsBtn = new javax.swing.JButton();
+        NoBtn2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,33 +71,45 @@ public class BudgetQuestionPage extends javax.swing.JFrame {
 
         wholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 100));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(63, 64, 76));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Would you like to create a Weekly Budget?");
-        wholePanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 440, -1));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(63, 64, 76));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Or \"No\" to start again.");
+        wholePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 440, -1));
 
-        NoBtn.setBackground(new java.awt.Color(91, 139, 151));
-        NoBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        NoBtn.setForeground(new java.awt.Color(255, 255, 255));
-        NoBtn.setText("No");
-        NoBtn.addActionListener(new java.awt.event.ActionListener() {
+        YEsBtn.setBackground(new java.awt.Color(63, 64, 76));
+        YEsBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        YEsBtn.setForeground(new java.awt.Color(255, 255, 255));
+        YEsBtn.setText("Yes");
+        YEsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NoBtnActionPerformed(evt);
+                YEsBtnActionPerformed(evt);
             }
         });
-        wholePanel.add(NoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 170, -1));
+        wholePanel.add(YEsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 170, -1));
 
-        yesBTn.setBackground(new java.awt.Color(91, 139, 151));
-        yesBTn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        yesBTn.setForeground(new java.awt.Color(255, 255, 255));
-        yesBTn.setText("Yes");
-        yesBTn.addActionListener(new java.awt.event.ActionListener() {
+        NoBtn2.setBackground(new java.awt.Color(63, 64, 76));
+        NoBtn2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        NoBtn2.setForeground(new java.awt.Color(255, 255, 255));
+        NoBtn2.setText("No");
+        NoBtn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                yesBTnActionPerformed(evt);
+                NoBtn2ActionPerformed(evt);
             }
         });
-        wholePanel.add(yesBTn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 170, -1));
+        wholePanel.add(NoBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 170, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(63, 64, 76));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("You currently have no use for PennySaver");
+        wholePanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 440, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(63, 64, 76));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Click \"Yes\" to log out and delete account");
+        wholePanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 440, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,29 +119,38 @@ public class BudgetQuestionPage extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(wholePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 186, Short.MAX_VALUE)
+            .addComponent(wholePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void yesBTnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesBTnActionPerformed
-        Constant.hasBudget = true;
-        EnterBudgetPage m = new EnterBudgetPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_yesBTnActionPerformed
+    private void YEsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YEsBtnActionPerformed
+        Constant.DoConnect();
+        String[] options={"Yes", "No"};
+        int f =  JOptionPane.showOptionDialog(null, "Are You Delete Your Account?", "Confirm Save", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        if(f==JOptionPane.YES_OPTION){
+            try{
+                //String sql = "DELETE FROM ROOT.PUSERS WHERE USERNAME = 'bb123' AND PASSWORD = 'VGVzdCQxMjM=' AND FIRSTNAME = 'Betty' AND LASTNAME = 'Beryl' AND EMAILADDRESS = 'bb@gmail.com' AND NET_WORTH = 9000000.0 AND NET_INCOME = 7000.0 AND MONTHLY_SAVINGS = 3000.0 AND EMPLOYMENT_STATUS = 'Self-Employed';\n";
+                String sql = "DELETE FROM ROOT.PUSERS WHERE USERNAME = ?";
+                PreparedStatement statement = Constant.con.prepareStatement(sql);
+                statement.setString(1, Constant.currentUser);
+                int rowsInserted = statement.executeUpdate();
+                JOptionPane.showMessageDialog(rootPane, "Goodbye, Please come again");
+                System.exit(0);
+            }catch(Exception e){
+                        
+                    }
+                }
+    }//GEN-LAST:event_YEsBtnActionPerformed
 
-    private void NoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoBtnActionPerformed
-        Constant.hasBudget = false;
-        System.out.println("Budget is "+ Constant.hasBudget);
-        SavingsQuestionPage m = new SavingsQuestionPage();
+    private void NoBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoBtn2ActionPerformed
+        StocksQuestionPage m = new StocksQuestionPage();
         m.setLocationRelativeTo(null);
         m.setVisible(true);
         this.hide();
-    }//GEN-LAST:event_NoBtnActionPerformed
+    }//GEN-LAST:event_NoBtn2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,31 +169,33 @@ public class BudgetQuestionPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BudgetQuestionPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NoUseMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BudgetQuestionPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NoUseMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BudgetQuestionPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NoUseMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BudgetQuestionPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NoUseMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BudgetQuestionPage().setVisible(true);
+                new NoUseMain().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton NoBtn;
+    private javax.swing.JButton NoBtn2;
+    private javax.swing.JButton YEsBtn;
     private javax.swing.JPanel headerPanel;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel logo;
     private javax.swing.JPanel questionPanel;
     private javax.swing.JPanel wholePanel;
-    private javax.swing.JButton yesBTn;
     // End of variables declaration//GEN-END:variables
 }

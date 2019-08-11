@@ -644,9 +644,9 @@ public class EnterBudgetPage extends javax.swing.JFrame {
                     statement.setDouble(13, other);
                     int rowsInserted = statement.executeUpdate();
                     if(rowsInserted > 0){
-                        System.out.println("A new user was inserted successfully!");
+                        System.out.println("Budget Table: A new user was inserted successfully!");
                         JOptionPane.showMessageDialog(null, "Save Succesful");
-                        EnterSavingsPage eP = new EnterSavingsPage();
+                        SavingsQuestionPage eP = new SavingsQuestionPage();
                         eP.setVisible(true);
                         this.hide();
                     }

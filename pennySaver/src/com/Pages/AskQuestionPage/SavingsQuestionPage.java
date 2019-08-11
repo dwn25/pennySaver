@@ -2,6 +2,9 @@ package com.Pages.AskQuestionPage;
 
 
 import com.Pages.EnterDataPages.EnterSavingsPage;
+import com.Pages.Main.NoUseMain;
+import com.Pages.MainMenu.MainMenu;
+import com.Support.Constant;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -94,6 +97,11 @@ public class SavingsQuestionPage extends javax.swing.JFrame {
         NoBtn1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         NoBtn1.setForeground(new java.awt.Color(255, 255, 255));
         NoBtn1.setText("No");
+        NoBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                NoBtn1MouseClicked(evt);
+            }
+        });
         NoBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NoBtn1ActionPerformed(evt);
@@ -131,6 +139,7 @@ public class SavingsQuestionPage extends javax.swing.JFrame {
     }//GEN-LAST:event_NoBtn1ActionPerformed
 
     private void yesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesBtnActionPerformed
+        Constant.hasSavings = true;
         EnterSavingsPage m = new EnterSavingsPage();
         m.setLocationRelativeTo(null);
         m.setVisible(true);
@@ -139,6 +148,20 @@ public class SavingsQuestionPage extends javax.swing.JFrame {
 
     private void NoBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoBtn2ActionPerformed
     }//GEN-LAST:event_NoBtn2ActionPerformed
+
+    private void NoBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NoBtn1MouseClicked
+        Constant.hasSavings = false;
+        System.out.println("Savings " + Constant.hasSavings);
+        if(Constant.hasStocks && Constant.hasCrypto && Constant.hasBudget && Constant.hasSavings){
+            MainMenu m = new MainMenu();
+            m.setVisible(true);
+            this.hide();
+        }else{
+            NoUseMain  m = new NoUseMain();
+            m.setVisible(true);
+            this.hide();
+        }
+    }//GEN-LAST:event_NoBtn1MouseClicked
 
     /**
      * @param args the command line arguments

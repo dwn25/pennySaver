@@ -1,6 +1,7 @@
 package com.Pages.AskQuestionPage;
 
 import com.Pages.EnterDataPages.EnterCryptoPage;
+import com.Support.Constant;
 
 /**
  *
@@ -111,6 +112,7 @@ public class CryptoQuestionPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void YEsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YEsBtnActionPerformed
+        Constant.hasCrypto = true;
         EnterCryptoPage m = new EnterCryptoPage();
         m.setLocationRelativeTo(null);
         m.setVisible(true);
@@ -118,6 +120,8 @@ public class CryptoQuestionPage extends javax.swing.JFrame {
     }//GEN-LAST:event_YEsBtnActionPerformed
 
     private void NoBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoBtn2ActionPerformed
+        Constant.hasCrypto = false;
+        System.out.println("Crypto is "+ Constant.hasCrypto);
         BudgetQuestionPage m = new BudgetQuestionPage();
         m.setLocationRelativeTo(null);
         m.setVisible(true);

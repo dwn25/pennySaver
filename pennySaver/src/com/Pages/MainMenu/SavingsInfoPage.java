@@ -39,7 +39,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         timeField.setText(null);
         timeField.setText(time.toString() + " Year(s)");      
         interestField.setText(null);
-        interestField.setText(interest.toString() + "%");    
+        interestField.setText("$ "+interest.toString());    
         totalField.setText(null);
         totalField.setText("$" + amount.toString());   
         String text  = "\n"/*

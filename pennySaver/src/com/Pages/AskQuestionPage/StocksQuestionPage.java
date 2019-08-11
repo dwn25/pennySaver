@@ -1,6 +1,7 @@
 package com.Pages.AskQuestionPage;
 
 import com.Pages.EnterDataPages.EnterStocksPage;
+import com.Support.Constant;
 import javax.swing.JOptionPane;
 
 /**
@@ -104,6 +105,7 @@ public class StocksQuestionPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void YEsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YEsBtnActionPerformed
+       Constant.hasStocks = true;
        EnterStocksPage m = new EnterStocksPage();
        m.setLocationRelativeTo(null);
        m.setVisible(true);
@@ -111,6 +113,8 @@ public class StocksQuestionPage extends javax.swing.JFrame {
     }//GEN-LAST:event_YEsBtnActionPerformed
 
     private void NoBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoBtn2ActionPerformed
+        Constant.hasStocks = false;
+        System.out.println("Stocks is "  + Constant.hasStocks);
         CryptoQuestionPage m = new CryptoQuestionPage();
         m.setLocationRelativeTo(null);
         m.setVisible(true);

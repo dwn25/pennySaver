@@ -1,6 +1,8 @@
 package com.Pages.EnterDataPages;
 
+import com.Pages.Main.NoUseMain;
 import com.Pages.MainMenu.BudgetInfoPage;
+import com.Pages.MainMenu.MainMenu;
 import com.Support.Constant;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -566,9 +568,7 @@ public class EnterSavingsPage extends javax.swing.JFrame {
                 String[] options={"Yes", "No"};
                 int f =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Save These Values?", "Confirm Save", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
                 if(f==JOptionPane.YES_OPTION){
-                    System.out.println(interest);
-                    System.out.println(amount);
-                    if(Constant.currentUser.equals("")){
+                    if(Constant.currentUser.length()>2){
                         String sql = "INSERT INTO ROOT.PBANK (USERNAME, PRINCIPAL, RATE, \"TIME\", SAVED_INTEREST, SAVED_AMOUNT)" +"	VALUES (?, ?, ?, ?, ?, ?)";
                         PreparedStatement statement = Constant.con.prepareStatement(sql);
                         statement.setString(1, Constant.currentUser);
@@ -579,12 +579,12 @@ public class EnterSavingsPage extends javax.swing.JFrame {
                         statement.setDouble(6, amount);
                         int rowsInserted = statement.executeUpdate();
                         if(rowsInserted > 0){
-                            System.out.println("A new user was inserted successfully!");
+                            System.out.println("Savings: A new user was inserted successfully!");
                             JOptionPane.showMessageDialog(null, "Save Succesful");
-                            EnterSavingsPage eP = new EnterSavingsPage();
-                            eP.setVisible(true);
+                            MainMenu m = new MainMenu();
+                            m.setVisible(true);
                             this.hide();
-                        }
+                            }
                     }
                 }
             }
@@ -597,23 +597,27 @@ public class EnterSavingsPage extends javax.swing.JFrame {
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void rateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rateFieldActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_rateFieldActionPerformed
 
     private void interestFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_interestFieldActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_interestFieldActionPerformed
 
     private void amountFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amountFieldActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_amountFieldActionPerformed
 
     private void timeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeFieldActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_timeFieldActionPerformed
 
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
-        // TODO add your handling code here:
+        if(Constant.hasStocks && Constant.hasCrypto && Constant.hasBudget && Constant.hasSavings){
+            NoUseMain  m = new NoUseMain();
+            m.setVisible(true);
+            this.hide();
+        }else{
+            MainMenu m = new MainMenu();
+            m.setVisible(true);
+            this.hide();
+        }
     }//GEN-LAST:event_nextBtnActionPerformed
 
     private void calculateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateBtnActionPerformed
@@ -662,19 +666,15 @@ public class EnterSavingsPage extends javax.swing.JFrame {
     }//GEN-LAST:event_personalInfoPageMouseClicked
 
     private void budgetLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetLabel2MouseClicked
-        // TODO add your handling code here:
     }//GEN-LAST:event_budgetLabel2MouseClicked
 
     private void budgetLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetLabel3MouseClicked
-        // TODO add your handling code here:
     }//GEN-LAST:event_budgetLabel3MouseClicked
 
     private void stocksInfo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksInfo1MouseClicked
-        // TODO add your handling code here:
     }//GEN-LAST:event_stocksInfo1MouseClicked
 
     private void stocksInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksInfoMouseClicked
-        // TODO add your handling code here:
     }//GEN-LAST:event_stocksInfoMouseClicked
 
     private void budgetLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetLabel1MouseClicked
@@ -692,11 +692,9 @@ public class EnterSavingsPage extends javax.swing.JFrame {
     }//GEN-LAST:event_stockPanelMouseClicked
 
     private void budgetLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetLabel4MouseClicked
-        // TODO add your handling code here:
     }//GEN-LAST:event_budgetLabel4MouseClicked
 
     private void stocksInfo2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksInfo2MouseClicked
-        // TODO add your handling code here:
     }//GEN-LAST:event_stocksInfo2MouseClicked
 
     private void resetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetBtnActionPerformed

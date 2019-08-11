@@ -21,6 +21,9 @@ public class EditSavingsPage extends javax.swing.JFrame {
         initComponents();
     }
 
+    public void onRun(){
+        
+    }
    public void compoundInterest(double amount1, double principle1, double rate1, double time1, double ci1){
 	amount1=principle1*((1+rate1/100)*(1+rate1/100)*(1+rate1/100));
  	ci1=amount1-principle1;
@@ -91,7 +94,6 @@ public class EditSavingsPage extends javax.swing.JFrame {
         rateField.setBackground(new java.awt.Color(240, 235, 216));
         rateField.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         rateField.setForeground(new java.awt.Color(63, 64, 76));
-        rateField.setText("2.15");
         rateField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rateFieldActionPerformed(evt);
@@ -134,7 +136,6 @@ public class EditSavingsPage extends javax.swing.JFrame {
         principalField.setBackground(new java.awt.Color(240, 235, 216));
         principalField.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         principalField.setForeground(new java.awt.Color(63, 64, 76));
-        principalField.setText("5000");
         principalField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 principalFieldActionPerformed(evt);
@@ -159,7 +160,6 @@ public class EditSavingsPage extends javax.swing.JFrame {
         timeField.setBackground(new java.awt.Color(240, 235, 216));
         timeField.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         timeField.setForeground(new java.awt.Color(63, 64, 76));
-        timeField.setText("1");
         timeField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 timeFieldActionPerformed(evt);
@@ -233,7 +233,7 @@ public class EditSavingsPage extends javax.swing.JFrame {
         firstName2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         firstName2.setForeground(new java.awt.Color(255, 255, 255));
         firstName2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        firstName2.setText("Savings Forecast");
+        firstName2.setText("Edit Savings");
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
         headerPanel.setLayout(headerPanelLayout);
@@ -313,7 +313,6 @@ public class EditSavingsPage extends javax.swing.JFrame {
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         Constant.DoConnect();
-        Constant.currentUser = "bcroy";
         try{
             String prin = principalField.getText();
             String rat1 = rateField.getText();

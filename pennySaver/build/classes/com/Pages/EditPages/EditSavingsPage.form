@@ -154,7 +154,6 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="4c" green="40" red="3f" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="2.15"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rateFieldActionPerformed"/>
@@ -247,7 +246,6 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="4c" green="40" red="3f" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="5000"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="principalFieldActionPerformed"/>
@@ -295,7 +293,6 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="4c" green="40" red="3f" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="1"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="timeFieldActionPerformed"/>
@@ -362,7 +359,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Savings Forecast"/>
+                <Property name="text" type="java.lang.String" value="Edit Savings"/>
               </Properties>
             </Component>
           </SubComponents>

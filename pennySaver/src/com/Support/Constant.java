@@ -21,7 +21,12 @@ public class Constant {
     public static String url;
     public static String pwd;
     public static String username;
-    
+    public static boolean hasStocks = false;
+    public static boolean hasCrypto = false;
+    public static boolean hasBudget = false;
+    public static boolean hasSavings = false;
+
+        
     public static void DoConnect(){
         try{
             //Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
