@@ -1,8 +1,6 @@
 package com.Pages.AskQuestionPage;
 
 
-import com.Pages.MainMenu.MainMenu;
-import com.Pages.EnterDataPages.EnterSavingsPage;
 import com.Pages.EnterDataPages.EnterSavingsPage;
 
 /*
@@ -130,7 +128,6 @@ public class SavingsQuestionPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void NoBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoBtn1ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_NoBtn1ActionPerformed
 
     private void yesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesBtnActionPerformed
@@ -141,7 +138,6 @@ public class SavingsQuestionPage extends javax.swing.JFrame {
     }//GEN-LAST:event_yesBtnActionPerformed
 
     private void NoBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoBtn2ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_NoBtn2ActionPerformed
 
     /**

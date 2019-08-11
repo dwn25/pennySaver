@@ -1,43 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.Pages.EditPages;
 
 import com.Pages.MainMenu.BudgetInfoPage;
-import static com.Support.BudgetCalcsPage.auto;
-import static com.Support.BudgetCalcsPage.billsAndUtils;
-import static com.Support.BudgetCalcsPage.budgetNeeds;
-import static com.Support.BudgetCalcsPage.budgetSavings;
-import static com.Support.BudgetCalcsPage.budgetTotal;
-import static com.Support.BudgetCalcsPage.budgetWants;
-import static com.Support.BudgetCalcsPage.dineAndDrinks;
-import static com.Support.BudgetCalcsPage.education;
-import static com.Support.BudgetCalcsPage.entertainment;
-import static com.Support.BudgetCalcsPage.fees;
-import static com.Support.BudgetCalcsPage.home;
-import static com.Support.BudgetCalcsPage.loans;
-import static com.Support.BudgetCalcsPage.needs;
-import static com.Support.BudgetCalcsPage.other;
-import static com.Support.BudgetCalcsPage.personalCare;
-import static com.Support.BudgetCalcsPage.shopping;
-import static com.Support.BudgetCalcsPage.travel;
-import static com.Support.BudgetCalcsPage.wants;
 import com.Support.Constant;
 import java.awt.Color;
 import java.awt.Font;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.NumberFormat;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -766,7 +737,6 @@ public class EditBudgetPage extends javax.swing.JFrame {
     }//GEN-LAST:event_updateBTnActionPerformed
 
     private void resetBTnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetBTnActionPerformed
-        // TODO add your handling code here:
         String[] options={"Yes", "No"};
         int t =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Reset? Unsaved Data WIll Be Lost", "Confirm Reset", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         if(t==JOptionPane.YES_OPTION){

@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Pages/MainMenu/SavingsInfoPage.java</file>
-            <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Pages/MainMenu/MainMenu.java</file>
+            <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Pages/AskQuestionPage/BudgetQuestionPage.java</file>
+            <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Pages/AskQuestionPage/SavingsQuestionPage.java</file>
+            <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Pages/AskQuestionPage/StocksQuestionPage.java</file>
+            <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Pages/AskQuestionPage/CryptoQuestionPage.java</file>
         </group>
     </open-files>
 </project-private>

@@ -111,8 +111,7 @@ public class StocksQuestionPage extends javax.swing.JFrame {
     }//GEN-LAST:event_YEsBtnActionPerformed
 
     private void NoBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoBtn2ActionPerformed
-        // TODO add your handling code here:
-         CryptoQuestionPage m = new CryptoQuestionPage();
+        CryptoQuestionPage m = new CryptoQuestionPage();
         m.setLocationRelativeTo(null);
         m.setVisible(true);
         this.hide();
