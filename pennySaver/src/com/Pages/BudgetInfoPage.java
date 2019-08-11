@@ -133,13 +133,9 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     private void initComponents() {
 
         WholePanel = new javax.swing.JPanel();
-        InfoPanel = new javax.swing.JPanel();
-        myChartPanel = new javax.swing.JPanel();
         headerPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        incomeField = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
         DataPanel = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -157,9 +153,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         adviceTextArea = new javax.swing.JTextArea();
         SIdeBarPanel = new javax.swing.JPanel();
-        budgetPanel = new javax.swing.JPanel();
-        jPanel11 = new javax.swing.JPanel();
-        budgetLabel = new javax.swing.JLabel();
         savingsPanel = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         savingsLabel = new javax.swing.JLabel();
@@ -173,9 +166,12 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         jPanel18 = new javax.swing.JPanel();
         cryptoLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        mainMenu = new javax.swing.JPanel();
+        budgetPanel = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         budgetLabel1 = new javax.swing.JLabel();
+        mainMenuPanel = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        mainMenuLabel = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         homeField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -189,31 +185,15 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         billsAndUtilitiesField = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
+        incomeField = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        myChartPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        WholePanel.setBackground(new java.awt.Color(91, 139, 151));
+        WholePanel.setBackground(new java.awt.Color(240, 235, 216));
         WholePanel.setForeground(new java.awt.Color(255, 255, 255));
         WholePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        InfoPanel.setBackground(new java.awt.Color(240, 235, 216));
-
-        myChartPanel.setLayout(new java.awt.BorderLayout());
-
-        javax.swing.GroupLayout InfoPanelLayout = new javax.swing.GroupLayout(InfoPanel);
-        InfoPanel.setLayout(InfoPanelLayout);
-        InfoPanelLayout.setHorizontalGroup(
-            InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(InfoPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(myChartPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE))
-        );
-        InfoPanelLayout.setVerticalGroup(
-            InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(myChartPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
-        );
-
-        WholePanel.add(InfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 380, 330));
 
         headerPanel.setBackground(new java.awt.Color(91, 139, 151));
 
@@ -221,7 +201,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Welcome back to PennySavers");
+        jLabel1.setText("Weekly Budget");
 
         jLabel2.setBackground(new java.awt.Color(32, 33, 35));
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -229,34 +209,12 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Your Budget Has Been Calculated Below");
 
-        incomeField.setEditable(false);
-        incomeField.setBackground(new java.awt.Color(29, 45, 68));
-        incomeField.setForeground(new java.awt.Color(255, 255, 255));
-        incomeField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                incomeFieldActionPerformed(evt);
-            }
-        });
-
-        jLabel21.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel21.setText("Income:");
-
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
         headerPanel.setLayout(headerPanelLayout);
         headerPanelLayout.setHorizontalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerPanelLayout.createSequentialGroup()
-                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel21)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(incomeField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,64 +222,72 @@ public class BudgetInfoPage extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21)
-                    .addComponent(incomeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        WholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 690, 140));
+        WholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 810, 100));
 
-        DataPanel.setBackground(new java.awt.Color(29, 45, 68));
-        DataPanel.setForeground(new java.awt.Color(255, 255, 255));
+        DataPanel.setBackground(new java.awt.Color(240, 235, 216));
+        DataPanel.setForeground(new java.awt.Color(63, 64, 76));
 
-        jLabel16.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setBackground(new java.awt.Color(240, 235, 216));
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(63, 64, 76));
         jLabel16.setText("Education:");
 
-        jLabel15.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setBackground(new java.awt.Color(240, 235, 216));
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(63, 64, 76));
         jLabel15.setText("Personal Care:");
 
-        jLabel14.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setBackground(new java.awt.Color(240, 235, 216));
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(63, 64, 76));
         jLabel14.setText("Fees:");
 
-        jLabel13.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setBackground(new java.awt.Color(240, 235, 216));
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(63, 64, 76));
         jLabel13.setText("Entertainment:");
 
         personalCareField.setEditable(false);
-        personalCareField.setBackground(new java.awt.Color(29, 45, 68));
-        personalCareField.setForeground(new java.awt.Color(255, 255, 255));
+        personalCareField.setBackground(new java.awt.Color(240, 235, 216));
+        personalCareField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        personalCareField.setForeground(new java.awt.Color(63, 64, 76));
 
-        jLabel18.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setBackground(new java.awt.Color(240, 235, 216));
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(63, 64, 76));
         jLabel18.setText("Other:");
 
         educationField.setEditable(false);
-        educationField.setBackground(new java.awt.Color(29, 45, 68));
-        educationField.setForeground(new java.awt.Color(255, 255, 255));
+        educationField.setBackground(new java.awt.Color(240, 235, 216));
+        educationField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        educationField.setForeground(new java.awt.Color(63, 64, 76));
 
         loansField.setEditable(false);
-        loansField.setBackground(new java.awt.Color(29, 45, 68));
-        loansField.setForeground(new java.awt.Color(255, 255, 255));
+        loansField.setBackground(new java.awt.Color(240, 235, 216));
+        loansField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        loansField.setForeground(new java.awt.Color(63, 64, 76));
 
         feesField.setEditable(false);
-        feesField.setBackground(new java.awt.Color(29, 45, 68));
-        feesField.setForeground(new java.awt.Color(255, 255, 255));
+        feesField.setBackground(new java.awt.Color(240, 235, 216));
+        feesField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        feesField.setForeground(new java.awt.Color(63, 64, 76));
 
         otherField.setEditable(false);
-        otherField.setBackground(new java.awt.Color(29, 45, 68));
-        otherField.setForeground(new java.awt.Color(255, 255, 255));
+        otherField.setBackground(new java.awt.Color(240, 235, 216));
+        otherField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        otherField.setForeground(new java.awt.Color(63, 64, 76));
 
         entertainmentField.setEditable(false);
-        entertainmentField.setBackground(new java.awt.Color(29, 45, 68));
-        entertainmentField.setForeground(new java.awt.Color(255, 255, 255));
+        entertainmentField.setBackground(new java.awt.Color(240, 235, 216));
+        entertainmentField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        entertainmentField.setForeground(new java.awt.Color(63, 64, 76));
 
-        jLabel17.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setBackground(new java.awt.Color(240, 235, 216));
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(63, 64, 76));
         jLabel17.setText("Loans:");
 
         javax.swing.GroupLayout DataPanelLayout = new javax.swing.GroupLayout(DataPanel);
@@ -375,55 +341,32 @@ public class BudgetInfoPage extends javax.swing.JFrame {
                 .addGroup(DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(otherField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18))
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 36, Short.MAX_VALUE))
         );
 
-        WholePanel.add(DataPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 140, 200, 180));
+        WholePanel.add(DataPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 130, 200, 210));
 
-        Edit.setBackground(new java.awt.Color(91, 139, 151));
+        Edit.setBackground(new java.awt.Color(29, 45, 68));
+        Edit.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
+        Edit.setForeground(new java.awt.Color(255, 255, 255));
         Edit.setText("Edit");
         Edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EditActionPerformed(evt);
             }
         });
-        WholePanel.add(Edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 480, 130, 40));
+        WholePanel.add(Edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 440, 130, 40));
 
+        adviceTextArea.setBackground(new java.awt.Color(240, 235, 216));
         adviceTextArea.setColumns(20);
+        adviceTextArea.setForeground(new java.awt.Color(63, 64, 76));
         adviceTextArea.setRows(5);
         jScrollPane1.setViewportView(adviceTextArea);
 
-        WholePanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, 430, 150));
+        WholePanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 340, 430, 90));
 
         SIdeBarPanel.setBackground(new java.awt.Color(29, 45, 68));
         SIdeBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        budgetPanel.setBackground(new java.awt.Color(29, 45, 68));
-        budgetPanel.setForeground(new java.awt.Color(160, 170, 178));
-        budgetPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                budgetPanelMouseClicked(evt);
-            }
-        });
-        budgetPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel11.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        budgetPanel.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
-
-        budgetLabel.setBackground(new java.awt.Color(41, 57, 80));
-        budgetLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        budgetLabel.setForeground(new java.awt.Color(255, 255, 255));
-        budgetLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        budgetLabel.setText("Budget  ");
-        budgetLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                budgetLabelMouseClicked(evt);
-            }
-        });
-        budgetPanel.add(budgetLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
-
-        SIdeBarPanel.add(budgetPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 120, 40));
 
         savingsPanel.setBackground(new java.awt.Color(29, 45, 68));
         savingsPanel.setForeground(new java.awt.Color(160, 170, 178));
@@ -534,41 +477,71 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         SIdeBarPanel.add(CryptoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 120, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
-        SIdeBarPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        SIdeBarPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        mainMenu.setBackground(new java.awt.Color(240, 235, 216));
-        mainMenu.setForeground(new java.awt.Color(63, 64, 76));
-        mainMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+        budgetPanel.setBackground(new java.awt.Color(240, 235, 216));
+        budgetPanel.setForeground(new java.awt.Color(63, 64, 76));
+        budgetPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mainMenuMouseClicked(evt);
+                budgetPanelMouseClicked(evt);
             }
         });
-        mainMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        budgetPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel12.setBackground(new java.awt.Color(153, 153, 153));
         jPanel12.setForeground(new java.awt.Color(204, 204, 204));
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        mainMenu.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
+        budgetPanel.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
 
         budgetLabel1.setBackground(new java.awt.Color(240, 235, 216));
         budgetLabel1.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         budgetLabel1.setForeground(new java.awt.Color(63, 64, 76));
         budgetLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        budgetLabel1.setText("Main Menu");
+        budgetLabel1.setText("Budget");
         budgetLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 budgetLabel1MouseClicked(evt);
             }
         });
-        mainMenu.add(budgetLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
+        budgetPanel.add(budgetLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
 
-        SIdeBarPanel.add(mainMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, -1, 40));
+        SIdeBarPanel.add(budgetPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, -1));
 
-        WholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 590));
+        mainMenuPanel.setBackground(new java.awt.Color(29, 45, 68));
+        mainMenuPanel.setForeground(new java.awt.Color(160, 170, 178));
+        mainMenuPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mainMenuPanelMouseClicked(evt);
+            }
+        });
+        mainMenuPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel11.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        mainMenuPanel.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
+
+        mainMenuLabel.setBackground(new java.awt.Color(41, 57, 80));
+        mainMenuLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        mainMenuLabel.setForeground(new java.awt.Color(255, 255, 255));
+        mainMenuLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        mainMenuLabel.setText("Main Menu");
+        mainMenuLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mainMenuLabelMouseClicked(evt);
+            }
+        });
+        mainMenuPanel.add(mainMenuLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
+
+        SIdeBarPanel.add(mainMenuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 120, 40));
+
+        WholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 490));
+
+        jPanel1.setBackground(new java.awt.Color(240, 235, 216));
 
         homeField.setEditable(false);
-        homeField.setBackground(new java.awt.Color(29, 45, 68));
-        homeField.setForeground(new java.awt.Color(255, 255, 255));
+        homeField.setBackground(new java.awt.Color(240, 235, 216));
+        homeField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        homeField.setForeground(new java.awt.Color(63, 64, 76));
         homeField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeFieldActionPerformed(evt);
@@ -576,12 +549,14 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         });
 
         jLabel7.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(63, 64, 76));
         jLabel7.setText("Home:");
 
         shoppingField.setEditable(false);
-        shoppingField.setBackground(new java.awt.Color(29, 45, 68));
-        shoppingField.setForeground(new java.awt.Color(255, 255, 255));
+        shoppingField.setBackground(new java.awt.Color(240, 235, 216));
+        shoppingField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        shoppingField.setForeground(new java.awt.Color(63, 64, 76));
         shoppingField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 shoppingFieldActionPerformed(evt);
@@ -589,39 +564,48 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         });
 
         jLabel9.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(63, 64, 76));
         jLabel9.setText("Shopping:");
 
         diningAndDrinksField.setEditable(false);
-        diningAndDrinksField.setBackground(new java.awt.Color(29, 45, 68));
-        diningAndDrinksField.setForeground(new java.awt.Color(255, 255, 255));
+        diningAndDrinksField.setBackground(new java.awt.Color(240, 235, 216));
+        diningAndDrinksField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        diningAndDrinksField.setForeground(new java.awt.Color(63, 64, 76));
 
         jLabel8.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(63, 64, 76));
         jLabel8.setText("Dining & Drinks:");
 
         autoAndCommutingField.setEditable(false);
-        autoAndCommutingField.setBackground(new java.awt.Color(29, 45, 68));
-        autoAndCommutingField.setForeground(new java.awt.Color(255, 255, 255));
+        autoAndCommutingField.setBackground(new java.awt.Color(240, 235, 216));
+        autoAndCommutingField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        autoAndCommutingField.setForeground(new java.awt.Color(63, 64, 76));
 
         jLabel10.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(63, 64, 76));
         jLabel10.setText("Auto & Commuting:");
 
         travelField.setEditable(false);
-        travelField.setBackground(new java.awt.Color(29, 45, 68));
-        travelField.setForeground(new java.awt.Color(255, 255, 255));
+        travelField.setBackground(new java.awt.Color(240, 235, 216));
+        travelField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        travelField.setForeground(new java.awt.Color(63, 64, 76));
 
         jLabel11.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(63, 64, 76));
         jLabel11.setText("Travel:");
 
         billsAndUtilitiesField.setEditable(false);
-        billsAndUtilitiesField.setBackground(new java.awt.Color(29, 45, 68));
-        billsAndUtilitiesField.setForeground(new java.awt.Color(255, 255, 255));
+        billsAndUtilitiesField.setBackground(new java.awt.Color(240, 235, 216));
+        billsAndUtilitiesField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        billsAndUtilitiesField.setForeground(new java.awt.Color(63, 64, 76));
 
         jLabel12.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(63, 64, 76));
         jLabel12.setText("Bills & Utilities:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -629,31 +613,32 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(homeField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(diningAndDrinksField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(autoAndCommutingField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(travelField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(shoppingField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(7, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(billsAndUtilitiesField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                        .addComponent(billsAndUtilitiesField, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(homeField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(diningAndDrinksField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(autoAndCommutingField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(travelField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(shoppingField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -684,26 +669,42 @@ public class BudgetInfoPage extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(billsAndUtilitiesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 36, Short.MAX_VALUE))
         );
 
-        WholePanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, 230, 180));
+        WholePanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 230, 210));
+
+        incomeField.setEditable(false);
+        incomeField.setBackground(new java.awt.Color(240, 235, 216));
+        incomeField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        incomeField.setForeground(new java.awt.Color(63, 64, 76));
+        incomeField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                incomeFieldActionPerformed(evt);
+            }
+        });
+        WholePanel.add(incomeField, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 100, 86, -1));
+
+        jLabel21.setBackground(new java.awt.Color(240, 235, 216));
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(63, 64, 76));
+        jLabel21.setText("Income:");
+        WholePanel.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, -1, -1));
+
+        myChartPanel.setLayout(new java.awt.BorderLayout());
+        WholePanel.add(myChartPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 380, 330));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(WholePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(230, 230, 230))
+            .addComponent(WholePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(WholePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(WholePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -850,20 +851,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_incomeFieldActionPerformed
 
-    private void budgetLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetLabelMouseClicked
-        BudgetInfoPage m = new BudgetInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_budgetLabelMouseClicked
-
-    private void budgetPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetPanelMouseClicked
-        BudgetInfoPage m = new BudgetInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_budgetPanelMouseClicked
-
     private void savingsLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savingsLabelMouseClicked
         // TODO add your handling code here:
         SavingsInfoPage m = new SavingsInfoPage();
@@ -932,12 +919,26 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         this.hide();
     }//GEN-LAST:event_budgetLabel1MouseClicked
 
-    private void mainMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuMouseClicked
+    private void budgetPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetPanelMouseClicked
         BudgetInfoPage m = new BudgetInfoPage();
         m.setLocationRelativeTo(null);
         m.setVisible(true);
         this.hide();
-    }//GEN-LAST:event_mainMenuMouseClicked
+    }//GEN-LAST:event_budgetPanelMouseClicked
+
+    private void mainMenuLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuLabelMouseClicked
+        MainMenu m = new MainMenu();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_mainMenuLabelMouseClicked
+
+    private void mainMenuPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuPanelMouseClicked
+        MainMenu m = new MainMenu();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_mainMenuPanelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -979,13 +980,11 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     private javax.swing.JPanel CryptoPanel;
     private javax.swing.JPanel DataPanel;
     private javax.swing.JButton Edit;
-    private javax.swing.JPanel InfoPanel;
     private javax.swing.JPanel SIdeBarPanel;
     private javax.swing.JPanel WholePanel;
     private javax.swing.JTextArea adviceTextArea;
     private javax.swing.JTextField autoAndCommutingField;
     private javax.swing.JTextField billsAndUtilitiesField;
-    private javax.swing.JLabel budgetLabel;
     private javax.swing.JLabel budgetLabel1;
     private javax.swing.JPanel budgetPanel;
     private javax.swing.JLabel cryptoLabel;
@@ -1023,7 +1022,8 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel18;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField loansField;
-    private javax.swing.JPanel mainMenu;
+    private javax.swing.JLabel mainMenuLabel;
+    private javax.swing.JPanel mainMenuPanel;
     private javax.swing.JPanel myChartPanel;
     private javax.swing.JTextField otherField;
     private javax.swing.JTextField personalCareField;
