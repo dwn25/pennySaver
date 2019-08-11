@@ -142,18 +142,33 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        backBtn = new javax.swing.JButton();
-        Edit = new javax.swing.JButton();
-        jLabel19 = new javax.swing.JLabel();
+        WholePanel = new javax.swing.JPanel();
+        SIdeBarPanel = new javax.swing.JPanel();
+        budgetPanel = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        budgetLabel = new javax.swing.JLabel();
+        savingsPanel = new javax.swing.JPanel();
+        jPanel15 = new javax.swing.JPanel();
+        savingsLabel = new javax.swing.JLabel();
+        editInfoPanel = new javax.swing.JPanel();
+        jPanel16 = new javax.swing.JPanel();
+        editInfoLabel = new javax.swing.JLabel();
+        stocksPanel1 = new javax.swing.JPanel();
+        jPanel17 = new javax.swing.JPanel();
+        stocksLabel = new javax.swing.JLabel();
+        CryptoPanel = new javax.swing.JPanel();
+        jPanel18 = new javax.swing.JPanel();
+        cryptoLabel = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        InfoPanel = new javax.swing.JPanel();
         myChartPanel = new javax.swing.JPanel();
-        autoAndCommutingField = new javax.swing.JTextField();
-        feesField = new javax.swing.JTextField();
-        entertainmentField = new javax.swing.JTextField();
-        homeField = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
+        headerPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        DataPanel = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        incomeField = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -170,90 +185,279 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         travelField = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        autoAndCommutingField = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        feesField = new javax.swing.JTextField();
         otherField = new javax.swing.JTextField();
+        entertainmentField = new javax.swing.JTextField();
+        homeField = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        Edit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         adviceTextArea = new javax.swing.JTextArea();
-        jLabel21 = new javax.swing.JLabel();
-        incomeField = new javax.swing.JTextField();
-        menuBar = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        mainMenuItemBtn = new javax.swing.JMenuItem();
-        budgetMenuItem = new javax.swing.JMenuItem();
-        stocksMenuItem = new javax.swing.JMenuItem();
-        cryptoMenuItem = new javax.swing.JMenuItem();
-        savingsMenutItem = new javax.swing.JMenuItem();
-        logoutMenuItem = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel1.setPreferredSize(new java.awt.Dimension(637, 434));
+        WholePanel.setBackground(new java.awt.Color(91, 139, 151));
+        WholePanel.setForeground(new java.awt.Color(255, 255, 255));
+        WholePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
+        SIdeBarPanel.setBackground(new java.awt.Color(29, 45, 68));
+        SIdeBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        backBtn.setText("Back");
-        backBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBtnActionPerformed(evt);
+        budgetPanel.setBackground(new java.awt.Color(29, 45, 68));
+        budgetPanel.setForeground(new java.awt.Color(160, 170, 178));
+        budgetPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                budgetPanelMouseClicked(evt);
             }
         });
+        budgetPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Edit.setText("Edit");
-        Edit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditActionPerformed(evt);
+        jPanel11.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        budgetPanel.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
+
+        budgetLabel.setBackground(new java.awt.Color(41, 57, 80));
+        budgetLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        budgetLabel.setForeground(new java.awt.Color(255, 255, 255));
+        budgetLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        budgetLabel.setText("Budget  ");
+        budgetLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                budgetLabelMouseClicked(evt);
             }
         });
+        budgetPanel.add(budgetLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 40));
 
-        jLabel19.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel19.setText("Your Budget Has Been Calculated Below");
+        SIdeBarPanel.add(budgetPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 140, 40));
+
+        savingsPanel.setBackground(new java.awt.Color(29, 45, 68));
+        savingsPanel.setForeground(new java.awt.Color(160, 170, 178));
+        savingsPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                savingsPanelMouseClicked(evt);
+            }
+        });
+        savingsPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel15.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        savingsPanel.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
+
+        savingsLabel.setBackground(new java.awt.Color(41, 57, 80));
+        savingsLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        savingsLabel.setForeground(new java.awt.Color(255, 255, 255));
+        savingsLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        savingsLabel.setText("Savings");
+        savingsLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                savingsLabelMouseClicked(evt);
+            }
+        });
+        savingsPanel.add(savingsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 120, 40));
+
+        SIdeBarPanel.add(savingsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 140, 40));
+
+        editInfoPanel.setBackground(new java.awt.Color(29, 45, 68));
+        editInfoPanel.setForeground(new java.awt.Color(160, 170, 178));
+        editInfoPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editInfoPanelMouseClicked(evt);
+            }
+        });
+        editInfoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel16.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        editInfoPanel.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
+
+        editInfoLabel.setBackground(new java.awt.Color(41, 57, 80));
+        editInfoLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        editInfoLabel.setForeground(new java.awt.Color(255, 255, 255));
+        editInfoLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        editInfoLabel.setText("Edit Info");
+        editInfoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editInfoLabelMouseClicked(evt);
+            }
+        });
+        editInfoPanel.add(editInfoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 120, 40));
+
+        SIdeBarPanel.add(editInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 140, 40));
+
+        stocksPanel1.setBackground(new java.awt.Color(29, 45, 68));
+        stocksPanel1.setForeground(new java.awt.Color(160, 170, 178));
+        stocksPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                stocksPanel1MouseClicked(evt);
+            }
+        });
+        stocksPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel17.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel17.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        stocksPanel1.add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
+
+        stocksLabel.setBackground(new java.awt.Color(41, 57, 80));
+        stocksLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        stocksLabel.setForeground(new java.awt.Color(255, 255, 255));
+        stocksLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        stocksLabel.setText("Stocks");
+        stocksLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                stocksLabelMouseClicked(evt);
+            }
+        });
+        stocksPanel1.add(stocksLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 120, 40));
+
+        SIdeBarPanel.add(stocksPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 140, 40));
+
+        CryptoPanel.setBackground(new java.awt.Color(29, 45, 68));
+        CryptoPanel.setForeground(new java.awt.Color(160, 170, 178));
+        CryptoPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CryptoPanelMouseClicked(evt);
+            }
+        });
+        CryptoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel18.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel18.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        CryptoPanel.add(jPanel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
+
+        cryptoLabel.setBackground(new java.awt.Color(41, 57, 80));
+        cryptoLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        cryptoLabel.setForeground(new java.awt.Color(255, 255, 255));
+        cryptoLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        cryptoLabel.setText("Crypto");
+        cryptoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cryptoLabelMouseClicked(evt);
+            }
+        });
+        CryptoPanel.add(cryptoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 120, 40));
+
+        SIdeBarPanel.add(CryptoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 140, 40));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
+        SIdeBarPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        WholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 4, 135, 590));
+
+        InfoPanel.setBackground(new java.awt.Color(240, 235, 216));
 
         myChartPanel.setLayout(new java.awt.BorderLayout());
 
-        autoAndCommutingField.setEditable(false);
+        javax.swing.GroupLayout InfoPanelLayout = new javax.swing.GroupLayout(InfoPanel);
+        InfoPanel.setLayout(InfoPanelLayout);
+        InfoPanelLayout.setHorizontalGroup(
+            InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InfoPanelLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(myChartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
+        InfoPanelLayout.setVerticalGroup(
+            InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InfoPanelLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(myChartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
 
-        feesField.setEditable(false);
+        WholePanel.add(InfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 370, 330));
 
-        entertainmentField.setEditable(false);
+        headerPanel.setBackground(new java.awt.Color(91, 139, 151));
 
-        homeField.setEditable(false);
-        homeField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeFieldActionPerformed(evt);
-            }
-        });
+        jLabel1.setBackground(new java.awt.Color(32, 33, 35));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Welcome back to PennySavers");
 
-        jLabel17.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel17.setText("Loans:");
+        jLabel2.setBackground(new java.awt.Color(32, 33, 35));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Your Budget Has Been Calculated Below");
 
+        javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
+        headerPanel.setLayout(headerPanelLayout);
+        headerPanelLayout.setHorizontalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        headerPanelLayout.setVerticalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        WholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 690, 140));
+
+        DataPanel.setBackground(new java.awt.Color(29, 45, 68));
+        DataPanel.setForeground(new java.awt.Color(153, 153, 153));
+
+        jLabel21.setBackground(new java.awt.Color(29, 45, 68));
+        jLabel21.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel21.setText("Income:");
+
+        jLabel16.setBackground(new java.awt.Color(29, 45, 68));
         jLabel16.setForeground(new java.awt.Color(153, 153, 153));
         jLabel16.setText("Education:");
 
+        incomeField.setEditable(false);
+        incomeField.setBackground(new java.awt.Color(29, 45, 68));
+        incomeField.setForeground(new java.awt.Color(153, 153, 153));
+        incomeField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                incomeFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setBackground(new java.awt.Color(29, 45, 68));
         jLabel15.setForeground(new java.awt.Color(153, 153, 153));
         jLabel15.setText("Personal Care:");
 
+        jLabel14.setBackground(new java.awt.Color(29, 45, 68));
         jLabel14.setForeground(new java.awt.Color(153, 153, 153));
         jLabel14.setText("Fees:");
 
+        jLabel13.setBackground(new java.awt.Color(29, 45, 68));
         jLabel13.setForeground(new java.awt.Color(153, 153, 153));
         jLabel13.setText("Entertainment:");
 
         diningAndDrinksField.setEditable(false);
+        diningAndDrinksField.setBackground(new java.awt.Color(29, 45, 68));
+        diningAndDrinksField.setForeground(new java.awt.Color(153, 153, 153));
 
         personalCareField.setEditable(false);
+        personalCareField.setBackground(new java.awt.Color(29, 45, 68));
+        personalCareField.setForeground(new java.awt.Color(153, 153, 153));
 
+        jLabel9.setBackground(new java.awt.Color(29, 45, 68));
         jLabel9.setForeground(new java.awt.Color(153, 153, 153));
         jLabel9.setText("Shopping:");
 
+        jLabel18.setBackground(new java.awt.Color(29, 45, 68));
         jLabel18.setForeground(new java.awt.Color(153, 153, 153));
         jLabel18.setText("Other:");
 
+        jLabel8.setBackground(new java.awt.Color(29, 45, 68));
         jLabel8.setForeground(new java.awt.Color(153, 153, 153));
         jLabel8.setText("Dining & Drinks:");
 
         shoppingField.setEditable(false);
+        shoppingField.setBackground(new java.awt.Color(29, 45, 68));
+        shoppingField.setForeground(new java.awt.Color(153, 153, 153));
         shoppingField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 shoppingFieldActionPerformed(evt);
@@ -261,263 +465,207 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         });
 
         educationField.setEditable(false);
+        educationField.setBackground(new java.awt.Color(29, 45, 68));
+        educationField.setForeground(new java.awt.Color(153, 153, 153));
 
         loansField.setEditable(false);
+        loansField.setBackground(new java.awt.Color(29, 45, 68));
+        loansField.setForeground(new java.awt.Color(153, 153, 153));
 
+        jLabel7.setBackground(new java.awt.Color(29, 45, 68));
         jLabel7.setForeground(new java.awt.Color(153, 153, 153));
         jLabel7.setText("Home:");
 
         billsAndUtilitiesField.setEditable(false);
+        billsAndUtilitiesField.setBackground(new java.awt.Color(29, 45, 68));
+        billsAndUtilitiesField.setForeground(new java.awt.Color(153, 153, 153));
 
         travelField.setEditable(false);
+        travelField.setBackground(new java.awt.Color(29, 45, 68));
+        travelField.setForeground(new java.awt.Color(153, 153, 153));
 
+        jLabel12.setBackground(new java.awt.Color(29, 45, 68));
         jLabel12.setForeground(new java.awt.Color(153, 153, 153));
         jLabel12.setText("Bills & Utilities:");
 
+        jLabel11.setBackground(new java.awt.Color(29, 45, 68));
         jLabel11.setForeground(new java.awt.Color(153, 153, 153));
         jLabel11.setText("Travel:");
 
+        autoAndCommutingField.setEditable(false);
+        autoAndCommutingField.setBackground(new java.awt.Color(29, 45, 68));
+        autoAndCommutingField.setForeground(new java.awt.Color(153, 153, 153));
+
+        jLabel10.setBackground(new java.awt.Color(29, 45, 68));
         jLabel10.setForeground(new java.awt.Color(153, 153, 153));
         jLabel10.setText("Auto & Commuting:");
 
+        feesField.setEditable(false);
+        feesField.setBackground(new java.awt.Color(29, 45, 68));
+        feesField.setForeground(new java.awt.Color(153, 153, 153));
+
         otherField.setEditable(false);
+        otherField.setBackground(new java.awt.Color(29, 45, 68));
+        otherField.setForeground(new java.awt.Color(153, 153, 153));
 
-        adviceTextArea.setEditable(false);
-        adviceTextArea.setColumns(20);
-        adviceTextArea.setForeground(new java.awt.Color(153, 153, 153));
-        adviceTextArea.setRows(5);
-        jScrollPane1.setViewportView(adviceTextArea);
+        entertainmentField.setEditable(false);
+        entertainmentField.setBackground(new java.awt.Color(29, 45, 68));
+        entertainmentField.setForeground(new java.awt.Color(153, 153, 153));
 
-        jLabel21.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel21.setText("Income:");
-
-        incomeField.setEditable(false);
-        incomeField.addActionListener(new java.awt.event.ActionListener() {
+        homeField.setEditable(false);
+        homeField.setBackground(new java.awt.Color(29, 45, 68));
+        homeField.setForeground(new java.awt.Color(153, 153, 153));
+        homeField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                incomeFieldActionPerformed(evt);
+                homeFieldActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(jLabel4)
-                        .addGap(84, 84, 84))
-                    .addComponent(jLabel19))
-                .addGap(280, 280, 280))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 278, Short.MAX_VALUE)
-                        .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(408, 408, 408))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(myChartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(42, 42, 42)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(29, 29, 29)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)))))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(shoppingField, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(diningAndDrinksField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(feesField, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(entertainmentField, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(billsAndUtilitiesField, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(travelField, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(autoAndCommutingField, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(personalCareField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(loansField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(otherField, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(educationField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(homeField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel21)
-                                .addGap(18, 18, 18)
-                                .addComponent(incomeField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1))
+        jLabel17.setBackground(new java.awt.Color(29, 45, 68));
+        jLabel17.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel17.setText("Loans:");
+
+        javax.swing.GroupLayout DataPanelLayout = new javax.swing.GroupLayout(DataPanel);
+        DataPanel.setLayout(DataPanelLayout);
+        DataPanelLayout.setHorizontalGroup(
+            DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DataPanelLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(DataPanelLayout.createSequentialGroup()
+                        .addGroup(DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DataPanelLayout.createSequentialGroup()
+                                .addGroup(DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(67, 67, 67))
+                            .addGroup(DataPanelLayout.createSequentialGroup()
+                                .addGroup(DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(DataPanelLayout.createSequentialGroup()
+                                        .addGap(30, 30, 30)
+                                        .addGroup(DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                    .addGroup(DataPanelLayout.createSequentialGroup()
+                                        .addGap(84, 84, 84)
+                                        .addComponent(jLabel21)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(shoppingField, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(diningAndDrinksField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(feesField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(entertainmentField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(billsAndUtilitiesField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(travelField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(autoAndCommutingField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(personalCareField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(loansField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(otherField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(educationField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(homeField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DataPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(incomeField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel19)
-                .addGap(36, 36, 36)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        DataPanelLayout.setVerticalGroup(
+            DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DataPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
                     .addComponent(incomeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel9)
-                                .addGap(72, 72, 72)
-                                .addComponent(jLabel11))
-                            .addComponent(myChartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Edit)
-                            .addComponent(backBtn)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(DataPanelLayout.createSequentialGroup()
                         .addComponent(homeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(shoppingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(diningAndDrinksField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(autoAndCommutingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(travelField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(billsAndUtilitiesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(entertainmentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(feesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel14))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(personalCareField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel15))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(loansField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel17))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(educationField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(otherField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel18))))
-                .addContainerGap())
+                            .addComponent(jLabel17)))
+                    .addGroup(DataPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel9)
+                        .addGap(72, 72, 72)
+                        .addComponent(jLabel11)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(educationField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(otherField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        menuBar.setBackground(new java.awt.Color(0, 0, 0));
-        menuBar.setForeground(new java.awt.Color(51, 51, 51));
+        WholePanel.add(DataPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, 290, -1));
 
-        jMenu1.setText("File");
-
-        mainMenuItemBtn.setText("Main Menu");
-        mainMenuItemBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mainMenuItemBtnMouseClicked(evt);
-            }
-        });
-        mainMenuItemBtn.addActionListener(new java.awt.event.ActionListener() {
+        Edit.setBackground(new java.awt.Color(91, 139, 151));
+        Edit.setText("Edit");
+        Edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mainMenuItemBtnActionPerformed(evt);
+                EditActionPerformed(evt);
             }
         });
-        jMenu1.add(mainMenuItemBtn);
+        WholePanel.add(Edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 550, 130, 40));
 
-        budgetMenuItem.setText("Budget");
-        budgetMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                budgetMenuItemActionPerformed(evt);
-            }
-        });
-        jMenu1.add(budgetMenuItem);
+        adviceTextArea.setColumns(20);
+        adviceTextArea.setRows(5);
+        jScrollPane1.setViewportView(adviceTextArea);
 
-        stocksMenuItem.setText("Stocks");
-        stocksMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stocksMenuItemActionPerformed(evt);
-            }
-        });
-        jMenu1.add(stocksMenuItem);
-
-        cryptoMenuItem.setText("Crypto");
-        cryptoMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cryptoMenuItemActionPerformed(evt);
-            }
-        });
-        jMenu1.add(cryptoMenuItem);
-
-        savingsMenutItem.setText("Savings Forecast");
-        savingsMenutItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                savingsMenutItemActionPerformed(evt);
-            }
-        });
-        jMenu1.add(savingsMenutItem);
-
-        logoutMenuItem.setText("Logout");
-        logoutMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutMenuItemActionPerformed(evt);
-            }
-        });
-        jMenu1.add(logoutMenuItem);
-
-        menuBar.add(jMenu1);
-
-        jMenu2.setText("Help");
-        menuBar.add(jMenu2);
-
-        setJMenuBar(menuBar);
+        WholePanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 470, 370, 70));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 822, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(WholePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
+            .addComponent(WholePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -645,58 +793,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         return 0.0;
     }
    
-    private void budgetMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetMenuItemActionPerformed
-        // TODO add your handling code here:
-        BudgetInfoPage m = new BudgetInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_budgetMenuItemActionPerformed
-
-    private void stocksMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stocksMenuItemActionPerformed
-        // TODO add your handling code here:
-        StocksInfoPage m = new StocksInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_stocksMenuItemActionPerformed
-
-    private void cryptoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cryptoMenuItemActionPerformed
-        // TODO add your handling code here:
-        CryptoInfoPage m = new CryptoInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_cryptoMenuItemActionPerformed
-
-    private void savingsMenutItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savingsMenutItemActionPerformed
-        // TODO add your handling code here:
-        SavingsInfoPage m = new SavingsInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_savingsMenutItemActionPerformed
-
-    private void logoutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutMenuItemActionPerformed
-        // TODO add your handling code here:
-        String[] options={"Yes", "No"};
-        int t = JOptionPane.showOptionDialog(null, "Are You Sure You Want To Logout?", "Confirm Logout", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-        if (t==JOptionPane.YES_OPTION){
-            JOptionPane.showMessageDialog(rootPane, "Goodbye, Please come again");
-            System.exit(0);
-        }
-    }//GEN-LAST:event_logoutMenuItemActionPerformed
-
-    private void mainMenuItemBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuItemBtnActionPerformed
-    }//GEN-LAST:event_mainMenuItemBtnActionPerformed
-
-    private void mainMenuItemBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuItemBtnMouseClicked
-    MainMenu m = new MainMenu();
-    m.setLocationRelativeTo(null);
-    m.setVisible(true);
-    this.hide();
-    }//GEN-LAST:event_mainMenuItemBtnMouseClicked
-
     private void shoppingFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shoppingFieldActionPerformed
 
     }//GEN-LAST:event_shoppingFieldActionPerformed
@@ -712,19 +808,84 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         this.hide();
     }//GEN-LAST:event_EditActionPerformed
 
-    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        int dialogButton = JOptionPane.YES_NO_OPTION;
-        int dialogResult = JOptionPane.showConfirmDialog (null, "Are you sure you want to leave without saving","Warning",dialogButton);
-        if(dialogResult == JOptionPane.YES_OPTION){
-            MainMenu m = new MainMenu();
-            m.setVisible(true);
-            this.hide();
-        }
-    }//GEN-LAST:event_backBtnActionPerformed
-
     private void incomeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incomeFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_incomeFieldActionPerformed
+
+    private void budgetLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetLabelMouseClicked
+        BudgetInfoPage m = new BudgetInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_budgetLabelMouseClicked
+
+    private void budgetPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetPanelMouseClicked
+        BudgetInfoPage m = new BudgetInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_budgetPanelMouseClicked
+
+    private void savingsLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savingsLabelMouseClicked
+        // TODO add your handling code here:
+        SavingsInfoPage m = new SavingsInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_savingsLabelMouseClicked
+
+    private void savingsPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savingsPanelMouseClicked
+        SavingsInfoPage m = new SavingsInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_savingsPanelMouseClicked
+
+    private void editInfoLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editInfoLabelMouseClicked
+        // TODO add your handling code here:
+        EditPersonalInfoPage m = new EditPersonalInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_editInfoLabelMouseClicked
+
+    private void editInfoPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editInfoPanelMouseClicked
+        EditPersonalInfoPage m = new EditPersonalInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_editInfoPanelMouseClicked
+
+    private void stocksLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksLabelMouseClicked
+        // TODO add your handling code here:
+        StocksInfoPage m = new StocksInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_stocksLabelMouseClicked
+
+    private void stocksPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksPanel1MouseClicked
+        StocksInfoPage m = new StocksInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_stocksPanel1MouseClicked
+
+    private void cryptoLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cryptoLabelMouseClicked
+
+        CryptoInfoPage m = new CryptoInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_cryptoLabelMouseClicked
+
+    private void CryptoPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CryptoPanelMouseClicked
+        // TODO add your handling code here:
+        CryptoInfoPage m = new CryptoInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_CryptoPanelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -763,19 +924,28 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel CryptoPanel;
+    private javax.swing.JPanel DataPanel;
     private javax.swing.JButton Edit;
+    private javax.swing.JPanel InfoPanel;
+    private javax.swing.JPanel SIdeBarPanel;
+    private javax.swing.JPanel WholePanel;
     private javax.swing.JTextArea adviceTextArea;
     private javax.swing.JTextField autoAndCommutingField;
-    private javax.swing.JButton backBtn;
     private javax.swing.JTextField billsAndUtilitiesField;
-    private javax.swing.JMenuItem budgetMenuItem;
-    private javax.swing.JMenuItem cryptoMenuItem;
+    private javax.swing.JLabel budgetLabel;
+    private javax.swing.JPanel budgetPanel;
+    private javax.swing.JLabel cryptoLabel;
     private javax.swing.JTextField diningAndDrinksField;
+    private javax.swing.JLabel editInfoLabel;
+    private javax.swing.JPanel editInfoPanel;
     private javax.swing.JTextField educationField;
     private javax.swing.JTextField entertainmentField;
     private javax.swing.JTextField feesField;
+    private javax.swing.JPanel headerPanel;
     private javax.swing.JTextField homeField;
     private javax.swing.JTextField incomeField;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -785,26 +955,27 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField loansField;
-    private javax.swing.JMenuItem logoutMenuItem;
-    private javax.swing.JMenuItem mainMenuItemBtn;
-    private javax.swing.JMenuBar menuBar;
     private javax.swing.JPanel myChartPanel;
     private javax.swing.JTextField otherField;
     private javax.swing.JTextField personalCareField;
-    private javax.swing.JMenuItem savingsMenutItem;
+    private javax.swing.JLabel savingsLabel;
+    private javax.swing.JPanel savingsPanel;
     private javax.swing.JTextField shoppingField;
-    private javax.swing.JMenuItem stocksMenuItem;
+    private javax.swing.JLabel stocksLabel;
+    private javax.swing.JPanel stocksPanel1;
     private javax.swing.JTextField travelField;
     // End of variables declaration//GEN-END:variables
 }
