@@ -1,6 +1,9 @@
 package com.Pages.MainMenu;
 
 import com.Pages.EditPages.EditSavingsPage;
+import com.Support.Constant;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -8,6 +11,8 @@ import javax.swing.JOptionPane;
  * @author DNartey
  */
 public class SavingsInfoPage extends javax.swing.JFrame {
+    Double income, monthlySavings;
+    Double amount, final_principal, rate, time, interest;
 
     /**
      * Creates new form SavingsInfoPage
@@ -16,8 +21,72 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);       
         initComponents();
+        onRun();
     }
 
+    public void onRun(){
+        Constant.currentUser = "bcroy";
+        Constant.DoConnect();
+        final_principal = getFieldDouble("principal");
+        rate = getFieldDouble("rate");
+        time = getFieldDouble("time");
+        interest = getFieldDouble("SAVED_INTEREST");
+        amount = getFieldDouble("SAVED_AMOUNT");
+        compoundInterest(amount,final_principal, rate, time,interest);
+        principalField.setText(null);
+        principalField.setText("$" + final_principal.toString());
+        rateField.setText(null);
+        rateField.setText(rate.toString()+"%");       
+        timeField.setText(null);
+        timeField.setText(time.toString() + " Year(s)");      
+        interestField.setText(null);
+        interestField.setText(interest.toString() + "%");    
+        totalField.setText(null);
+        totalField.setText("$" + amount.toString());   
+        String text  = "\n"/*
+                + "Based off of your monthly take home income of :$"+ income +"\n"
+                + "Emplyoment Status of: " + employeeStatus + "\n"
+                + "Monthly savings of: $" + monthlySavings + "\n"*/
+                + "Adjust the values below to see your forecast";  
+        jTextArea.setText(text);
+        jTextArea.setWrapStyleWord(true);
+        jTextArea.setLineWrap(true);
+        jTextArea.setOpaque(false);
+        jTextArea.setEditable(false);
+        jTextArea.setFocusable(false);
+    }
+    
+       public Double getFieldDouble(String column){
+        try{
+            String SQL= "SELECT " + column +" From ROOT.PBANK WHERE username= '"+Constant.currentUser+"'";    
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
+            if(rs.next()){
+                Double var = rs.getDouble(column); 
+                return var;
+            }
+            else{
+                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+            } 
+        }catch(SQLException err){
+        System.out.println("Unable to fetch "+ column);
+        }  
+        return 0.0;
+    }
+       
+    public void compoundInterest(double amount1, double principle1, double rate1, double time1, double ci1){
+	amount1=principle1*((1+rate1/100)*(1+rate1/100)*(1+rate1/100));
+ 	ci1=amount1-principle1;
+        amount = amount1;
+        final_principal = principle1;
+        rate = rate1;
+        time = time1;
+        interest = ci1;
+	System.out.println("amount="+amount1);
+ 	System.out.println("principle= "+principle1);
+	System.out.println("rate="+rate1);
+	System.out.println("time="+time1);
+	System.out.println("compound interest="+ci1);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,6 +133,8 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         principalField = new javax.swing.JTextField();
         Edit = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea = new javax.swing.JTextArea();
         headerPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -117,6 +188,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         WholePanel3.setBackground(new java.awt.Color(91, 139, 151));
         WholePanel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -350,7 +422,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         principalField.setForeground(new java.awt.Color(63, 64, 76));
         principalField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        Edit.setBackground(new java.awt.Color(29, 45, 68));
+        Edit.setBackground(new java.awt.Color(63, 64, 76));
         Edit.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         Edit.setForeground(new java.awt.Color(255, 255, 255));
         Edit.setText("Edit");
@@ -360,68 +432,68 @@ public class SavingsInfoPage extends javax.swing.JFrame {
             }
         });
 
+        jTextArea.setEditable(false);
+        jTextArea.setBackground(new java.awt.Color(240, 235, 216));
+        jTextArea.setColumns(20);
+        jTextArea.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        jTextArea.setForeground(new java.awt.Color(63, 64, 76));
+        jTextArea.setRows(5);
+        jScrollPane1.setViewportView(jTextArea);
+
         javax.swing.GroupLayout InfoPanel3Layout = new javax.swing.GroupLayout(InfoPanel3);
         InfoPanel3.setLayout(InfoPanel3Layout);
         InfoPanel3Layout.setHorizontalGroup(
             InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
             .addGroup(InfoPanel3Layout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(157, Short.MAX_VALUE))
-            .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(InfoPanel3Layout.createSequentialGroup()
-                    .addGap(183, 183, 183)
+                .addGap(36, 36, 36)
+                .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(InfoPanel3Layout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(interestField, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(timeField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(rateField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(principalField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InfoPanel3Layout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addComponent(totalField, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(62, Short.MAX_VALUE)))
+                        .addComponent(principalField, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                        .addComponent(rateField)
+                        .addComponent(timeField)
+                        .addComponent(interestField)
+                        .addComponent(totalField)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         InfoPanel3Layout.setVerticalGroup(
             InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InfoPanel3Layout.createSequentialGroup()
-                .addContainerGap(282, Short.MAX_VALUE)
-                .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
-            .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(InfoPanel3Layout.createSequentialGroup()
-                    .addGap(106, 106, 106)
-                    .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(InfoPanel3Layout.createSequentialGroup()
-                            .addGap(116, 116, 116)
-                            .addComponent(jLabel17))
-                        .addGroup(InfoPanel3Layout.createSequentialGroup()
-                            .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(principalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel13))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel14)
-                                .addComponent(rateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(timeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel19)
-                                .addComponent(interestField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(InfoPanel3Layout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel17)
                             .addComponent(totalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(134, Short.MAX_VALUE)))
+                    .addGroup(InfoPanel3Layout.createSequentialGroup()
+                        .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(principalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14)
+                            .addComponent(rateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(timeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel19)
+                            .addComponent(interestField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         WholePanel3.add(InfoPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 390, 380));
@@ -458,8 +530,8 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(WholePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addComponent(WholePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -467,6 +539,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void budgetLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetLabel6MouseClicked
@@ -621,6 +694,8 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel35;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea;
     private javax.swing.JLabel mainMenu;
     private javax.swing.JPanel menuPanel;
     private javax.swing.JTextField principalField;
