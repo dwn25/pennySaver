@@ -1,6 +1,7 @@
 package com.Pages;
 
-import com.QuestionPages.StocksQuestionPage;
+import com.Pages.MainMenu.BudgetInfoPage;
+import com.Pages.AskQuestionPage.StocksQuestionPage;
 import com.Support.Constant;
 import java.text.NumberFormat;
 import java.sql.Connection;
