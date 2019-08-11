@@ -162,7 +162,6 @@ public class Main extends javax.swing.JFrame {
     private void signUpBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpBtnMouseClicked
             RegisterForm reg = new RegisterForm();
             reg.setVisible(true);
-            reg.pack();
             this.hide();
     }//GEN-LAST:event_signUpBtnMouseClicked
 

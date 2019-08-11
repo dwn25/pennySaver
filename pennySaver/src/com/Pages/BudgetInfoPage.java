@@ -404,19 +404,19 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         WholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 690, 140));
 
         DataPanel.setBackground(new java.awt.Color(29, 45, 68));
-        DataPanel.setForeground(new java.awt.Color(153, 153, 153));
+        DataPanel.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel21.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel21.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Income:");
 
         jLabel16.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel16.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Education:");
 
         incomeField.setEditable(false);
         incomeField.setBackground(new java.awt.Color(29, 45, 68));
-        incomeField.setForeground(new java.awt.Color(153, 153, 153));
+        incomeField.setForeground(new java.awt.Color(255, 255, 255));
         incomeField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 incomeFieldActionPerformed(evt);
@@ -424,40 +424,40 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         });
 
         jLabel15.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel15.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Personal Care:");
 
         jLabel14.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel14.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Fees:");
 
         jLabel13.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel13.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Entertainment:");
 
         diningAndDrinksField.setEditable(false);
         diningAndDrinksField.setBackground(new java.awt.Color(29, 45, 68));
-        diningAndDrinksField.setForeground(new java.awt.Color(153, 153, 153));
+        diningAndDrinksField.setForeground(new java.awt.Color(255, 255, 255));
 
         personalCareField.setEditable(false);
         personalCareField.setBackground(new java.awt.Color(29, 45, 68));
-        personalCareField.setForeground(new java.awt.Color(153, 153, 153));
+        personalCareField.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel9.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel9.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Shopping:");
 
         jLabel18.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel18.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Other:");
 
         jLabel8.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel8.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Dining & Drinks:");
 
         shoppingField.setEditable(false);
         shoppingField.setBackground(new java.awt.Color(29, 45, 68));
-        shoppingField.setForeground(new java.awt.Color(153, 153, 153));
+        shoppingField.setForeground(new java.awt.Color(255, 255, 255));
         shoppingField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 shoppingFieldActionPerformed(evt);
@@ -466,55 +466,55 @@ public class BudgetInfoPage extends javax.swing.JFrame {
 
         educationField.setEditable(false);
         educationField.setBackground(new java.awt.Color(29, 45, 68));
-        educationField.setForeground(new java.awt.Color(153, 153, 153));
+        educationField.setForeground(new java.awt.Color(255, 255, 255));
 
         loansField.setEditable(false);
         loansField.setBackground(new java.awt.Color(29, 45, 68));
-        loansField.setForeground(new java.awt.Color(153, 153, 153));
+        loansField.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel7.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel7.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Home:");
 
         billsAndUtilitiesField.setEditable(false);
         billsAndUtilitiesField.setBackground(new java.awt.Color(29, 45, 68));
-        billsAndUtilitiesField.setForeground(new java.awt.Color(153, 153, 153));
+        billsAndUtilitiesField.setForeground(new java.awt.Color(255, 255, 255));
 
         travelField.setEditable(false);
         travelField.setBackground(new java.awt.Color(29, 45, 68));
-        travelField.setForeground(new java.awt.Color(153, 153, 153));
+        travelField.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel12.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel12.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Bills & Utilities:");
 
         jLabel11.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel11.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Travel:");
 
         autoAndCommutingField.setEditable(false);
         autoAndCommutingField.setBackground(new java.awt.Color(29, 45, 68));
-        autoAndCommutingField.setForeground(new java.awt.Color(153, 153, 153));
+        autoAndCommutingField.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel10.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel10.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Auto & Commuting:");
 
         feesField.setEditable(false);
         feesField.setBackground(new java.awt.Color(29, 45, 68));
-        feesField.setForeground(new java.awt.Color(153, 153, 153));
+        feesField.setForeground(new java.awt.Color(255, 255, 255));
 
         otherField.setEditable(false);
         otherField.setBackground(new java.awt.Color(29, 45, 68));
-        otherField.setForeground(new java.awt.Color(153, 153, 153));
+        otherField.setForeground(new java.awt.Color(255, 255, 255));
 
         entertainmentField.setEditable(false);
         entertainmentField.setBackground(new java.awt.Color(29, 45, 68));
-        entertainmentField.setForeground(new java.awt.Color(153, 153, 153));
+        entertainmentField.setForeground(new java.awt.Color(255, 255, 255));
 
         homeField.setEditable(false);
         homeField.setBackground(new java.awt.Color(29, 45, 68));
-        homeField.setForeground(new java.awt.Color(153, 153, 153));
+        homeField.setForeground(new java.awt.Color(255, 255, 255));
         homeField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeFieldActionPerformed(evt);
@@ -522,7 +522,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         });
 
         jLabel17.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel17.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Loans:");
 
         javax.swing.GroupLayout DataPanelLayout = new javax.swing.GroupLayout(DataPanel);
