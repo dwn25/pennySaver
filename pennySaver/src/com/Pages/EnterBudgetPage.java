@@ -1,5 +1,6 @@
 package com.Pages;
 
+import com.QuestionPages.SavingsQuestionPage;
 import com.Support.Constant;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
@@ -661,7 +662,7 @@ public class EnterBudgetPage extends javax.swing.JFrame {
         int dialogButton = JOptionPane.YES_NO_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog (null, "Are you sure you want to leave without saving","Warning",dialogButton);
         if(dialogResult == JOptionPane.YES_OPTION){
-            Main m = new Main();
+            SavingsQuestionPage m = new SavingsQuestionPage();
             m.setVisible(true);
             this.hide();
         }

@@ -1,4 +1,7 @@
-package com.Pages;
+package com.QuestionPages;
+
+import com.Pages.EnterBudgetPage;
+import com.Pages.SavingsPlanPage;
 
 /**
  *
@@ -24,92 +27,84 @@ public class BudgetQuestionPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        yesBTn = new javax.swing.JButton();
-        NoBtn = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        wholePanel = new javax.swing.JPanel();
+        questionPanel = new javax.swing.JPanel();
+        headerPanel = new javax.swing.JPanel();
+        logo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        NoBtn = new javax.swing.JButton();
+        yesBTn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel1.setPreferredSize(new java.awt.Dimension(637, 583));
+        wholePanel.setBackground(new java.awt.Color(240, 235, 216));
+        wholePanel.setPreferredSize(new java.awt.Dimension(637, 583));
+        wholePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        yesBTn.setText("Yes");
-        yesBTn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                yesBTnActionPerformed(evt);
-            }
-        });
+        questionPanel.setBackground(new java.awt.Color(240, 235, 216));
+        questionPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        wholePanel.add(questionPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, -1, -1));
 
+        headerPanel.setBackground(new java.awt.Color(91, 139, 151));
+
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
+
+        javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
+        headerPanel.setLayout(headerPanelLayout);
+        headerPanelLayout.setHorizontalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addGap(163, 163, 163)
+                .addComponent(logo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        headerPanelLayout.setVerticalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(logo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        wholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 100));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(63, 64, 76));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Would you like to create a Weekly Budget?");
+        wholePanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 440, -1));
+
+        NoBtn.setBackground(new java.awt.Color(91, 139, 151));
+        NoBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        NoBtn.setForeground(new java.awt.Color(255, 255, 255));
         NoBtn.setText("No");
         NoBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NoBtnActionPerformed(evt);
             }
         });
+        wholePanel.add(NoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 170, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
-
-        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel1.setText("Would you like to create a Weekly Budget?");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(260, 260, 260)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(181, 181, 181)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(yesBTn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(NoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1))))
-                .addContainerGap(193, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(yesBTn)
-                    .addComponent(NoBtn))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
-        jMenuBar1.setForeground(new java.awt.Color(51, 51, 51));
-
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
+        yesBTn.setBackground(new java.awt.Color(91, 139, 151));
+        yesBTn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        yesBTn.setForeground(new java.awt.Color(255, 255, 255));
+        yesBTn.setText("Yes");
+        yesBTn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                yesBTnActionPerformed(evt);
+            }
+        });
+        wholePanel.add(yesBTn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 170, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(wholePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(wholePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 186, Short.MAX_VALUE)
         );
 
         pack();
@@ -166,12 +161,11 @@ public class BudgetQuestionPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton NoBtn;
+    private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel logo;
+    private javax.swing.JPanel questionPanel;
+    private javax.swing.JPanel wholePanel;
     private javax.swing.JButton yesBTn;
     // End of variables declaration//GEN-END:variables
 }

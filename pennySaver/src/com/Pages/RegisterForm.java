@@ -490,12 +490,6 @@ public class RegisterForm extends javax.swing.JFrame {
                     int rowsInserted = statement.executeUpdate();
                     if (rowsInserted > 0){
                         System.out.println("A new user was inserted successfully!");
-                        firstName.setText(null);
-                        lastName.setText(null);
-                        username.setText(null);
-                        password.setText(null);
-                        nextPassword.setText(null);
-                        emailField.setText(null);
                         JOptionPane.showMessageDialog(null, "Registration Succesful");
                         Constant.IDS +=1;
                         FIrstEnterInfoPage eP = new FIrstEnterInfoPage();
