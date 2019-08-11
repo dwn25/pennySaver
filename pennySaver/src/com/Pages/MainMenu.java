@@ -96,6 +96,9 @@ public class MainMenu extends javax.swing.JFrame {
         jPanel18 = new javax.swing.JPanel();
         cryptoLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        mainMenu = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
+        budgetLabel1 = new javax.swing.JLabel();
         InfoPanel = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -147,9 +150,9 @@ public class MainMenu extends javax.swing.JFrame {
                 budgetLabelMouseClicked(evt);
             }
         });
-        budgetPanel.add(budgetLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 40));
+        budgetPanel.add(budgetLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
 
-        SIdeBarPanel.add(budgetPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 140, 40));
+        SIdeBarPanel.add(budgetPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 120, 40));
 
         savingsPanel.setBackground(new java.awt.Color(29, 45, 68));
         savingsPanel.setForeground(new java.awt.Color(160, 170, 178));
@@ -174,9 +177,9 @@ public class MainMenu extends javax.swing.JFrame {
                 savingsLabelMouseClicked(evt);
             }
         });
-        savingsPanel.add(savingsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 120, 40));
+        savingsPanel.add(savingsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
 
-        SIdeBarPanel.add(savingsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 140, 40));
+        SIdeBarPanel.add(savingsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 120, 40));
 
         editInfoPanel.setBackground(new java.awt.Color(29, 45, 68));
         editInfoPanel.setForeground(new java.awt.Color(160, 170, 178));
@@ -201,9 +204,9 @@ public class MainMenu extends javax.swing.JFrame {
                 editInfoLabelMouseClicked(evt);
             }
         });
-        editInfoPanel.add(editInfoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 120, 40));
+        editInfoPanel.add(editInfoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
 
-        SIdeBarPanel.add(editInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 140, 40));
+        SIdeBarPanel.add(editInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 120, 40));
 
         stocksPanel1.setBackground(new java.awt.Color(29, 45, 68));
         stocksPanel1.setForeground(new java.awt.Color(160, 170, 178));
@@ -228,9 +231,9 @@ public class MainMenu extends javax.swing.JFrame {
                 stocksLabelMouseClicked(evt);
             }
         });
-        stocksPanel1.add(stocksLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 120, 40));
+        stocksPanel1.add(stocksLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
 
-        SIdeBarPanel.add(stocksPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 140, 40));
+        SIdeBarPanel.add(stocksPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 120, 40));
 
         CryptoPanel.setBackground(new java.awt.Color(29, 45, 68));
         CryptoPanel.setForeground(new java.awt.Color(160, 170, 178));
@@ -255,14 +258,42 @@ public class MainMenu extends javax.swing.JFrame {
                 cryptoLabelMouseClicked(evt);
             }
         });
-        CryptoPanel.add(cryptoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 120, 40));
+        CryptoPanel.add(cryptoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
 
-        SIdeBarPanel.add(CryptoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 140, 40));
+        SIdeBarPanel.add(CryptoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 120, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
         SIdeBarPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
-        WholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 4, 135, 470));
+        mainMenu.setBackground(new java.awt.Color(240, 235, 216));
+        mainMenu.setForeground(new java.awt.Color(63, 64, 76));
+        mainMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mainMenuMouseClicked(evt);
+            }
+        });
+        mainMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel12.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel12.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        mainMenu.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
+
+        budgetLabel1.setBackground(new java.awt.Color(240, 235, 216));
+        budgetLabel1.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        budgetLabel1.setForeground(new java.awt.Color(63, 64, 76));
+        budgetLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        budgetLabel1.setText("Main Menu");
+        budgetLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                budgetLabel1MouseClicked(evt);
+            }
+        });
+        mainMenu.add(budgetLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
+
+        SIdeBarPanel.add(mainMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, -1, 40));
+
+        WholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 470));
 
         InfoPanel.setBackground(new java.awt.Color(240, 235, 216));
 
@@ -338,7 +369,7 @@ public class MainMenu extends javax.swing.JFrame {
                     .addComponent(amountLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(totalAmount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         InfoPanelLayout.setVerticalGroup(
             InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -366,7 +397,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
-        WholePanel.add(InfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 540, 380));
+        WholePanel.add(InfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 550, 380));
 
         headerPanel.setBackground(new java.awt.Color(91, 139, 151));
 
@@ -495,6 +526,20 @@ public class MainMenu extends javax.swing.JFrame {
         this.hide();   
     }//GEN-LAST:event_cryptoLabelMouseClicked
 
+    private void budgetLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetLabel1MouseClicked
+        BudgetInfoPage m = new BudgetInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_budgetLabel1MouseClicked
+
+    private void mainMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuMouseClicked
+        BudgetInfoPage m = new BudgetInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_mainMenuMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -537,6 +582,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JPanel WholePanel;
     private javax.swing.JLabel amountLabel;
     private javax.swing.JLabel budgetLabel;
+    private javax.swing.JLabel budgetLabel1;
     private javax.swing.JPanel budgetPanel;
     private javax.swing.JLabel cryptoLabel;
     private javax.swing.JLabel editInfoLabel;
@@ -554,10 +600,12 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
+    private javax.swing.JPanel mainMenu;
     private javax.swing.JLabel netWorthLabel;
     private javax.swing.JLabel savingsLabel;
     private javax.swing.JPanel savingsPanel;
