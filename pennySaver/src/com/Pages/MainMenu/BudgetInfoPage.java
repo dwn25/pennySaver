@@ -13,7 +13,10 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.PiePlot;
+import org.jfree.chart.plot.RingPlot;
 import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.ui.RectangleInsets;
+import org.jfree.util.UnitType;
 
 /**
  *
@@ -39,6 +42,128 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         
     }
     
+   public void onRun(){
+       Constant.currentUser = "bcroy";
+       Constant.DoConnect();
+       calcs();
+       putFieldString(incomeField,"net_income");
+       homeField.setText(null);
+       homeField.setText(home.toString());
+       shoppingField.setText(null);
+       shoppingField.setText(shopping.toString());
+       diningAndDrinksField.setText(null);
+       diningAndDrinksField.setText(dineAndDrinks.toString());
+       autoAndCommutingField.setText(null);
+       autoAndCommutingField.setText(auto.toString());
+       travelField.setText(null);
+       travelField.setText(travel.toString());
+       billsAndUtilitiesField.setText(null);
+       billsAndUtilitiesField.setText(billsAndUtils.toString());
+       entertainmentField.setText(null);
+       entertainmentField.setText(entertainment.toString());
+       feesField.setText(null);
+       feesField.setText(fees.toString());
+       loansField.setText(null);
+       loansField.setText(loans.toString());
+       educationField.setText(null);
+       educationField.setText(education.toString());
+       otherField.setText(null);
+       otherField.setText(other.toString());
+       personalCareField.setText(null);
+       personalCareField.setText(personalCare.toString());
+       mainAdvice = getCurrentState(getIncome(),budgetTotal);
+       adviceTextArea.setText(null);
+       adviceTextArea.setText(mainAdvice);
+       updateBar(budgetNeeds, budgetWants, budgetSavings);
+   }
+    
+     public void calcs(){
+       home = getField("HOME");
+       shopping = getField("SHOPPING");
+       dineAndDrinks = getField("DINING_AND_DRINKS");
+       auto = getField("AUTO");
+       travel = getField("TRAVEL");
+       billsAndUtils = getField("BILLS");
+       entertainment = getField("ENTERTAINMENT");
+       fees = getField("FEES");
+       personalCare = getField("PERSONAL");
+       loans = getField("LOANS");
+       education = getField("EDUCATION");
+       other = getField("OTHER");
+       needs = home + dineAndDrinks + auto+ billsAndUtils  + loans+ fees + education ;
+       wants = shopping + travel + entertainment +personalCare + other;
+       budgetTotal = needs + wants;
+       budgetNeeds = needs;
+       budgetWants = (wants*0.6);
+       budgetSavings = (wants*0.4);
+   }
+   
+       public void putFieldString(javax.swing.JTextField JtexTield, String column){
+        try{
+            String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
+            if(rs.next()){
+                String val = rs.getString(column);
+                JtexTield.setText(val);
+                }
+            else{
+                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+            } 
+        }catch(SQLException err){
+        System.out.println("Unable to fetch "+ column);
+        }        
+    }
+       
+    public void getFieldString(javax.swing.JTextField JtexTield, String column){
+        try{
+            String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
+            if(rs.next()){
+                String val = rs.getString(column);
+                JtexTield.setText(val);
+                }
+            else{
+                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+            } 
+        }catch(SQLException err){
+        System.out.println("Unable to fetch "+ column);
+        }        
+    }
+
+    public Double getIncome(){
+        try{
+            String SQL= "SELECT net_income From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
+            if(rs.next()){
+                Double val = rs.getDouble("net_income");
+                return val;
+                }
+            else{
+                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+            } 
+        }catch(SQLException err){
+        System.out.println("Unable to fetch income");
+        }  
+        return 0.0;
+   }
+   
+   public Double getField(String column){
+        try{
+            String SQL= "SELECT " + column +" From ROOT.PBUDGET WHERE username= '"+Constant.currentUser+"'";    
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
+            if(rs.next()){
+                Double var = rs.getDouble(column); 
+                return var;
+            }
+            else{
+                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+            } 
+        }catch(SQLException err){
+        System.out.println("Unable to fetch "+ column);
+        }  
+        return 0.0;
+    }
+   
    public String getCurrentState(Double income, Double budget){
        String advice1 = "Advice 1";
        String advice2 = "Advice 2";
@@ -66,62 +191,38 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         "Budget For The Week",
         dataset,
         false, true, false);
-        barChart.setBackgroundPaint(new Color(51, 51, 51));
-        
+        barChart.setBackgroundPaint(new Color(240,235,216));
+        barChart.getTitle().setPaint(new Color(29,45,68));
+    
         PiePlot plot = (PiePlot) barChart.getPlot();
-        plot.setLabelFont(new Font("SansSerif", Font.PLAIN, 12));
+        plot.setBackgroundPaint(Color.WHITE);
+        plot.setOutlineVisible(false);
+        plot.setShadowPaint(null);
+        plot.setSimpleLabels(true);
+        plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} = {2}", NumberFormat.getNumberInstance(), NumberFormat.getPercentInstance()));
+
+        plot.setLabelFont(new Font("Takoma", Font.PLAIN, 12));
+        plot.setLabelPaint(Color.BLACK);
+        //plot.setLabelBackgroundPaint(paint);
+        plot.setBackgroundPaint(null);
+        plot.setLabelOutlinePaint(null);
+        plot.setLabelShadowPaint(null);
+        plot.setSectionOutlinesVisible(false);
+        //plot.setSeparatorsVisible(false);
         
         plot.setNoDataMessage("No data available");
-        plot.setCircular(false);
-        plot.setLabelGap(0.02);
-        plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} = {2}", NumberFormat.getNumberInstance(), NumberFormat.getPercentInstance()));
-        
+        plot.setCircular(true);
+        plot.setIgnoreZeroValues(true);
+        plot.setIgnoreNullValues(true);
+        plot.setSimpleLabelOffset(new RectangleInsets(UnitType.RELATIVE, 0.09, 0.09, 0.09, 0.09));
+        //plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{1}"));
+
         ChartPanel chartPanel = new ChartPanel( barChart );
         //chartPanel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );
         myChartPanel.removeAll();
         myChartPanel.add(chartPanel);
         myChartPanel.validate();
     }
-    /*
-        DefaultPieDataset dataset = new DefaultPieDataset();
-        dataset.setValue("Necessary", needs);
-        dataset.setValue("Wants", wants);
-        dataset.setValue("Other", 90);
-        
-        JFreeChart chart = ChartFactory.createPieChart(
-        "Budget For The Week",
-        dataset,
-        false,
-        true,
-        false);
-        
-        PiePlot plot = (PiePlot) chart.getPlot();
-        plot.setLabelFont(new Font("SansSerif", Font.PLAIN, 12));
-        plot.setNoDataMessage("No data available");
-        plot.setCircular(false);
-        plot.setLabelGap(0.02);
-        
-        ChartPanel chartPanel = new ChartPanel( chart );
-        //chartPanel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );
-        myChartPanel.removeAll();
-        myChartPanel.add(chartPanel);
-        myChartPanel.validate();
-    */
-    /*
-        DefaultPieDataset dataset = new DefaultPieDataset();
-        dataset.setValue("Necessary", needs);
-        dataset.setValue("Wants", wants);
-        dataset.setValue("Other", 90);
-        JFreeChart barChart = ChartFactory.createPieChart(
-        "Budget For The Week",
-        dataset,
-        false, true, false);
-        ChartPanel chartPanel = new ChartPanel( barChart );
-        chartPanel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );
-        myChartPanel.removeAll();
-        myChartPanel.add(chartPanel);
-        myChartPanel.validate();
-    */
 
  
     /**
@@ -150,7 +251,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         otherField = new javax.swing.JTextField();
         entertainmentField = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        Edit = new javax.swing.JButton();
+        breakDown = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         adviceTextArea = new javax.swing.JTextArea();
         SIdeBarPanel = new javax.swing.JPanel();
@@ -189,6 +290,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         incomeField = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         myChartPanel = new javax.swing.JPanel();
+        Edit1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -347,16 +449,16 @@ public class BudgetInfoPage extends javax.swing.JFrame {
 
         WholePanel.add(DataPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 130, 200, 210));
 
-        Edit.setBackground(new java.awt.Color(29, 45, 68));
-        Edit.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
-        Edit.setForeground(new java.awt.Color(255, 255, 255));
-        Edit.setText("Edit");
-        Edit.addActionListener(new java.awt.event.ActionListener() {
+        breakDown.setBackground(new java.awt.Color(29, 45, 68));
+        breakDown.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
+        breakDown.setForeground(new java.awt.Color(255, 255, 255));
+        breakDown.setText("BreakDown");
+        breakDown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditActionPerformed(evt);
+                breakDownActionPerformed(evt);
             }
         });
-        WholePanel.add(Edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 440, 130, 40));
+        WholePanel.add(breakDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 440, 130, 40));
 
         adviceTextArea.setBackground(new java.awt.Color(240, 235, 216));
         adviceTextArea.setColumns(20);
@@ -695,6 +797,17 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         myChartPanel.setLayout(new java.awt.BorderLayout());
         WholePanel.add(myChartPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 380, 330));
 
+        Edit1.setBackground(new java.awt.Color(29, 45, 68));
+        Edit1.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
+        Edit1.setForeground(new java.awt.Color(255, 255, 255));
+        Edit1.setText("Edit");
+        Edit1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Edit1ActionPerformed(evt);
+            }
+        });
+        WholePanel.add(Edit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 440, 130, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -709,129 +822,13 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     
-   public void onRun(){
-       Constant.DoConnect();
-       calcs();
-       putFieldString(incomeField,"net_income");
-       homeField.setText(null);
-       homeField.setText(home.toString());
-       shoppingField.setText(null);
-       shoppingField.setText(shopping.toString());
-       diningAndDrinksField.setText(null);
-       diningAndDrinksField.setText(dineAndDrinks.toString());
-       autoAndCommutingField.setText(null);
-       autoAndCommutingField.setText(auto.toString());
-       travelField.setText(null);
-       travelField.setText(travel.toString());
-       billsAndUtilitiesField.setText(null);
-       billsAndUtilitiesField.setText(billsAndUtils.toString());
-       entertainmentField.setText(null);
-       entertainmentField.setText(entertainment.toString());
-       feesField.setText(null);
-       feesField.setText(fees.toString());
-       loansField.setText(null);
-       loansField.setText(loans.toString());
-       educationField.setText(null);
-       educationField.setText(education.toString());
-       otherField.setText(null);
-       otherField.setText(other.toString());
-       personalCareField.setText(null);
-       personalCareField.setText(personalCare.toString());
-       mainAdvice = getCurrentState(getIncome(),budgetTotal);
-       adviceTextArea.setText(null);
-       adviceTextArea.setText(mainAdvice);
-       updateBar(budgetNeeds, budgetWants, budgetSavings);
-   }
-   
-   public void calcs(){
-       home = getField("HOME");
-       shopping = getField("SHOPPING");
-       dineAndDrinks = getField("DINING_AND_DRINKS");
-       auto = getField("AUTO");
-       travel = getField("TRAVEL");
-       billsAndUtils = getField("BILLS");
-       entertainment = getField("ENTERTAINMENT");
-       fees = getField("FEES");
-       personalCare = getField("PERSONAL");
-       loans = getField("LOANS");
-       education = getField("EDUCATION");
-       other = getField("OTHER");
-       needs = home + dineAndDrinks + auto+ billsAndUtils  + loans+ fees + education ;
-       wants = shopping + travel + entertainment +personalCare + other;
-       budgetTotal = needs + wants;
-       budgetNeeds = needs;
-       budgetWants = (wants*0.6);
-       budgetSavings = (wants*0.4);
-   }
-   
-       public void putFieldString(javax.swing.JTextField JtexTield, String column){
-        try{
-            String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
-            ResultSet rs = Constant.stmt.executeQuery(SQL);
-            if(rs.next()){
-                String val = rs.getString(column);
-                JtexTield.setText(val);
-                }
-            else{
-                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
-            } 
-        }catch(SQLException err){
-        System.out.println("Unable to fetch "+ column);
-        }        
-    }
-       
-    public void getFieldString(javax.swing.JTextField JtexTield, String column){
-        try{
-            String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
-            ResultSet rs = Constant.stmt.executeQuery(SQL);
-            if(rs.next()){
-                String val = rs.getString(column);
-                JtexTield.setText(val);
-                }
-            else{
-                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
-            } 
-        }catch(SQLException err){
-        System.out.println("Unable to fetch "+ column);
-        }        
-    }
 
-    public Double getIncome(){
-        try{
-            String SQL= "SELECT net_income From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
-            ResultSet rs = Constant.stmt.executeQuery(SQL);
-            if(rs.next()){
-                Double val = rs.getDouble("net_income");
-                return val;
-                }
-            else{
-                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
-            } 
-        }catch(SQLException err){
-        System.out.println("Unable to fetch income");
-        }  
-        return 0.0;
-   }
    
-   public Double getField(String column){
-        try{
-            String SQL= "SELECT " + column +" From ROOT.PBUDGET WHERE username= '"+Constant.currentUser+"'";    
-            ResultSet rs = Constant.stmt.executeQuery(SQL);
-            if(rs.next()){
-                Double var = rs.getDouble(column); 
-                return var;
-            }
-            else{
-                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
-            } 
-        }catch(SQLException err){
-        System.out.println("Unable to fetch "+ column);
-        }  
-        return 0.0;
-    }
+ 
    
     private void shoppingFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shoppingFieldActionPerformed
 
@@ -841,12 +838,12 @@ public class BudgetInfoPage extends javax.swing.JFrame {
 
     }//GEN-LAST:event_homeFieldActionPerformed
 
-    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
-        EditBudgetPage m = new EditBudgetPage();
+    private void breakDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_breakDownActionPerformed
+        BudgetBreakdownPage m = new BudgetBreakdownPage();
         m.setLocationRelativeTo(null);
         m.setVisible(true);
         this.hide();
-    }//GEN-LAST:event_EditActionPerformed
+    }//GEN-LAST:event_breakDownActionPerformed
 
     private void incomeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incomeFieldActionPerformed
         // TODO add your handling code here:
@@ -941,6 +938,13 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         this.hide();
     }//GEN-LAST:event_mainMenuPanelMouseClicked
 
+    private void Edit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Edit1ActionPerformed
+        // TODO add your handling code here:
+        EditBudgetPage m = new EditBudgetPage();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_Edit1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -980,12 +984,13 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CryptoPanel;
     private javax.swing.JPanel DataPanel;
-    private javax.swing.JButton Edit;
+    private javax.swing.JButton Edit1;
     private javax.swing.JPanel SIdeBarPanel;
     private javax.swing.JPanel WholePanel;
     private javax.swing.JTextArea adviceTextArea;
     private javax.swing.JTextField autoAndCommutingField;
     private javax.swing.JTextField billsAndUtilitiesField;
+    private javax.swing.JButton breakDown;
     private javax.swing.JLabel budgetLabel1;
     private javax.swing.JPanel budgetPanel;
     private javax.swing.JLabel cryptoLabel;

@@ -3,7 +3,7 @@ package com.Pages.EnterDataPages;
 import com.Pages.MainMenu.BudgetInfoPage;
 import com.Pages.AskQuestionPage.BudgetQuestionPage;
 import com.Support.Constant;
-import com.Support.Stocks;
+import com.Support.Stocks.Stocks;
 import javax.swing.JOptionPane;
 
 /**

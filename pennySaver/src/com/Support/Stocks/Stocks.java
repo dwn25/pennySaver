@@ -3,22 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.Support;
+package com.Support.Stocks;
 import java.awt.List;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.math.BigDecimal;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Map;
+import static sun.java2d.cmm.ColorTransform.In;
 import yahoofinance.*;
-import yahoofinance.histquotes.HistoricalQuote;
-import yahoofinance.histquotes.Interval;
+
 /**
  *
  * @author DNartey
  */
 public class Stocks {
-    
+        public final String SYM = "";
+
     public Stocks(){}
     
     public void Test(){
@@ -35,6 +41,19 @@ public class Stocks {
     }
     }
     
+    public static void scrape() throws MalformedURLException, IOException{
+        System.setProperty("http.agent", "Chrome");
+        URL url = new URL("https://www.google.com/search?q=ko&tbm=fin&hl=en#scso=_Qn9RXbKSAse5ggfjuhc6:0");
+        URLConnection urlConn = url.openConnection();
+        InputStreamReader inStream = new InputStreamReader(urlConn.getInputStream());
+        BufferedReader buff = new BufferedReader(inStream);
+        String line = buff.readLine();
+        while(line != null){
+            if(line.contains("[\"KO\","))
+                System.out.println(line);
+            line = buff.readLine();
+        }
+    }
     public static boolean isStock(String stockName) throws IOException{
         try{
            Stock stock = YahooFinance.get(stockName);
@@ -94,28 +113,7 @@ public class Stocks {
 
 	}
 */
-	private String convertDate(Calendar cal) {
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		String formatDate = format.format(cal.getTime());
-		return formatDate;
-	}
-
-	private Interval getInterval(String searchType) {
-		Interval interval = null;
-		switch (searchType.toUpperCase()) {
-		case "MONTHLY":
-			interval = Interval.MONTHLY;
-			break;
-		case "WEEKLY":
-			interval = Interval.WEEKLY;
-			break;
-		case "DAILY":
-			interval = Interval.DAILY;
-			break;
-
-		}
-		return interval;
-	}
+    
     /*
     public static boolean isStock(String name){
         boolean isStock = false;
@@ -133,5 +131,7 @@ public class Stocks {
         }
         return isStock;
     }   */
+        
+        
     
 }

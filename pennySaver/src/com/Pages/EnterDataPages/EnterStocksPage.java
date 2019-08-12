@@ -3,7 +3,7 @@ package com.Pages.EnterDataPages;
 import com.Pages.MainMenu.BudgetInfoPage;
 import com.Pages.AskQuestionPage.CryptoQuestionPage;
 import com.Support.Constant;
-import com.Support.Stocks;
+import com.Support.Stocks.Stocks;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -365,8 +365,14 @@ public class EnterStocksPage extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Not a valid symbol");
             }*/
             else{
-                Stocks.getStock(stock);
+                //Stocks.getStock(stock);
+                Stock tesla = YahooFinance.get("TSLA", true);
+                //System.out.println(tesla.getHistory());
+                //Stock stock1 = YahooFinance.get(stockSymbol);
+                //BigDecimal price = stock1.getQuote(true).getPrice();
+                //stock1.print();
                 finalStockNumber = Integer.parseInt(stockNumber);
+                System.out.println(finalStockNumber);
                 }
         }catch(NumberFormatException er){
             System.out.println(er);

@@ -12,6 +12,7 @@ import java.sql.Statement;
  */
 public class Constant {
     
+    public static String alphaVantageAPIKey = "I58H97J6G9Y75TXB";
     public static String currentUser = "";
     public static String currentUserID = "";
     public static int IDS = 4;

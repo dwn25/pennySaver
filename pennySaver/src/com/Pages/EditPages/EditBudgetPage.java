@@ -15,6 +15,8 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.ui.RectangleInsets;
+import org.jfree.util.UnitType;
 
 /**
  *
@@ -68,7 +70,8 @@ public class EditBudgetPage extends javax.swing.JFrame {
        adviceTextArea.setText(null);
        adviceTextArea.setText(mainAdvice);
        updateBar(budgetNeeds, budgetWants, budgetSavings);
-       
+       updateBar();
+       updateSecondBar();
    }
  
     public void calcs(){
@@ -111,21 +114,127 @@ public class EditBudgetPage extends javax.swing.JFrame {
         "Budget For The Week",
         dataset,
         false, true, false);
-        barChart.setBackgroundPaint(new Color(51, 51, 51));
-        
+        barChart.setBackgroundPaint(new Color(240,235,216));
+        barChart.getTitle().setPaint(new Color(29,45,68));
+
         PiePlot plot = (PiePlot) barChart.getPlot();
-        plot.setLabelFont(new Font("SansSerif", Font.PLAIN, 12));
+        plot.setBackgroundPaint(Color.WHITE);
+        plot.setOutlineVisible(false);
+        plot.setShadowPaint(null);
+        //plot.setSimpleLabels(true);
+        plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} = {2}", NumberFormat.getNumberInstance(), NumberFormat.getPercentInstance()));
+
+        plot.setLabelFont(new Font("Takoma", Font.PLAIN, 12));
+        plot.setLabelPaint(Color.BLACK);
+        //plot.setLabelBackgroundPaint(color.WHITE);
+        plot.setBackgroundPaint(null);
+        plot.setLabelOutlinePaint(null);
+        plot.setLabelShadowPaint(null);
+        plot.setSectionOutlinesVisible(false);
+        //plot.setSeparatorsVisible(false);
         
         plot.setNoDataMessage("No data available");
-        plot.setCircular(false);
-        plot.setLabelGap(0.02);
+        plot.setCircular(true);
+        plot.setIgnoreZeroValues(true);
+        plot.setIgnoreNullValues(true);
+        plot.setSimpleLabelOffset(new RectangleInsets(UnitType.RELATIVE, 0.09, 0.09, 0.09, 0.09));
+        //plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{1}"));
+
+        ChartPanel chartPanel = new ChartPanel( barChart );
+        //chartPanel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );
+        myChartPanel3.removeAll();
+        myChartPanel3.add(chartPanel);
+        myChartPanel3.validate();
+    }
+    
+    public void updateBar(){
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        dataset.setValue("Home", home);
+        dataset.setValue("Dining & Drinks", dineAndDrinks);
+        dataset.setValue("Auto", auto);
+        dataset.setValue("Bills", billsAndUtils);
+        dataset.setValue("Loans", loans);
+        dataset.setValue("Fees", fees);
+        dataset.setValue("Education", education);
+        JFreeChart barChart = ChartFactory.createPieChart(
+        "Needs",
+        dataset,
+        false, true, false);
+        barChart.setBackgroundPaint(new Color(240,235,216));
+        barChart.getTitle().setPaint(new Color(29,45,68));
+
+        PiePlot plot = (PiePlot) barChart.getPlot();
+        plot.setBackgroundPaint(Color.WHITE);
+        plot.setOutlineVisible(false);
+        plot.setShadowPaint(null);
+        //plot.setSimpleLabels(true);
         plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} = {2}", NumberFormat.getNumberInstance(), NumberFormat.getPercentInstance()));
+
+        plot.setLabelFont(new Font("Takoma", Font.PLAIN, 12));
+        plot.setLabelPaint(Color.BLACK);
+        //plot.setLabelBackgroundPaint(color.WHITE);
+        plot.setBackgroundPaint(null);
+        plot.setLabelOutlinePaint(null);
+        plot.setLabelShadowPaint(null);
+        plot.setSectionOutlinesVisible(false);
+        //plot.setSeparatorsVisible(false);
+        
+        plot.setNoDataMessage("No data available");
+        plot.setCircular(true);
+        plot.setIgnoreZeroValues(true);
+        plot.setIgnoreNullValues(true);
+        plot.setSimpleLabelOffset(new RectangleInsets(UnitType.RELATIVE, 0.09, 0.09, 0.09, 0.09));
+        //plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{1}"));
+
+        ChartPanel chartPanel = new ChartPanel( barChart );
+        //chartPanel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );
+        myChartPanel2.removeAll();
+        myChartPanel2.add(chartPanel);
+        myChartPanel2.validate();
+    }
+    
+    public void updateSecondBar(){
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        dataset.setValue("Shopping", shopping);
+        dataset.setValue("Travel", travel);
+        dataset.setValue("Entertainment", entertainment);
+        dataset.setValue("Personal Care", personalCare);
+        dataset.setValue("Other", other);
+        JFreeChart barChart = ChartFactory.createPieChart(
+        "Wants",
+         dataset,
+        false, true, false);
+        barChart.setBackgroundPaint(new Color(240,235,216));
+        barChart.getTitle().setPaint(new Color(29,45,68));
+
+        PiePlot plot = (PiePlot) barChart.getPlot();
+        plot.setBackgroundPaint(Color.WHITE);
+        plot.setOutlineVisible(false);
+        plot.setShadowPaint(null);
+        //plot.setSimpleLabels(true);
+        plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} = {2}", NumberFormat.getNumberInstance(), NumberFormat.getPercentInstance()));
+
+        plot.setLabelFont(new Font("Takoma", Font.PLAIN, 12));
+        plot.setLabelPaint(Color.BLACK);
+        //plot.setLabelBackgroundPaint(color.WHITE);
+        plot.setBackgroundPaint(null);
+        plot.setLabelOutlinePaint(null);
+        plot.setLabelShadowPaint(null);
+        plot.setSectionOutlinesVisible(false);
+        //plot.setSeparatorsVisible(false);
+        
+        plot.setNoDataMessage("No data available");
+        plot.setCircular(true);
+        plot.setIgnoreZeroValues(true);
+        plot.setIgnoreNullValues(true);
+        plot.setSimpleLabelOffset(new RectangleInsets(UnitType.RELATIVE, 0.09, 0.09, 0.09, 0.09));
+        //plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{1}"));
         
         ChartPanel chartPanel = new ChartPanel( barChart );
         //chartPanel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );
-        myChartPanel.removeAll();
-        myChartPanel.add(chartPanel);
-        myChartPanel.validate();
+        myChartPanel1.removeAll();
+        myChartPanel1.add(chartPanel);
+        myChartPanel1.validate();
     }
     public void putFieldString(javax.swing.JTextField JtexTield, String column){
         try{
@@ -211,9 +320,11 @@ public class EditBudgetPage extends javax.swing.JFrame {
         jInternalFrame1 = new javax.swing.JInternalFrame();
         WholePanel = new javax.swing.JPanel();
         InfoPanel = new javax.swing.JPanel();
+        myChartPanel3 = new javax.swing.JPanel();
         ADVICE = new javax.swing.JScrollPane();
         adviceTextArea = new javax.swing.JTextArea();
         myChartPanel = new javax.swing.JPanel();
+        myChartPanel2 = new javax.swing.JPanel();
         dataEntryPanel = new javax.swing.JPanel();
         autoAndCommutingField = new javax.swing.JTextField();
         feesField = new javax.swing.JTextField();
@@ -241,6 +352,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
         otherField = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         incomeField = new javax.swing.JTextField();
+        myChartPanel1 = new javax.swing.JPanel();
         headerPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -273,6 +385,8 @@ public class EditBudgetPage extends javax.swing.JFrame {
 
         InfoPanel.setBackground(new java.awt.Color(240, 235, 216));
 
+        myChartPanel3.setLayout(new java.awt.BorderLayout());
+
         adviceTextArea.setBackground(new java.awt.Color(240, 235, 216));
         adviceTextArea.setColumns(20);
         adviceTextArea.setForeground(new java.awt.Color(63, 64, 76));
@@ -280,6 +394,9 @@ public class EditBudgetPage extends javax.swing.JFrame {
         ADVICE.setViewportView(adviceTextArea);
 
         myChartPanel.setLayout(new java.awt.BorderLayout());
+
+        myChartPanel2.setLayout(new java.awt.BorderLayout());
+        myChartPanel.add(myChartPanel2, java.awt.BorderLayout.CENTER);
 
         dataEntryPanel.setBackground(new java.awt.Color(240, 235, 216));
         dataEntryPanel.setForeground(new java.awt.Color(255, 255, 255));
@@ -447,12 +564,12 @@ public class EditBudgetPage extends javax.swing.JFrame {
                                 .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(billsAndUtilitiesField, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
                                     .addComponent(personalCareField))))))
-                .addGap(0, 32, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(dataEntryPanelLayout.createSequentialGroup()
                     .addGap(81, 81, 81)
                     .addComponent(jLabel20)
-                    .addContainerGap(336, Short.MAX_VALUE)))
+                    .addContainerGap(304, Short.MAX_VALUE)))
         );
         dataEntryPanelLayout.setVerticalGroup(
             dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -516,30 +633,47 @@ public class EditBudgetPage extends javax.swing.JFrame {
                     .addContainerGap(217, Short.MAX_VALUE)))
         );
 
+        myChartPanel1.setLayout(new java.awt.BorderLayout());
+
         javax.swing.GroupLayout InfoPanelLayout = new javax.swing.GroupLayout(InfoPanel);
         InfoPanel.setLayout(InfoPanelLayout);
         InfoPanelLayout.setHorizontalGroup(
             InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InfoPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(myChartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dataEntryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ADVICE, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(429, 429, 429))
+                .addContainerGap()
+                .addGroup(InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(myChartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(myChartPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(myChartPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(InfoPanelLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(ADVICE))
+                    .addComponent(dataEntryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         InfoPanelLayout.setVerticalGroup(
             InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(InfoPanelLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
                 .addGroup(InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(InfoPanelLayout.createSequentialGroup()
-                        .addComponent(dataEntryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ADVICE, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(myChartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
+                        .addGroup(InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(InfoPanelLayout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(dataEntryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ADVICE, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(InfoPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(myChartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(myChartPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InfoPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(myChartPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         WholePanel.add(InfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 940, 410));
@@ -637,6 +771,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
         getContentPane().add(WholePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 610));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void incomeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incomeFieldActionPerformed
@@ -728,6 +863,8 @@ public class EditBudgetPage extends javax.swing.JFrame {
                 doCalcs();
                 getCurrentState(netIncome,budgetTotal);
                 updateBar(budgetNeeds, budgetWants, budgetSavings);
+                updateBar();
+                updateSecondBar();
             }
         }catch(NumberFormatException err){
             JOptionPane.showMessageDialog(rootPane, "Please Enter Only Numbers");
@@ -920,6 +1057,9 @@ public class EditBudgetPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField loansField;
     private javax.swing.JPanel myChartPanel;
+    private javax.swing.JPanel myChartPanel1;
+    private javax.swing.JPanel myChartPanel2;
+    private javax.swing.JPanel myChartPanel3;
     private javax.swing.JTextField otherField;
     private javax.swing.JTextField personalCareField;
     private javax.swing.JButton resetBTn;
