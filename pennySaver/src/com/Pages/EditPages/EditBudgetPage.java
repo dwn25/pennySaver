@@ -121,7 +121,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
         plot.setBackgroundPaint(Color.WHITE);
         plot.setOutlineVisible(false);
         plot.setShadowPaint(null);
-        //plot.setSimpleLabels(true);
+        plot.setSimpleLabels(true);
         plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} = {2}", NumberFormat.getNumberInstance(), NumberFormat.getPercentInstance()));
 
         plot.setLabelFont(new Font("Takoma", Font.PLAIN, 12));
@@ -142,9 +142,9 @@ public class EditBudgetPage extends javax.swing.JFrame {
 
         ChartPanel chartPanel = new ChartPanel( barChart );
         //chartPanel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );
-        myChartPanel3.removeAll();
-        myChartPanel3.add(chartPanel);
-        myChartPanel3.validate();
+        budgetChart.removeAll();
+        budgetChart.add(chartPanel);
+        budgetChart.validate();
     }
     
     public void updateBar(){
@@ -320,11 +320,8 @@ public class EditBudgetPage extends javax.swing.JFrame {
         jInternalFrame1 = new javax.swing.JInternalFrame();
         WholePanel = new javax.swing.JPanel();
         InfoPanel = new javax.swing.JPanel();
-        myChartPanel3 = new javax.swing.JPanel();
         ADVICE = new javax.swing.JScrollPane();
         adviceTextArea = new javax.swing.JTextArea();
-        myChartPanel = new javax.swing.JPanel();
-        myChartPanel2 = new javax.swing.JPanel();
         dataEntryPanel = new javax.swing.JPanel();
         autoAndCommutingField = new javax.swing.JTextField();
         feesField = new javax.swing.JTextField();
@@ -352,14 +349,17 @@ public class EditBudgetPage extends javax.swing.JFrame {
         otherField = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         incomeField = new javax.swing.JTextField();
+        allCharts = new javax.swing.JPanel();
+        myChartPanel2 = new javax.swing.JPanel();
         myChartPanel1 = new javax.swing.JPanel();
+        budgetChart = new javax.swing.JPanel();
+        resetBTn = new javax.swing.JButton();
+        updateBTn = new javax.swing.JButton();
+        saveBTn = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
         headerPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        backBtn = new javax.swing.JButton();
-        saveBTn = new javax.swing.JButton();
-        resetBTn = new javax.swing.JButton();
-        updateBTn = new javax.swing.JButton();
         SIdeBarPanel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -384,8 +384,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
         WholePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         InfoPanel.setBackground(new java.awt.Color(240, 235, 216));
-
-        myChartPanel3.setLayout(new java.awt.BorderLayout());
+        InfoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         adviceTextArea.setBackground(new java.awt.Color(240, 235, 216));
         adviceTextArea.setColumns(20);
@@ -393,10 +392,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
         adviceTextArea.setRows(5);
         ADVICE.setViewportView(adviceTextArea);
 
-        myChartPanel.setLayout(new java.awt.BorderLayout());
-
-        myChartPanel2.setLayout(new java.awt.BorderLayout());
-        myChartPanel.add(myChartPanel2, java.awt.BorderLayout.CENTER);
+        InfoPanel.add(ADVICE, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 260, 428, 110));
 
         dataEntryPanel.setBackground(new java.awt.Color(240, 235, 216));
         dataEntryPanel.setForeground(new java.awt.Color(255, 255, 255));
@@ -564,12 +560,12 @@ public class EditBudgetPage extends javax.swing.JFrame {
                                 .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(billsAndUtilitiesField, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
                                     .addComponent(personalCareField))))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 35, Short.MAX_VALUE))
             .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(dataEntryPanelLayout.createSequentialGroup()
                     .addGap(81, 81, 81)
                     .addComponent(jLabel20)
-                    .addContainerGap(304, Short.MAX_VALUE)))
+                    .addContainerGap(339, Short.MAX_VALUE)))
         );
         dataEntryPanelLayout.setVerticalGroup(
             dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -633,50 +629,67 @@ public class EditBudgetPage extends javax.swing.JFrame {
                     .addContainerGap(217, Short.MAX_VALUE)))
         );
 
+        InfoPanel.add(dataEntryPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(506, 15, 470, -1));
+
+        allCharts.setBackground(new java.awt.Color(240, 235, 216));
+        allCharts.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        myChartPanel2.setLayout(new java.awt.BorderLayout());
+        allCharts.add(myChartPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 470, 200));
+
         myChartPanel1.setLayout(new java.awt.BorderLayout());
+        allCharts.add(myChartPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 470, 197));
 
-        javax.swing.GroupLayout InfoPanelLayout = new javax.swing.GroupLayout(InfoPanel);
-        InfoPanel.setLayout(InfoPanelLayout);
-        InfoPanelLayout.setHorizontalGroup(
-            InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InfoPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(myChartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(myChartPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(myChartPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(InfoPanelLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(ADVICE))
-                    .addComponent(dataEntryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
-        InfoPanelLayout.setVerticalGroup(
-            InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(InfoPanelLayout.createSequentialGroup()
-                .addGroup(InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(InfoPanelLayout.createSequentialGroup()
-                        .addGroup(InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(InfoPanelLayout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(dataEntryPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ADVICE, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(InfoPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(myChartPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(myChartPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InfoPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(myChartPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
+        budgetChart.setLayout(new java.awt.BorderLayout());
+        allCharts.add(budgetChart, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 470, 197));
 
-        WholePanel.add(InfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 940, 410));
+        InfoPanel.add(allCharts, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 470, 590));
+
+        resetBTn.setBackground(new java.awt.Color(29, 45, 68));
+        resetBTn.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        resetBTn.setForeground(new java.awt.Color(255, 255, 255));
+        resetBTn.setText("Reset");
+        resetBTn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetBTnActionPerformed(evt);
+            }
+        });
+        InfoPanel.add(resetBTn, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 380, 201, 64));
+
+        updateBTn.setBackground(new java.awt.Color(29, 45, 68));
+        updateBTn.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        updateBTn.setForeground(new java.awt.Color(255, 255, 255));
+        updateBTn.setText("Update");
+        updateBTn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBTnActionPerformed(evt);
+            }
+        });
+        InfoPanel.add(updateBTn, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 380, 190, 64));
+
+        saveBTn.setBackground(new java.awt.Color(29, 45, 68));
+        saveBTn.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        saveBTn.setForeground(new java.awt.Color(255, 255, 255));
+        saveBTn.setText("Save");
+        saveBTn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveBTnActionPerformed(evt);
+            }
+        });
+        InfoPanel.add(saveBTn, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 450, 201, 64));
+
+        backBtn.setBackground(new java.awt.Color(29, 45, 68));
+        backBtn.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        backBtn.setForeground(new java.awt.Color(255, 255, 255));
+        backBtn.setText("Back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
+        InfoPanel.add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, 190, 64));
+
+        WholePanel.add(InfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 940, 580));
 
         headerPanel.setBackground(new java.awt.Color(91, 139, 151));
 
@@ -716,59 +729,15 @@ public class EditBudgetPage extends javax.swing.JFrame {
 
         WholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 940, 110));
 
-        backBtn.setBackground(new java.awt.Color(91, 139, 151));
-        backBtn.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        backBtn.setForeground(new java.awt.Color(255, 255, 255));
-        backBtn.setText("Back");
-        backBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBtnActionPerformed(evt);
-            }
-        });
-        WholePanel.add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 530, 201, 64));
-
-        saveBTn.setBackground(new java.awt.Color(91, 139, 151));
-        saveBTn.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        saveBTn.setForeground(new java.awt.Color(255, 255, 255));
-        saveBTn.setText("Save");
-        saveBTn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveBTnActionPerformed(evt);
-            }
-        });
-        WholePanel.add(saveBTn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 530, 201, 64));
-
-        resetBTn.setBackground(new java.awt.Color(91, 139, 151));
-        resetBTn.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        resetBTn.setForeground(new java.awt.Color(255, 255, 255));
-        resetBTn.setText("Reset");
-        resetBTn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetBTnActionPerformed(evt);
-            }
-        });
-        WholePanel.add(resetBTn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 530, 201, 64));
-
-        updateBTn.setBackground(new java.awt.Color(91, 139, 151));
-        updateBTn.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        updateBTn.setForeground(new java.awt.Color(255, 255, 255));
-        updateBTn.setText("Update");
-        updateBTn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateBTnActionPerformed(evt);
-            }
-        });
-        WholePanel.add(updateBTn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 530, 190, 64));
-
         SIdeBarPanel.setBackground(new java.awt.Color(29, 45, 68));
         SIdeBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
         SIdeBarPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        WholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 610));
+        WholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 700));
 
-        getContentPane().add(WholePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 610));
+        getContentPane().add(WholePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 700));
 
         pack();
         setLocationRelativeTo(null);
@@ -1027,9 +996,11 @@ public class EditBudgetPage extends javax.swing.JFrame {
     private javax.swing.JPanel SIdeBarPanel;
     private javax.swing.JPanel WholePanel;
     private javax.swing.JTextArea adviceTextArea;
+    private javax.swing.JPanel allCharts;
     private javax.swing.JTextField autoAndCommutingField;
     private javax.swing.JButton backBtn;
     private javax.swing.JTextField billsAndUtilitiesField;
+    private javax.swing.JPanel budgetChart;
     private javax.swing.JPanel dataEntryPanel;
     private javax.swing.JTextField diningAndDrinksField;
     private javax.swing.JTextField educationField;
@@ -1056,10 +1027,8 @@ public class EditBudgetPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField loansField;
-    private javax.swing.JPanel myChartPanel;
     private javax.swing.JPanel myChartPanel1;
     private javax.swing.JPanel myChartPanel2;
-    private javax.swing.JPanel myChartPanel3;
     private javax.swing.JTextField otherField;
     private javax.swing.JTextField personalCareField;
     private javax.swing.JButton resetBTn;

@@ -43,7 +43,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     }
     
    public void onRun(){
-       Constant.currentUser = "bcroy";
        Constant.DoConnect();
        calcs();
        putFieldString(incomeField,"net_income");
@@ -850,7 +849,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_incomeFieldActionPerformed
 
     private void savingsLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savingsLabelMouseClicked
-        // TODO add your handling code here:
         SavingsInfoPage m = new SavingsInfoPage();
         m.setLocationRelativeTo(null);
         m.setVisible(true);
@@ -865,7 +863,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_savingsPanelMouseClicked
 
     private void editInfoLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editInfoLabelMouseClicked
-        // TODO add your handling code here:
         EditPersonalInfoPage m = new EditPersonalInfoPage();
         m.setLocationRelativeTo(null);
         m.setVisible(true);
@@ -880,7 +877,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_editInfoPanelMouseClicked
 
     private void stocksLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksLabelMouseClicked
-        // TODO add your handling code here:
         StocksInfoPage m = new StocksInfoPage();
         m.setLocationRelativeTo(null);
         m.setVisible(true);
@@ -903,7 +899,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_cryptoLabelMouseClicked
 
     private void CryptoPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CryptoPanelMouseClicked
-        // TODO add your handling code here:
         CryptoInfoPage m = new CryptoInfoPage();
         m.setLocationRelativeTo(null);
         m.setVisible(true);
@@ -939,7 +934,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_mainMenuPanelMouseClicked
 
     private void Edit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Edit1ActionPerformed
-        // TODO add your handling code here:
         EditBudgetPage m = new EditBudgetPage();
         m.setVisible(true);
         this.hide();
