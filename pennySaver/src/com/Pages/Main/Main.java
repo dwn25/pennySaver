@@ -40,6 +40,7 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         setResizable(false);
         initComponents();
+        
     }
 
     /**
@@ -102,7 +103,7 @@ public class Main extends javax.swing.JFrame {
         jLabel2.setText("Password:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 210, 133, -1));
 
-        loginBtn.setBackground(new java.awt.Color(91, 139, 151));
+        loginBtn.setBackground(new java.awt.Color(41, 57, 80));
         loginBtn.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         loginBtn.setForeground(new java.awt.Color(255, 255, 255));
         loginBtn.setText("login");
@@ -113,7 +114,7 @@ public class Main extends javax.swing.JFrame {
         });
         jPanel1.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 280, 206, 50));
 
-        cancelBtn.setBackground(new java.awt.Color(91, 139, 151));
+        cancelBtn.setBackground(new java.awt.Color(41, 57, 80));
         cancelBtn.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         cancelBtn.setForeground(new java.awt.Color(255, 255, 255));
         cancelBtn.setText("Cancel");
@@ -122,7 +123,7 @@ public class Main extends javax.swing.JFrame {
                 cancelBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(cancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 340, 206, 40));
+        jPanel1.add(cancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 340, 206, 50));
 
         signUpBtn.setBackground(new java.awt.Color(32, 33, 35));
         signUpBtn.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
@@ -150,7 +151,7 @@ public class Main extends javax.swing.JFrame {
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 270, 206, 10));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/MainPage.jpg"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MainPageSample.jpg"))); // NOI18N
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 788, 430));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1025, 420));
@@ -305,7 +306,7 @@ public class Main extends javax.swing.JFrame {
             splashGraphics.setFont(font);
             
             // initialize the status info
-            splashText("Starting");
+            splashText("Building");
             splashProgress(50);
         }
     }
@@ -321,11 +322,12 @@ public class Main extends javax.swing.JFrame {
             // really is a Splash being displayed
 
             // erase the last status text
-            splashGraphics.setPaint(Color.LIGHT_GRAY);
-            splashGraphics.fill(splashTextArea);
-
-            // draw the text
             splashGraphics.setPaint(Color.BLACK);
+            splashGraphics.fill(splashTextArea);
+            
+            // draw the text
+            splashGraphics.setPaint(Color.WHITE);
+            splashGraphics.setBackground(null);
             splashGraphics.drawString(str, (int)(splashTextArea.getX() + 10),(int)(splashTextArea.getY() + 15));
 
             // make sure it's displayed
@@ -361,7 +363,7 @@ public class Main extends javax.swing.JFrame {
             doneWidth = Math.max(0, Math.min(doneWidth, wid-1));  // limit 0-width
 
             // fill the done part one pixel smaller than the outline
-            splashGraphics.setPaint(Color.GREEN);
+            splashGraphics.setPaint(new Color(91,139,151));
             splashGraphics.fillRect(x, y+1, doneWidth, hgt-1);
 
             // make sure it's displayed
@@ -375,14 +377,14 @@ public class Main extends javax.swing.JFrame {
      */
     private static void appInit()
     {
-        for(int i=1;i<=10;i++)
+        for(int i=1;i<=5;i++)
         {
-            int pctDone = i * 10;
-            splashText("Doing task #" + i);
+            int pctDone = i * 20;
+            splashText("Building Module #" + i);
             splashProgress(pctDone);
             try
             {
-                Thread.sleep(1000);
+                Thread.sleep(500);
             }
             catch (InterruptedException ex)
             {
