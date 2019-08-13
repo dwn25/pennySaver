@@ -1,7 +1,9 @@
 package com.Pages.MainMenu;
 
+import com.Pages.AskQuestionPage.StocksQuestionPage;
 import com.Pages.Main.Main;
 import com.Support.Constant;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -24,9 +26,8 @@ public class EditPersonalInfoPage extends javax.swing.JFrame {
 
 public void onRun(){
         Constant.DoConnect();
+        putFieldString(incomeField,"net_income");
         getField(netWorthLabel,"net_worth");
-        getFieldString(employmentStatusLabel,"employment_status");
-        getField(takeHomeIncomeLabel,"net_income");
         getField(amountLabel,"monthly_savings");
     }
 
@@ -37,7 +38,7 @@ public void onRun(){
             if(rs.next()){
                 String val = rs.getString(column);
                 label1.setText(null);
-                label1.setText("$ " + val);
+                label1.setText(val);
                 }
             else{
                 JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
@@ -63,7 +64,21 @@ public void onRun(){
         System.out.println("Unable to fetch "+ column);
         }        
     }
-   
+    public void putFieldString(javax.swing.JTextField JtexTield, String column){
+        try{
+            String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
+            if(rs.next()){
+                String val = rs.getString(column);
+                JtexTield.setText(val);
+                }
+            else{
+                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+            } 
+        }catch(SQLException err){
+        System.out.println("Unable to fetch "+ column);
+        }        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -91,17 +106,17 @@ public void onRun(){
         editInfoPage = new javax.swing.JToggleButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         amountLabel = new javax.swing.JTextField();
-        takeHomeIncomeLabel = new javax.swing.JTextField();
-        employmentStatusLabel = new javax.swing.JTextField();
         netWorthLabel = new javax.swing.JTextField();
         incomeField = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
+        employmentStatus = new javax.swing.JComboBox<>();
         saveBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -279,12 +294,6 @@ public void onRun(){
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Employment Status");
 
-        jLabel18.setBackground(new java.awt.Color(240, 235, 216));
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(63, 64, 76));
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel18.setText("Monthly Take Home Income");
-
         jLabel19.setBackground(new java.awt.Color(240, 235, 216));
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(63, 64, 76));
@@ -297,7 +306,6 @@ public void onRun(){
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("Net Worth");
 
-        amountLabel.setEditable(false);
         amountLabel.setBackground(new java.awt.Color(240, 235, 216));
         amountLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         amountLabel.setForeground(new java.awt.Color(63, 64, 76));
@@ -307,27 +315,6 @@ public void onRun(){
             }
         });
 
-        takeHomeIncomeLabel.setEditable(false);
-        takeHomeIncomeLabel.setBackground(new java.awt.Color(240, 235, 216));
-        takeHomeIncomeLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        takeHomeIncomeLabel.setForeground(new java.awt.Color(63, 64, 76));
-        takeHomeIncomeLabel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                takeHomeIncomeLabelActionPerformed(evt);
-            }
-        });
-
-        employmentStatusLabel.setEditable(false);
-        employmentStatusLabel.setBackground(new java.awt.Color(240, 235, 216));
-        employmentStatusLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        employmentStatusLabel.setForeground(new java.awt.Color(63, 64, 76));
-        employmentStatusLabel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                employmentStatusLabelActionPerformed(evt);
-            }
-        });
-
-        netWorthLabel.setEditable(false);
         netWorthLabel.setBackground(new java.awt.Color(240, 235, 216));
         netWorthLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         netWorthLabel.setForeground(new java.awt.Color(63, 64, 76));
@@ -337,7 +324,6 @@ public void onRun(){
             }
         });
 
-        incomeField.setEditable(false);
         incomeField.setBackground(new java.awt.Color(240, 235, 216));
         incomeField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         incomeField.setForeground(new java.awt.Color(63, 64, 76));
@@ -352,62 +338,65 @@ public void onRun(){
         jLabel21.setForeground(new java.awt.Color(63, 64, 76));
         jLabel21.setText("Income:");
 
+        employmentStatus.setBackground(new java.awt.Color(240, 235, 216));
+        employmentStatus.setEditable(true);
+        employmentStatus.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        employmentStatus.setForeground(new java.awt.Color(63, 64, 76));
+        employmentStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Unemployed", "Student", "Employed Part Time", "Employed Full TIme", "Self-Employed" }));
+        employmentStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                employmentStatusActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel21)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(incomeField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel19)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(amountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(netWorthLabel)
+                            .addComponent(incomeField)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(employmentStatusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(takeHomeIncomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(netWorthLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(12, 12, 12))
+                            .addComponent(jLabel19))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(employmentStatus, 0, 158, Short.MAX_VALUE)
+                            .addComponent(amountLabel))))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(incomeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel21))
-                .addGap(42, 42, 42)
+                    .addComponent(jLabel21)
+                    .addComponent(incomeField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(netWorthLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(employmentStatusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(takeHomeIncomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(employmentStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
                     .addComponent(amountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        WholePanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 340, 210));
+        WholePanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 420, 140));
 
         saveBtn.setBackground(new java.awt.Color(29, 45, 68));
         saveBtn.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
@@ -430,6 +419,20 @@ public void onRun(){
             }
         });
         WholePanel.add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 420, 190, 64));
+
+        jLabel23.setBackground(new java.awt.Color(240, 235, 216));
+        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(63, 64, 76));
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("Please input your desired changes and click Save.");
+        WholePanel.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 440, -1));
+
+        jLabel24.setBackground(new java.awt.Color(240, 235, 216));
+        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(63, 64, 76));
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel24.setText("If you would like to update your personal details,");
+        WholePanel.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 440, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -530,14 +533,44 @@ public void onRun(){
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         Constant.DoConnect();
+        double netWorth=0, monthlyIncome=0, monthlySavings=0;
         try{
-            String income1 = incomeField.getText();
-            if(income1.isEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Income Cannot Be Empty");
-            }
-            else{
-
-            }
+                String nw = netWorthLabel.getText();
+                String income = incomeField.getText();
+                String mS = amountLabel.getText();
+                if(nw.isEmpty()){
+                    JOptionPane.showMessageDialog(rootPane, "Net Worth Cannot Be Empty");
+                }
+                else if(mS.isEmpty()){
+                    JOptionPane.showMessageDialog(rootPane, "Monthly Savings Cannot Be Empty"); 
+                }
+                else if(income.isEmpty()){
+                    JOptionPane.showMessageDialog(rootPane, "Income Cannot Be Empty");
+                }
+                else {
+                    netWorth = Double.parseDouble(netWorthLabel.getText());
+                    monthlySavings = Double.parseDouble(amountLabel.getText());
+                    monthlyIncome = Double.parseDouble(incomeField.getText());   
+                    Object obj = employmentStatus.getSelectedItem();
+                    String status = obj.toString();
+                    System.out.println(status);
+                    System.out.println(netWorth);
+                    System.out.println(monthlyIncome);
+                    System.out.println(monthlySavings);
+                    String sql = ("UPDATE ROOT.PUSERS SET employment_status = ?, net_income = ?, net_worth = ?, monthly_savings = ? WHERE username= ?");
+                    PreparedStatement statement = Constant.con.prepareStatement(sql);
+                    statement.setString(1, status);
+                    statement.setDouble(2, monthlyIncome);
+                    statement.setDouble(3, netWorth);
+                    statement.setDouble(4, monthlySavings);
+                    statement.setString(5, Constant.currentUser);
+                    int rowsInserted = statement.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Data Save Succesful");
+                    StocksQuestionPage sQ = new StocksQuestionPage();
+                    sQ.setLocationRelativeTo(null);
+                    sQ.setVisible(true);
+                    this.hide();
+                }      
         }catch(NumberFormatException err){
             JOptionPane.showMessageDialog(rootPane, "Please Enter Only Numbers");
         }catch(Exception ex){
@@ -549,7 +582,8 @@ public void onRun(){
         String[] options={"Yes", "No"};
         int t =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Delete Your Account?", "Delete", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         if(t==JOptionPane.YES_OPTION){
-            int p =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Delete Your Account? This Decision Cannot Be Reversed", "Delete", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+            int p =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Delete Your Account? \n"
+                    + " This Decision Cannot Be Reversed", "Delete", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
             if(p==JOptionPane.YES_OPTION){
                 Constant.DoConnect();
                 JOptionPane.showMessageDialog(rootPane, "Succesfully Deleted Account");
@@ -564,14 +598,12 @@ public void onRun(){
     private void amountLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amountLabelActionPerformed
     }//GEN-LAST:event_amountLabelActionPerformed
 
-    private void takeHomeIncomeLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_takeHomeIncomeLabelActionPerformed
-    }//GEN-LAST:event_takeHomeIncomeLabelActionPerformed
-
-    private void employmentStatusLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employmentStatusLabelActionPerformed
-    }//GEN-LAST:event_employmentStatusLabelActionPerformed
-
     private void netWorthLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_netWorthLabelActionPerformed
     }//GEN-LAST:event_netWorthLabelActionPerformed
+
+    private void employmentStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employmentStatusActionPerformed
+
+    }//GEN-LAST:event_employmentStatusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -618,13 +650,14 @@ public void onRun(){
     private javax.swing.JLabel cryptoLabel;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JToggleButton editInfoPage;
-    private javax.swing.JTextField employmentStatusLabel;
+    private javax.swing.JComboBox<String> employmentStatus;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JTextField incomeField;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -638,6 +671,5 @@ public void onRun(){
     private javax.swing.JToggleButton savingsNormal;
     private javax.swing.JLabel stocksLabel;
     private javax.swing.JPanel stocksPanel1;
-    private javax.swing.JTextField takeHomeIncomeLabel;
     // End of variables declaration//GEN-END:variables
 }

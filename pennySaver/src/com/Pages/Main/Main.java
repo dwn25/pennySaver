@@ -377,9 +377,9 @@ public class Main extends javax.swing.JFrame {
      */
     private static void appInit()
     {
-        for(int i=1;i<=5;i++)
+        for(int i=1;i<=10;i++)
         {
-            int pctDone = i * 20;
+            int pctDone = i * 10;
             splashText("Building Module #" + i);
             splashProgress(pctDone);
             try
