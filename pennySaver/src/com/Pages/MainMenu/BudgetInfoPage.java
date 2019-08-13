@@ -263,7 +263,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         mainMenu = new javax.swing.JToggleButton();
         logoutBtn = new javax.swing.JToggleButton();
-        budgetSelected = new javax.swing.JToggleButton();
         budgetSelected1 = new javax.swing.JToggleButton();
         savingsNormal = new javax.swing.JToggleButton();
         editinfoBtn = new javax.swing.JToggleButton();
@@ -539,21 +538,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
             }
         });
         SIdeBarPanel.add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 130, 50));
-
-        budgetSelected.setBackground(new java.awt.Color(240, 235, 216));
-        budgetSelected.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/BudgetSelected.jpg"))); // NOI18N
-        budgetSelected.setBorder(null);
-        budgetSelected.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                budgetSelectedMouseClicked(evt);
-            }
-        });
-        budgetSelected.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                budgetSelectedActionPerformed(evt);
-            }
-        });
-        SIdeBarPanel.add(budgetSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 130, 50));
 
         budgetSelected1.setBackground(new java.awt.Color(240, 235, 216));
         budgetSelected1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/BudgetSelected.jpg"))); // NOI18N
@@ -868,14 +852,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_logoutBtnActionPerformed
 
-    private void budgetSelectedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetSelectedMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_budgetSelectedMouseClicked
-
-    private void budgetSelectedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetSelectedActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_budgetSelectedActionPerformed
-
     private void budgetSelected1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetSelected1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_budgetSelected1MouseClicked
@@ -952,7 +928,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     private javax.swing.JTextArea adviceTextArea;
     private javax.swing.JTextField autoAndCommutingField;
     private javax.swing.JTextField billsAndUtilitiesField;
-    private javax.swing.JToggleButton budgetSelected;
     private javax.swing.JToggleButton budgetSelected1;
     private javax.swing.JLabel cryptoLabel;
     private javax.swing.JTextField diningAndDrinksField;

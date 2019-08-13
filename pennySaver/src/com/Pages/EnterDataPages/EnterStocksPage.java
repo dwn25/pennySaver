@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.slf4j.LoggerFactory;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
@@ -25,6 +26,7 @@ public class EnterStocksPage extends javax.swing.JFrame {
      * Creates new form EnterStocksPage
      */
     public EnterStocksPage() {
+        org.slf4j.Logger log = LoggerFactory.getLogger(EnterStocksPage.class);
         setLocationRelativeTo(null);
         setResizable(false);
         initComponents();

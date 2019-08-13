@@ -566,10 +566,6 @@ public void onRun(){
                     statement.setString(5, Constant.currentUser);
                     int rowsInserted = statement.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Data Save Succesful");
-                    StocksQuestionPage sQ = new StocksQuestionPage();
-                    sQ.setLocationRelativeTo(null);
-                    sQ.setVisible(true);
-                    this.hide();
                 }      
         }catch(NumberFormatException err){
             JOptionPane.showMessageDialog(rootPane, "Please Enter Only Numbers");
