@@ -506,6 +506,9 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void savingsNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savingsNormalMouseClicked
         // TODO add your handling code here:
+        SavingsInfoPage m = new SavingsInfoPage();
+        m.setVisible(true);
+        this.hide();
     }//GEN-LAST:event_savingsNormalMouseClicked
 
     private void savingsNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savingsNormalActionPerformed
