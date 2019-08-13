@@ -45,7 +45,7 @@ public class CryptoQuestionPage extends javax.swing.JFrame {
         questionPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         wholePanel.add(questionPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, -1, -1));
 
-        headerPanel.setBackground(new java.awt.Color(91, 139, 151));
+        headerPanel.setBackground(new java.awt.Color(34, 47, 66));
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
 
@@ -68,13 +68,14 @@ public class CryptoQuestionPage extends javax.swing.JFrame {
 
         wholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 100));
 
+        jLabel2.setBackground(new java.awt.Color(34, 47, 66));
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(63, 64, 76));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Do you currently own any CyryptoCurrency?");
         wholePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 440, -1));
 
-        YEsBtn.setBackground(new java.awt.Color(63, 64, 76));
+        YEsBtn.setBackground(new java.awt.Color(34, 47, 66));
         YEsBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         YEsBtn.setForeground(new java.awt.Color(255, 255, 255));
         YEsBtn.setText("Yes");
@@ -85,7 +86,7 @@ public class CryptoQuestionPage extends javax.swing.JFrame {
         });
         wholePanel.add(YEsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 170, -1));
 
-        NoBtn2.setBackground(new java.awt.Color(63, 64, 76));
+        NoBtn2.setBackground(new java.awt.Color(34, 47, 66));
         NoBtn2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         NoBtn2.setForeground(new java.awt.Color(255, 255, 255));
         NoBtn2.setText("No");

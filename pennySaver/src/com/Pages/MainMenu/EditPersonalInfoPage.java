@@ -1,5 +1,12 @@
 package com.Pages.MainMenu;
 
+import com.Pages.Main.Main;
+import com.Support.Constant;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author DNartey
@@ -10,9 +17,53 @@ public class EditPersonalInfoPage extends javax.swing.JFrame {
      * Creates new form EditInfoPage
      */
     public EditPersonalInfoPage() {
+        setResizable(false);
         initComponents();
+        onRun();
     }
 
+public void onRun(){
+        Constant.DoConnect();
+        getField(netWorthLabel,"net_worth");
+        getFieldString(employmentStatusLabel,"employment_status");
+        getField(takeHomeIncomeLabel,"net_income");
+        getField(amountLabel,"monthly_savings");
+    }
+
+    public void getField(JTextField label1, String column){
+        try{
+            String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
+            if(rs.next()){
+                String val = rs.getString(column);
+                label1.setText(null);
+                label1.setText("$ " + val);
+                }
+            else{
+                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+            } 
+        }catch(SQLException err){
+        System.out.println("Unable to fetch "+ column);
+        }        
+    }
+    
+   public void getFieldString(JTextField label1, String column){
+        try{
+            String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
+            if(rs.next()){
+                String val = rs.getString(column);
+                label1.setText(null);
+                label1.setText(val);
+                }
+            else{
+                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+            } 
+        }catch(SQLException err){
+        System.out.println("Unable to fetch "+ column);
+        }        
+    }
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -22,21 +73,505 @@ public class EditPersonalInfoPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        WholePanel = new javax.swing.JPanel();
+        headerPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        SIdeBarPanel = new javax.swing.JPanel();
+        stocksPanel1 = new javax.swing.JPanel();
+        jPanel17 = new javax.swing.JPanel();
+        stocksLabel = new javax.swing.JLabel();
+        CryptoPanel = new javax.swing.JPanel();
+        jPanel18 = new javax.swing.JPanel();
+        cryptoLabel = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        mainMenu = new javax.swing.JToggleButton();
+        logoutBtn = new javax.swing.JToggleButton();
+        savingsNormal = new javax.swing.JToggleButton();
+        budgetNormal = new javax.swing.JToggleButton();
+        editInfoPage = new javax.swing.JToggleButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        amountLabel = new javax.swing.JTextField();
+        takeHomeIncomeLabel = new javax.swing.JTextField();
+        employmentStatusLabel = new javax.swing.JTextField();
+        netWorthLabel = new javax.swing.JTextField();
+        incomeField = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        saveBtn = new javax.swing.JButton();
+        deleteBtn = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        WholePanel.setBackground(new java.awt.Color(240, 235, 216));
+        WholePanel.setForeground(new java.awt.Color(255, 255, 255));
+        WholePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        headerPanel.setBackground(new java.awt.Color(34, 47, 66));
+
+        jLabel1.setBackground(new java.awt.Color(34, 47, 66));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Edit Info");
+
+        javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
+        headerPanel.setLayout(headerPanelLayout);
+        headerPanelLayout.setHorizontalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        headerPanelLayout.setVerticalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
+
+        WholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 440, 100));
+
+        SIdeBarPanel.setBackground(new java.awt.Color(29, 45, 68));
+        SIdeBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        stocksPanel1.setBackground(new java.awt.Color(29, 45, 68));
+        stocksPanel1.setForeground(new java.awt.Color(160, 170, 178));
+        stocksPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                stocksPanel1MouseClicked(evt);
+            }
+        });
+        stocksPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel17.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel17.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        stocksPanel1.add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
+
+        stocksLabel.setBackground(new java.awt.Color(41, 57, 80));
+        stocksLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        stocksLabel.setForeground(new java.awt.Color(255, 255, 255));
+        stocksLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        stocksLabel.setText("Stocks");
+        stocksLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                stocksLabelMouseClicked(evt);
+            }
+        });
+        stocksPanel1.add(stocksLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
+
+        SIdeBarPanel.add(stocksPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 120, 40));
+
+        CryptoPanel.setBackground(new java.awt.Color(29, 45, 68));
+        CryptoPanel.setForeground(new java.awt.Color(160, 170, 178));
+        CryptoPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CryptoPanelMouseClicked(evt);
+            }
+        });
+        CryptoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel18.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel18.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        CryptoPanel.add(jPanel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
+
+        cryptoLabel.setBackground(new java.awt.Color(41, 57, 80));
+        cryptoLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        cryptoLabel.setForeground(new java.awt.Color(255, 255, 255));
+        cryptoLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        cryptoLabel.setText("Crypto");
+        cryptoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cryptoLabelMouseClicked(evt);
+            }
+        });
+        CryptoPanel.add(cryptoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
+
+        SIdeBarPanel.add(CryptoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 120, 40));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
+        SIdeBarPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        mainMenu.setBackground(new java.awt.Color(41, 57, 80));
+        mainMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/MainMenuNormal.jpg"))); // NOI18N
+        mainMenu.setBorder(null);
+        mainMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mainMenuMouseClicked(evt);
+            }
+        });
+        mainMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mainMenuActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(mainMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 130, 50));
+
+        logoutBtn.setBackground(new java.awt.Color(41, 57, 80));
+        logoutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/logoutBtn.jpg"))); // NOI18N
+        logoutBtn.setBorder(null);
+        logoutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutBtnMouseClicked(evt);
+            }
+        });
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutBtnActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 130, 50));
+
+        savingsNormal.setBackground(new java.awt.Color(41, 57, 80));
+        savingsNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/SavingsNormal.jpg"))); // NOI18N
+        savingsNormal.setBorder(null);
+        savingsNormal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                savingsNormalMouseClicked(evt);
+            }
+        });
+        savingsNormal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                savingsNormalActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(savingsNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 130, 50));
+
+        budgetNormal.setBackground(new java.awt.Color(41, 57, 80));
+        budgetNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/BudgetNormal.jpg"))); // NOI18N
+        budgetNormal.setBorder(null);
+        budgetNormal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                budgetNormalMouseClicked(evt);
+            }
+        });
+        budgetNormal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                budgetNormalActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(budgetNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 130, 50));
+
+        editInfoPage.setBackground(new java.awt.Color(240, 235, 216));
+        editInfoPage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/EditInfoSelected.jpg"))); // NOI18N
+        editInfoPage.setBorder(null);
+        editInfoPage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editInfoPageMouseClicked(evt);
+            }
+        });
+        editInfoPage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editInfoPageActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(editInfoPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 130, 50));
+
+        WholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 490));
+
+        jPanel1.setBackground(new java.awt.Color(240, 235, 216));
+
+        jLabel8.setBackground(new java.awt.Color(240, 235, 216));
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(63, 64, 76));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel8.setText("Employment Status");
+
+        jLabel18.setBackground(new java.awt.Color(240, 235, 216));
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(63, 64, 76));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel18.setText("Monthly Take Home Income");
+
+        jLabel19.setBackground(new java.awt.Color(240, 235, 216));
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(63, 64, 76));
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel19.setText("Amount Willing to Save Every Month");
+
+        jLabel7.setBackground(new java.awt.Color(240, 235, 216));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(63, 64, 76));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel7.setText("Net Worth");
+
+        amountLabel.setEditable(false);
+        amountLabel.setBackground(new java.awt.Color(240, 235, 216));
+        amountLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        amountLabel.setForeground(new java.awt.Color(63, 64, 76));
+        amountLabel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                amountLabelActionPerformed(evt);
+            }
+        });
+
+        takeHomeIncomeLabel.setEditable(false);
+        takeHomeIncomeLabel.setBackground(new java.awt.Color(240, 235, 216));
+        takeHomeIncomeLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        takeHomeIncomeLabel.setForeground(new java.awt.Color(63, 64, 76));
+        takeHomeIncomeLabel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                takeHomeIncomeLabelActionPerformed(evt);
+            }
+        });
+
+        employmentStatusLabel.setEditable(false);
+        employmentStatusLabel.setBackground(new java.awt.Color(240, 235, 216));
+        employmentStatusLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        employmentStatusLabel.setForeground(new java.awt.Color(63, 64, 76));
+        employmentStatusLabel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                employmentStatusLabelActionPerformed(evt);
+            }
+        });
+
+        netWorthLabel.setEditable(false);
+        netWorthLabel.setBackground(new java.awt.Color(240, 235, 216));
+        netWorthLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        netWorthLabel.setForeground(new java.awt.Color(63, 64, 76));
+        netWorthLabel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                netWorthLabelActionPerformed(evt);
+            }
+        });
+
+        incomeField.setEditable(false);
+        incomeField.setBackground(new java.awt.Color(240, 235, 216));
+        incomeField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        incomeField.setForeground(new java.awt.Color(63, 64, 76));
+        incomeField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                incomeFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel21.setBackground(new java.awt.Color(240, 235, 216));
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(63, 64, 76));
+        jLabel21.setText("Income:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(incomeField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel19)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(amountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(employmentStatusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(takeHomeIncomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(netWorthLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(12, 12, 12))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(incomeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel21))
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(netWorthLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(employmentStatusLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(takeHomeIncomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(amountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39))
+        );
+
+        WholePanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 340, 210));
+
+        saveBtn.setBackground(new java.awt.Color(29, 45, 68));
+        saveBtn.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        saveBtn.setForeground(new java.awt.Color(255, 255, 255));
+        saveBtn.setText("Save");
+        saveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveBtnActionPerformed(evt);
+            }
+        });
+        WholePanel.add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, 190, 64));
+
+        deleteBtn.setBackground(new java.awt.Color(182, 44, 48));
+        deleteBtn.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        deleteBtn.setForeground(new java.awt.Color(255, 255, 255));
+        deleteBtn.setText("Delete");
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
+        WholePanel.add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 420, 190, 64));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(WholePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(WholePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void stocksLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksLabelMouseClicked
+        StocksInfoPage m = new StocksInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_stocksLabelMouseClicked
+
+    private void stocksPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksPanel1MouseClicked
+        StocksInfoPage m = new StocksInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_stocksPanel1MouseClicked
+
+    private void cryptoLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cryptoLabelMouseClicked
+
+        CryptoInfoPage m = new CryptoInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_cryptoLabelMouseClicked
+
+    private void CryptoPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CryptoPanelMouseClicked
+        CryptoInfoPage m = new CryptoInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_CryptoPanelMouseClicked
+
+    private void mainMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuMouseClicked
+        MainMenu m = new MainMenu();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_mainMenuMouseClicked
+
+    private void mainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuActionPerformed
+
+    }//GEN-LAST:event_mainMenuActionPerformed
+
+    private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseClicked
+    }//GEN-LAST:event_logoutBtnMouseClicked
+
+    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
+        String[] options={"Yes", "No"};
+        int t =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Logout?", "Logout", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        if(t==JOptionPane.YES_OPTION){
+            Constant.currentUser = "";
+            Main m = new Main();
+            m.setLocationRelativeTo(null);
+            m.setVisible(true);
+            this.hide();
+        }
+    }//GEN-LAST:event_logoutBtnActionPerformed
+
+    private void savingsNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savingsNormalMouseClicked
+        SavingsInfoPage m = new SavingsInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_savingsNormalMouseClicked
+
+    private void savingsNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savingsNormalActionPerformed
+
+    }//GEN-LAST:event_savingsNormalActionPerformed
+
+    private void budgetNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetNormalMouseClicked
+        BudgetInfoPage m = new BudgetInfoPage();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_budgetNormalMouseClicked
+
+    private void budgetNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetNormalActionPerformed
+    }//GEN-LAST:event_budgetNormalActionPerformed
+
+    private void editInfoPageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editInfoPageMouseClicked
+    }//GEN-LAST:event_editInfoPageMouseClicked
+
+    private void editInfoPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editInfoPageActionPerformed
+    }//GEN-LAST:event_editInfoPageActionPerformed
+
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+        Constant.DoConnect();
+        try{
+            String income1 = incomeField.getText();
+            if(income1.isEmpty()){
+                JOptionPane.showMessageDialog(rootPane, "Income Cannot Be Empty");
+            }
+            else{
+
+            }
+        }catch(NumberFormatException err){
+            JOptionPane.showMessageDialog(rootPane, "Please Enter Only Numbers");
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(rootPane, "An Error Occurred");
+        }
+    }//GEN-LAST:event_saveBtnActionPerformed
+
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        String[] options={"Yes", "No"};
+        int t =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Delete Your Account?", "Delete", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        if(t==JOptionPane.YES_OPTION){
+            int p =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Delete Your Account? This Decision Cannot Be Reversed", "Delete", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+            if(p==JOptionPane.YES_OPTION){
+                Constant.DoConnect();
+                JOptionPane.showMessageDialog(rootPane, "Succesfully Deleted Account");
+            }
+        }
+        
+    }//GEN-LAST:event_deleteBtnActionPerformed
+
+    private void incomeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incomeFieldActionPerformed
+    }//GEN-LAST:event_incomeFieldActionPerformed
+
+    private void amountLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_amountLabelActionPerformed
+    }//GEN-LAST:event_amountLabelActionPerformed
+
+    private void takeHomeIncomeLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_takeHomeIncomeLabelActionPerformed
+    }//GEN-LAST:event_takeHomeIncomeLabelActionPerformed
+
+    private void employmentStatusLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employmentStatusLabelActionPerformed
+    }//GEN-LAST:event_employmentStatusLabelActionPerformed
+
+    private void netWorthLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_netWorthLabelActionPerformed
+    }//GEN-LAST:event_netWorthLabelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -75,5 +610,34 @@ public class EditPersonalInfoPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel CryptoPanel;
+    private javax.swing.JPanel SIdeBarPanel;
+    private javax.swing.JPanel WholePanel;
+    private javax.swing.JTextField amountLabel;
+    private javax.swing.JToggleButton budgetNormal;
+    private javax.swing.JLabel cryptoLabel;
+    private javax.swing.JButton deleteBtn;
+    private javax.swing.JToggleButton editInfoPage;
+    private javax.swing.JTextField employmentStatusLabel;
+    private javax.swing.JPanel headerPanel;
+    private javax.swing.JTextField incomeField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
+    private javax.swing.JToggleButton logoutBtn;
+    private javax.swing.JToggleButton mainMenu;
+    private javax.swing.JTextField netWorthLabel;
+    private javax.swing.JButton saveBtn;
+    private javax.swing.JToggleButton savingsNormal;
+    private javax.swing.JLabel stocksLabel;
+    private javax.swing.JPanel stocksPanel1;
+    private javax.swing.JTextField takeHomeIncomeLabel;
     // End of variables declaration//GEN-END:variables
 }

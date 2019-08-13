@@ -48,7 +48,7 @@ public class NoUseMain extends javax.swing.JFrame {
         questionPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         wholePanel.add(questionPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, -1, -1));
 
-        headerPanel.setBackground(new java.awt.Color(91, 139, 151));
+        headerPanel.setBackground(new java.awt.Color(34, 47, 66));
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
 
@@ -71,13 +71,14 @@ public class NoUseMain extends javax.swing.JFrame {
 
         wholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 100));
 
+        jLabel2.setBackground(new java.awt.Color(34, 47, 66));
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(63, 64, 76));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Or \"No\" to start again.");
         wholePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 440, -1));
 
-        YEsBtn.setBackground(new java.awt.Color(63, 64, 76));
+        YEsBtn.setBackground(new java.awt.Color(34, 47, 66));
         YEsBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         YEsBtn.setForeground(new java.awt.Color(255, 255, 255));
         YEsBtn.setText("Yes");
@@ -88,7 +89,7 @@ public class NoUseMain extends javax.swing.JFrame {
         });
         wholePanel.add(YEsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 170, -1));
 
-        NoBtn2.setBackground(new java.awt.Color(63, 64, 76));
+        NoBtn2.setBackground(new java.awt.Color(34, 47, 66));
         NoBtn2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         NoBtn2.setForeground(new java.awt.Color(255, 255, 255));
         NoBtn2.setText("No");
@@ -99,12 +100,14 @@ public class NoUseMain extends javax.swing.JFrame {
         });
         wholePanel.add(NoBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 170, -1));
 
+        jLabel3.setBackground(new java.awt.Color(34, 47, 66));
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(63, 64, 76));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("You currently have no use for PennySaver");
         wholePanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 440, -1));
 
+        jLabel4.setBackground(new java.awt.Color(34, 47, 66));
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(63, 64, 76));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

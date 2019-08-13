@@ -691,15 +691,15 @@ public class EditBudgetPage extends javax.swing.JFrame {
 
         WholePanel.add(InfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 940, 580));
 
-        headerPanel.setBackground(new java.awt.Color(91, 139, 151));
+        headerPanel.setBackground(new java.awt.Color(34, 47, 66));
 
-        jLabel1.setBackground(new java.awt.Color(32, 33, 35));
+        jLabel1.setBackground(new java.awt.Color(34, 47, 66));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Alter The categories To Generate a New Chart");
 
-        jLabel2.setBackground(new java.awt.Color(32, 33, 35));
+        jLabel2.setBackground(new java.awt.Color(34, 47, 66));
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

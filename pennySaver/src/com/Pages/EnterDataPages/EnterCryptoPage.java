@@ -179,7 +179,7 @@ public class EnterCryptoPage extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(63, 64, 76));
         jLabel5.setText("Crypto Number:");
 
-        nextBtn.setBackground(new java.awt.Color(29, 45, 68));
+        nextBtn.setBackground(new java.awt.Color(34, 47, 66));
         nextBtn.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         nextBtn.setForeground(new java.awt.Color(255, 255, 255));
         nextBtn.setText("Next");
@@ -192,7 +192,7 @@ public class EnterCryptoPage extends javax.swing.JFrame {
             }
         });
 
-        addBtn.setBackground(new java.awt.Color(29, 45, 68));
+        addBtn.setBackground(new java.awt.Color(34, 47, 66));
         addBtn.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         addBtn.setForeground(new java.awt.Color(255, 255, 255));
         addBtn.setText("Add");
@@ -205,17 +205,18 @@ public class EnterCryptoPage extends javax.swing.JFrame {
             }
         });
 
-        headerPanel.setBackground(new java.awt.Color(91, 139, 151));
+        headerPanel.setBackground(new java.awt.Color(34, 47, 66));
 
-        firstName.setBackground(new java.awt.Color(32, 33, 35));
+        firstName.setBackground(new java.awt.Color(34, 47, 66));
         firstName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         firstName.setForeground(new java.awt.Color(255, 255, 255));
         firstName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         firstName.setText("and the number that you own");
 
+        jLabel13.setBackground(new java.awt.Color(34, 47, 66));
         jLabel13.setForeground(new java.awt.Color(63, 64, 76));
 
-        firstName1.setBackground(new java.awt.Color(32, 33, 35));
+        firstName1.setBackground(new java.awt.Color(34, 47, 66));
         firstName1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         firstName1.setForeground(new java.awt.Color(255, 255, 255));
         firstName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

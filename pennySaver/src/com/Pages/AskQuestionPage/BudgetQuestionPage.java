@@ -45,7 +45,7 @@ public class BudgetQuestionPage extends javax.swing.JFrame {
         questionPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         wholePanel.add(questionPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, -1, -1));
 
-        headerPanel.setBackground(new java.awt.Color(91, 139, 151));
+        headerPanel.setBackground(new java.awt.Color(34, 47, 66));
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
 
@@ -68,13 +68,14 @@ public class BudgetQuestionPage extends javax.swing.JFrame {
 
         wholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 100));
 
+        jLabel1.setBackground(new java.awt.Color(34, 47, 66));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(63, 64, 76));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Would you like to create a Weekly Budget?");
         wholePanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 440, -1));
 
-        NoBtn.setBackground(new java.awt.Color(91, 139, 151));
+        NoBtn.setBackground(new java.awt.Color(34, 47, 66));
         NoBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         NoBtn.setForeground(new java.awt.Color(255, 255, 255));
         NoBtn.setText("No");
@@ -85,7 +86,7 @@ public class BudgetQuestionPage extends javax.swing.JFrame {
         });
         wholePanel.add(NoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 170, -1));
 
-        yesBTn.setBackground(new java.awt.Color(91, 139, 151));
+        yesBTn.setBackground(new java.awt.Color(34, 47, 66));
         yesBTn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         yesBTn.setForeground(new java.awt.Color(255, 255, 255));
         yesBTn.setText("Yes");

@@ -244,7 +244,7 @@ public class EnterBudgetPage extends javax.swing.JFrame {
             }
         });
 
-        submitBtn.setBackground(new java.awt.Color(29, 45, 68));
+        submitBtn.setBackground(new java.awt.Color(34, 47, 66));
         submitBtn.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         submitBtn.setForeground(new java.awt.Color(255, 255, 255));
         submitBtn.setText("Submit");
@@ -518,15 +518,15 @@ public class EnterBudgetPage extends javax.swing.JFrame {
 
         wholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 470));
 
-        headerPanel.setBackground(new java.awt.Color(91, 139, 151));
+        headerPanel.setBackground(new java.awt.Color(34, 47, 66));
 
-        firstName1.setBackground(new java.awt.Color(32, 33, 35));
+        firstName1.setBackground(new java.awt.Color(34, 47, 66));
         firstName1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         firstName1.setForeground(new java.awt.Color(255, 255, 255));
         firstName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         firstName1.setText("Please fill out the spending categories ");
 
-        firstName2.setBackground(new java.awt.Color(32, 33, 35));
+        firstName2.setBackground(new java.awt.Color(34, 47, 66));
         firstName2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         firstName2.setForeground(new java.awt.Color(255, 255, 255));
         firstName2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

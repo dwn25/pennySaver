@@ -81,9 +81,6 @@ public class MainMenu extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         WholePanel = new javax.swing.JPanel();
         SIdeBarPanel = new javax.swing.JPanel();
-        editInfoPanel = new javax.swing.JPanel();
-        jPanel16 = new javax.swing.JPanel();
-        editInfoLabel = new javax.swing.JLabel();
         stocksPanel1 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
         stocksLabel = new javax.swing.JLabel();
@@ -95,6 +92,7 @@ public class MainMenu extends javax.swing.JFrame {
         jToggleButton2 = new javax.swing.JToggleButton();
         budgetNormal = new javax.swing.JToggleButton();
         savingsNormal = new javax.swing.JToggleButton();
+        editinfoBtn = new javax.swing.JToggleButton();
         InfoPanel = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -122,33 +120,6 @@ public class MainMenu extends javax.swing.JFrame {
 
         SIdeBarPanel.setBackground(new java.awt.Color(29, 45, 68));
         SIdeBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        editInfoPanel.setBackground(new java.awt.Color(29, 45, 68));
-        editInfoPanel.setForeground(new java.awt.Color(160, 170, 178));
-        editInfoPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editInfoPanelMouseClicked(evt);
-            }
-        });
-        editInfoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel16.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        editInfoPanel.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
-
-        editInfoLabel.setBackground(new java.awt.Color(41, 57, 80));
-        editInfoLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        editInfoLabel.setForeground(new java.awt.Color(255, 255, 255));
-        editInfoLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        editInfoLabel.setText("Edit Info");
-        editInfoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editInfoLabelMouseClicked(evt);
-            }
-        });
-        editInfoPanel.add(editInfoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
-
-        SIdeBarPanel.add(editInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 120, 40));
 
         stocksPanel1.setBackground(new java.awt.Color(29, 45, 68));
         stocksPanel1.setForeground(new java.awt.Color(160, 170, 178));
@@ -220,7 +191,7 @@ public class MainMenu extends javax.swing.JFrame {
                 logoutBtnActionPerformed(evt);
             }
         });
-        SIdeBarPanel.add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 130, 50));
+        SIdeBarPanel.add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 130, 50));
 
         jToggleButton2.setBackground(new java.awt.Color(240, 235, 216));
         jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/MainMenuSelected.jpg"))); // NOI18N
@@ -266,6 +237,21 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         SIdeBarPanel.add(savingsNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 130, 50));
+
+        editinfoBtn.setBackground(new java.awt.Color(41, 57, 80));
+        editinfoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/EditInfoNormal.jpg"))); // NOI18N
+        editinfoBtn.setBorder(null);
+        editinfoBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editinfoBtnMouseClicked(evt);
+            }
+        });
+        editinfoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editinfoBtnActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(editinfoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 130, 50));
 
         WholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 470));
 
@@ -373,15 +359,15 @@ public class MainMenu extends javax.swing.JFrame {
 
         WholePanel.add(InfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 550, 380));
 
-        headerPanel.setBackground(new java.awt.Color(91, 139, 151));
+        headerPanel.setBackground(new java.awt.Color(34, 47, 66));
 
-        jLabel1.setBackground(new java.awt.Color(32, 33, 35));
+        jLabel1.setBackground(new java.awt.Color(34, 47, 66));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Welcome back to PennySavers");
 
-        firstName.setBackground(new java.awt.Color(32, 33, 35));
+        firstName.setBackground(new java.awt.Color(34, 47, 66));
         firstName.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         firstName.setForeground(new java.awt.Color(255, 255, 255));
         firstName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -409,7 +395,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGap(35, 35, 35))
         );
 
-        WholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 520, 80));
+        WholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 550, 90));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -439,20 +425,6 @@ public class MainMenu extends javax.swing.JFrame {
         m.setVisible(true);
         this.hide();     
     }//GEN-LAST:event_CryptoPanelMouseClicked
-
-    private void editInfoPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editInfoPanelMouseClicked
-        EditPersonalInfoPage m = new EditPersonalInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide(); 
-    }//GEN-LAST:event_editInfoPanelMouseClicked
-
-    private void editInfoLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editInfoLabelMouseClicked
-        EditPersonalInfoPage m = new EditPersonalInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide(); 
-    }//GEN-LAST:event_editInfoLabelMouseClicked
 
     private void stocksLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksLabelMouseClicked
         StocksInfoPage m = new StocksInfoPage();
@@ -515,6 +487,17 @@ public class MainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_savingsNormalActionPerformed
 
+    private void editinfoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editinfoBtnMouseClicked
+        // TODO add your handling code here:
+        EditPersonalInfoPage m = new EditPersonalInfoPage();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_editinfoBtnMouseClicked
+
+    private void editinfoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editinfoBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editinfoBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -558,8 +541,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel amountLabel;
     private javax.swing.JToggleButton budgetNormal;
     private javax.swing.JLabel cryptoLabel;
-    private javax.swing.JLabel editInfoLabel;
-    private javax.swing.JPanel editInfoPanel;
+    private javax.swing.JToggleButton editinfoBtn;
     private javax.swing.JLabel employmentStatusLabel;
     private javax.swing.JLabel firstName;
     private javax.swing.JPanel headerPanel;
@@ -572,7 +554,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JToggleButton jToggleButton2;

@@ -178,15 +178,15 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
 
         wholePanel.add(pageInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 330, 440));
 
-        headerPanel.setBackground(new java.awt.Color(91, 139, 151));
+        headerPanel.setBackground(new java.awt.Color(34, 47, 66));
 
-        jLabel9.setBackground(new java.awt.Color(32, 33, 35));
+        jLabel9.setBackground(new java.awt.Color(34, 47, 66));
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Welcome to PennySavers");
 
-        jLabel10.setBackground(new java.awt.Color(32, 33, 35));
+        jLabel10.setBackground(new java.awt.Color(34, 47, 66));
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -261,7 +261,7 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
             }
         });
 
-        nextBtn.setBackground(new java.awt.Color(63, 64, 76));
+        nextBtn.setBackground(new java.awt.Color(34, 47, 66));
         nextBtn.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         nextBtn.setForeground(new java.awt.Color(255, 255, 255));
         nextBtn.setText("Next");
@@ -271,7 +271,7 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
             }
         });
 
-        Cancel.setBackground(new java.awt.Color(63, 64, 76));
+        Cancel.setBackground(new java.awt.Color(34, 47, 66));
         Cancel.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         Cancel.setForeground(new java.awt.Color(255, 255, 255));
         Cancel.setText("Cancel");

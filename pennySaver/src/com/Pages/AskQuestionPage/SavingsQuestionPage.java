@@ -41,7 +41,6 @@ public class SavingsQuestionPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         yesBtn = new javax.swing.JButton();
         NoBtn1 = new javax.swing.JButton();
-        NoBtn2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,7 +52,7 @@ public class SavingsQuestionPage extends javax.swing.JFrame {
         questionPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         wholePanel.add(questionPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, -1, -1));
 
-        headerPanel.setBackground(new java.awt.Color(91, 139, 151));
+        headerPanel.setBackground(new java.awt.Color(34, 47, 66));
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
 
@@ -76,13 +75,14 @@ public class SavingsQuestionPage extends javax.swing.JFrame {
 
         wholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 100));
 
+        jLabel1.setBackground(new java.awt.Color(34, 47, 66));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(63, 64, 76));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Would you like to see your Savings Forecast?");
         wholePanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 440, -1));
 
-        yesBtn.setBackground(new java.awt.Color(91, 139, 151));
+        yesBtn.setBackground(new java.awt.Color(34, 47, 66));
         yesBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         yesBtn.setForeground(new java.awt.Color(255, 255, 255));
         yesBtn.setText("Yes");
@@ -93,7 +93,7 @@ public class SavingsQuestionPage extends javax.swing.JFrame {
         });
         wholePanel.add(yesBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 170, -1));
 
-        NoBtn1.setBackground(new java.awt.Color(91, 139, 151));
+        NoBtn1.setBackground(new java.awt.Color(34, 47, 66));
         NoBtn1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         NoBtn1.setForeground(new java.awt.Color(255, 255, 255));
         NoBtn1.setText("No");
@@ -107,18 +107,7 @@ public class SavingsQuestionPage extends javax.swing.JFrame {
                 NoBtn1ActionPerformed(evt);
             }
         });
-        wholePanel.add(NoBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 170, -1));
-
-        NoBtn2.setBackground(new java.awt.Color(91, 139, 151));
-        NoBtn2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        NoBtn2.setForeground(new java.awt.Color(255, 255, 255));
-        NoBtn2.setText("No");
-        NoBtn2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NoBtn2ActionPerformed(evt);
-            }
-        });
-        wholePanel.add(NoBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 170, -1));
+        wholePanel.add(NoBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 170, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,9 +134,6 @@ public class SavingsQuestionPage extends javax.swing.JFrame {
         m.setVisible(true);
         this.hide();
     }//GEN-LAST:event_yesBtnActionPerformed
-
-    private void NoBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoBtn2ActionPerformed
-    }//GEN-LAST:event_NoBtn2ActionPerformed
 
     private void NoBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NoBtn1MouseClicked
         Constant.hasSavings = false;
@@ -200,7 +186,6 @@ public class SavingsQuestionPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton NoBtn1;
-    private javax.swing.JButton NoBtn2;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel logo;

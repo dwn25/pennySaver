@@ -254,9 +254,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         adviceTextArea = new javax.swing.JTextArea();
         SIdeBarPanel = new javax.swing.JPanel();
-        editInfoPanel = new javax.swing.JPanel();
-        jPanel16 = new javax.swing.JPanel();
-        editInfoLabel = new javax.swing.JLabel();
         stocksPanel1 = new javax.swing.JPanel();
         jPanel17 = new javax.swing.JPanel();
         stocksLabel = new javax.swing.JLabel();
@@ -269,6 +266,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         budgetSelected = new javax.swing.JToggleButton();
         budgetSelected1 = new javax.swing.JToggleButton();
         savingsNormal = new javax.swing.JToggleButton();
+        editinfoBtn = new javax.swing.JToggleButton();
         jPanel1 = new javax.swing.JPanel();
         homeField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -293,15 +291,15 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         WholePanel.setForeground(new java.awt.Color(255, 255, 255));
         WholePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        headerPanel.setBackground(new java.awt.Color(91, 139, 151));
+        headerPanel.setBackground(new java.awt.Color(34, 47, 66));
 
-        jLabel1.setBackground(new java.awt.Color(32, 33, 35));
+        jLabel1.setBackground(new java.awt.Color(34, 47, 66));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Weekly Budget");
 
-        jLabel2.setBackground(new java.awt.Color(32, 33, 35));
+        jLabel2.setBackground(new java.awt.Color(34, 47, 66));
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -455,33 +453,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         SIdeBarPanel.setBackground(new java.awt.Color(29, 45, 68));
         SIdeBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        editInfoPanel.setBackground(new java.awt.Color(29, 45, 68));
-        editInfoPanel.setForeground(new java.awt.Color(160, 170, 178));
-        editInfoPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editInfoPanelMouseClicked(evt);
-            }
-        });
-        editInfoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel16.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        editInfoPanel.add(jPanel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
-
-        editInfoLabel.setBackground(new java.awt.Color(41, 57, 80));
-        editInfoLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        editInfoLabel.setForeground(new java.awt.Color(255, 255, 255));
-        editInfoLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        editInfoLabel.setText("Edit Info");
-        editInfoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editInfoLabelMouseClicked(evt);
-            }
-        });
-        editInfoPanel.add(editInfoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
-
-        SIdeBarPanel.add(editInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 120, 40));
-
         stocksPanel1.setBackground(new java.awt.Color(29, 45, 68));
         stocksPanel1.setForeground(new java.awt.Color(160, 170, 178));
         stocksPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -613,6 +584,21 @@ public class BudgetInfoPage extends javax.swing.JFrame {
             }
         });
         SIdeBarPanel.add(savingsNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 130, 50));
+
+        editinfoBtn.setBackground(new java.awt.Color(41, 57, 80));
+        editinfoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/EditInfoNormal.jpg"))); // NOI18N
+        editinfoBtn.setBorder(null);
+        editinfoBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editinfoBtnMouseClicked(evt);
+            }
+        });
+        editinfoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editinfoBtnActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(editinfoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 130, 50));
 
         WholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 490));
 
@@ -819,20 +805,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_incomeFieldActionPerformed
 
-    private void editInfoLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editInfoLabelMouseClicked
-        EditPersonalInfoPage m = new EditPersonalInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_editInfoLabelMouseClicked
-
-    private void editInfoPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editInfoPanelMouseClicked
-        EditPersonalInfoPage m = new EditPersonalInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_editInfoPanelMouseClicked
-
     private void stocksLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksLabelMouseClicked
         StocksInfoPage m = new StocksInfoPage();
         m.setLocationRelativeTo(null);
@@ -924,6 +896,17 @@ public class BudgetInfoPage extends javax.swing.JFrame {
 
     }//GEN-LAST:event_savingsNormalActionPerformed
 
+    private void editinfoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editinfoBtnMouseClicked
+        // TODO add your handling code here:
+        EditPersonalInfoPage m = new EditPersonalInfoPage();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_editinfoBtnMouseClicked
+
+    private void editinfoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editinfoBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editinfoBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -973,8 +956,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     private javax.swing.JToggleButton budgetSelected1;
     private javax.swing.JLabel cryptoLabel;
     private javax.swing.JTextField diningAndDrinksField;
-    private javax.swing.JLabel editInfoLabel;
-    private javax.swing.JPanel editInfoPanel;
+    private javax.swing.JToggleButton editinfoBtn;
     private javax.swing.JTextField educationField;
     private javax.swing.JTextField entertainmentField;
     private javax.swing.JTextField feesField;
@@ -998,7 +980,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JScrollPane jScrollPane1;

@@ -78,7 +78,7 @@ public class EditSavingsPage extends javax.swing.JFrame {
         wholePanel.setBackground(new java.awt.Color(240, 235, 216));
         wholePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        updateBtn.setBackground(new java.awt.Color(63, 64, 76));
+        updateBtn.setBackground(new java.awt.Color(34, 47, 66));
         updateBtn.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         updateBtn.setForeground(new java.awt.Color(255, 255, 255));
         updateBtn.setText("Update");
@@ -221,15 +221,15 @@ public class EditSavingsPage extends javax.swing.JFrame {
 
         wholePanel.add(dataEntryPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 215, 430, 200));
 
-        headerPanel.setBackground(new java.awt.Color(91, 139, 151));
+        headerPanel.setBackground(new java.awt.Color(34, 47, 66));
 
-        firstName1.setBackground(new java.awt.Color(32, 33, 35));
+        firstName1.setBackground(new java.awt.Color(34, 47, 66));
         firstName1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         firstName1.setForeground(new java.awt.Color(255, 255, 255));
         firstName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         firstName1.setText("Try Out Different Values");
 
-        firstName2.setBackground(new java.awt.Color(32, 33, 35));
+        firstName2.setBackground(new java.awt.Color(34, 47, 66));
         firstName2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         firstName2.setForeground(new java.awt.Color(255, 255, 255));
         firstName2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -264,7 +264,7 @@ public class EditSavingsPage extends javax.swing.JFrame {
 
         wholePanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 440, 140));
 
-        backBtn.setBackground(new java.awt.Color(63, 64, 76));
+        backBtn.setBackground(new java.awt.Color(34, 47, 66));
         backBtn.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         backBtn.setForeground(new java.awt.Color(255, 255, 255));
         backBtn.setText("Back");
@@ -275,7 +275,7 @@ public class EditSavingsPage extends javax.swing.JFrame {
         });
         wholePanel.add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 480, 150, 50));
 
-        calculateBtn.setBackground(new java.awt.Color(63, 64, 76));
+        calculateBtn.setBackground(new java.awt.Color(34, 47, 66));
         calculateBtn.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         calculateBtn.setForeground(new java.awt.Color(255, 255, 255));
         calculateBtn.setText("Calculate");
@@ -286,7 +286,7 @@ public class EditSavingsPage extends javax.swing.JFrame {
         });
         wholePanel.add(calculateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 150, 50));
 
-        resetBtn.setBackground(new java.awt.Color(63, 64, 76));
+        resetBtn.setBackground(new java.awt.Color(34, 47, 66));
         resetBtn.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         resetBtn.setForeground(new java.awt.Color(255, 255, 255));
         resetBtn.setText("Reset");

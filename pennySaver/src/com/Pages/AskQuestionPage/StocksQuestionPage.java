@@ -47,8 +47,9 @@ public class StocksQuestionPage extends javax.swing.JFrame {
         questionPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         wholePanel.add(questionPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, -1, -1));
 
-        headerPanel.setBackground(new java.awt.Color(91, 139, 151));
+        headerPanel.setBackground(new java.awt.Color(34, 47, 66));
 
+        logo.setBackground(new java.awt.Color(34, 47, 66));
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
@@ -70,13 +71,14 @@ public class StocksQuestionPage extends javax.swing.JFrame {
 
         wholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 100));
 
+        jLabel2.setBackground(new java.awt.Color(34, 47, 66));
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(63, 64, 76));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Do you currently have any position in the Stock Market?");
         wholePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 460, -1));
 
-        YEsBtn.setBackground(new java.awt.Color(29, 45, 68));
+        YEsBtn.setBackground(new java.awt.Color(34, 47, 66));
         YEsBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         YEsBtn.setForeground(new java.awt.Color(255, 255, 255));
         YEsBtn.setText("Yes");
@@ -87,7 +89,7 @@ public class StocksQuestionPage extends javax.swing.JFrame {
         });
         wholePanel.add(YEsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 170, -1));
 
-        NoBtn2.setBackground(new java.awt.Color(91, 139, 151));
+        NoBtn2.setBackground(new java.awt.Color(34, 47, 66));
         NoBtn2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         NoBtn2.setForeground(new java.awt.Color(255, 255, 255));
         NoBtn2.setText("No");

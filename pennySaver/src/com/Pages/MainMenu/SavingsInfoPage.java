@@ -102,9 +102,6 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         WholePanel3 = new javax.swing.JPanel();
         SIdeBarPanel3 = new javax.swing.JPanel();
-        editInfoPanel3 = new javax.swing.JPanel();
-        jPanel31 = new javax.swing.JPanel();
-        editInfoLabel3 = new javax.swing.JLabel();
         stocksPanel4 = new javax.swing.JPanel();
         jPanel32 = new javax.swing.JPanel();
         stocksLabel3 = new javax.swing.JLabel();
@@ -116,6 +113,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         mainMenu = new javax.swing.JToggleButton();
         budgetNormal = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
+        editinfoBtn = new javax.swing.JToggleButton();
         InfoPanel3 = new javax.swing.JPanel();
         rateField = new javax.swing.JTextField();
         timeField = new javax.swing.JTextField();
@@ -191,33 +189,6 @@ public class SavingsInfoPage extends javax.swing.JFrame {
 
         SIdeBarPanel3.setBackground(new java.awt.Color(29, 45, 68));
         SIdeBarPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        editInfoPanel3.setBackground(new java.awt.Color(29, 45, 68));
-        editInfoPanel3.setForeground(new java.awt.Color(160, 170, 178));
-        editInfoPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editInfoPanel3MouseClicked(evt);
-            }
-        });
-        editInfoPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel31.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel31.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        editInfoPanel3.add(jPanel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
-
-        editInfoLabel3.setBackground(new java.awt.Color(41, 57, 80));
-        editInfoLabel3.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        editInfoLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        editInfoLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        editInfoLabel3.setText("Edit Info");
-        editInfoLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editInfoLabel3MouseClicked(evt);
-            }
-        });
-        editInfoPanel3.add(editInfoLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
-
-        SIdeBarPanel3.add(editInfoPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 120, 40));
 
         stocksPanel4.setBackground(new java.awt.Color(29, 45, 68));
         stocksPanel4.setForeground(new java.awt.Color(160, 170, 178));
@@ -335,6 +306,21 @@ public class SavingsInfoPage extends javax.swing.JFrame {
             }
         });
         SIdeBarPanel3.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 130, 50));
+
+        editinfoBtn.setBackground(new java.awt.Color(41, 57, 80));
+        editinfoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/EditInfoNormal.jpg"))); // NOI18N
+        editinfoBtn.setBorder(null);
+        editinfoBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editinfoBtnMouseClicked(evt);
+            }
+        });
+        editinfoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editinfoBtnActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel3.add(editinfoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 130, 50));
 
         WholePanel3.add(SIdeBarPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 470));
 
@@ -470,9 +456,9 @@ public class SavingsInfoPage extends javax.swing.JFrame {
 
         WholePanel3.add(InfoPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 390, 380));
 
-        headerPanel.setBackground(new java.awt.Color(91, 139, 151));
+        headerPanel.setBackground(new java.awt.Color(34, 47, 66));
 
-        jLabel1.setBackground(new java.awt.Color(32, 33, 35));
+        jLabel1.setBackground(new java.awt.Color(34, 47, 66));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -485,25 +471,23 @@ public class SavingsInfoPage extends javax.swing.JFrame {
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        WholePanel3.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 520, 80));
+        WholePanel3.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 370, 90));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(WholePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(WholePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -513,20 +497,6 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void editInfoLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editInfoLabel3MouseClicked
-        EditPersonalInfoPage m = new EditPersonalInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_editInfoLabel3MouseClicked
-
-    private void editInfoPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editInfoPanel3MouseClicked
-        EditPersonalInfoPage m = new EditPersonalInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_editInfoPanel3MouseClicked
 
     private void stocksLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksLabel3MouseClicked
         StocksInfoPage m = new StocksInfoPage();
@@ -611,6 +581,17 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
+    private void editinfoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editinfoBtnMouseClicked
+        // TODO add your handling code here:
+        EditPersonalInfoPage m = new EditPersonalInfoPage();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_editinfoBtnMouseClicked
+
+    private void editinfoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editinfoBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editinfoBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -654,8 +635,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     private javax.swing.JPanel WholePanel3;
     private javax.swing.JToggleButton budgetNormal;
     private javax.swing.JLabel cryptoLabel3;
-    private javax.swing.JLabel editInfoLabel3;
-    private javax.swing.JPanel editInfoPanel3;
+    private javax.swing.JToggleButton editinfoBtn;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JTextField interestField;
     private javax.swing.JFrame jFrame1;
@@ -668,7 +648,6 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel32;
     private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel7;

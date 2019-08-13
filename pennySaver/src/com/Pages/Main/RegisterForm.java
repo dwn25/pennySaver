@@ -78,20 +78,21 @@ public class RegisterForm extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(637, 434));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        headerPanel.setBackground(new java.awt.Color(91, 139, 151));
+        headerPanel.setBackground(new java.awt.Color(34, 47, 66));
 
-        jLabel9.setBackground(new java.awt.Color(32, 33, 35));
+        jLabel9.setBackground(new java.awt.Color(34, 47, 66));
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Welcome to PennySavers");
 
-        jLabel7.setBackground(new java.awt.Color(32, 33, 35));
+        jLabel7.setBackground(new java.awt.Color(34, 47, 66));
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Please enter your details below");
 
+        jLabel4.setBackground(new java.awt.Color(34, 47, 66));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
@@ -213,7 +214,7 @@ public class RegisterForm extends javax.swing.JFrame {
             }
         });
 
-        Cancel.setBackground(new java.awt.Color(91, 139, 151));
+        Cancel.setBackground(new java.awt.Color(34, 47, 66));
         Cancel.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         Cancel.setForeground(new java.awt.Color(255, 255, 255));
         Cancel.setText("Cancel");
@@ -224,7 +225,7 @@ public class RegisterForm extends javax.swing.JFrame {
             }
         });
 
-        RegisterBtn.setBackground(new java.awt.Color(91, 139, 151));
+        RegisterBtn.setBackground(new java.awt.Color(34, 47, 66));
         RegisterBtn.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         RegisterBtn.setForeground(new java.awt.Color(255, 255, 255));
         RegisterBtn.setText("Register");
