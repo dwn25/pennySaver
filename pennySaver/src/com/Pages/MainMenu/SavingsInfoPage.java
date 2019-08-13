@@ -1,6 +1,7 @@
 package com.Pages.MainMenu;
 
 import com.Pages.EditPages.EditSavingsPage;
+import com.Pages.Main.Main;
 import com.Support.Constant;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -101,9 +102,6 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         WholePanel3 = new javax.swing.JPanel();
         SIdeBarPanel3 = new javax.swing.JPanel();
-        budgetPanel3 = new javax.swing.JPanel();
-        jPanel29 = new javax.swing.JPanel();
-        budgetLabel6 = new javax.swing.JLabel();
         editInfoPanel3 = new javax.swing.JPanel();
         jPanel31 = new javax.swing.JPanel();
         editInfoLabel3 = new javax.swing.JLabel();
@@ -114,12 +112,10 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         jPanel33 = new javax.swing.JPanel();
         cryptoLabel3 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        sacingsPanel = new javax.swing.JPanel();
-        jPanel35 = new javax.swing.JPanel();
-        budgetLabel8 = new javax.swing.JLabel();
-        menuPanel = new javax.swing.JPanel();
-        jPanel30 = new javax.swing.JPanel();
-        mainMenu = new javax.swing.JLabel();
+        logoutBtn = new javax.swing.JToggleButton();
+        mainMenu = new javax.swing.JToggleButton();
+        budgetNormal = new javax.swing.JToggleButton();
+        jToggleButton2 = new javax.swing.JToggleButton();
         InfoPanel3 = new javax.swing.JPanel();
         rateField = new javax.swing.JTextField();
         timeField = new javax.swing.JTextField();
@@ -195,33 +191,6 @@ public class SavingsInfoPage extends javax.swing.JFrame {
 
         SIdeBarPanel3.setBackground(new java.awt.Color(29, 45, 68));
         SIdeBarPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        budgetPanel3.setBackground(new java.awt.Color(29, 45, 68));
-        budgetPanel3.setForeground(new java.awt.Color(160, 170, 178));
-        budgetPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                budgetPanel3MouseClicked(evt);
-            }
-        });
-        budgetPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel29.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel29.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        budgetPanel3.add(jPanel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
-
-        budgetLabel6.setBackground(new java.awt.Color(41, 57, 80));
-        budgetLabel6.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        budgetLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        budgetLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        budgetLabel6.setText("Budget  ");
-        budgetLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                budgetLabel6MouseClicked(evt);
-            }
-        });
-        budgetPanel3.add(budgetLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
-
-        SIdeBarPanel3.add(budgetPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 120, 40));
 
         editInfoPanel3.setBackground(new java.awt.Color(29, 45, 68));
         editInfoPanel3.setForeground(new java.awt.Color(160, 170, 178));
@@ -305,62 +274,67 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         SIdeBarPanel3.add(CryptoPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 120, 40));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
-        SIdeBarPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        SIdeBarPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
-        sacingsPanel.setBackground(new java.awt.Color(240, 235, 216));
-        sacingsPanel.setForeground(new java.awt.Color(63, 64, 76));
-        sacingsPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+        logoutBtn.setBackground(new java.awt.Color(41, 57, 80));
+        logoutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/logoutBtn.jpg"))); // NOI18N
+        logoutBtn.setBorder(null);
+        logoutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                sacingsPanelMouseClicked(evt);
+                logoutBtnMouseClicked(evt);
             }
         });
-        sacingsPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel35.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel35.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel35.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        sacingsPanel.add(jPanel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
-
-        budgetLabel8.setBackground(new java.awt.Color(240, 235, 216));
-        budgetLabel8.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        budgetLabel8.setForeground(new java.awt.Color(63, 64, 76));
-        budgetLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        budgetLabel8.setText("Savings");
-        budgetLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                budgetLabel8MouseClicked(evt);
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutBtnActionPerformed(evt);
             }
         });
-        sacingsPanel.add(budgetLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
-
-        SIdeBarPanel3.add(sacingsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, -1, 40));
-
-        menuPanel.setBackground(new java.awt.Color(29, 45, 68));
-        menuPanel.setForeground(new java.awt.Color(160, 170, 178));
-        menuPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                menuPanelMouseClicked(evt);
-            }
-        });
-        menuPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel30.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel30.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        menuPanel.add(jPanel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
+        SIdeBarPanel3.add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 130, 50));
 
         mainMenu.setBackground(new java.awt.Color(41, 57, 80));
-        mainMenu.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        mainMenu.setForeground(new java.awt.Color(255, 255, 255));
-        mainMenu.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        mainMenu.setText("Main Menu");
+        mainMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/MainMenuNormal.jpg"))); // NOI18N
+        mainMenu.setBorder(null);
         mainMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 mainMenuMouseClicked(evt);
             }
         });
-        menuPanel.add(mainMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
+        mainMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mainMenuActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel3.add(mainMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 130, 50));
 
-        SIdeBarPanel3.add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 120, 40));
+        budgetNormal.setBackground(new java.awt.Color(41, 57, 80));
+        budgetNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/BudgetNormal.jpg"))); // NOI18N
+        budgetNormal.setBorder(null);
+        budgetNormal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                budgetNormalMouseClicked(evt);
+            }
+        });
+        budgetNormal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                budgetNormalActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel3.add(budgetNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 130, 50));
+
+        jToggleButton2.setBackground(new java.awt.Color(240, 235, 216));
+        jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/SavingsSelected.jpg"))); // NOI18N
+        jToggleButton2.setBorder(null);
+        jToggleButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jToggleButton2MouseClicked(evt);
+            }
+        });
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel3.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 130, 50));
 
         WholePanel3.add(SIdeBarPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 470));
 
@@ -467,7 +441,6 @@ public class SavingsInfoPage extends javax.swing.JFrame {
             InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InfoPanel3Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(InfoPanel3Layout.createSequentialGroup()
                         .addGap(115, 115, 115)
@@ -492,7 +465,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
                             .addComponent(interestField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         WholePanel3.add(InfoPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 390, 380));
@@ -541,20 +514,6 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void budgetLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetLabel6MouseClicked
-        BudgetInfoPage m = new BudgetInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_budgetLabel6MouseClicked
-
-    private void budgetPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetPanel3MouseClicked
-        BudgetInfoPage m = new BudgetInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_budgetPanel3MouseClicked
-
     private void editInfoLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editInfoLabel3MouseClicked
         EditPersonalInfoPage m = new EditPersonalInfoPage();
         m.setLocationRelativeTo(null);
@@ -598,34 +557,59 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         this.hide();
     }//GEN-LAST:event_CryptoPanel3MouseClicked
 
-    private void budgetLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetLabel8MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_budgetLabel8MouseClicked
-
-    private void sacingsPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sacingsPanelMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_sacingsPanelMouseClicked
-
-    private void mainMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuMouseClicked
-        MainMenu m = new MainMenu();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_mainMenuMouseClicked
-
-    private void menuPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuPanelMouseClicked
-        MainMenu m = new MainMenu();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_menuPanelMouseClicked
-
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
         EditSavingsPage m = new EditSavingsPage();
         m.setLocationRelativeTo(null);
         m.setVisible(true);
         this.hide();
     }//GEN-LAST:event_EditActionPerformed
+
+    private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logoutBtnMouseClicked
+
+    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
+        // TODO add your handling code here:
+        String[] options={"Yes", "No"};
+        int t =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Logout?", "Logout", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        if(t==JOptionPane.YES_OPTION){
+            Constant.currentUser = "";
+            Main m = new Main();
+            m.setLocationRelativeTo(null);
+            m.setVisible(true);
+            this.hide();
+        }
+    }//GEN-LAST:event_logoutBtnActionPerformed
+
+    private void mainMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuMouseClicked
+        // TODO add your handling code here:
+        MainMenu m = new MainMenu();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_mainMenuMouseClicked
+
+    private void mainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuActionPerformed
+
+    }//GEN-LAST:event_mainMenuActionPerformed
+
+    private void budgetNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetNormalMouseClicked
+        // TODO add your handling code here:
+        BudgetInfoPage m = new BudgetInfoPage();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_budgetNormalMouseClicked
+
+    private void budgetNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetNormalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_budgetNormalActionPerformed
+
+    private void jToggleButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton2MouseClicked
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -668,9 +652,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     private javax.swing.JPanel InfoPanel3;
     private javax.swing.JPanel SIdeBarPanel3;
     private javax.swing.JPanel WholePanel3;
-    private javax.swing.JLabel budgetLabel6;
-    private javax.swing.JLabel budgetLabel8;
-    private javax.swing.JPanel budgetPanel3;
+    private javax.swing.JToggleButton budgetNormal;
     private javax.swing.JLabel cryptoLabel3;
     private javax.swing.JLabel editInfoLabel3;
     private javax.swing.JPanel editInfoPanel3;
@@ -686,20 +668,17 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel29;
-    private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel32;
     private javax.swing.JPanel jPanel33;
-    private javax.swing.JPanel jPanel35;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea;
-    private javax.swing.JLabel mainMenu;
-    private javax.swing.JPanel menuPanel;
+    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton logoutBtn;
+    private javax.swing.JToggleButton mainMenu;
     private javax.swing.JTextField principalField;
     private javax.swing.JTextField rateField;
-    private javax.swing.JPanel sacingsPanel;
     private javax.swing.JLabel stocksLabel3;
     private javax.swing.JPanel stocksPanel4;
     private javax.swing.JTextField timeField;

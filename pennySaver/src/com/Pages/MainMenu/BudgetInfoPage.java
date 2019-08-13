@@ -1,6 +1,7 @@
 package com.Pages.MainMenu;
 
 import com.Pages.EditPages.EditBudgetPage;
+import com.Pages.Main.Main;
 import com.Support.Constant;
 import java.awt.Color;
 import java.awt.Font;
@@ -250,13 +251,9 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         otherField = new javax.swing.JTextField();
         entertainmentField = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        breakDown = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         adviceTextArea = new javax.swing.JTextArea();
         SIdeBarPanel = new javax.swing.JPanel();
-        savingsPanel = new javax.swing.JPanel();
-        jPanel15 = new javax.swing.JPanel();
-        savingsLabel = new javax.swing.JLabel();
         editInfoPanel = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
         editInfoLabel = new javax.swing.JLabel();
@@ -267,12 +264,11 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         jPanel18 = new javax.swing.JPanel();
         cryptoLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        budgetPanel = new javax.swing.JPanel();
-        jPanel12 = new javax.swing.JPanel();
-        budgetLabel1 = new javax.swing.JLabel();
-        mainMenuPanel = new javax.swing.JPanel();
-        jPanel11 = new javax.swing.JPanel();
-        mainMenuLabel = new javax.swing.JLabel();
+        mainMenu = new javax.swing.JToggleButton();
+        logoutBtn = new javax.swing.JToggleButton();
+        budgetSelected = new javax.swing.JToggleButton();
+        budgetSelected1 = new javax.swing.JToggleButton();
+        savingsNormal = new javax.swing.JToggleButton();
         jPanel1 = new javax.swing.JPanel();
         homeField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -448,17 +444,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
 
         WholePanel.add(DataPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 130, 200, 210));
 
-        breakDown.setBackground(new java.awt.Color(29, 45, 68));
-        breakDown.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
-        breakDown.setForeground(new java.awt.Color(255, 255, 255));
-        breakDown.setText("BreakDown");
-        breakDown.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                breakDownActionPerformed(evt);
-            }
-        });
-        WholePanel.add(breakDown, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 440, 130, 40));
-
         adviceTextArea.setBackground(new java.awt.Color(240, 235, 216));
         adviceTextArea.setColumns(20);
         adviceTextArea.setForeground(new java.awt.Color(63, 64, 76));
@@ -469,33 +454,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
 
         SIdeBarPanel.setBackground(new java.awt.Color(29, 45, 68));
         SIdeBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        savingsPanel.setBackground(new java.awt.Color(29, 45, 68));
-        savingsPanel.setForeground(new java.awt.Color(160, 170, 178));
-        savingsPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                savingsPanelMouseClicked(evt);
-            }
-        });
-        savingsPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel15.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        savingsPanel.add(jPanel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
-
-        savingsLabel.setBackground(new java.awt.Color(41, 57, 80));
-        savingsLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        savingsLabel.setForeground(new java.awt.Color(255, 255, 255));
-        savingsLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        savingsLabel.setText("Savings");
-        savingsLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                savingsLabelMouseClicked(evt);
-            }
-        });
-        savingsPanel.add(savingsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
-
-        SIdeBarPanel.add(savingsPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 120, 40));
 
         editInfoPanel.setBackground(new java.awt.Color(29, 45, 68));
         editInfoPanel.setForeground(new java.awt.Color(160, 170, 178));
@@ -581,60 +539,80 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
         SIdeBarPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        budgetPanel.setBackground(new java.awt.Color(240, 235, 216));
-        budgetPanel.setForeground(new java.awt.Color(63, 64, 76));
-        budgetPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+        mainMenu.setBackground(new java.awt.Color(41, 57, 80));
+        mainMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/MainMenuNormal.jpg"))); // NOI18N
+        mainMenu.setBorder(null);
+        mainMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                budgetPanelMouseClicked(evt);
+                mainMenuMouseClicked(evt);
             }
         });
-        budgetPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel12.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel12.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        budgetPanel.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
-
-        budgetLabel1.setBackground(new java.awt.Color(240, 235, 216));
-        budgetLabel1.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        budgetLabel1.setForeground(new java.awt.Color(63, 64, 76));
-        budgetLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        budgetLabel1.setText("Budget");
-        budgetLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                budgetLabel1MouseClicked(evt);
+        mainMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mainMenuActionPerformed(evt);
             }
         });
-        budgetPanel.add(budgetLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
+        SIdeBarPanel.add(mainMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 130, 50));
 
-        SIdeBarPanel.add(budgetPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, -1, -1));
-
-        mainMenuPanel.setBackground(new java.awt.Color(29, 45, 68));
-        mainMenuPanel.setForeground(new java.awt.Color(160, 170, 178));
-        mainMenuPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+        logoutBtn.setBackground(new java.awt.Color(41, 57, 80));
+        logoutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/logoutBtn.jpg"))); // NOI18N
+        logoutBtn.setBorder(null);
+        logoutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mainMenuPanelMouseClicked(evt);
+                logoutBtnMouseClicked(evt);
             }
         });
-        mainMenuPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel11.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        mainMenuPanel.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
-
-        mainMenuLabel.setBackground(new java.awt.Color(41, 57, 80));
-        mainMenuLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        mainMenuLabel.setForeground(new java.awt.Color(255, 255, 255));
-        mainMenuLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        mainMenuLabel.setText("Main Menu");
-        mainMenuLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mainMenuLabelMouseClicked(evt);
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutBtnActionPerformed(evt);
             }
         });
-        mainMenuPanel.add(mainMenuLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
+        SIdeBarPanel.add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 130, 50));
 
-        SIdeBarPanel.add(mainMenuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 120, 40));
+        budgetSelected.setBackground(new java.awt.Color(240, 235, 216));
+        budgetSelected.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/BudgetSelected.jpg"))); // NOI18N
+        budgetSelected.setBorder(null);
+        budgetSelected.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                budgetSelectedMouseClicked(evt);
+            }
+        });
+        budgetSelected.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                budgetSelectedActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(budgetSelected, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 130, 50));
+
+        budgetSelected1.setBackground(new java.awt.Color(240, 235, 216));
+        budgetSelected1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/BudgetSelected.jpg"))); // NOI18N
+        budgetSelected1.setBorder(null);
+        budgetSelected1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                budgetSelected1MouseClicked(evt);
+            }
+        });
+        budgetSelected1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                budgetSelected1ActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(budgetSelected1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 130, 50));
+
+        savingsNormal.setBackground(new java.awt.Color(41, 57, 80));
+        savingsNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/SavingsNormal.jpg"))); // NOI18N
+        savingsNormal.setBorder(null);
+        savingsNormal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                savingsNormalMouseClicked(evt);
+            }
+        });
+        savingsNormal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                savingsNormalActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(savingsNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 130, 50));
 
         WholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 490));
 
@@ -837,30 +815,9 @@ public class BudgetInfoPage extends javax.swing.JFrame {
 
     }//GEN-LAST:event_homeFieldActionPerformed
 
-    private void breakDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_breakDownActionPerformed
-        BudgetBreakdownPage m = new BudgetBreakdownPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_breakDownActionPerformed
-
     private void incomeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incomeFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_incomeFieldActionPerformed
-
-    private void savingsLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savingsLabelMouseClicked
-        SavingsInfoPage m = new SavingsInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_savingsLabelMouseClicked
-
-    private void savingsPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savingsPanelMouseClicked
-        SavingsInfoPage m = new SavingsInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_savingsPanelMouseClicked
 
     private void editInfoLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editInfoLabelMouseClicked
         EditPersonalInfoPage m = new EditPersonalInfoPage();
@@ -905,39 +862,67 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         this.hide();
     }//GEN-LAST:event_CryptoPanelMouseClicked
 
-    private void budgetLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetLabel1MouseClicked
-        BudgetInfoPage m = new BudgetInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_budgetLabel1MouseClicked
-
-    private void budgetPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetPanelMouseClicked
-        BudgetInfoPage m = new BudgetInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_budgetPanelMouseClicked
-
-    private void mainMenuLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuLabelMouseClicked
-        MainMenu m = new MainMenu();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_mainMenuLabelMouseClicked
-
-    private void mainMenuPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuPanelMouseClicked
-        MainMenu m = new MainMenu();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_mainMenuPanelMouseClicked
-
     private void Edit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Edit1ActionPerformed
         EditBudgetPage m = new EditBudgetPage();
         m.setVisible(true);
         this.hide();
     }//GEN-LAST:event_Edit1ActionPerformed
+
+    private void mainMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuMouseClicked
+        // TODO add your handling code here:
+        MainMenu m = new MainMenu();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_mainMenuMouseClicked
+
+    private void mainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuActionPerformed
+
+    }//GEN-LAST:event_mainMenuActionPerformed
+
+    private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logoutBtnMouseClicked
+
+    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
+        // TODO add your handling code here:
+        String[] options={"Yes", "No"};
+        int t =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Logout?", "Logout", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        if(t==JOptionPane.YES_OPTION){
+            Constant.currentUser = "";
+            Main m = new Main();
+            m.setLocationRelativeTo(null);
+            m.setVisible(true);
+            this.hide();
+        }
+    }//GEN-LAST:event_logoutBtnActionPerformed
+
+    private void budgetSelectedMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetSelectedMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_budgetSelectedMouseClicked
+
+    private void budgetSelectedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetSelectedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_budgetSelectedActionPerformed
+
+    private void budgetSelected1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetSelected1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_budgetSelected1MouseClicked
+
+    private void budgetSelected1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetSelected1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_budgetSelected1ActionPerformed
+
+    private void savingsNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savingsNormalMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_savingsNormalMouseClicked
+
+    private void savingsNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savingsNormalActionPerformed
+        // TODO add your handling code here:
+            SavingsInfoPage m = new SavingsInfoPage();
+            m.setLocationRelativeTo(null);
+            m.setVisible(true);
+            this.hide();
+    }//GEN-LAST:event_savingsNormalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -984,9 +969,8 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     private javax.swing.JTextArea adviceTextArea;
     private javax.swing.JTextField autoAndCommutingField;
     private javax.swing.JTextField billsAndUtilitiesField;
-    private javax.swing.JButton breakDown;
-    private javax.swing.JLabel budgetLabel1;
-    private javax.swing.JPanel budgetPanel;
+    private javax.swing.JToggleButton budgetSelected;
+    private javax.swing.JToggleButton budgetSelected1;
     private javax.swing.JLabel cryptoLabel;
     private javax.swing.JTextField diningAndDrinksField;
     private javax.swing.JLabel editInfoLabel;
@@ -1014,21 +998,17 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField loansField;
-    private javax.swing.JLabel mainMenuLabel;
-    private javax.swing.JPanel mainMenuPanel;
+    private javax.swing.JToggleButton logoutBtn;
+    private javax.swing.JToggleButton mainMenu;
     private javax.swing.JPanel myChartPanel;
     private javax.swing.JTextField otherField;
     private javax.swing.JTextField personalCareField;
-    private javax.swing.JLabel savingsLabel;
-    private javax.swing.JPanel savingsPanel;
+    private javax.swing.JToggleButton savingsNormal;
     private javax.swing.JTextField shoppingField;
     private javax.swing.JLabel stocksLabel;
     private javax.swing.JPanel stocksPanel1;
