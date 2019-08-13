@@ -243,7 +243,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="120" y="0" width="620" height="100"/>
+              <AbsoluteConstraints x="130" y="0" width="610" height="100"/>
             </Constraint>
           </Constraints>
 
@@ -253,7 +253,7 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel9" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jLabel10" alignment="1" pref="614" max="32767" attributes="0"/>
+                          <Component id="jLabel10" alignment="1" pref="604" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -282,7 +282,6 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Welcome to PennySavers"/>
               </Properties>
             </Component>
@@ -297,7 +296,6 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Please enter your details below"/>
               </Properties>
             </Component>

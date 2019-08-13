@@ -183,13 +183,11 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
         jLabel9.setBackground(new java.awt.Color(34, 47, 66));
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Welcome to PennySavers");
 
         jLabel10.setBackground(new java.awt.Color(34, 47, 66));
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Please enter your details below");
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
@@ -199,7 +197,7 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE))
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE))
                 .addContainerGap())
         );
         headerPanelLayout.setVerticalGroup(
@@ -211,7 +209,7 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        wholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 620, 100));
+        wholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 610, 100));
 
         dataEntryPanel.setBackground(new java.awt.Color(240, 235, 216));
         dataEntryPanel.setForeground(new java.awt.Color(255, 255, 255));

@@ -1,6 +1,12 @@
 package com.Pages.EditPages;
 
+import com.Pages.Main.Main;
 import com.Pages.MainMenu.BudgetInfoPage;
+import com.Pages.MainMenu.CryptoInfoPage;
+import com.Pages.MainMenu.EditPersonalInfoPage;
+import com.Pages.MainMenu.MainMenu;
+import com.Pages.MainMenu.SavingsInfoPage;
+import com.Pages.MainMenu.StocksInfoPage;
 import com.Support.Constant;
 import java.awt.Color;
 import java.awt.Font;
@@ -362,6 +368,19 @@ public class EditBudgetPage extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         SIdeBarPanel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        SIdeBarPanel1 = new javax.swing.JPanel();
+        stocksPanel1 = new javax.swing.JPanel();
+        jPanel17 = new javax.swing.JPanel();
+        stocksLabel = new javax.swing.JLabel();
+        CryptoPanel = new javax.swing.JPanel();
+        jPanel18 = new javax.swing.JPanel();
+        cryptoLabel = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        mainMenu = new javax.swing.JToggleButton();
+        logoutBtn = new javax.swing.JToggleButton();
+        budgetSelected1 = new javax.swing.JToggleButton();
+        savingsNormal = new javax.swing.JToggleButton();
+        editinfoBtn = new javax.swing.JToggleButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -696,13 +715,11 @@ public class EditBudgetPage extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(34, 47, 66));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Alter The categories To Generate a New Chart");
 
         jLabel2.setBackground(new java.awt.Color(34, 47, 66));
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Edit Budget");
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
@@ -734,6 +751,143 @@ public class EditBudgetPage extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
         SIdeBarPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        SIdeBarPanel1.setBackground(new java.awt.Color(29, 45, 68));
+        SIdeBarPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        stocksPanel1.setBackground(new java.awt.Color(29, 45, 68));
+        stocksPanel1.setForeground(new java.awt.Color(160, 170, 178));
+        stocksPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                stocksPanel1MouseClicked(evt);
+            }
+        });
+        stocksPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel17.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel17.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        stocksPanel1.add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
+
+        stocksLabel.setBackground(new java.awt.Color(41, 57, 80));
+        stocksLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        stocksLabel.setForeground(new java.awt.Color(255, 255, 255));
+        stocksLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        stocksLabel.setText("Stocks");
+        stocksLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                stocksLabelMouseClicked(evt);
+            }
+        });
+        stocksPanel1.add(stocksLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
+
+        SIdeBarPanel1.add(stocksPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 120, 40));
+
+        CryptoPanel.setBackground(new java.awt.Color(29, 45, 68));
+        CryptoPanel.setForeground(new java.awt.Color(160, 170, 178));
+        CryptoPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CryptoPanelMouseClicked(evt);
+            }
+        });
+        CryptoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel18.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel18.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        CryptoPanel.add(jPanel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
+
+        cryptoLabel.setBackground(new java.awt.Color(41, 57, 80));
+        cryptoLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        cryptoLabel.setForeground(new java.awt.Color(255, 255, 255));
+        cryptoLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        cryptoLabel.setText("Crypto");
+        cryptoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cryptoLabelMouseClicked(evt);
+            }
+        });
+        CryptoPanel.add(cryptoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
+
+        SIdeBarPanel1.add(CryptoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 120, 40));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
+        SIdeBarPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        mainMenu.setBackground(new java.awt.Color(41, 57, 80));
+        mainMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/MainMenuNormal.jpg"))); // NOI18N
+        mainMenu.setBorder(null);
+        mainMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mainMenuMouseClicked(evt);
+            }
+        });
+        mainMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mainMenuActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel1.add(mainMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 130, 50));
+
+        logoutBtn.setBackground(new java.awt.Color(41, 57, 80));
+        logoutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/logoutBtn.jpg"))); // NOI18N
+        logoutBtn.setBorder(null);
+        logoutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutBtnMouseClicked(evt);
+            }
+        });
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutBtnActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel1.add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 130, 50));
+
+        budgetSelected1.setBackground(new java.awt.Color(240, 235, 216));
+        budgetSelected1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/BudgetSelected.jpg"))); // NOI18N
+        budgetSelected1.setBorder(null);
+        budgetSelected1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                budgetSelected1MouseClicked(evt);
+            }
+        });
+        budgetSelected1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                budgetSelected1ActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel1.add(budgetSelected1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 130, 50));
+
+        savingsNormal.setBackground(new java.awt.Color(41, 57, 80));
+        savingsNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/SavingsNormal.jpg"))); // NOI18N
+        savingsNormal.setBorder(null);
+        savingsNormal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                savingsNormalMouseClicked(evt);
+            }
+        });
+        savingsNormal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                savingsNormalActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel1.add(savingsNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 130, 50));
+
+        editinfoBtn.setBackground(new java.awt.Color(41, 57, 80));
+        editinfoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/EditInfoNormal.jpg"))); // NOI18N
+        editinfoBtn.setBorder(null);
+        editinfoBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editinfoBtnMouseClicked(evt);
+            }
+        });
+        editinfoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editinfoBtnActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel1.add(editinfoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 130, 50));
+
+        SIdeBarPanel.add(SIdeBarPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 490));
 
         WholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 700));
 
@@ -955,6 +1109,90 @@ public class EditBudgetPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_backBtnActionPerformed
 
+    private void stocksLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksLabelMouseClicked
+        StocksInfoPage m = new StocksInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_stocksLabelMouseClicked
+
+    private void stocksPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksPanel1MouseClicked
+        StocksInfoPage m = new StocksInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_stocksPanel1MouseClicked
+
+    private void cryptoLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cryptoLabelMouseClicked
+
+        CryptoInfoPage m = new CryptoInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_cryptoLabelMouseClicked
+
+    private void CryptoPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CryptoPanelMouseClicked
+        CryptoInfoPage m = new CryptoInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_CryptoPanelMouseClicked
+
+    private void mainMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuMouseClicked
+        // TODO add your handling code here:
+        MainMenu m = new MainMenu();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_mainMenuMouseClicked
+
+    private void mainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuActionPerformed
+
+    }//GEN-LAST:event_mainMenuActionPerformed
+
+    private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logoutBtnMouseClicked
+
+    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
+        // TODO add your handling code here:
+        String[] options={"Yes", "No"};
+        int t =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Logout?", "Logout", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        if(t==JOptionPane.YES_OPTION){
+            Constant.currentUser = "";
+            Main m = new Main();
+            m.setLocationRelativeTo(null);
+            m.setVisible(true);
+            this.hide();
+        }
+    }//GEN-LAST:event_logoutBtnActionPerformed
+
+    private void budgetSelected1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetSelected1MouseClicked
+    }//GEN-LAST:event_budgetSelected1MouseClicked
+
+    private void budgetSelected1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetSelected1ActionPerformed
+    }//GEN-LAST:event_budgetSelected1ActionPerformed
+
+    private void savingsNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savingsNormalMouseClicked
+        SavingsInfoPage m = new SavingsInfoPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_savingsNormalMouseClicked
+
+    private void savingsNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savingsNormalActionPerformed
+
+    }//GEN-LAST:event_savingsNormalActionPerformed
+
+    private void editinfoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editinfoBtnMouseClicked
+        EditPersonalInfoPage m = new EditPersonalInfoPage();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_editinfoBtnMouseClicked
+
+    private void editinfoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editinfoBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editinfoBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -992,8 +1230,10 @@ public class EditBudgetPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ADVICE;
+    private javax.swing.JPanel CryptoPanel;
     private javax.swing.JPanel InfoPanel;
     private javax.swing.JPanel SIdeBarPanel;
+    private javax.swing.JPanel SIdeBarPanel1;
     private javax.swing.JPanel WholePanel;
     private javax.swing.JTextArea adviceTextArea;
     private javax.swing.JPanel allCharts;
@@ -1001,8 +1241,11 @@ public class EditBudgetPage extends javax.swing.JFrame {
     private javax.swing.JButton backBtn;
     private javax.swing.JTextField billsAndUtilitiesField;
     private javax.swing.JPanel budgetChart;
+    private javax.swing.JToggleButton budgetSelected1;
+    private javax.swing.JLabel cryptoLabel;
     private javax.swing.JPanel dataEntryPanel;
     private javax.swing.JTextField diningAndDrinksField;
+    private javax.swing.JToggleButton editinfoBtn;
     private javax.swing.JTextField educationField;
     private javax.swing.JTextField entertainmentField;
     private javax.swing.JTextField feesField;
@@ -1023,17 +1266,25 @@ public class EditBudgetPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
     private javax.swing.JTextField loansField;
+    private javax.swing.JToggleButton logoutBtn;
+    private javax.swing.JToggleButton mainMenu;
     private javax.swing.JPanel myChartPanel1;
     private javax.swing.JPanel myChartPanel2;
     private javax.swing.JTextField otherField;
     private javax.swing.JTextField personalCareField;
     private javax.swing.JButton resetBTn;
     private javax.swing.JButton saveBTn;
+    private javax.swing.JToggleButton savingsNormal;
     private javax.swing.JTextField shoppingField;
+    private javax.swing.JLabel stocksLabel;
+    private javax.swing.JPanel stocksPanel1;
     private javax.swing.JTextField travelField;
     private javax.swing.JButton updateBTn;
     // End of variables declaration//GEN-END:variables
