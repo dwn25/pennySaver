@@ -1,21 +1,12 @@
 package com.Pages.EnterDataPages;
 
-import com.Pages.MainMenu.BudgetInfoPage;
 import com.Pages.AskQuestionPage.CryptoQuestionPage;
 import com.Support.Constant;
 import com.Support.Stocks.Stocks;
-import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import org.slf4j.LoggerFactory;
-import yahoofinance.Stock;
-import yahoofinance.YahooFinance;
 
 /**
  *
@@ -26,7 +17,6 @@ public class EnterStocksPage extends javax.swing.JFrame {
      * Creates new form EnterStocksPage
      */
     public EnterStocksPage() {
-        org.slf4j.Logger log = LoggerFactory.getLogger(EnterStocksPage.class);
         setLocationRelativeTo(null);
         setResizable(false);
         initComponents();
@@ -328,27 +318,29 @@ public class EnterStocksPage extends javax.swing.JFrame {
         return name.matches("[a-zA-Z]+");
     }
     
-    public static boolean isStock(String name){
-        boolean isStock = false;
-        try{
-            Stock stock = YahooFinance.get(name);
-            BigDecimal price = stock.getQuote(true).getPrice();
-            if(price.equals(null)){
-                isStock = false;
+    public boolean isStockInTable(String symb) {
+        String query = "SELECT STOCK_SYMBOL FROM ROOT.PSTOCKS WHERE username= '" + Constant.currentUser + "'"; 
+        try {
+            ResultSet rs2 = Constant.stmt.executeQuery(query) ;
+            if(rs2.next()){
+                String dbSymbol = rs2.getString("STOCK_SYMBOL");
+                if(dbSymbol.equals(symb)){
+                    return true;
+                }
+            }else{
+                return false;
             }
-            else{
-                isStock = true;
-            }
-        }catch(Exception er){
-            System.out.println("Failed to get " + name);
-        }
-        return isStock;
-    } 
-        
+        }catch(SQLException e) {
+                e.printStackTrace();
+                return true ;
+                  }
+        return false;
+    }
+    
+    
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         Constant.DoConnect();
         String stockSymbol,stockNumber;
-        String stock[] = {"APPL","AMZN"};
         int finalStockNumber;
         try{
             stockSymbol = symbol.getText();
@@ -362,19 +354,32 @@ public class EnterStocksPage extends javax.swing.JFrame {
             else if(stockNumber.isEmpty()){
                    JOptionPane.showMessageDialog(rootPane, "Please Enter The Number");
             }
-            /*else if(!Stocks.isStock(stockSymbol)){
-                JOptionPane.showMessageDialog(rootPane, "Not a valid symbol");
-            }*/
-            else{
-                //Stocks.getStock(stock);
-                Stock tesla = YahooFinance.get("TSLA", true);
-                //System.out.println(tesla.getHistory());
-                //Stock stock1 = YahooFinance.get(stockSymbol);
-                //BigDecimal price = stock1.getQuote(true).getPrice();
-                //stock1.print();
-                finalStockNumber = Integer.parseInt(stockNumber);
-                System.out.println(finalStockNumber);
+            else if(!Stocks.checkSymbol(stockSymbol)){
+                   JOptionPane.showMessageDialog(rootPane, "Please Enter A Stock Symbol That Exists");
+            }
+            else if(isStockInTable(stockSymbol)){
+                    JOptionPane.showMessageDialog(rootPane, "Stock Exists in Table");
                 }
+                else{
+                finalStockNumber = Integer.parseInt(stockNumber);
+                String[] options={"Yes", "No"};
+                int t =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Save?", "Confirm Save", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+                if(t==JOptionPane.YES_OPTION){
+                    String sql = "INSERT INTO ROOT.PSTOCKS (STOCK_SYMBOL, STOCK_NUMBER, USERNAME) VALUES (?, ?, ?)";
+                    //String sql = ("INSERT INTO ROOT.PUSERS( USERNAME , PASSWORD ,FIRSTNAME,  LASTNAME ,  EMAILADDRESS  )values(?,?,?,?,?)" );
+                    PreparedStatement statement = Constant.con.prepareStatement(sql);
+                    statement.setString(1, stockSymbol);
+                    statement.setDouble(2, finalStockNumber);
+                    statement.setString(3, Constant.currentUser);
+                    int rowsInserted = statement.executeUpdate();
+                    if(rowsInserted > 0){
+                        System.out.println("Stocks Table: successiful insertion!");
+                        JOptionPane.showMessageDialog(null, "Save Succesful");
+                        symbol.setText(null);
+                        number.setText(null);
+                    }
+                }     
+            }
         }catch(NumberFormatException er){
             System.out.println(er);
             JOptionPane.showMessageDialog(rootPane, "A valid number must be entered!! Please try again");
@@ -385,32 +390,21 @@ public class EnterStocksPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_addBtnActionPerformed
 
+    
     private void budgetLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetLabelMouseClicked
-        BudgetInfoPage m = new BudgetInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
+
     }//GEN-LAST:event_budgetLabelMouseClicked
 
     private void personalinfoPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_personalinfoPanelMouseClicked
-        BudgetInfoPage m = new BudgetInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
+
     }//GEN-LAST:event_personalinfoPanelMouseClicked
 
     private void budgetLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetLabel1MouseClicked
-        BudgetInfoPage m = new BudgetInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
+
     }//GEN-LAST:event_budgetLabel1MouseClicked
 
     private void stockPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stockPanelMouseClicked
-        BudgetInfoPage m = new BudgetInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
+
     }//GEN-LAST:event_stockPanelMouseClicked
 
     /**

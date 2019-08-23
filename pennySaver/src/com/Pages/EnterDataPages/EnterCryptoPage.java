@@ -4,6 +4,9 @@ import com.Pages.MainMenu.BudgetInfoPage;
 import com.Pages.AskQuestionPage.BudgetQuestionPage;
 import com.Support.Constant;
 import com.Support.Stocks.Stocks;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -352,10 +355,29 @@ public class EnterCryptoPage extends javax.swing.JFrame {
     public boolean isAlpha(String name) {
         return name.matches("[a-zA-Z]+");
     }
+    
+   public boolean isStockInTable(String symb) {
+        String query = "SELECT CRYPTO_SYMBOL FROM ROOT.PCRYPTO WHERE username= '" + Constant.currentUser + "'"; 
+        try {
+            ResultSet rs2 = Constant.stmt.executeQuery(query) ;
+            if(rs2.next()){
+                String dbSymbol = rs2.getString("STOCK_SYMBOL");
+                if(dbSymbol.equals(symb)){
+                    return true;
+                }
+            }else{
+                return false;
+            }
+        }catch(SQLException e) {
+                e.printStackTrace();
+                return true ;
+                  }
+        return false;
+    }
+        
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         Constant.DoConnect();
         String stockSymbol,stockNumber;
-        String stock[] = {"APPL","AMZN"};
         int finalStockNumber;
         try{
             stockSymbol = symbol.getText();
@@ -364,17 +386,35 @@ public class EnterCryptoPage extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Please Enter a Stock Symbol");
             }
             else if(!isAlpha(stockSymbol)){
-                JOptionPane.showMessageDialog(rootPane, "Please Only Valid Characters for the Stock Symbol");
+                    JOptionPane.showMessageDialog(rootPane, "Please Only Valid Characters for the Stock Symbol");
             }
             else if(stockNumber.isEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Please Enter The Number");
+                   JOptionPane.showMessageDialog(rootPane, "Please Enter The Number");
             }
-            /*else if(!Stocks.isStock(stockSymbol)){
-                JOptionPane.showMessageDialog(rootPane, "Not a valid symbol");
-            }*/
-            else{
-                Stocks.getStock(stock);
+            else if(!Stocks.checkSymbol(stockSymbol)){
+                   JOptionPane.showMessageDialog(rootPane, "Please Enter A Stock Symbol That Exists");
+            }
+            else if(isStockInTable(stockSymbol)){
+                    JOptionPane.showMessageDialog(rootPane, "Stock Exists in Table");
+                }
+                else{
                 finalStockNumber = Integer.parseInt(stockNumber);
+                String[] options={"Yes", "No"};
+                int t =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Save?", "Confirm Save", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+                if(t==JOptionPane.YES_OPTION){
+                    String sql = "INSERT INTO ROOT.PCRYPTO (CRYPTO_SYMBOL, CRYPTO_NUMBER, USERNAME) VALUES (?, ?, ?)";
+                    PreparedStatement statement = Constant.con.prepareStatement(sql);
+                    statement.setString(1, stockSymbol);
+                    statement.setDouble(2, finalStockNumber);
+                    statement.setString(3, Constant.currentUser);
+                    int rowsInserted = statement.executeUpdate();
+                    if(rowsInserted > 0){
+                        System.out.println("Crypto Table: successiful insertion!");
+                        JOptionPane.showMessageDialog(null, "Save Succesful");
+                        symbol.setText(null);
+                        number.setText(null);
+                    }
+                }     
             }
         }catch(NumberFormatException er){
             System.out.println(er);

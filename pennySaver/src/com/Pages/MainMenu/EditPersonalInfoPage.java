@@ -1,6 +1,5 @@
 package com.Pages.MainMenu;
 
-import com.Pages.AskQuestionPage.StocksQuestionPage;
 import com.Pages.Main.Main;
 import com.Support.Constant;
 import java.sql.PreparedStatement;
