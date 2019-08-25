@@ -102,18 +102,14 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         WholePanel3 = new javax.swing.JPanel();
         SIdeBarPanel3 = new javax.swing.JPanel();
-        stocksPanel4 = new javax.swing.JPanel();
-        jPanel32 = new javax.swing.JPanel();
-        stocksLabel3 = new javax.swing.JLabel();
-        CryptoPanel3 = new javax.swing.JPanel();
-        jPanel33 = new javax.swing.JPanel();
-        cryptoLabel3 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         logoutBtn = new javax.swing.JToggleButton();
         mainMenu = new javax.swing.JToggleButton();
         budgetNormal = new javax.swing.JToggleButton();
         jToggleButton2 = new javax.swing.JToggleButton();
         editinfoBtn = new javax.swing.JToggleButton();
+        CryptoNormal = new javax.swing.JToggleButton();
+        stocksNormal = new javax.swing.JToggleButton();
         InfoPanel3 = new javax.swing.JPanel();
         rateField = new javax.swing.JTextField();
         timeField = new javax.swing.JTextField();
@@ -189,60 +185,6 @@ public class SavingsInfoPage extends javax.swing.JFrame {
 
         SIdeBarPanel3.setBackground(new java.awt.Color(29, 45, 68));
         SIdeBarPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        stocksPanel4.setBackground(new java.awt.Color(29, 45, 68));
-        stocksPanel4.setForeground(new java.awt.Color(160, 170, 178));
-        stocksPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                stocksPanel4MouseClicked(evt);
-            }
-        });
-        stocksPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel32.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel32.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        stocksPanel4.add(jPanel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
-
-        stocksLabel3.setBackground(new java.awt.Color(41, 57, 80));
-        stocksLabel3.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        stocksLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        stocksLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        stocksLabel3.setText("Stocks");
-        stocksLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                stocksLabel3MouseClicked(evt);
-            }
-        });
-        stocksPanel4.add(stocksLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
-
-        SIdeBarPanel3.add(stocksPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 120, 40));
-
-        CryptoPanel3.setBackground(new java.awt.Color(29, 45, 68));
-        CryptoPanel3.setForeground(new java.awt.Color(160, 170, 178));
-        CryptoPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CryptoPanel3MouseClicked(evt);
-            }
-        });
-        CryptoPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel33.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel33.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        CryptoPanel3.add(jPanel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
-
-        cryptoLabel3.setBackground(new java.awt.Color(41, 57, 80));
-        cryptoLabel3.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        cryptoLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        cryptoLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        cryptoLabel3.setText("Crypto");
-        cryptoLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cryptoLabel3MouseClicked(evt);
-            }
-        });
-        CryptoPanel3.add(cryptoLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
-
-        SIdeBarPanel3.add(CryptoPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 120, 40));
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
         SIdeBarPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
@@ -321,6 +263,36 @@ public class SavingsInfoPage extends javax.swing.JFrame {
             }
         });
         SIdeBarPanel3.add(editinfoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 130, 50));
+
+        CryptoNormal.setBackground(new java.awt.Color(41, 57, 80));
+        CryptoNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/CryptoNormal.jpg"))); // NOI18N
+        CryptoNormal.setBorder(null);
+        CryptoNormal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CryptoNormalMouseClicked(evt);
+            }
+        });
+        CryptoNormal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CryptoNormalActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel3.add(CryptoNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 130, 50));
+
+        stocksNormal.setBackground(new java.awt.Color(41, 57, 80));
+        stocksNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/StocksNormal.jpg"))); // NOI18N
+        stocksNormal.setBorder(null);
+        stocksNormal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                stocksNormalMouseClicked(evt);
+            }
+        });
+        stocksNormal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stocksNormalActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel3.add(stocksNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 130, 50));
 
         WholePanel3.add(SIdeBarPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 470));
 
@@ -467,7 +439,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         headerPanel.setLayout(headerPanelLayout);
         headerPanelLayout.setHorizontalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -477,7 +449,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        WholePanel3.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 370, 90));
+        WholePanel3.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 380, 90));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -494,35 +466,6 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void stocksLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksLabel3MouseClicked
-        StocksInfoPage m = new StocksInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_stocksLabel3MouseClicked
-
-    private void stocksPanel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksPanel4MouseClicked
-        StocksInfoPage m = new StocksInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_stocksPanel4MouseClicked
-
-    private void cryptoLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cryptoLabel3MouseClicked
-        CryptoInfoPage m = new CryptoInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_cryptoLabel3MouseClicked
-
-    private void CryptoPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CryptoPanel3MouseClicked
-        // TODO add your handling code here:
-        CryptoInfoPage m = new CryptoInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_CryptoPanel3MouseClicked
-
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
         EditSavingsPage m = new EditSavingsPage();
         m.setLocationRelativeTo(null);
@@ -535,7 +478,6 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutBtnMouseClicked
 
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
-        // TODO add your handling code here:
         String[] options={"Yes", "No"};
         int t =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Logout?", "Logout", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         if(t==JOptionPane.YES_OPTION){
@@ -548,7 +490,6 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutBtnActionPerformed
 
     private void mainMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuMouseClicked
-        // TODO add your handling code here:
         MainMenu m = new MainMenu();
         m.setVisible(true);
         this.hide();
@@ -559,14 +500,12 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_mainMenuActionPerformed
 
     private void budgetNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetNormalMouseClicked
-        // TODO add your handling code here:
         BudgetInfoPage m = new BudgetInfoPage();
         m.setVisible(true);
         this.hide();
     }//GEN-LAST:event_budgetNormalMouseClicked
 
     private void budgetNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetNormalActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_budgetNormalActionPerformed
 
     private void jToggleButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton2MouseClicked
@@ -578,15 +517,34 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void editinfoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editinfoBtnMouseClicked
-        // TODO add your handling code here:
         EditPersonalInfoPage m = new EditPersonalInfoPage();
         m.setVisible(true);
         this.hide();
     }//GEN-LAST:event_editinfoBtnMouseClicked
 
     private void editinfoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editinfoBtnActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_editinfoBtnActionPerformed
+
+    private void CryptoNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CryptoNormalMouseClicked
+        CryptoInfoPage m = new CryptoInfoPage();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_CryptoNormalMouseClicked
+
+    private void CryptoNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CryptoNormalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CryptoNormalActionPerformed
+
+    private void stocksNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksNormalMouseClicked
+        // TODO add your handling code here:
+        StocksInfoPage m = new StocksInfoPage();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_stocksNormalMouseClicked
+
+    private void stocksNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stocksNormalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stocksNormalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -624,13 +582,12 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel CryptoPanel3;
+    private javax.swing.JToggleButton CryptoNormal;
     private javax.swing.JButton Edit;
     private javax.swing.JPanel InfoPanel3;
     private javax.swing.JPanel SIdeBarPanel3;
     private javax.swing.JPanel WholePanel3;
     private javax.swing.JToggleButton budgetNormal;
-    private javax.swing.JLabel cryptoLabel3;
     private javax.swing.JToggleButton editinfoBtn;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JTextField interestField;
@@ -644,8 +601,6 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel32;
-    private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea;
@@ -654,8 +609,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     private javax.swing.JToggleButton mainMenu;
     private javax.swing.JTextField principalField;
     private javax.swing.JTextField rateField;
-    private javax.swing.JLabel stocksLabel3;
-    private javax.swing.JPanel stocksPanel4;
+    private javax.swing.JToggleButton stocksNormal;
     private javax.swing.JTextField timeField;
     private javax.swing.JTextField totalField;
     // End of variables declaration//GEN-END:variables

@@ -4,18 +4,9 @@ import com.Pages.Main.Main;
 import com.Pages.MainMenu.BudgetInfoPage;
 import com.Pages.AskQuestionPage.StocksQuestionPage;
 import com.Support.Constant;
-import java.text.NumberFormat;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.Format;
-import java.util.Locale;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
-import javax.swing.UIManager;
+
 
 /**
  *

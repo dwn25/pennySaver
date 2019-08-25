@@ -3,21 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Pages/EditPages/EditBudgetPage.java</file>
-            <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Pages/MainMenu/SavingsInfoPage.java</file>
-            <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Support/Stocks/StockQuote.java</file>
-            <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Pages/Main/RegisterForm.java</file>
-            <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Pages/MainMenu/EditPersonalInfoPage.java</file>
-            <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Support/Stocks/Stocks.java</file>
             <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Pages/EnterDataPages/EnterStocksPage.java</file>
-            <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Pages/AskQuestionPage/BudgetQuestionPage.java</file>
-            <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Pages/MainMenu/CryptoInfoPage.java</file>
-            <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Pages/MainMenu/MainMenu.java</file>
-            <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Support/Stocks/In.java</file>
-            <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Pages/EnterDataPages/EnterBudgetPage.java</file>
-            <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Pages/EditPages/EditStocksPage.java</file>
+            <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Pages/MainMenu/StocksInfoPage.java</file>
+            <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Pages/MainMenu/SavingsInfoPage.java</file>
+            <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Support/Stocks/Stocks.java</file>
             <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Pages/Main/Main.java</file>
-            <file>file:/Users/DNartey/KanD/untitled%20folder/pennySaver/pennySaver/src/com/Pages/EditPages/EditSavingsPage.java</file>
         </group>
     </open-files>
 </project-private>

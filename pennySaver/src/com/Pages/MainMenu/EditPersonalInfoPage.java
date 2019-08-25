@@ -91,18 +91,14 @@ public void onRun(){
         headerPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         SIdeBarPanel = new javax.swing.JPanel();
-        stocksPanel1 = new javax.swing.JPanel();
-        jPanel17 = new javax.swing.JPanel();
-        stocksLabel = new javax.swing.JLabel();
-        CryptoPanel = new javax.swing.JPanel();
-        jPanel18 = new javax.swing.JPanel();
-        cryptoLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         mainMenu = new javax.swing.JToggleButton();
         logoutBtn = new javax.swing.JToggleButton();
         savingsNormal = new javax.swing.JToggleButton();
         budgetNormal = new javax.swing.JToggleButton();
         editInfoPage = new javax.swing.JToggleButton();
+        CryptoNormal = new javax.swing.JToggleButton();
+        stocksNormal = new javax.swing.JToggleButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -150,60 +146,6 @@ public void onRun(){
 
         SIdeBarPanel.setBackground(new java.awt.Color(29, 45, 68));
         SIdeBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        stocksPanel1.setBackground(new java.awt.Color(29, 45, 68));
-        stocksPanel1.setForeground(new java.awt.Color(160, 170, 178));
-        stocksPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                stocksPanel1MouseClicked(evt);
-            }
-        });
-        stocksPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel17.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel17.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        stocksPanel1.add(jPanel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
-
-        stocksLabel.setBackground(new java.awt.Color(41, 57, 80));
-        stocksLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        stocksLabel.setForeground(new java.awt.Color(255, 255, 255));
-        stocksLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        stocksLabel.setText("Stocks");
-        stocksLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                stocksLabelMouseClicked(evt);
-            }
-        });
-        stocksPanel1.add(stocksLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
-
-        SIdeBarPanel.add(stocksPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 120, 40));
-
-        CryptoPanel.setBackground(new java.awt.Color(29, 45, 68));
-        CryptoPanel.setForeground(new java.awt.Color(160, 170, 178));
-        CryptoPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CryptoPanelMouseClicked(evt);
-            }
-        });
-        CryptoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel18.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel18.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        CryptoPanel.add(jPanel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
-
-        cryptoLabel.setBackground(new java.awt.Color(41, 57, 80));
-        cryptoLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        cryptoLabel.setForeground(new java.awt.Color(255, 255, 255));
-        cryptoLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        cryptoLabel.setText("Crypto");
-        cryptoLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cryptoLabelMouseClicked(evt);
-            }
-        });
-        CryptoPanel.add(cryptoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
-
-        SIdeBarPanel.add(CryptoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 120, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
         SIdeBarPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
@@ -282,6 +224,36 @@ public void onRun(){
             }
         });
         SIdeBarPanel.add(editInfoPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 130, 50));
+
+        CryptoNormal.setBackground(new java.awt.Color(41, 57, 80));
+        CryptoNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/CryptoNormal.jpg"))); // NOI18N
+        CryptoNormal.setBorder(null);
+        CryptoNormal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CryptoNormalMouseClicked(evt);
+            }
+        });
+        CryptoNormal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CryptoNormalActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(CryptoNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 130, 50));
+
+        stocksNormal.setBackground(new java.awt.Color(41, 57, 80));
+        stocksNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/StocksNormal.jpg"))); // NOI18N
+        stocksNormal.setBorder(null);
+        stocksNormal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                stocksNormalMouseClicked(evt);
+            }
+        });
+        stocksNormal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stocksNormalActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(stocksNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 130, 50));
 
         WholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 490));
 
@@ -450,35 +422,6 @@ public void onRun(){
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void stocksLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksLabelMouseClicked
-        StocksInfoPage m = new StocksInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_stocksLabelMouseClicked
-
-    private void stocksPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksPanel1MouseClicked
-        StocksInfoPage m = new StocksInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_stocksPanel1MouseClicked
-
-    private void cryptoLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cryptoLabelMouseClicked
-
-        CryptoInfoPage m = new CryptoInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_cryptoLabelMouseClicked
-
-    private void CryptoPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CryptoPanelMouseClicked
-        CryptoInfoPage m = new CryptoInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_CryptoPanelMouseClicked
-
     private void mainMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuMouseClicked
         MainMenu m = new MainMenu();
         m.setVisible(true);
@@ -600,6 +543,28 @@ public void onRun(){
 
     }//GEN-LAST:event_employmentStatusActionPerformed
 
+    private void CryptoNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CryptoNormalMouseClicked
+        // TODO add your handling code here:
+        CryptoInfoPage m = new CryptoInfoPage();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_CryptoNormalMouseClicked
+
+    private void CryptoNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CryptoNormalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CryptoNormalActionPerformed
+
+    private void stocksNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksNormalMouseClicked
+        // TODO add your handling code here:
+        StocksInfoPage m = new StocksInfoPage();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_stocksNormalMouseClicked
+
+    private void stocksNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stocksNormalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stocksNormalActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -637,12 +602,11 @@ public void onRun(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel CryptoPanel;
+    private javax.swing.JToggleButton CryptoNormal;
     private javax.swing.JPanel SIdeBarPanel;
     private javax.swing.JPanel WholePanel;
     private javax.swing.JTextField amountLabel;
     private javax.swing.JToggleButton budgetNormal;
-    private javax.swing.JLabel cryptoLabel;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JToggleButton editInfoPage;
     private javax.swing.JComboBox<String> employmentStatus;
@@ -657,14 +621,11 @@ public void onRun(){
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel17;
-    private javax.swing.JPanel jPanel18;
     private javax.swing.JToggleButton logoutBtn;
     private javax.swing.JToggleButton mainMenu;
     private javax.swing.JTextField netWorthLabel;
     private javax.swing.JButton saveBtn;
     private javax.swing.JToggleButton savingsNormal;
-    private javax.swing.JLabel stocksLabel;
-    private javax.swing.JPanel stocksPanel1;
+    private javax.swing.JToggleButton stocksNormal;
     // End of variables declaration//GEN-END:variables
 }
