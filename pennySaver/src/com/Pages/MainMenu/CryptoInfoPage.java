@@ -5,7 +5,7 @@ import com.Pages.Main.Main;
 import com.Support.BudgetCalcsPage;
 import javax.swing.JOptionPane;
 import com.Support.Constant;
-import com.Support.Stocks.Stocks;
+import com.Support.Stocks.Crypto;
 import java.io.IOException;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -58,14 +58,14 @@ public class CryptoInfoPage extends javax.swing.JFrame {
                  for(int i=1; i<=1; i++){
                      Double price = 0.0,total = 0.0;
                      Double number = Constant.rs.getDouble("crypto_number");
-                     String tableSymb = Constant.rs.getString("stock_symbol");
+                     String tableSymb = Constant.rs.getString("crypto_symbol");
                      //if(number != null && tableSymb!=null){
                         ChartStockSymb.add(tableSymb);
                         ChartStockNum.add(number);
                      
                      row.add(tableSymb);
                      row.add(number);
-                     price = Stocks.getPrice(tableSymb);
+                     price = Crypto.getPrice(tableSymb);
                      row.add(price);
                      total = number * price;
                      row.add(total);

@@ -53,6 +53,29 @@ public class Crypto {
           is.close();
         }
       }
+      
+      public static Double getPrice(String symb) throws IOException {
+          String url = "https://www.alphavantage.co/query?"
+                + "function=CURRENCY_EXCHANGE_RATE&"
+                + "from_currency="+symb+"&"
+                + "to_currency=usd&"
+                + "apikey="+Constant.alphaVantageAPIKey;
+        System.out.println(url);
+        InputStream is = new URL(url).openStream();
+        try {
+          BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+          String jsonText = readAll(rd);
+          JsonObject jsonObject = new JsonParser().parse(jsonText).getAsJsonObject();
+          //String pageName = jsonObject.getAsJsonObject("Global Quote").get("01. symbol").getAsString();
+          Double price = jsonObject.getAsJsonObject("Realtime Currency Exchange Rate").get("5. Exchange Rate").getAsDouble();
+          System.out.println("Double price: " + price);
+          //System.out.println("Symbol " + pageName);
+          return price;
+        }
+        finally{
+          is.close();
+        }
+  }
         /*
         URLConnection urlConn = url.openConnection();
         InputStreamReader inStream = new InputStreamReader(urlConn.getInputStream());
