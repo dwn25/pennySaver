@@ -33,15 +33,16 @@ public class Stocks {
                 + "symbol="+symb+"&"
                 + "outputsize=compact&"
                 + "apikey="+Constant.alphaVantageAPIKey;
+        System.out.println(url);
         InputStream is = new URL(url).openStream();
         try {
           BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
           String jsonText = readAll(rd);
           JsonObject jsonObject = new JsonParser().parse(jsonText).getAsJsonObject();
-          String pageName = jsonObject.getAsJsonObject("Global Quote").get("01. symbol").getAsString();
+          //String pageName = jsonObject.getAsJsonObject("Global Quote").get("01. symbol").getAsString();
           Double price = jsonObject.getAsJsonObject("Global Quote").get("05. price").getAsDouble();
           System.out.println("Double price: " + price);
-          System.out.println("Symbol " + pageName);
+          //System.out.println("Symbol " + pageName);
           return price;
         }
         finally{
@@ -50,7 +51,7 @@ public class Stocks {
   }
 
 
-    public static boolean checkSymbol(String symb) throws MalformedURLException, IOException{
+    /*public static boolean checkSymbol(String symb) throws MalformedURLException, IOException{
         boolean isSymbol = false;
         URL url = new URL("https://www.alphavantage.co/query?"
                 + "function=GLOBAL_QUOTE&"
@@ -73,5 +74,38 @@ public class Stocks {
             line = buff.readLine();
         }
         return isSymbol;
-    }
+    }*/
+  
+  
+      public static boolean checkSymbol(String symb) throws IOException, MalformedURLException {
+          boolean cryp = false;
+          String url = "https://www.alphavantage.co/query?"
+                + "function=GLOBAL_QUOTE&"
+                + "symbol="+symb+"&"
+                + "outputsize=compact&"
+                + "apikey="+Constant.alphaVantageAPIKey;
+          
+        /*URL url = new URL("https://www.alphavantage.co/query?"
+                + "function=CURRENCY_EXCHANGE_RATE&"
+                + "from_currency="+symb+"&"
+                + "to_currency=usd&"
+                + "apikey="+Constant.alphaVantageAPIKey);*/
+                InputStream is = new URL(url).openStream();
+        try {
+          BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+          String jsonText = readAll(rd);
+          JsonObject jsonObject = new JsonParser().parse(jsonText).getAsJsonObject();
+          Double price = jsonObject.getAsJsonObject("Global Quote").get("05. price").getAsDouble();
+          System.out.println("Price:  " + price);
+          cryp = true;
+          return cryp;
+        }
+        catch(Exception e){
+          cryp = false;
+          return cryp;
+        }
+        finally{
+          is.close();
+        }
+      }
 }

@@ -206,6 +206,7 @@ public class EnterStocksPage extends javax.swing.JFrame {
         firstName.setBackground(new java.awt.Color(34, 47, 66));
         firstName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         firstName.setForeground(new java.awt.Color(255, 255, 255));
+        firstName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         firstName.setText("and the number that you own");
 
         jLabel13.setBackground(new java.awt.Color(34, 47, 66));
@@ -214,6 +215,7 @@ public class EnterStocksPage extends javax.swing.JFrame {
         firstName1.setBackground(new java.awt.Color(34, 47, 66));
         firstName1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         firstName1.setForeground(new java.awt.Color(255, 255, 255));
+        firstName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         firstName1.setText("Please enter the stock symbol ");
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
@@ -374,7 +376,7 @@ public class EnterStocksPage extends javax.swing.JFrame {
                     int rowsInserted = statement.executeUpdate();
                     if(rowsInserted > 0){
                         System.out.println("Stocks Table: successiful insertion!");
-                        JOptionPane.showMessageDialog(null, "Save Succesful");
+                        JOptionPane.showMessageDialog(null, "Stock Save Succesful");
                         symbol.setText(null);
                         number.setText(null);
                     }

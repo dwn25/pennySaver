@@ -47,16 +47,6 @@ public class StocksInfoPage extends javax.swing.JFrame {
     private void initComponents() {
 
         WholePanel3 = new javax.swing.JPanel();
-        SIdeBarPanel3 = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
-        logoutBtn = new javax.swing.JToggleButton();
-        mainMenu = new javax.swing.JToggleButton();
-        budgetNormal = new javax.swing.JToggleButton();
-        editinfoBtn = new javax.swing.JToggleButton();
-        savingsNormal = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        editinfoBtn1 = new javax.swing.JToggleButton();
-        CryptoNormal = new javax.swing.JToggleButton();
         InfoPanel3 = new javax.swing.JPanel();
         Edit = new javax.swing.JButton();
         budgetChart1 = new javax.swing.JPanel();
@@ -65,140 +55,21 @@ public class StocksInfoPage extends javax.swing.JFrame {
         headerPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         budgetChart = new javax.swing.JPanel();
+        SIdeBarPanel = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        mainMenu = new javax.swing.JButton();
+        SavingsIcon = new javax.swing.JButton();
+        cryptoIcon = new javax.swing.JButton();
+        editTextbtn = new javax.swing.JButton();
+        logoutBtn = new javax.swing.JButton();
+        budgetIcon = new javax.swing.JButton();
+        jToggleButton2 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         WholePanel3.setBackground(new java.awt.Color(91, 139, 151));
         WholePanel3.setForeground(new java.awt.Color(255, 255, 255));
         WholePanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        SIdeBarPanel3.setBackground(new java.awt.Color(29, 45, 68));
-        SIdeBarPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
-        SIdeBarPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
-
-        logoutBtn.setBackground(new java.awt.Color(41, 57, 80));
-        logoutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/logoutBtn.jpg"))); // NOI18N
-        logoutBtn.setBorder(null);
-        logoutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                logoutBtnMouseClicked(evt);
-            }
-        });
-        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutBtnActionPerformed(evt);
-            }
-        });
-        SIdeBarPanel3.add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 130, 50));
-
-        mainMenu.setBackground(new java.awt.Color(41, 57, 80));
-        mainMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/MainMenuNormal.jpg"))); // NOI18N
-        mainMenu.setBorder(null);
-        mainMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mainMenuMouseClicked(evt);
-            }
-        });
-        mainMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mainMenuActionPerformed(evt);
-            }
-        });
-        SIdeBarPanel3.add(mainMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 130, 50));
-
-        budgetNormal.setBackground(new java.awt.Color(41, 57, 80));
-        budgetNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/BudgetNormal.jpg"))); // NOI18N
-        budgetNormal.setBorder(null);
-        budgetNormal.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                budgetNormalMouseClicked(evt);
-            }
-        });
-        budgetNormal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                budgetNormalActionPerformed(evt);
-            }
-        });
-        SIdeBarPanel3.add(budgetNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 130, 50));
-
-        editinfoBtn.setBackground(new java.awt.Color(41, 57, 80));
-        editinfoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/EditInfoNormal.jpg"))); // NOI18N
-        editinfoBtn.setBorder(null);
-        editinfoBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editinfoBtnMouseClicked(evt);
-            }
-        });
-        editinfoBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editinfoBtnActionPerformed(evt);
-            }
-        });
-        SIdeBarPanel3.add(editinfoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 130, 50));
-
-        savingsNormal.setBackground(new java.awt.Color(41, 57, 80));
-        savingsNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/SavingsNormal.jpg"))); // NOI18N
-        savingsNormal.setBorder(null);
-        savingsNormal.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                savingsNormalMouseClicked(evt);
-            }
-        });
-        savingsNormal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                savingsNormalActionPerformed(evt);
-            }
-        });
-        SIdeBarPanel3.add(savingsNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 130, 50));
-
-        jToggleButton2.setBackground(new java.awt.Color(240, 235, 216));
-        jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/StocksSelected.jpg"))); // NOI18N
-        jToggleButton2.setBorder(null);
-        jToggleButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jToggleButton2MouseClicked(evt);
-            }
-        });
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
-            }
-        });
-        SIdeBarPanel3.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 130, -1));
-
-        editinfoBtn1.setBackground(new java.awt.Color(41, 57, 80));
-        editinfoBtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/EditInfoNormal.jpg"))); // NOI18N
-        editinfoBtn1.setBorder(null);
-        editinfoBtn1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editinfoBtn1MouseClicked(evt);
-            }
-        });
-        editinfoBtn1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editinfoBtn1ActionPerformed(evt);
-            }
-        });
-        SIdeBarPanel3.add(editinfoBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 130, 50));
-
-        CryptoNormal.setBackground(new java.awt.Color(41, 57, 80));
-        CryptoNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/CryptoNormal.jpg"))); // NOI18N
-        CryptoNormal.setBorder(null);
-        CryptoNormal.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CryptoNormalMouseClicked(evt);
-            }
-        });
-        CryptoNormal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CryptoNormalActionPerformed(evt);
-            }
-        });
-        SIdeBarPanel3.add(CryptoNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 130, 50));
-
-        WholePanel3.add(SIdeBarPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 550));
 
         InfoPanel3.setBackground(new java.awt.Color(240, 235, 216));
 
@@ -272,13 +143,13 @@ public class StocksInfoPage extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(budgetChart1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(113, 113, 113)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
                 .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        WholePanel3.add(InfoPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 720, 460));
+        WholePanel3.add(InfoPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 720, 510));
 
         headerPanel.setBackground(new java.awt.Color(34, 47, 66));
 
@@ -311,6 +182,113 @@ public class StocksInfoPage extends javax.swing.JFrame {
 
         WholePanel3.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 720, 90));
 
+        SIdeBarPanel.setBackground(new java.awt.Color(29, 45, 68));
+        SIdeBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
+        SIdeBarPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        mainMenu.setBackground(new java.awt.Color(41, 57, 80));
+        mainMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/MainMenuNormal.jpg"))); // NOI18N
+        mainMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mainMenuMouseClicked(evt);
+            }
+        });
+        mainMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mainMenuActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(mainMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 140, 50));
+
+        SavingsIcon.setBackground(new java.awt.Color(41, 57, 80));
+        SavingsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/SavingsNormal.jpg"))); // NOI18N
+        SavingsIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SavingsIconMouseClicked(evt);
+            }
+        });
+        SavingsIcon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SavingsIconActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(SavingsIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 140, 50));
+
+        cryptoIcon.setBackground(new java.awt.Color(41, 57, 80));
+        cryptoIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/CryptoNormal.jpg"))); // NOI18N
+        cryptoIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cryptoIconMouseClicked(evt);
+            }
+        });
+        cryptoIcon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cryptoIconActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(cryptoIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 140, 50));
+
+        editTextbtn.setBackground(new java.awt.Color(41, 57, 80));
+        editTextbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/EditInfoNormal.jpg"))); // NOI18N
+        editTextbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editTextbtnMouseClicked(evt);
+            }
+        });
+        editTextbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editTextbtnActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(editTextbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 140, 50));
+
+        logoutBtn.setBackground(new java.awt.Color(41, 57, 80));
+        logoutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/logoutBtn.jpg"))); // NOI18N
+        logoutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutBtnMouseClicked(evt);
+            }
+        });
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutBtnActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 140, 50));
+
+        budgetIcon.setBackground(new java.awt.Color(41, 57, 80));
+        budgetIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/BudgetNormal.jpg"))); // NOI18N
+        budgetIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                budgetIconMouseClicked(evt);
+            }
+        });
+        budgetIcon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                budgetIconActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(budgetIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 140, 50));
+
+        jToggleButton2.setBackground(new java.awt.Color(240, 235, 216));
+        jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/StocksSelected.jpg"))); // NOI18N
+        jToggleButton2.setBorder(null);
+        jToggleButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jToggleButton2MouseClicked(evt);
+            }
+        });
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 140, 50));
+
+        WholePanel3.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 600));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -327,11 +305,11 @@ public class StocksInfoPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void onRun() throws SQLException, IOException{
-        updateTeable();
+        updateTable();
         BudgetCalcsPage.dynamicBar(budgetChart1, "Stocks Breakdown", ChartStockNum, ChartStockSymb);
     }
     
-   public void updateTeable() throws SQLException, IOException{
+   public void updateTable() throws SQLException, IOException{
        try {
            Constant.DoConnect();
            String sql = "SELECT * FROM pstocks WHERE username LIKE '"+Constant.currentUser+"%'" ;
@@ -404,8 +382,55 @@ public class StocksInfoPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
+    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
+        EditStocksPage m = new EditStocksPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_EditActionPerformed
+
+    private void mainMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuMouseClicked
+        MainMenu m = new MainMenu();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_mainMenuMouseClicked
+
+    private void mainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuActionPerformed
+
+    }//GEN-LAST:event_mainMenuActionPerformed
+
+    private void SavingsIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SavingsIconMouseClicked
+
+    }//GEN-LAST:event_SavingsIconMouseClicked
+
+    private void SavingsIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SavingsIconActionPerformed
+        SavingsInfoPage m = new SavingsInfoPage();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_SavingsIconActionPerformed
+
+    private void cryptoIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cryptoIconMouseClicked
+
+    }//GEN-LAST:event_cryptoIconMouseClicked
+
+    private void cryptoIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cryptoIconActionPerformed
+        CryptoInfoPage m = new CryptoInfoPage();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_cryptoIconActionPerformed
+
+    private void editTextbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editTextbtnMouseClicked
+
+    }//GEN-LAST:event_editTextbtnMouseClicked
+
+    private void editTextbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editTextbtnActionPerformed
+        EditPersonalInfoPage m = new EditPersonalInfoPage();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_editTextbtnActionPerformed
+
     private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseClicked
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_logoutBtnMouseClicked
 
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
@@ -420,79 +445,23 @@ public class StocksInfoPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_logoutBtnActionPerformed
 
-    private void mainMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuMouseClicked
-        MainMenu m = new MainMenu();
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_mainMenuMouseClicked
-
-    private void mainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuActionPerformed
-
-    }//GEN-LAST:event_mainMenuActionPerformed
-
-    private void budgetNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetNormalMouseClicked
+    private void budgetIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetIconMouseClicked
         BudgetInfoPage m = new BudgetInfoPage();
         m.setVisible(true);
         this.hide();
-    }//GEN-LAST:event_budgetNormalMouseClicked
+    }//GEN-LAST:event_budgetIconMouseClicked
 
-    private void budgetNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetNormalActionPerformed
+    private void budgetIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetIconActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_budgetNormalActionPerformed
-
-    private void editinfoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editinfoBtnMouseClicked
-        EditPersonalInfoPage m = new EditPersonalInfoPage();
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_editinfoBtnMouseClicked
-
-    private void editinfoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editinfoBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editinfoBtnActionPerformed
-
-    private void savingsNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savingsNormalMouseClicked
-        SavingsInfoPage m = new SavingsInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_savingsNormalMouseClicked
-
-    private void savingsNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savingsNormalActionPerformed
-
-    }//GEN-LAST:event_savingsNormalActionPerformed
+    }//GEN-LAST:event_budgetIconActionPerformed
 
     private void jToggleButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton2MouseClicked
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jToggleButton2MouseClicked
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jToggleButton2ActionPerformed
-
-    private void editinfoBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editinfoBtn1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editinfoBtn1MouseClicked
-
-    private void editinfoBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editinfoBtn1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editinfoBtn1ActionPerformed
-
-    private void CryptoNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CryptoNormalMouseClicked
-        CryptoInfoPage m = new CryptoInfoPage();
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_CryptoNormalMouseClicked
-
-    private void CryptoNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CryptoNormalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CryptoNormalActionPerformed
-
-    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
-        EditStocksPage m = new EditStocksPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_EditActionPerformed
 
     /**
      * @param args the command line arguments
@@ -530,24 +499,23 @@ public class StocksInfoPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton CryptoNormal;
     private javax.swing.JButton Edit;
     private javax.swing.JPanel InfoPanel3;
-    private javax.swing.JPanel SIdeBarPanel3;
+    private javax.swing.JPanel SIdeBarPanel;
+    private javax.swing.JButton SavingsIcon;
     private javax.swing.JPanel WholePanel3;
     private javax.swing.JPanel budgetChart;
     private javax.swing.JPanel budgetChart1;
-    private javax.swing.JToggleButton budgetNormal;
-    private javax.swing.JToggleButton editinfoBtn;
-    private javax.swing.JToggleButton editinfoBtn1;
+    private javax.swing.JButton budgetIcon;
+    private javax.swing.JButton cryptoIcon;
+    private javax.swing.JButton editTextbtn;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton logoutBtn;
-    private javax.swing.JToggleButton mainMenu;
-    private javax.swing.JToggleButton savingsNormal;
+    private javax.swing.JButton logoutBtn;
+    private javax.swing.JButton mainMenu;
     // End of variables declaration//GEN-END:variables
 }

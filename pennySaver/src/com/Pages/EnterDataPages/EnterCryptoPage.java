@@ -4,7 +4,6 @@ import com.Pages.MainMenu.BudgetInfoPage;
 import com.Pages.AskQuestionPage.BudgetQuestionPage;
 import com.Support.Constant;
 import com.Support.Stocks.Crypto;
-import com.Support.Stocks.Stocks;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,6 +19,8 @@ public class EnterCryptoPage extends javax.swing.JFrame {
      * Creates new form EnterCryptoPage
      */
     public EnterCryptoPage() {
+        setLocationRelativeTo(null);
+        setResizable(false);
         initComponents();
     }
 
@@ -214,6 +215,7 @@ public class EnterCryptoPage extends javax.swing.JFrame {
         firstName.setBackground(new java.awt.Color(34, 47, 66));
         firstName.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         firstName.setForeground(new java.awt.Color(255, 255, 255));
+        firstName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         firstName.setText("and the number that you own");
 
         jLabel13.setBackground(new java.awt.Color(34, 47, 66));
@@ -222,6 +224,7 @@ public class EnterCryptoPage extends javax.swing.JFrame {
         firstName1.setBackground(new java.awt.Color(34, 47, 66));
         firstName1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         firstName1.setForeground(new java.awt.Color(255, 255, 255));
+        firstName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         firstName1.setText("Please enter the stock symbol ");
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
@@ -362,7 +365,7 @@ public class EnterCryptoPage extends javax.swing.JFrame {
         try {
             ResultSet rs2 = Constant.stmt.executeQuery(query) ;
             if(rs2.next()){
-                String dbSymbol = rs2.getString("STOCK_SYMBOL");
+                String dbSymbol = rs2.getString("CRYPTO_SYMBOL");
                 if(dbSymbol.equals(symb)){
                     return true;
                 }
@@ -377,7 +380,6 @@ public class EnterCryptoPage extends javax.swing.JFrame {
     }
         
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        Constant.currentUser = "bcroy";
         Constant.DoConnect();
         String stockSymbol,stockNumber;
         int finalStockNumber;
@@ -385,10 +387,10 @@ public class EnterCryptoPage extends javax.swing.JFrame {
             stockSymbol = symbol.getText();
             stockNumber = number.getText();
             if(stockSymbol.isEmpty()){
-                JOptionPane.showMessageDialog(rootPane, "Please Enter a Stock Symbol");
+                JOptionPane.showMessageDialog(rootPane, "Please Enter a Crypto Symbol");
             }
             else if(!isAlpha(stockSymbol)){
-                    JOptionPane.showMessageDialog(rootPane, "Please Only Valid Characters for the Stock Symbol");
+                    JOptionPane.showMessageDialog(rootPane, "Please Only Valid Characters for the Crypto Symbol");
             }
             else if(stockNumber.isEmpty()){
                    JOptionPane.showMessageDialog(rootPane, "Please Enter The Number");

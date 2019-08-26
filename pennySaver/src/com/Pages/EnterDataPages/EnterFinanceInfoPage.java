@@ -174,11 +174,13 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
         jLabel9.setBackground(new java.awt.Color(34, 47, 66));
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Welcome to PennySavers");
 
         jLabel10.setBackground(new java.awt.Color(34, 47, 66));
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Please enter your details below");
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
@@ -393,28 +395,32 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(rootPane, "Income Cannot Be Empty");
                 }
                 else {
-                    netWorth = Double.parseDouble(netWorthField.getText());
-                    monthlySavings = Double.parseDouble(monthlySavingsField.getText());
-                    monthlyIncome = Double.parseDouble(incomeField.getText());   
-                    Object obj = employmentStatus.getSelectedItem();
-                    String status = obj.toString();
-                    System.out.println(status);
-                    System.out.println(netWorth);
-                    System.out.println(monthlyIncome);
-                    System.out.println(monthlySavings);
-                    String sql = ("UPDATE ROOT.PUSERS SET employment_status = ?, net_income = ?, net_worth = ?, monthly_savings = ? WHERE username= ?");
-                    PreparedStatement statement = Constant.con.prepareStatement(sql);
-                    statement.setString(1, status);
-                    statement.setDouble(2, monthlyIncome);
-                    statement.setDouble(3, netWorth);
-                    statement.setDouble(4, monthlySavings);
-                    statement.setString(5, Constant.currentUser);
-                    int rowsInserted = statement.executeUpdate();
-                    JOptionPane.showMessageDialog(null, "Data Save Succesful");
-                    StocksQuestionPage sQ = new StocksQuestionPage();
-                    sQ.setLocationRelativeTo(null);
-                    sQ.setVisible(true);
-                    this.hide();
+                      String[] options={"Yes", "No"};
+                    int t =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Save?", "Confirm Save", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+                    if(t==JOptionPane.YES_OPTION){
+                        netWorth = Double.parseDouble(netWorthField.getText());
+                        monthlySavings = Double.parseDouble(monthlySavingsField.getText());
+                        monthlyIncome = Double.parseDouble(incomeField.getText());   
+                        Object obj = employmentStatus.getSelectedItem();
+                        String status = obj.toString();
+                        System.out.println(status);
+                        System.out.println(netWorth);
+                        System.out.println(monthlyIncome);
+                        System.out.println(monthlySavings);
+                        String sql = ("UPDATE ROOT.PUSERS SET employment_status = ?, net_income = ?, net_worth = ?, monthly_savings = ? WHERE username= ?");
+                        PreparedStatement statement = Constant.con.prepareStatement(sql);
+                        statement.setString(1, status);
+                        statement.setDouble(2, monthlyIncome);
+                        statement.setDouble(3, netWorth);
+                        statement.setDouble(4, monthlySavings);
+                        statement.setString(5, Constant.currentUser);
+                        int rowsInserted = statement.executeUpdate();
+                        JOptionPane.showMessageDialog(null, "Data Save Succesful");
+                        StocksQuestionPage sQ = new StocksQuestionPage();
+                        sQ.setLocationRelativeTo(null);
+                        sQ.setVisible(true);
+                        this.hide();
+                    }
                 }      
             }catch(Exception err){
                 System.out.println(err.toString());

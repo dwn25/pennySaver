@@ -1,12 +1,28 @@
 package com.Pages.MainMenu;
 
+import com.Pages.EditPages.EditStocksPage;
+import com.Pages.Main.Main;
+import com.Support.BudgetCalcsPage;
 import javax.swing.JOptionPane;
+import com.Support.Constant;
+import com.Support.Stocks.Stocks;
+import java.io.IOException;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
  * @author DNartey
  */
 public class CryptoInfoPage extends javax.swing.JFrame {
+    ArrayList<Double> ChartStockNum = new ArrayList<Double>();
+    ArrayList<String> ChartStockSymb = new ArrayList<String>();
 
     /**
      * Creates new form CryptoPage
@@ -15,7 +31,53 @@ public class CryptoInfoPage extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         initComponents();
+        try {
+            onRun();
+        } catch (Exception ex) {
+            Logger.getLogger(StocksInfoPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+    
+    public void onRun() throws SQLException, IOException{
+        updateTable();
+        BudgetCalcsPage.dynamicBar(budgetChart1, "Crypto Breakdown", ChartStockNum, ChartStockSymb);
+    }
+    
+       public void updateTable() throws SQLException, IOException{
+       try {
+           Constant.DoConnect();
+           String sql = "SELECT * FROM pcrypto WHERE username LIKE '"+Constant.currentUser+"%'" ;
+           Constant.rs=Constant.stmt.executeQuery(sql);
+           DefaultTableModel tbl = (DefaultTableModel) jTable1.getModel();
+           tbl.setRowCount(0);
+           ResultSetMetaData rm = Constant.rs.getMetaData();           
+           int numOfColumns = rm.getColumnCount();
+           Vector data = new Vector();
+           while(Constant.rs.next()){    
+                 Vector row = new Vector(numOfColumns);
+                 for(int i=1; i<=1; i++){
+                     Double price = 0.0,total = 0.0;
+                     Double number = Constant.rs.getDouble("crypto_number");
+                     String tableSymb = Constant.rs.getString("stock_symbol");
+                     //if(number != null && tableSymb!=null){
+                        ChartStockSymb.add(tableSymb);
+                        ChartStockNum.add(number);
+                     
+                     row.add(tableSymb);
+                     row.add(number);
+                     price = Stocks.getPrice(tableSymb);
+                     row.add(price);
+                     total = number * price;
+                     row.add(total);
+                     tbl.addRow(row);      
+                 } 
+                 data.addElement(row);
+            }
+       }catch (SQLException ex) {
+          Logger.getLogger(StocksInfoPage.class.getName()).log(Level.SEVERE,null,ex);  
+        }
+                  
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,147 +88,363 @@ public class CryptoInfoPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        WholePanel3 = new javax.swing.JPanel();
+        InfoPanel3 = new javax.swing.JPanel();
+        Edit = new javax.swing.JButton();
+        budgetChart1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        headerPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        budgetChart = new javax.swing.JPanel();
+        SIdeBarPanel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        menuBar = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        budgetMenuItem = new javax.swing.JMenuItem();
-        stocksMenuItem = new javax.swing.JMenuItem();
-        cryptoMenuItem = new javax.swing.JMenuItem();
-        savingsMenutItem = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        mainMenu = new javax.swing.JButton();
+        SavingsIcon = new javax.swing.JButton();
+        editTextbtn = new javax.swing.JButton();
+        logoutBtn = new javax.swing.JButton();
+        budgetIcon = new javax.swing.JButton();
+        budgetIcon1 = new javax.swing.JButton();
+        SavingsIcon1 = new javax.swing.JButton();
+        StocksIcon = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel1.setPreferredSize(new java.awt.Dimension(637, 434));
+        WholePanel3.setBackground(new java.awt.Color(91, 139, 151));
+        WholePanel3.setForeground(new java.awt.Color(255, 255, 255));
+        WholePanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        InfoPanel3.setBackground(new java.awt.Color(240, 235, 216));
+
+        Edit.setBackground(new java.awt.Color(63, 64, 76));
+        Edit.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
+        Edit.setForeground(new java.awt.Color(255, 255, 255));
+        Edit.setText("Edit");
+        Edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditActionPerformed(evt);
+            }
+        });
+
+        budgetChart1.setLayout(new java.awt.BorderLayout());
+
+        jTable1.setBackground(new java.awt.Color(240, 235, 216));
+        jTable1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(63, 64, 76));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Symbol", "Number Owned", "Price", "Total"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
+
+        javax.swing.GroupLayout InfoPanel3Layout = new javax.swing.GroupLayout(InfoPanel3);
+        InfoPanel3.setLayout(InfoPanel3Layout);
+        InfoPanel3Layout.setHorizontalGroup(
+            InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(InfoPanel3Layout.createSequentialGroup()
+                .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(InfoPanel3Layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(InfoPanel3Layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(budgetChart1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(144, Short.MAX_VALUE))
+        );
+        InfoPanel3Layout.setVerticalGroup(
+            InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InfoPanel3Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(budgetChart1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        WholePanel3.add(InfoPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 720, 510));
+
+        headerPanel.setBackground(new java.awt.Color(34, 47, 66));
+
+        jLabel1.setBackground(new java.awt.Color(34, 47, 66));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Crypto Allocation");
+
+        budgetChart.setLayout(new java.awt.BorderLayout());
+
+        javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
+        headerPanel.setLayout(headerPanelLayout);
+        headerPanelLayout.setHorizontalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addComponent(budgetChart, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        headerPanelLayout.setVerticalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(budgetChart, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        WholePanel3.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 720, 90));
+
+        SIdeBarPanel.setBackground(new java.awt.Color(29, 45, 68));
+        SIdeBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
+        SIdeBarPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(257, 257, 257)
-                .addComponent(jLabel4)
-                .addContainerGap(280, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel4)
-                .addGap(0, 178, Short.MAX_VALUE))
-        );
-
-        menuBar.setBackground(new java.awt.Color(0, 0, 0));
-        menuBar.setForeground(new java.awt.Color(51, 51, 51));
-
-        jMenu1.setText("File");
-
-        budgetMenuItem.setText("Budget");
-        budgetMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                budgetMenuItemActionPerformed(evt);
+        mainMenu.setBackground(new java.awt.Color(41, 57, 80));
+        mainMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/MainMenuNormal.jpg"))); // NOI18N
+        mainMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mainMenuMouseClicked(evt);
             }
         });
-        jMenu1.add(budgetMenuItem);
-
-        stocksMenuItem.setText("Stocks");
-        stocksMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        mainMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stocksMenuItemActionPerformed(evt);
+                mainMenuActionPerformed(evt);
             }
         });
-        jMenu1.add(stocksMenuItem);
+        SIdeBarPanel.add(mainMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 140, 50));
 
-        cryptoMenuItem.setText("Crypto");
-        cryptoMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cryptoMenuItemActionPerformed(evt);
+        SavingsIcon.setBackground(new java.awt.Color(41, 57, 80));
+        SavingsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/SavingsNormal.jpg"))); // NOI18N
+        SavingsIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SavingsIconMouseClicked(evt);
             }
         });
-        jMenu1.add(cryptoMenuItem);
-
-        savingsMenutItem.setText("Savings Forecast");
-        savingsMenutItem.addActionListener(new java.awt.event.ActionListener() {
+        SavingsIcon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                savingsMenutItemActionPerformed(evt);
+                SavingsIconActionPerformed(evt);
             }
         });
-        jMenu1.add(savingsMenutItem);
+        SIdeBarPanel.add(SavingsIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 140, 50));
 
-        jMenuItem7.setText("Logout");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+        editTextbtn.setBackground(new java.awt.Color(41, 57, 80));
+        editTextbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/EditInfoNormal.jpg"))); // NOI18N
+        editTextbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editTextbtnMouseClicked(evt);
             }
         });
-        jMenu1.add(jMenuItem7);
+        editTextbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editTextbtnActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(editTextbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 140, 50));
 
-        menuBar.add(jMenu1);
+        logoutBtn.setBackground(new java.awt.Color(41, 57, 80));
+        logoutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/logoutBtn.jpg"))); // NOI18N
+        logoutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutBtnMouseClicked(evt);
+            }
+        });
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutBtnActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 140, 50));
 
-        jMenu2.setText("Help");
-        menuBar.add(jMenu2);
+        budgetIcon.setBackground(new java.awt.Color(41, 57, 80));
+        budgetIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/BudgetNormal.jpg"))); // NOI18N
+        budgetIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                budgetIconMouseClicked(evt);
+            }
+        });
+        budgetIcon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                budgetIconActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(budgetIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 140, 50));
 
-        setJMenuBar(menuBar);
+        budgetIcon1.setBackground(new java.awt.Color(240, 235, 216));
+        budgetIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/CryptoSelected.jpg"))); // NOI18N
+        budgetIcon1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                budgetIcon1MouseClicked(evt);
+            }
+        });
+        budgetIcon1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                budgetIcon1ActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(budgetIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 140, 50));
+
+        SavingsIcon1.setBackground(new java.awt.Color(41, 57, 80));
+        SavingsIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/SavingsNormal.jpg"))); // NOI18N
+        SavingsIcon1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SavingsIcon1MouseClicked(evt);
+            }
+        });
+        SavingsIcon1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SavingsIcon1ActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(SavingsIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 140, 50));
+
+        StocksIcon.setBackground(new java.awt.Color(41, 57, 80));
+        StocksIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/StocksNormal.jpg"))); // NOI18N
+        StocksIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                StocksIconMouseClicked(evt);
+            }
+        });
+        StocksIcon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StocksIconActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(StocksIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 140, 50));
+
+        WholePanel3.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 600));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(WholePanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+            .addComponent(WholePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void budgetMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetMenuItemActionPerformed
-        // TODO add your handling code here:
-        BudgetInfoPage m = new BudgetInfoPage();
+    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
+        EditStocksPage m = new EditStocksPage();
         m.setLocationRelativeTo(null);
         m.setVisible(true);
         this.hide();
-    }//GEN-LAST:event_budgetMenuItemActionPerformed
+    }//GEN-LAST:event_EditActionPerformed
 
-    private void stocksMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stocksMenuItemActionPerformed
-        // TODO add your handling code here:
-        StocksInfoPage m = new StocksInfoPage();
-        m.setLocationRelativeTo(null);
+    private void mainMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuMouseClicked
+        MainMenu m = new MainMenu();
         m.setVisible(true);
         this.hide();
-    }//GEN-LAST:event_stocksMenuItemActionPerformed
+    }//GEN-LAST:event_mainMenuMouseClicked
 
-    private void cryptoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cryptoMenuItemActionPerformed
-        // TODO add your handling code here:
-        CryptoInfoPage m = new CryptoInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_cryptoMenuItemActionPerformed
+    private void mainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuActionPerformed
 
-    private void savingsMenutItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savingsMenutItemActionPerformed
-        // TODO add your handling code here:
+    }//GEN-LAST:event_mainMenuActionPerformed
+
+    private void SavingsIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SavingsIconMouseClicked
+
+    }//GEN-LAST:event_SavingsIconMouseClicked
+
+    private void SavingsIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SavingsIconActionPerformed
         SavingsInfoPage m = new SavingsInfoPage();
-        m.setLocationRelativeTo(null);
         m.setVisible(true);
         this.hide();
-    }//GEN-LAST:event_savingsMenutItemActionPerformed
+    }//GEN-LAST:event_SavingsIconActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        // TODO add your handling code here:
+    private void editTextbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editTextbtnMouseClicked
+
+    }//GEN-LAST:event_editTextbtnMouseClicked
+
+    private void editTextbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editTextbtnActionPerformed
+        EditPersonalInfoPage m = new EditPersonalInfoPage();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_editTextbtnActionPerformed
+
+    private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseClicked
+
+    }//GEN-LAST:event_logoutBtnMouseClicked
+
+    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
         String[] options={"Yes", "No"};
-        int t = JOptionPane.showOptionDialog(null, "Are You Sure You Want To Logout?", "Confirm Logout", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-        if (t==JOptionPane.YES_OPTION){
-            JOptionPane.showMessageDialog(rootPane, "Goodbye, Please come again");
-            System.exit(0);
+        int t =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Logout?", "Logout", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        if(t==JOptionPane.YES_OPTION){
+            Constant.currentUser = "";
+            Main m = new Main();
+            m.setLocationRelativeTo(null);
+            m.setVisible(true);
+            this.hide();
         }
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    }//GEN-LAST:event_logoutBtnActionPerformed
+
+    private void budgetIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetIconMouseClicked
+        BudgetInfoPage m = new BudgetInfoPage();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_budgetIconMouseClicked
+
+    private void budgetIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetIconActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_budgetIconActionPerformed
+
+    private void budgetIcon1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetIcon1MouseClicked
+
+    }//GEN-LAST:event_budgetIcon1MouseClicked
+
+    private void budgetIcon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetIcon1ActionPerformed
+
+    }//GEN-LAST:event_budgetIcon1ActionPerformed
+
+    private void SavingsIcon1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SavingsIcon1MouseClicked
+
+    }//GEN-LAST:event_SavingsIcon1MouseClicked
+
+    private void SavingsIcon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SavingsIcon1ActionPerformed
+        SavingsInfoPage m = new SavingsInfoPage();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_SavingsIcon1ActionPerformed
+
+    private void StocksIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StocksIconMouseClicked
+
+    }//GEN-LAST:event_StocksIconMouseClicked
+
+    private void StocksIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StocksIconActionPerformed
+        StocksInfoPage m = new StocksInfoPage();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_StocksIconActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,15 +483,24 @@ public class CryptoInfoPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem budgetMenuItem;
-    private javax.swing.JMenuItem cryptoMenuItem;
+    private javax.swing.JButton Edit;
+    private javax.swing.JPanel InfoPanel3;
+    private javax.swing.JPanel SIdeBarPanel;
+    private javax.swing.JButton SavingsIcon;
+    private javax.swing.JButton SavingsIcon1;
+    private javax.swing.JButton StocksIcon;
+    private javax.swing.JPanel WholePanel3;
+    private javax.swing.JPanel budgetChart;
+    private javax.swing.JPanel budgetChart1;
+    private javax.swing.JButton budgetIcon;
+    private javax.swing.JButton budgetIcon1;
+    private javax.swing.JButton editTextbtn;
+    private javax.swing.JPanel headerPanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem savingsMenutItem;
-    private javax.swing.JMenuItem stocksMenuItem;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JButton logoutBtn;
+    private javax.swing.JButton mainMenu;
     // End of variables declaration//GEN-END:variables
 }

@@ -314,11 +314,13 @@ public class EnterSavingsPage extends javax.swing.JFrame {
         firstName1.setBackground(new java.awt.Color(34, 47, 66));
         firstName1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         firstName1.setForeground(new java.awt.Color(255, 255, 255));
+        firstName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         firstName1.setText("Try Out Different Values");
 
         firstName2.setBackground(new java.awt.Color(34, 47, 66));
         firstName2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         firstName2.setForeground(new java.awt.Color(255, 255, 255));
+        firstName2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         firstName2.setText("Savings Forecast");
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
