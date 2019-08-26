@@ -5,7 +5,6 @@ import com.Support.Constant;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.SplashScreen;
@@ -13,9 +12,7 @@ import java.awt.geom.Rectangle2D;
 import javax.swing.JOptionPane;
 import java.sql.*;
 import java.util.Base64;
-import javafx.scene.layout.Border;
 import javax.swing.BorderFactory;
-import javax.swing.JPanel;
 /**
  *
  * @author DNartey

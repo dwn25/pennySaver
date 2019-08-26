@@ -4,9 +4,14 @@ import com.Pages.EditPages.EditStocksPage;
 import com.Pages.Main.Main;
 import com.Support.Constant;
 import com.Support.Stocks.Stocks;
+import java.io.IOException;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,14 +23,21 @@ public class StocksInfoPage extends javax.swing.JFrame {
      * Creates new form StocksInfoPage
      */
     public StocksInfoPage() {
+        
                 try {
-            Stocks.main();
+            Stocks.getPrice("AMZN");
         } catch (Exception ex) {
             Logger.getLogger(StocksInfoPage.class.getName()).log(Level.SEVERE, null, ex);
         }
         setLocationRelativeTo(null);
-        setResizable(false);
+        //setResizable(false);
         initComponents();
+                        try {
+                            refresh();
+            //Stocks.getPrice("AMZN");
+        } catch (Exception ex) {
+            Logger.getLogger(StocksInfoPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -49,19 +61,9 @@ public class StocksInfoPage extends javax.swing.JFrame {
         editinfoBtn1 = new javax.swing.JToggleButton();
         CryptoNormal = new javax.swing.JToggleButton();
         InfoPanel3 = new javax.swing.JPanel();
-        rateField = new javax.swing.JTextField();
-        timeField = new javax.swing.JTextField();
-        interestField = new javax.swing.JTextField();
-        totalField = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        principalField = new javax.swing.JTextField();
         Edit = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         headerPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -201,61 +203,6 @@ public class StocksInfoPage extends javax.swing.JFrame {
 
         InfoPanel3.setBackground(new java.awt.Color(240, 235, 216));
 
-        rateField.setBackground(new java.awt.Color(240, 235, 216));
-        rateField.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        rateField.setForeground(new java.awt.Color(63, 64, 76));
-        rateField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        timeField.setBackground(new java.awt.Color(240, 235, 216));
-        timeField.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        timeField.setForeground(new java.awt.Color(63, 64, 76));
-        timeField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        interestField.setBackground(new java.awt.Color(240, 235, 216));
-        interestField.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        interestField.setForeground(new java.awt.Color(63, 64, 76));
-        interestField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        totalField.setBackground(new java.awt.Color(240, 235, 216));
-        totalField.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        totalField.setForeground(new java.awt.Color(63, 64, 76));
-        totalField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jLabel13.setBackground(new java.awt.Color(240, 235, 216));
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(63, 64, 76));
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel13.setText("Principal:");
-
-        jLabel14.setBackground(new java.awt.Color(240, 235, 216));
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(63, 64, 76));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel14.setText("Rate:");
-
-        jLabel16.setBackground(new java.awt.Color(240, 235, 216));
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(63, 64, 76));
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel16.setText("Time:");
-
-        jLabel17.setBackground(new java.awt.Color(240, 235, 216));
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(63, 64, 76));
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel17.setText("Total:");
-
-        jLabel19.setBackground(new java.awt.Color(240, 235, 216));
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(63, 64, 76));
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel19.setText("Interest:");
-
-        principalField.setBackground(new java.awt.Color(240, 235, 216));
-        principalField.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        principalField.setForeground(new java.awt.Color(63, 64, 76));
-        principalField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
         Edit.setBackground(new java.awt.Color(63, 64, 76));
         Edit.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         Edit.setForeground(new java.awt.Color(255, 255, 255));
@@ -266,72 +213,64 @@ public class StocksInfoPage extends javax.swing.JFrame {
             }
         });
 
-        jTextArea.setEditable(false);
-        jTextArea.setBackground(new java.awt.Color(240, 235, 216));
-        jTextArea.setColumns(20);
-        jTextArea.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
-        jTextArea.setForeground(new java.awt.Color(63, 64, 76));
-        jTextArea.setRows(5);
-        jScrollPane1.setViewportView(jTextArea);
+        jTable1.setBackground(new java.awt.Color(240, 235, 216));
+        jTable1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(63, 64, 76));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Symbol", "Number Owned", "Price", "Total"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         javax.swing.GroupLayout InfoPanel3Layout = new javax.swing.GroupLayout(InfoPanel3);
         InfoPanel3.setLayout(InfoPanel3Layout);
         InfoPanel3Layout.setHorizontalGroup(
             InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(InfoPanel3Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(principalField, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                        .addComponent(rateField)
-                        .addComponent(timeField)
-                        .addComponent(interestField)
-                        .addComponent(totalField)))
-                .addContainerGap(82, Short.MAX_VALUE))
-            .addGroup(InfoPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(120, 120, 120)
+                .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
         );
         InfoPanel3Layout.setVerticalGroup(
             InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InfoPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(InfoPanel3Layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
-                            .addComponent(totalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(InfoPanel3Layout.createSequentialGroup()
-                        .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(principalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14)
-                            .addComponent(rateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(timeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel19)
-                            .addComponent(interestField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
+                .addGap(225, 225, 225)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(117, 117, 117)
                 .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        WholePanel3.add(InfoPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 390, 380));
+        WholePanel3.add(InfoPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 470, 380));
 
         headerPanel.setBackground(new java.awt.Color(34, 47, 66));
 
@@ -344,7 +283,7 @@ public class StocksInfoPage extends javax.swing.JFrame {
         headerPanel.setLayout(headerPanelLayout);
         headerPanelLayout.setHorizontalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,13 +293,13 @@ public class StocksInfoPage extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        WholePanel3.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 380, 90));
+        WholePanel3.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 470, 90));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(WholePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(WholePanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,8 +307,42 @@ public class StocksInfoPage extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+   public void refresh() throws SQLException, IOException{
+       try {
+           Constant.DoConnect();
+           String sql = "SELECT * FROM pstocks WHERE username LIKE '"+Constant.currentUser+"%'" ;
+           Constant.rs=Constant.stmt.executeQuery(sql);
+           DefaultTableModel tbl = (DefaultTableModel) jTable1.getModel();
+           tbl.setRowCount(0);
+           ResultSetMetaData rm = Constant.rs.getMetaData();           
+           int numOfColumns = rm.getColumnCount();
+           Vector data = new Vector();
+           while(Constant.rs.next()){    
+                 Vector row = new Vector(numOfColumns);
+                 for(int i=1; i<=1; i++){
+                     Double price = 0.0,total = 0.0;
+                     Double number = Constant.rs.getDouble("stock_number");
+                     String tableSymb = Constant.rs.getString("stock_symbol");
+                     row.add(tableSymb);
+                     row.add(number);
+                     price = Stocks.getPrice(tableSymb);
+                     row.add(price);
+                     total = number * price;
+                     row.add(total);
+                     tbl.addRow(row);      
+                 } 
+                 data.addElement(row);
+            }
+       }catch (SQLException ex) {
+          Logger.getLogger(StocksInfoPage.class.getName()).log(Level.SEVERE,null,ex);  
+        }
+                  
+}
+    
     private void budgetMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetMenuItemActionPerformed
         BudgetInfoPage m = new BudgetInfoPage();
         m.setLocationRelativeTo(null);
@@ -424,7 +397,6 @@ public class StocksInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutBtnActionPerformed
 
     private void mainMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuMouseClicked
-        // TODO add your handling code here:
         MainMenu m = new MainMenu();
         m.setVisible(true);
         this.hide();
@@ -489,7 +461,6 @@ public class StocksInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_editinfoBtn1ActionPerformed
 
     private void CryptoNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CryptoNormalMouseClicked
-        // TODO add your handling code here:
         CryptoInfoPage m = new CryptoInfoPage();
         m.setVisible(true);
         this.hide();
@@ -544,23 +515,13 @@ public class StocksInfoPage extends javax.swing.JFrame {
     private javax.swing.JToggleButton editinfoBtn;
     private javax.swing.JToggleButton editinfoBtn1;
     private javax.swing.JPanel headerPanel;
-    private javax.swing.JTextField interestField;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton logoutBtn;
     private javax.swing.JToggleButton mainMenu;
-    private javax.swing.JTextField principalField;
-    private javax.swing.JTextField rateField;
     private javax.swing.JToggleButton savingsNormal;
-    private javax.swing.JTextField timeField;
-    private javax.swing.JTextField totalField;
     // End of variables declaration//GEN-END:variables
 }

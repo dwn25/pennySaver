@@ -311,7 +311,7 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
                             .addContainerGap()
                             .addComponent(monthlySavingsField, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dataEntryPanelLayout.createSequentialGroup()
-                            .addGap(24, 24, 24)
+                            .addGap(7, 7, 7)
                             .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
