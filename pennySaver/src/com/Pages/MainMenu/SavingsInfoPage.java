@@ -532,13 +532,9 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_EditActionPerformed
 
     private void mainMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenu2MouseClicked
-        int dialogButton = JOptionPane.YES_NO_OPTION;
-        int dialogResult = JOptionPane.showConfirmDialog (null, "Are you sure you want to leave without saving","Warning",dialogButton);
-        if(dialogResult == JOptionPane.YES_OPTION){
             MainMenu m = new MainMenu();     
             m.setVisible(true);
             this.hide();
-        }
     }//GEN-LAST:event_mainMenu2MouseClicked
 
     private void mainMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenu2ActionPerformed
@@ -558,13 +554,9 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_StocksIconMouseClicked
 
     private void StocksIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StocksIconActionPerformed
-        int dialogButton = JOptionPane.YES_NO_OPTION;
-        int dialogResult = JOptionPane.showConfirmDialog (null, "Are you sure you want to leave without saving","Warning",dialogButton);
-        if(dialogResult == JOptionPane.YES_OPTION){
             StocksInfoPage m = new StocksInfoPage();     
             m.setVisible(true);
             this.hide();
-        }
     }//GEN-LAST:event_StocksIconActionPerformed
 
     private void cryptoIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cryptoIconMouseClicked
@@ -616,14 +608,11 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_budgetIconMouseClicked
 
     private void budgetIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetIconActionPerformed
-        int dialogButton = JOptionPane.YES_NO_OPTION;
-        int dialogResult = JOptionPane.showConfirmDialog (null, "Are you sure you want to leave without saving","Warning",dialogButton);
-        if(dialogResult == JOptionPane.YES_OPTION){
             BudgetInfoPage m = new BudgetInfoPage();
             m.setLocationRelativeTo(null);
             m.setVisible(true);
             this.hide();
-        }
+        
     }//GEN-LAST:event_budgetIconActionPerformed
 
     /**

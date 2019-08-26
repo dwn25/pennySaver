@@ -3,6 +3,7 @@ package com.Pages.EnterDataPages;
 import com.Pages.MainMenu.BudgetInfoPage;
 import com.Pages.AskQuestionPage.BudgetQuestionPage;
 import com.Support.Constant;
+import com.Support.Stocks.Crypto;
 import com.Support.Stocks.Stocks;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -376,6 +377,7 @@ public class EnterCryptoPage extends javax.swing.JFrame {
     }
         
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        Constant.currentUser = "bcroy";
         Constant.DoConnect();
         String stockSymbol,stockNumber;
         int finalStockNumber;
@@ -391,11 +393,11 @@ public class EnterCryptoPage extends javax.swing.JFrame {
             else if(stockNumber.isEmpty()){
                    JOptionPane.showMessageDialog(rootPane, "Please Enter The Number");
             }
-            else if(!Stocks.checkSymbol(stockSymbol)){
-                   JOptionPane.showMessageDialog(rootPane, "Please Enter A Stock Symbol That Exists");
+            else if(!Crypto.isCrypto(stockSymbol)){
+                   JOptionPane.showMessageDialog(rootPane, "Please Enter A Crypto Symbol That Exists");
             }
             else if(isStockInTable(stockSymbol)){
-                    JOptionPane.showMessageDialog(rootPane, "Stock Exists in Table");
+                    JOptionPane.showMessageDialog(rootPane, "Crypto Exists in Table");
                 }
                 else{
                 finalStockNumber = Integer.parseInt(stockNumber);
