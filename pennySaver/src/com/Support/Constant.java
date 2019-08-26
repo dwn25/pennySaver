@@ -15,6 +15,7 @@ public class Constant {
     public static String alphaVantageAPIKey = "I58H97J6G9Y75TXB";
     public static String currentUser = "";
     public static String currentUserID = "";
+    public static String mainAdvice = "";
     public static int IDS = 4;
     public static Connection con;
     public static Statement stmt;
@@ -44,4 +45,5 @@ public class Constant {
             System.out.println(ex.getMessage());
         }
   }
+    
 }

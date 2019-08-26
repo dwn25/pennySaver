@@ -74,5 +74,4 @@ public class Stocks {
         }
         return isSymbol;
     }
-        Object obj = new JSONParser().parse(jsonText); 
 }

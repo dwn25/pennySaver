@@ -39,7 +39,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         setResizable(false);
         initComponents();
         onRun();
-        
     }
     
    public void onRun(){
@@ -164,23 +163,45 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     }
    
    public String getCurrentState(Double income, Double budget){
-       String advice1 = "Advice 1";
-       String advice2 = "Advice 2";
-       String advice3 = "Advice 3";
+       String advice2 = "Looks like your budget is far greater than your income. Time to do some trimming to become fiscally"
+               + "responsible. You will want to take a look at your spending habbits to reduce the unnecessary spending.";
+       String advice1 = "Your budget looks good. You have a stable income that far outweighs your spending needs."
+               + "It looks like you can afford to increase how much you save each month in order to increase your net worth.";
+       String advice3 = "Your budget could use somoe real help. Pleae call 555-555-5555 in order to set up an appointment with "
+               + "out proffessionals that can set you on the right path towards fiscal responsibility.";
        if(income>budget){
+           Constant.mainAdvice = advice1;
            adviceTextArea.setText(null);
            adviceTextArea.setText(advice1);
+           adviceTextArea.setWrapStyleWord(true);
+           adviceTextArea.setLineWrap(true);
+           adviceTextArea.setOpaque(false);
+           adviceTextArea.setEditable(false);
+           adviceTextArea.setFocusable(false);
            return advice1;
        }else if(budget>income){
-            adviceTextArea.setText(null);
+           Constant.mainAdvice = advice2;
+           adviceTextArea.setText(null);
            adviceTextArea.setText(advice2);
+           adviceTextArea.setWrapStyleWord(true);
+           adviceTextArea.setLineWrap(true);
+           adviceTextArea.setOpaque(false);
+           adviceTextArea.setEditable(false);
+           adviceTextArea.setFocusable(false);
            return advice2;
        }else{
+           Constant.mainAdvice = advice3;
            adviceTextArea.setText(null);
            adviceTextArea.setText(advice3);
+           adviceTextArea.setWrapStyleWord(true);
+           adviceTextArea.setLineWrap(true);
+           adviceTextArea.setOpaque(false);
+           adviceTextArea.setEditable(false);
+           adviceTextArea.setFocusable(false);
            return advice3;
        }
    }
+   
     public void updateBar(Double needs1, Double wants1, Double savings1){
         DefaultPieDataset dataset = new DefaultPieDataset();
         dataset.setValue("Necessary", needs1);
@@ -252,15 +273,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         adviceTextArea = new javax.swing.JTextArea();
-        SIdeBarPanel = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        mainMenu = new javax.swing.JToggleButton();
-        logoutBtn = new javax.swing.JToggleButton();
-        budgetSelected1 = new javax.swing.JToggleButton();
-        savingsNormal = new javax.swing.JToggleButton();
-        editinfoBtn = new javax.swing.JToggleButton();
-        CryptoNormal = new javax.swing.JToggleButton();
-        stocksNormal = new javax.swing.JToggleButton();
         jPanel1 = new javax.swing.JPanel();
         homeField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -278,6 +290,15 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         myChartPanel = new javax.swing.JPanel();
         Edit1 = new javax.swing.JButton();
+        SIdeBarPanel = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        mainMenu = new javax.swing.JButton();
+        SavingsIcon = new javax.swing.JButton();
+        StocksIcon = new javax.swing.JButton();
+        cryptoIcon = new javax.swing.JButton();
+        editTextbtn = new javax.swing.JButton();
+        logoutBtn = new javax.swing.JButton();
+        budgetIcon1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -321,62 +342,68 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         DataPanel.setForeground(new java.awt.Color(63, 64, 76));
 
         jLabel16.setBackground(new java.awt.Color(240, 235, 216));
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(63, 64, 76));
         jLabel16.setText("Education:");
 
         jLabel15.setBackground(new java.awt.Color(240, 235, 216));
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(63, 64, 76));
         jLabel15.setText("Personal Care:");
 
         jLabel14.setBackground(new java.awt.Color(240, 235, 216));
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(63, 64, 76));
         jLabel14.setText("Fees:");
 
         jLabel13.setBackground(new java.awt.Color(240, 235, 216));
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(63, 64, 76));
         jLabel13.setText("Entertainment:");
 
         personalCareField.setEditable(false);
         personalCareField.setBackground(new java.awt.Color(240, 235, 216));
-        personalCareField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        personalCareField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         personalCareField.setForeground(new java.awt.Color(63, 64, 76));
+        personalCareField.setBorder(null);
 
         jLabel18.setBackground(new java.awt.Color(240, 235, 216));
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(63, 64, 76));
         jLabel18.setText("Other:");
 
         educationField.setEditable(false);
         educationField.setBackground(new java.awt.Color(240, 235, 216));
-        educationField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        educationField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         educationField.setForeground(new java.awt.Color(63, 64, 76));
+        educationField.setBorder(null);
 
         loansField.setEditable(false);
         loansField.setBackground(new java.awt.Color(240, 235, 216));
-        loansField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        loansField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         loansField.setForeground(new java.awt.Color(63, 64, 76));
+        loansField.setBorder(null);
 
         feesField.setEditable(false);
         feesField.setBackground(new java.awt.Color(240, 235, 216));
-        feesField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        feesField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         feesField.setForeground(new java.awt.Color(63, 64, 76));
+        feesField.setBorder(null);
 
         otherField.setEditable(false);
         otherField.setBackground(new java.awt.Color(240, 235, 216));
-        otherField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        otherField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         otherField.setForeground(new java.awt.Color(63, 64, 76));
+        otherField.setBorder(null);
 
         entertainmentField.setEditable(false);
         entertainmentField.setBackground(new java.awt.Color(240, 235, 216));
-        entertainmentField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        entertainmentField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         entertainmentField.setForeground(new java.awt.Color(63, 64, 76));
+        entertainmentField.setBorder(null);
 
         jLabel17.setBackground(new java.awt.Color(240, 235, 216));
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(63, 64, 76));
         jLabel17.setText("Loans:");
 
@@ -431,138 +458,32 @@ public class BudgetInfoPage extends javax.swing.JFrame {
                 .addGroup(DataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(otherField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18))
-                .addGap(0, 36, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        WholePanel.add(DataPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 130, 200, 210));
+        WholePanel.add(DataPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 200, 200, 130));
 
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        adviceTextArea.setEditable(false);
         adviceTextArea.setBackground(new java.awt.Color(240, 235, 216));
         adviceTextArea.setColumns(20);
+        adviceTextArea.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         adviceTextArea.setForeground(new java.awt.Color(63, 64, 76));
         adviceTextArea.setRows(5);
+        adviceTextArea.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jScrollPane1.setViewportView(adviceTextArea);
 
         WholePanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 340, 430, 90));
-
-        SIdeBarPanel.setBackground(new java.awt.Color(29, 45, 68));
-        SIdeBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
-        SIdeBarPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-
-        mainMenu.setBackground(new java.awt.Color(41, 57, 80));
-        mainMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/MainMenuNormal.jpg"))); // NOI18N
-        mainMenu.setBorder(null);
-        mainMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mainMenuMouseClicked(evt);
-            }
-        });
-        mainMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mainMenuActionPerformed(evt);
-            }
-        });
-        SIdeBarPanel.add(mainMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 130, 50));
-
-        logoutBtn.setBackground(new java.awt.Color(41, 57, 80));
-        logoutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/logoutBtn.jpg"))); // NOI18N
-        logoutBtn.setBorder(null);
-        logoutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                logoutBtnMouseClicked(evt);
-            }
-        });
-        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutBtnActionPerformed(evt);
-            }
-        });
-        SIdeBarPanel.add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 120, 50));
-
-        budgetSelected1.setBackground(new java.awt.Color(240, 235, 216));
-        budgetSelected1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/BudgetSelected.jpg"))); // NOI18N
-        budgetSelected1.setBorder(null);
-        budgetSelected1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                budgetSelected1MouseClicked(evt);
-            }
-        });
-        budgetSelected1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                budgetSelected1ActionPerformed(evt);
-            }
-        });
-        SIdeBarPanel.add(budgetSelected1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 130, 50));
-
-        savingsNormal.setBackground(new java.awt.Color(41, 57, 80));
-        savingsNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/SavingsNormal.jpg"))); // NOI18N
-        savingsNormal.setBorder(null);
-        savingsNormal.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                savingsNormalMouseClicked(evt);
-            }
-        });
-        savingsNormal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                savingsNormalActionPerformed(evt);
-            }
-        });
-        SIdeBarPanel.add(savingsNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 130, 50));
-
-        editinfoBtn.setBackground(new java.awt.Color(41, 57, 80));
-        editinfoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/EditInfoNormal.jpg"))); // NOI18N
-        editinfoBtn.setBorder(null);
-        editinfoBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editinfoBtnMouseClicked(evt);
-            }
-        });
-        editinfoBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editinfoBtnActionPerformed(evt);
-            }
-        });
-        SIdeBarPanel.add(editinfoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 120, 50));
-
-        CryptoNormal.setBackground(new java.awt.Color(41, 57, 80));
-        CryptoNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/CryptoNormal.jpg"))); // NOI18N
-        CryptoNormal.setBorder(null);
-        CryptoNormal.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CryptoNormalMouseClicked(evt);
-            }
-        });
-        CryptoNormal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CryptoNormalActionPerformed(evt);
-            }
-        });
-        SIdeBarPanel.add(CryptoNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 130, 50));
-
-        stocksNormal.setBackground(new java.awt.Color(41, 57, 80));
-        stocksNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/StocksNormal.jpg"))); // NOI18N
-        stocksNormal.setBorder(null);
-        stocksNormal.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                stocksNormalMouseClicked(evt);
-            }
-        });
-        stocksNormal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stocksNormalActionPerformed(evt);
-            }
-        });
-        SIdeBarPanel.add(stocksNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 130, 50));
-
-        WholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 490));
 
         jPanel1.setBackground(new java.awt.Color(240, 235, 216));
 
         homeField.setEditable(false);
         homeField.setBackground(new java.awt.Color(240, 235, 216));
-        homeField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        homeField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         homeField.setForeground(new java.awt.Color(63, 64, 76));
+        homeField.setBorder(null);
         homeField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeFieldActionPerformed(evt);
@@ -570,14 +491,15 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         });
 
         jLabel7.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(63, 64, 76));
         jLabel7.setText("Home:");
 
         shoppingField.setEditable(false);
         shoppingField.setBackground(new java.awt.Color(240, 235, 216));
-        shoppingField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        shoppingField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         shoppingField.setForeground(new java.awt.Color(63, 64, 76));
+        shoppingField.setBorder(null);
         shoppingField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 shoppingFieldActionPerformed(evt);
@@ -585,47 +507,51 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         });
 
         jLabel9.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(63, 64, 76));
         jLabel9.setText("Shopping:");
 
         diningAndDrinksField.setEditable(false);
         diningAndDrinksField.setBackground(new java.awt.Color(240, 235, 216));
-        diningAndDrinksField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        diningAndDrinksField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         diningAndDrinksField.setForeground(new java.awt.Color(63, 64, 76));
+        diningAndDrinksField.setBorder(null);
 
         jLabel8.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(63, 64, 76));
         jLabel8.setText("Dining & Drinks:");
 
         autoAndCommutingField.setEditable(false);
         autoAndCommutingField.setBackground(new java.awt.Color(240, 235, 216));
-        autoAndCommutingField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        autoAndCommutingField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         autoAndCommutingField.setForeground(new java.awt.Color(63, 64, 76));
+        autoAndCommutingField.setBorder(null);
 
         jLabel10.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(63, 64, 76));
         jLabel10.setText("Auto & Commuting:");
 
         travelField.setEditable(false);
         travelField.setBackground(new java.awt.Color(240, 235, 216));
-        travelField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        travelField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         travelField.setForeground(new java.awt.Color(63, 64, 76));
+        travelField.setBorder(null);
 
         jLabel11.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(63, 64, 76));
         jLabel11.setText("Travel:");
 
         billsAndUtilitiesField.setEditable(false);
         billsAndUtilitiesField.setBackground(new java.awt.Color(240, 235, 216));
-        billsAndUtilitiesField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        billsAndUtilitiesField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         billsAndUtilitiesField.setForeground(new java.awt.Color(63, 64, 76));
+        billsAndUtilitiesField.setBorder(null);
 
         jLabel12.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(63, 64, 76));
         jLabel12.setText("Bills & Utilities:");
 
@@ -636,81 +562,82 @@ public class BudgetInfoPage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(billsAndUtilitiesField, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(homeField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(diningAndDrinksField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(autoAndCommutingField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(travelField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(shoppingField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addComponent(diningAndDrinksField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel12)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(billsAndUtilitiesField, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(homeField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(autoAndCommutingField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(travelField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel9)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(shoppingField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(diningAndDrinksField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(autoAndCommutingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(travelField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(homeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(shoppingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(homeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(shoppingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(diningAndDrinksField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(autoAndCommutingField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(travelField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(billsAndUtilitiesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
-                .addGap(0, 36, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        WholePanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 230, 210));
+        WholePanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 230, 130));
 
         incomeField.setEditable(false);
         incomeField.setBackground(new java.awt.Color(240, 235, 216));
-        incomeField.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        incomeField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         incomeField.setForeground(new java.awt.Color(63, 64, 76));
+        incomeField.setBorder(null);
         incomeField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 incomeFieldActionPerformed(evt);
             }
         });
-        WholePanel.add(incomeField, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 100, 86, -1));
+        WholePanel.add(incomeField, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 130, 86, -1));
 
         jLabel21.setBackground(new java.awt.Color(240, 235, 216));
-        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(63, 64, 76));
         jLabel21.setText("Income:");
-        WholePanel.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, -1, -1));
+        WholePanel.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 130, -1, -1));
 
         myChartPanel.setLayout(new java.awt.BorderLayout());
         WholePanel.add(myChartPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 380, 330));
@@ -726,6 +653,112 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         });
         WholePanel.add(Edit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 440, 130, 40));
 
+        SIdeBarPanel.setBackground(new java.awt.Color(29, 45, 68));
+        SIdeBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
+        SIdeBarPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        mainMenu.setBackground(new java.awt.Color(41, 57, 80));
+        mainMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/MainMenuNormal.jpg"))); // NOI18N
+        mainMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mainMenuMouseClicked(evt);
+            }
+        });
+        mainMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mainMenuActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(mainMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 140, 50));
+
+        SavingsIcon.setBackground(new java.awt.Color(41, 57, 80));
+        SavingsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/SavingsNormal.jpg"))); // NOI18N
+        SavingsIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SavingsIconMouseClicked(evt);
+            }
+        });
+        SavingsIcon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SavingsIconActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(SavingsIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 140, 50));
+
+        StocksIcon.setBackground(new java.awt.Color(41, 57, 80));
+        StocksIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/StocksNormal.jpg"))); // NOI18N
+        StocksIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                StocksIconMouseClicked(evt);
+            }
+        });
+        StocksIcon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StocksIconActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(StocksIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 140, 50));
+
+        cryptoIcon.setBackground(new java.awt.Color(41, 57, 80));
+        cryptoIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/CryptoNormal.jpg"))); // NOI18N
+        cryptoIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cryptoIconMouseClicked(evt);
+            }
+        });
+        cryptoIcon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cryptoIconActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(cryptoIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 140, 50));
+
+        editTextbtn.setBackground(new java.awt.Color(41, 57, 80));
+        editTextbtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/EditInfoNormal.jpg"))); // NOI18N
+        editTextbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editTextbtnMouseClicked(evt);
+            }
+        });
+        editTextbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editTextbtnActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(editTextbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 140, 50));
+
+        logoutBtn.setBackground(new java.awt.Color(41, 57, 80));
+        logoutBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/logoutBtn.jpg"))); // NOI18N
+        logoutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutBtnMouseClicked(evt);
+            }
+        });
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutBtnActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 140, 50));
+
+        budgetIcon1.setBackground(new java.awt.Color(240, 235, 216));
+        budgetIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/BudgetSelected.jpg"))); // NOI18N
+        budgetIcon1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                budgetIcon1MouseClicked(evt);
+            }
+        });
+        budgetIcon1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                budgetIcon1ActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(budgetIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 140, 50));
+
+        WholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 480));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -734,19 +767,13 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(WholePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(WholePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
-
-   
- 
    
     private void shoppingFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shoppingFieldActionPerformed
 
@@ -757,7 +784,6 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_homeFieldActionPerformed
 
     private void incomeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incomeFieldActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_incomeFieldActionPerformed
 
     private void Edit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Edit1ActionPerformed
@@ -767,22 +793,56 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_Edit1ActionPerformed
 
     private void mainMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuMouseClicked
-        // TODO add your handling code here:
         MainMenu m = new MainMenu();
         m.setVisible(true);
         this.hide();
     }//GEN-LAST:event_mainMenuMouseClicked
 
     private void mainMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuActionPerformed
-
     }//GEN-LAST:event_mainMenuActionPerformed
 
+    private void SavingsIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SavingsIconMouseClicked
+    }//GEN-LAST:event_SavingsIconMouseClicked
+
+    private void SavingsIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SavingsIconActionPerformed
+        SavingsInfoPage m = new SavingsInfoPage();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_SavingsIconActionPerformed
+
+    private void StocksIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StocksIconMouseClicked
+    }//GEN-LAST:event_StocksIconMouseClicked
+
+    private void StocksIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StocksIconActionPerformed
+        StocksInfoPage m = new StocksInfoPage();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_StocksIconActionPerformed
+
+    private void cryptoIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cryptoIconMouseClicked
+    }//GEN-LAST:event_cryptoIconMouseClicked
+
+    private void cryptoIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cryptoIconActionPerformed
+        CryptoInfoPage m = new CryptoInfoPage();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_cryptoIconActionPerformed
+
+    private void editTextbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editTextbtnMouseClicked
+
+    }//GEN-LAST:event_editTextbtnMouseClicked
+
+    private void editTextbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editTextbtnActionPerformed
+        EditPersonalInfoPage m = new EditPersonalInfoPage();
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_editTextbtnActionPerformed
+
     private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseClicked
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_logoutBtnMouseClicked
 
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
-        // TODO add your handling code here:
         String[] options={"Yes", "No"};
         int t =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Logout?", "Logout", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         if(t==JOptionPane.YES_OPTION){
@@ -794,58 +854,11 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_logoutBtnActionPerformed
 
-    private void budgetSelected1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetSelected1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_budgetSelected1MouseClicked
+    private void budgetIcon1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetIcon1MouseClicked
+    }//GEN-LAST:event_budgetIcon1MouseClicked
 
-    private void budgetSelected1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetSelected1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_budgetSelected1ActionPerformed
-
-    private void savingsNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savingsNormalMouseClicked
-        // TODO add your handling code here:
-        SavingsInfoPage m = new SavingsInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_savingsNormalMouseClicked
-
-    private void savingsNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savingsNormalActionPerformed
-
-    }//GEN-LAST:event_savingsNormalActionPerformed
-
-    private void editinfoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editinfoBtnMouseClicked
-        // TODO add your handling code here:
-        EditPersonalInfoPage m = new EditPersonalInfoPage();
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_editinfoBtnMouseClicked
-
-    private void editinfoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editinfoBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editinfoBtnActionPerformed
-
-    private void CryptoNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CryptoNormalMouseClicked
-        // TODO add your handling code here:
-        CryptoInfoPage m = new CryptoInfoPage();
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_CryptoNormalMouseClicked
-
-    private void CryptoNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CryptoNormalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CryptoNormalActionPerformed
-
-    private void stocksNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksNormalMouseClicked
-        // TODO add your handling code here:
-        StocksInfoPage m = new StocksInfoPage();
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_stocksNormalMouseClicked
-
-    private void stocksNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stocksNormalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stocksNormalActionPerformed
+    private void budgetIcon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetIcon1ActionPerformed
+    }//GEN-LAST:event_budgetIcon1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -884,17 +897,19 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton CryptoNormal;
     private javax.swing.JPanel DataPanel;
     private javax.swing.JButton Edit1;
     private javax.swing.JPanel SIdeBarPanel;
+    private javax.swing.JButton SavingsIcon;
+    private javax.swing.JButton StocksIcon;
     private javax.swing.JPanel WholePanel;
     private javax.swing.JTextArea adviceTextArea;
     private javax.swing.JTextField autoAndCommutingField;
     private javax.swing.JTextField billsAndUtilitiesField;
-    private javax.swing.JToggleButton budgetSelected1;
+    private javax.swing.JButton budgetIcon1;
+    private javax.swing.JButton cryptoIcon;
     private javax.swing.JTextField diningAndDrinksField;
-    private javax.swing.JToggleButton editinfoBtn;
+    private javax.swing.JButton editTextbtn;
     private javax.swing.JTextField educationField;
     private javax.swing.JTextField entertainmentField;
     private javax.swing.JTextField feesField;
@@ -920,14 +935,12 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField loansField;
-    private javax.swing.JToggleButton logoutBtn;
-    private javax.swing.JToggleButton mainMenu;
+    private javax.swing.JButton logoutBtn;
+    private javax.swing.JButton mainMenu;
     private javax.swing.JPanel myChartPanel;
     private javax.swing.JTextField otherField;
     private javax.swing.JTextField personalCareField;
-    private javax.swing.JToggleButton savingsNormal;
     private javax.swing.JTextField shoppingField;
-    private javax.swing.JToggleButton stocksNormal;
     private javax.swing.JTextField travelField;
     // End of variables declaration//GEN-END:variables
 }

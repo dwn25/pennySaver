@@ -58,5 +58,32 @@ public class BudgetCalcsPage {
         myChartPanel.add(chartPanel);
         myChartPanel.validate();
     }
+    
+    public static void dynamicBar( JPanel myChartPanel, String title, Double[] stock, String[] stockName){
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        
+        for(int i =0; i< stock.length;i++){
+            dataset.setValue(stockName[i], stock[i]);
+        }
+        JFreeChart barChart = ChartFactory.createPieChart(
+        title,
+        dataset,
+        false, true, false);
+        barChart.setBackgroundPaint(new Color(51, 51, 51));
+        
+        PiePlot plot = (PiePlot) barChart.getPlot();
+        plot.setLabelFont(new Font("SansSerif", Font.PLAIN, 12));
+        
+        plot.setNoDataMessage("No data available");
+        plot.setCircular(false);
+        plot.setLabelGap(0.02);
+        plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} = {2}", NumberFormat.getNumberInstance(), NumberFormat.getPercentInstance()));
+        
+        ChartPanel chartPanel = new ChartPanel( barChart );
+        //chartPanel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );
+        myChartPanel.removeAll();
+        myChartPanel.add(chartPanel);
+        myChartPanel.validate();        
+    }
    
 }
