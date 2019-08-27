@@ -575,25 +575,29 @@ public void onRun(){
                     statement.setString(1, Constant.currentUser);
                     statement1.executeUpdate();
                 }
-                else if(savings){
+                if(savings){
                     String sql1 = "DELETE FROM ROOT.PBANK WHERE USERNAME = ?";
                     PreparedStatement statement1 = Constant.con.prepareStatement(sql1);
                     statement.setString(1, Constant.currentUser);
-                     statement1.executeUpdate();
+                    statement1.executeUpdate();
                 }
-                else if(stocks){
+                if(stocks){
                     String sql1 = "DELETE FROM ROOT.PSTOCKS WHERE USERNAME = ?";
                     PreparedStatement statement1 = Constant.con.prepareStatement(sql1);
                     statement.setString(1, Constant.currentUser);
                     statement1.executeUpdate();
                 }
-                else if(crypto){                   
+                if(crypto){                   
                     String sql1 = "DELETE FROM ROOT.PCRYPTO WHERE USERNAME = ?";
                     PreparedStatement statement1 = Constant.con.prepareStatement(sql1);
                     statement.setString(1, Constant.currentUser);
                     statement1.executeUpdate();  
                 }
                 JOptionPane.showMessageDialog(rootPane, "Succesfully Deleted Account");
+                Constant.currentUser = "";
+                Main m = new Main();
+                m.setVisible(true);
+                this.hide();
             }
         }
         }catch(SQLException e){
@@ -616,7 +620,6 @@ public void onRun(){
     }//GEN-LAST:event_employmentStatusActionPerformed
 
     private void cryptoIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cryptoIconMouseClicked
-        // TODO add your handling code here:
         CryptoInfoPage m = new CryptoInfoPage();
         m.setVisible(true);
         this.hide();
@@ -627,7 +630,6 @@ public void onRun(){
     }//GEN-LAST:event_cryptoIconActionPerformed
 
     private void stocksIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksIconMouseClicked
-        // TODO add your handling code here:
         StocksInfoPage m = new StocksInfoPage();
         m.setVisible(true);
         this.hide();
