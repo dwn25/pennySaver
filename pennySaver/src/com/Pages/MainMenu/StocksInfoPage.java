@@ -6,6 +6,7 @@ import com.Support.BudgetCalcsPage;
 import com.Support.Constant;
 import com.Support.Stocks.Stocks;
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -39,6 +40,7 @@ public class StocksInfoPage extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(StocksInfoPage.class.getName()).log(Level.SEVERE, null, ex);
         }
+        menuInit();
     }
 
     /**
@@ -70,7 +72,7 @@ public class StocksInfoPage extends javax.swing.JFrame {
         editTextbtn = new javax.swing.JButton();
         logoutBtn = new javax.swing.JButton();
         budgetIcon = new javax.swing.JButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        stocksIcon = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -309,20 +311,20 @@ public class StocksInfoPage extends javax.swing.JFrame {
         });
         SIdeBarPanel.add(budgetIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 140, 50));
 
-        jToggleButton2.setBackground(new java.awt.Color(240, 235, 216));
-        jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/StocksSelected.jpg"))); // NOI18N
-        jToggleButton2.setBorder(null);
-        jToggleButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        stocksIcon.setBackground(new java.awt.Color(240, 235, 216));
+        stocksIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/StocksSelected.jpg"))); // NOI18N
+        stocksIcon.setBorder(null);
+        stocksIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jToggleButton2MouseClicked(evt);
+                stocksIconMouseClicked(evt);
             }
         });
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        stocksIcon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                stocksIconActionPerformed(evt);
             }
         });
-        SIdeBarPanel.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 140, 50));
+        SIdeBarPanel.add(stocksIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 140, 50));
 
         WholePanel3.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 640));
 
@@ -376,7 +378,46 @@ public class StocksInfoPage extends javax.swing.JFrame {
         }
                   
 }
+    public void menuInit(){
+        try{
+            Constant.DoConnect();
+            boolean budget, savings, stocks, crypto;
+            budget = getMenu("hasbudget");
+            savings = getMenu("hasSavings");
+            stocks = getMenu("hasStocks");
+            crypto = getMenu("hasCrypto");
+            /*
+            System.out.println(budget);
+            System.out.println(savings);
+            System.out.println(stocks);
+            System.out.println(crypto);
+            */
+            budgetIcon.setEnabled(budget);
+            SavingsIcon.setEnabled(savings);
+            stocksIcon.setEnabled(stocks);
+            cryptoIcon.setEnabled(crypto);
+        }catch(Exception e){
+            System.out.println("Unable to fetch Menus");
+        }
+    }
     
+        public boolean getMenu(String column){
+        try{
+            String SQL= "SELECT "+ column+" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
+            if(rs.next()){
+                boolean val = rs.getBoolean(column);
+                return val;
+                }
+            else{
+                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+            } 
+        }catch(SQLException err){
+        System.out.println("Unable to fetch income");
+        }  
+        return false;
+   }
+        
     private void budgetMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetMenuItemActionPerformed
         BudgetInfoPage m = new BudgetInfoPage();
         m.setLocationRelativeTo(null);
@@ -494,13 +535,13 @@ public class StocksInfoPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_budgetIconActionPerformed
 
-    private void jToggleButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton2MouseClicked
+    private void stocksIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksIconMouseClicked
 
-    }//GEN-LAST:event_jToggleButton2MouseClicked
+    }//GEN-LAST:event_stocksIconMouseClicked
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+    private void stocksIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stocksIconActionPerformed
 
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    }//GEN-LAST:event_stocksIconActionPerformed
 
     /**
      * @param args the command line arguments
@@ -555,8 +596,8 @@ public class StocksInfoPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable;
-    private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JButton logoutBtn;
     private javax.swing.JButton mainMenu;
+    private javax.swing.JToggleButton stocksIcon;
     // End of variables declaration//GEN-END:variables
 }

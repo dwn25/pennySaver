@@ -59,8 +59,49 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         jTextArea.setOpaque(false);
         jTextArea.setEditable(false);
         jTextArea.setFocusable(false);
+        menuInit();
+    }
+
+        public void menuInit(){
+        try{
+            Constant.DoConnect();
+            boolean budget, savings, stocks, crypto;
+            budget = getMenu("hasbudget");
+            savings = getMenu("hasSavings");
+            stocks = getMenu("hasStocks");
+            crypto = getMenu("hasCrypto");
+            /*
+            System.out.println(budget);
+            System.out.println(savings);
+            System.out.println(stocks);
+            System.out.println(crypto);
+            */
+            budgetIcon.setEnabled(budget);
+            SavingsIcon.setEnabled(savings);
+            StocksIcon.setEnabled(stocks);
+            cryptoIcon.setEnabled(crypto);
+        }catch(Exception e){
+            System.out.println("Unable to fetch Menus");
+        }
     }
     
+        public boolean getMenu(String column){
+        try{
+            String SQL= "SELECT "+ column+" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
+            if(rs.next()){
+                boolean val = rs.getBoolean(column);
+                return val;
+                }
+            else{
+                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+            } 
+        }catch(SQLException err){
+        System.out.println("Unable to fetch income");
+        }  
+        return false;
+   }
+        
         public String getField( String column){
         try{
             String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    

@@ -2,7 +2,10 @@ package com.Pages.AskQuestionPage;
 
 import com.Pages.EnterDataPages.EnterStocksPage;
 import com.Support.Constant;
-import javax.swing.JOptionPane;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -108,19 +111,42 @@ public class StocksQuestionPage extends javax.swing.JFrame {
 
     private void YEsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YEsBtnActionPerformed
        Constant.hasStocks = true;
-       EnterStocksPage m = new EnterStocksPage();
-       m.setLocationRelativeTo(null);
-       m.setVisible(true);
-       this.hide();
+       Constant.DoConnect();
+       String sql = ("UPDATE ROOT.PUSERS SET hasstocks = ? WHERE username= ?");
+       PreparedStatement statement;
+        try {
+            statement = Constant.con.prepareStatement(sql);
+            statement.setBoolean(1, true);
+            statement.setString(2, Constant.currentUser);
+            statement.execute();
+            EnterStocksPage m = new EnterStocksPage();
+            m.setLocationRelativeTo(null);
+            m.setVisible(true);
+            this.hide();
+       }         
+        catch (SQLException ex) {
+            Logger.getLogger(StocksQuestionPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_YEsBtnActionPerformed
 
     private void NoBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoBtn2ActionPerformed
         Constant.hasStocks = false;
-        System.out.println("Stocks is "  + Constant.hasStocks);
-        CryptoQuestionPage m = new CryptoQuestionPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
+       Constant.DoConnect();
+       String sql = ("UPDATE ROOT.PUSERS SET hasstocks = ? WHERE username= ?");
+       PreparedStatement statement;
+        try {
+            statement = Constant.con.prepareStatement(sql);
+            statement.setBoolean(1, false);
+            statement.setString(2, Constant.currentUser);
+            statement.execute();
+            CryptoQuestionPage m = new CryptoQuestionPage();
+            m.setLocationRelativeTo(null);
+            m.setVisible(true);
+            this.hide();      
+        }         
+        catch (SQLException ex) {
+            Logger.getLogger(StocksQuestionPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_NoBtn2ActionPerformed
 
     /**

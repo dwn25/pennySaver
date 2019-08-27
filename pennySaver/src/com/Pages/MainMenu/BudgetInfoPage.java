@@ -29,8 +29,8 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         entertainment, fees, personalCare, loans, education, other;
     Double netIncome, needs, wants;
     Double budgetWants, budgetNeeds, budgetSavings, budgetTotal;
-    //private static final String KEY1 = "Datum 1";
-    //public static final String KEY2 = "Datum 2";
+
+    
     /**
      * Creates new form BudgettingInfoPage
      */
@@ -73,6 +73,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
        adviceTextArea.setText(null);
        adviceTextArea.setText(mainAdvice);
        updateBar(budgetNeeds, budgetWants, budgetSavings);
+       menuInit();
    }
     
      public void calcs(){
@@ -95,7 +96,47 @@ public class BudgetInfoPage extends javax.swing.JFrame {
        budgetWants = (wants*0.6);
        budgetSavings = (wants*0.4);
    }
-   
+
+         public void menuInit(){
+        try{
+            Constant.DoConnect();
+            boolean budget, savings, stocks, crypto;
+            budget = getMenu("hasbudget");
+            savings = getMenu("hasSavings");
+            stocks = getMenu("hasStocks");
+            crypto = getMenu("hasCrypto");
+            /*
+            System.out.println(budget);
+            System.out.println(savings);
+            System.out.println(stocks);
+            System.out.println(crypto);
+            */
+            budgetIcon.setEnabled(budget);
+            SavingsIcon.setEnabled(savings);
+            StocksIcon.setEnabled(stocks);
+            cryptoIcon.setEnabled(crypto);
+        }catch(Exception e){
+            System.out.println("Unable to fetch Menus");
+        }
+    }
+    
+        public boolean getMenu(String column){
+        try{
+            String SQL= "SELECT "+ column+" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
+            if(rs.next()){
+                boolean val = rs.getBoolean(column);
+                return val;
+                }
+            else{
+                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+            } 
+        }catch(SQLException err){
+        System.out.println("Unable to fetch income");
+        }  
+        return false;
+   }
+        
        public void putFieldString(javax.swing.JTextField JtexTield, String column){
         try{
             String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
@@ -298,7 +339,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         cryptoIcon = new javax.swing.JButton();
         editTextbtn = new javax.swing.JButton();
         logoutBtn = new javax.swing.JButton();
-        budgetIcon1 = new javax.swing.JButton();
+        budgetIcon = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -743,19 +784,19 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         });
         SIdeBarPanel.add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 140, 50));
 
-        budgetIcon1.setBackground(new java.awt.Color(240, 235, 216));
-        budgetIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/BudgetSelected.jpg"))); // NOI18N
-        budgetIcon1.addMouseListener(new java.awt.event.MouseAdapter() {
+        budgetIcon.setBackground(new java.awt.Color(240, 235, 216));
+        budgetIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/BudgetSelected.jpg"))); // NOI18N
+        budgetIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                budgetIcon1MouseClicked(evt);
+                budgetIconMouseClicked(evt);
             }
         });
-        budgetIcon1.addActionListener(new java.awt.event.ActionListener() {
+        budgetIcon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                budgetIcon1ActionPerformed(evt);
+                budgetIconActionPerformed(evt);
             }
         });
-        SIdeBarPanel.add(budgetIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 140, 50));
+        SIdeBarPanel.add(budgetIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 140, 50));
 
         WholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 480));
 
@@ -854,11 +895,11 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_logoutBtnActionPerformed
 
-    private void budgetIcon1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetIcon1MouseClicked
-    }//GEN-LAST:event_budgetIcon1MouseClicked
+    private void budgetIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetIconMouseClicked
+    }//GEN-LAST:event_budgetIconMouseClicked
 
-    private void budgetIcon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetIcon1ActionPerformed
-    }//GEN-LAST:event_budgetIcon1ActionPerformed
+    private void budgetIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetIconActionPerformed
+    }//GEN-LAST:event_budgetIconActionPerformed
 
     /**
      * @param args the command line arguments
@@ -906,7 +947,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     private javax.swing.JTextArea adviceTextArea;
     private javax.swing.JTextField autoAndCommutingField;
     private javax.swing.JTextField billsAndUtilitiesField;
-    private javax.swing.JButton budgetIcon1;
+    private javax.swing.JButton budgetIcon;
     private javax.swing.JButton cryptoIcon;
     private javax.swing.JTextField diningAndDrinksField;
     private javax.swing.JButton editTextbtn;

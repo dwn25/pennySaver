@@ -68,7 +68,48 @@ public class MainMenu extends javax.swing.JFrame {
         getFieldString(employmentStatusLabel,"employment_status");
         getField(takeHomeIncomeLabel,"net_income");
         getField(amountLabel,"monthly_savings");
+        menuInit();
     }
+    
+    public void menuInit(){
+        try{
+            Constant.DoConnect();
+            boolean budget, savings, stocks, crypto;
+            budget = getMenu("hasbudget");
+            savings = getMenu("hasSavings");
+            stocks = getMenu("hasStocks");
+            crypto = getMenu("hasCrypto");
+            /*
+            System.out.println(budget);
+            System.out.println(savings);
+            System.out.println(stocks);
+            System.out.println(crypto);
+            */
+            budgetIcon.setEnabled(budget);
+            SavingsIcon.setEnabled(savings);
+            StocksIcon.setEnabled(stocks);
+            cryptoIcon.setEnabled(crypto);
+        }catch(Exception e){
+            System.out.println("Unable to fetch Menus");
+        }
+    }
+    
+        public boolean getMenu(String column){
+        try{
+            String SQL= "SELECT "+ column+" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
+            if(rs.next()){
+                boolean val = rs.getBoolean(column);
+                return val;
+                }
+            else{
+                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+            } 
+        }catch(SQLException err){
+        System.out.println("Unable to fetch income");
+        }  
+        return false;
+   }
        
     /**
      * This method is called from within the constructor to initialize the form.
@@ -394,13 +435,10 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void budgetIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetIconMouseClicked
-        BudgetInfoPage m = new BudgetInfoPage();
-        m.setVisible(true);
-        this.hide();
+
     }//GEN-LAST:event_budgetIconMouseClicked
 
     private void SavingsIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SavingsIconMouseClicked
-        // TODO add your handling code here:
     }//GEN-LAST:event_SavingsIconMouseClicked
 
     private void SavingsIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SavingsIconActionPerformed
@@ -454,7 +492,9 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutBtnActionPerformed
 
     private void budgetIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetIconActionPerformed
-        // TODO add your handling code here:
+        BudgetInfoPage m = new BudgetInfoPage();
+        m.setVisible(true);
+        this.hide();
     }//GEN-LAST:event_budgetIconActionPerformed
 
     /**

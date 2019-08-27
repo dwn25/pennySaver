@@ -5,6 +5,10 @@ import com.Pages.EnterDataPages.EnterSavingsPage;
 import com.Pages.Main.NoUseMain;
 import com.Pages.MainMenu.MainMenu;
 import com.Support.Constant;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -129,24 +133,48 @@ public class SavingsQuestionPage extends javax.swing.JFrame {
 
     private void yesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesBtnActionPerformed
         Constant.hasSavings = true;
-        EnterSavingsPage m = new EnterSavingsPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
+        Constant.DoConnect();
+        String sql = ("UPDATE ROOT.PUSERS SET hasSavings = ? WHERE username= ?");
+        PreparedStatement statement;
+        try {
+            statement = Constant.con.prepareStatement(sql);
+            statement.setBoolean(1, true);
+            statement.setString(2, Constant.currentUser);
+            statement.execute();   
+            EnterSavingsPage m = new EnterSavingsPage();
+            m.setLocationRelativeTo(null);
+            m.setVisible(true);
+            this.hide();
+               }         
+        catch (SQLException ex) {
+            Logger.getLogger(StocksQuestionPage.class.getName()).log(Level.SEVERE, null, ex);
+        }            
     }//GEN-LAST:event_yesBtnActionPerformed
 
     private void NoBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NoBtn1MouseClicked
         Constant.hasSavings = false;
-        System.out.println("Savings " + Constant.hasSavings);
-        if(Constant.hasStocks && Constant.hasCrypto && Constant.hasBudget && Constant.hasSavings){
-            MainMenu m = new MainMenu();
-            m.setVisible(true);
-            this.hide();
-        }else{
-            NoUseMain  m = new NoUseMain();
-            m.setVisible(true);
-            this.hide();
-        }
+        Constant.DoConnect();
+        String sql = ("UPDATE ROOT.PUSERS SET hasSavings = ? WHERE username= ?");
+        PreparedStatement statement;
+        try {
+            statement = Constant.con.prepareStatement(sql);
+            statement.setBoolean(1, false);
+            statement.setString(2, Constant.currentUser);
+            statement.execute(); 
+            System.out.println("Savings " + Constant.hasSavings);
+            if(Constant.hasStocks && Constant.hasCrypto && Constant.hasBudget && Constant.hasSavings){
+                MainMenu m = new MainMenu();
+                m.setVisible(true);
+                this.hide();
+            }else{
+                NoUseMain  m = new NoUseMain();
+                m.setVisible(true);
+                this.hide();
+            }
+        }         
+        catch (SQLException ex) {
+            Logger.getLogger(StocksQuestionPage.class.getName()).log(Level.SEVERE, null, ex);
+        }    
     }//GEN-LAST:event_NoBtn1MouseClicked
 
     /**

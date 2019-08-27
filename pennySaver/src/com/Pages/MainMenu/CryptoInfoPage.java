@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import com.Support.Constant;
 import com.Support.Stocks.Crypto;
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class CryptoInfoPage extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(StocksInfoPage.class.getName()).log(Level.SEVERE, null, ex);
         }
+        menuInit();
     }
     
     public void onRun() throws SQLException, IOException{
@@ -44,6 +46,47 @@ public class CryptoInfoPage extends javax.swing.JFrame {
         BudgetCalcsPage.dynamicBar(budgetChart1, "Crypto Breakdown", ChartStockNum, ChartStockSymb);
         BudgetCalcsPage.dynamicBar(budgetChart2, "Stocks Breakdown By Price", ChartTotalCryptoPrice, ChartStockSymb);
     }
+    
+        public void menuInit(){
+        try{
+            Constant.DoConnect();
+            boolean budget, savings, stocks, crypto;
+            budget = getMenu("hasbudget");
+            savings = getMenu("hasSavings");
+            stocks = getMenu("hasStocks");
+            crypto = getMenu("hasCrypto");
+            /*
+            System.out.println(budget);
+            System.out.println(savings);
+            System.out.println(stocks);
+            System.out.println(crypto);
+            */
+            budgetIcon.setEnabled(budget);
+            SavingsIcon.setEnabled(savings);
+            StocksIcon.setEnabled(stocks);
+            cryptoIcon.setEnabled(crypto);
+        }catch(Exception e){
+            System.out.println("Unable to fetch Menus");
+        }
+    }
+    
+        public boolean getMenu(String column){
+        try{
+            String SQL= "SELECT "+ column+" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
+            if(rs.next()){
+                boolean val = rs.getBoolean(column);
+                return val;
+                }
+            else{
+                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+            } 
+        }catch(SQLException err){
+        System.out.println("Unable to fetch income");
+        }  
+        return false;
+   }
+        
     
        public void updateTable() throws SQLException, IOException{
        try {
@@ -108,7 +151,7 @@ public class CryptoInfoPage extends javax.swing.JFrame {
         editTextbtn = new javax.swing.JButton();
         logoutBtn = new javax.swing.JButton();
         budgetIcon = new javax.swing.JButton();
-        budgetIcon1 = new javax.swing.JButton();
+        cryptoIcon = new javax.swing.JButton();
         SavingsIcon1 = new javax.swing.JButton();
         StocksIcon = new javax.swing.JButton();
 
@@ -309,19 +352,19 @@ public class CryptoInfoPage extends javax.swing.JFrame {
         });
         SIdeBarPanel.add(budgetIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 140, 50));
 
-        budgetIcon1.setBackground(new java.awt.Color(240, 235, 216));
-        budgetIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/CryptoSelected.jpg"))); // NOI18N
-        budgetIcon1.addMouseListener(new java.awt.event.MouseAdapter() {
+        cryptoIcon.setBackground(new java.awt.Color(240, 235, 216));
+        cryptoIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/CryptoSelected.jpg"))); // NOI18N
+        cryptoIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                budgetIcon1MouseClicked(evt);
+                cryptoIconMouseClicked(evt);
             }
         });
-        budgetIcon1.addActionListener(new java.awt.event.ActionListener() {
+        cryptoIcon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                budgetIcon1ActionPerformed(evt);
+                cryptoIconActionPerformed(evt);
             }
         });
-        SIdeBarPanel.add(budgetIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 140, 50));
+        SIdeBarPanel.add(cryptoIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 140, 50));
 
         SavingsIcon1.setBackground(new java.awt.Color(41, 57, 80));
         SavingsIcon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/SavingsNormal.jpg"))); // NOI18N
@@ -424,13 +467,13 @@ public class CryptoInfoPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_budgetIconActionPerformed
 
-    private void budgetIcon1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetIcon1MouseClicked
+    private void cryptoIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cryptoIconMouseClicked
 
-    }//GEN-LAST:event_budgetIcon1MouseClicked
+    }//GEN-LAST:event_cryptoIconMouseClicked
 
-    private void budgetIcon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetIcon1ActionPerformed
+    private void cryptoIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cryptoIconActionPerformed
 
-    }//GEN-LAST:event_budgetIcon1ActionPerformed
+    }//GEN-LAST:event_cryptoIconActionPerformed
 
     private void SavingsIcon1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SavingsIcon1MouseClicked
 
@@ -507,7 +550,7 @@ public class CryptoInfoPage extends javax.swing.JFrame {
     private javax.swing.JPanel budgetChart1;
     private javax.swing.JPanel budgetChart2;
     private javax.swing.JButton budgetIcon;
-    private javax.swing.JButton budgetIcon1;
+    private javax.swing.JButton cryptoIcon;
     private javax.swing.JButton editTextbtn;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel1;

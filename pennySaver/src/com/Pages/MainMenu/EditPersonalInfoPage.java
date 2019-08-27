@@ -28,8 +28,48 @@ public void onRun(){
         putFieldString(incomeField,"net_income");
         getField(netWorthLabel,"net_worth");
         getField(amountLabel,"monthly_savings");
+        menuInit();
     }
-
+    public void menuInit(){
+        try{
+            Constant.DoConnect();
+            boolean budget, savings, stocks, crypto;
+            budget = getMenu("hasbudget");
+            savings = getMenu("hasSavings");
+            stocks = getMenu("hasStocks");
+            crypto = getMenu("hasCrypto");
+            /*
+            System.out.println(budget);
+            System.out.println(savings);
+            System.out.println(stocks);
+            System.out.println(crypto);
+            */
+            budgetIcon.setEnabled(budget);
+            SavingsIcon.setEnabled(savings);
+            stocksIcon.setEnabled(stocks);
+            cryptoIcon.setEnabled(crypto);
+        }catch(Exception e){
+            System.out.println("Unable to fetch Menus");
+        }
+    }
+    
+        public boolean getMenu(String column){
+        try{
+            String SQL= "SELECT "+ column+" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
+            if(rs.next()){
+                boolean val = rs.getBoolean(column);
+                return val;
+                }
+            else{
+                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+            } 
+        }catch(SQLException err){
+        System.out.println("Unable to fetch income");
+        }  
+        return false;
+   }
+ 
     public void getField(JTextField label1, String column){
         try{
             String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
@@ -94,11 +134,11 @@ public void onRun(){
         jLabel4 = new javax.swing.JLabel();
         mainMenu = new javax.swing.JToggleButton();
         logoutBtn = new javax.swing.JToggleButton();
-        savingsNormal = new javax.swing.JToggleButton();
-        budgetNormal = new javax.swing.JToggleButton();
+        SavingsIcon = new javax.swing.JToggleButton();
+        budgetIcon = new javax.swing.JToggleButton();
         editInfoPage = new javax.swing.JToggleButton();
-        CryptoNormal = new javax.swing.JToggleButton();
-        stocksNormal = new javax.swing.JToggleButton();
+        cryptoIcon = new javax.swing.JToggleButton();
+        stocksIcon = new javax.swing.JToggleButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -180,35 +220,35 @@ public void onRun(){
         });
         SIdeBarPanel.add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 130, 50));
 
-        savingsNormal.setBackground(new java.awt.Color(41, 57, 80));
-        savingsNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/SavingsNormal.jpg"))); // NOI18N
-        savingsNormal.setBorder(null);
-        savingsNormal.addMouseListener(new java.awt.event.MouseAdapter() {
+        SavingsIcon.setBackground(new java.awt.Color(41, 57, 80));
+        SavingsIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/SavingsNormal.jpg"))); // NOI18N
+        SavingsIcon.setBorder(null);
+        SavingsIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                savingsNormalMouseClicked(evt);
+                SavingsIconMouseClicked(evt);
             }
         });
-        savingsNormal.addActionListener(new java.awt.event.ActionListener() {
+        SavingsIcon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                savingsNormalActionPerformed(evt);
+                SavingsIconActionPerformed(evt);
             }
         });
-        SIdeBarPanel.add(savingsNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 130, 50));
+        SIdeBarPanel.add(SavingsIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 130, 50));
 
-        budgetNormal.setBackground(new java.awt.Color(41, 57, 80));
-        budgetNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/BudgetNormal.jpg"))); // NOI18N
-        budgetNormal.setBorder(null);
-        budgetNormal.addMouseListener(new java.awt.event.MouseAdapter() {
+        budgetIcon.setBackground(new java.awt.Color(41, 57, 80));
+        budgetIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/BudgetNormal.jpg"))); // NOI18N
+        budgetIcon.setBorder(null);
+        budgetIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                budgetNormalMouseClicked(evt);
+                budgetIconMouseClicked(evt);
             }
         });
-        budgetNormal.addActionListener(new java.awt.event.ActionListener() {
+        budgetIcon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                budgetNormalActionPerformed(evt);
+                budgetIconActionPerformed(evt);
             }
         });
-        SIdeBarPanel.add(budgetNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 130, 50));
+        SIdeBarPanel.add(budgetIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 130, 50));
 
         editInfoPage.setBackground(new java.awt.Color(240, 235, 216));
         editInfoPage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/EditInfoSelected.jpg"))); // NOI18N
@@ -225,35 +265,35 @@ public void onRun(){
         });
         SIdeBarPanel.add(editInfoPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 130, 50));
 
-        CryptoNormal.setBackground(new java.awt.Color(41, 57, 80));
-        CryptoNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/CryptoNormal.jpg"))); // NOI18N
-        CryptoNormal.setBorder(null);
-        CryptoNormal.addMouseListener(new java.awt.event.MouseAdapter() {
+        cryptoIcon.setBackground(new java.awt.Color(41, 57, 80));
+        cryptoIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/CryptoNormal.jpg"))); // NOI18N
+        cryptoIcon.setBorder(null);
+        cryptoIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CryptoNormalMouseClicked(evt);
+                cryptoIconMouseClicked(evt);
             }
         });
-        CryptoNormal.addActionListener(new java.awt.event.ActionListener() {
+        cryptoIcon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CryptoNormalActionPerformed(evt);
+                cryptoIconActionPerformed(evt);
             }
         });
-        SIdeBarPanel.add(CryptoNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 130, 50));
+        SIdeBarPanel.add(cryptoIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 130, 50));
 
-        stocksNormal.setBackground(new java.awt.Color(41, 57, 80));
-        stocksNormal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/StocksNormal.jpg"))); // NOI18N
-        stocksNormal.setBorder(null);
-        stocksNormal.addMouseListener(new java.awt.event.MouseAdapter() {
+        stocksIcon.setBackground(new java.awt.Color(41, 57, 80));
+        stocksIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/StocksNormal.jpg"))); // NOI18N
+        stocksIcon.setBorder(null);
+        stocksIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                stocksNormalMouseClicked(evt);
+                stocksIconMouseClicked(evt);
             }
         });
-        stocksNormal.addActionListener(new java.awt.event.ActionListener() {
+        stocksIcon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stocksNormalActionPerformed(evt);
+                stocksIconActionPerformed(evt);
             }
         });
-        SIdeBarPanel.add(stocksNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 130, 50));
+        SIdeBarPanel.add(stocksIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 130, 50));
 
         WholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 490));
 
@@ -447,25 +487,25 @@ public void onRun(){
         }
     }//GEN-LAST:event_logoutBtnActionPerformed
 
-    private void savingsNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savingsNormalMouseClicked
+    private void SavingsIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SavingsIconMouseClicked
         SavingsInfoPage m = new SavingsInfoPage();
         m.setLocationRelativeTo(null);
         m.setVisible(true);
         this.hide();
-    }//GEN-LAST:event_savingsNormalMouseClicked
+    }//GEN-LAST:event_SavingsIconMouseClicked
 
-    private void savingsNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savingsNormalActionPerformed
+    private void SavingsIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SavingsIconActionPerformed
 
-    }//GEN-LAST:event_savingsNormalActionPerformed
+    }//GEN-LAST:event_SavingsIconActionPerformed
 
-    private void budgetNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetNormalMouseClicked
+    private void budgetIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetIconMouseClicked
         BudgetInfoPage m = new BudgetInfoPage();
         m.setVisible(true);
         this.hide();
-    }//GEN-LAST:event_budgetNormalMouseClicked
+    }//GEN-LAST:event_budgetIconMouseClicked
 
-    private void budgetNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetNormalActionPerformed
-    }//GEN-LAST:event_budgetNormalActionPerformed
+    private void budgetIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetIconActionPerformed
+    }//GEN-LAST:event_budgetIconActionPerformed
 
     private void editInfoPageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editInfoPageMouseClicked
     }//GEN-LAST:event_editInfoPageMouseClicked
@@ -543,27 +583,27 @@ public void onRun(){
 
     }//GEN-LAST:event_employmentStatusActionPerformed
 
-    private void CryptoNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CryptoNormalMouseClicked
+    private void cryptoIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cryptoIconMouseClicked
         // TODO add your handling code here:
         CryptoInfoPage m = new CryptoInfoPage();
         m.setVisible(true);
         this.hide();
-    }//GEN-LAST:event_CryptoNormalMouseClicked
+    }//GEN-LAST:event_cryptoIconMouseClicked
 
-    private void CryptoNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CryptoNormalActionPerformed
+    private void cryptoIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cryptoIconActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CryptoNormalActionPerformed
+    }//GEN-LAST:event_cryptoIconActionPerformed
 
-    private void stocksNormalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksNormalMouseClicked
+    private void stocksIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksIconMouseClicked
         // TODO add your handling code here:
         StocksInfoPage m = new StocksInfoPage();
         m.setVisible(true);
         this.hide();
-    }//GEN-LAST:event_stocksNormalMouseClicked
+    }//GEN-LAST:event_stocksIconMouseClicked
 
-    private void stocksNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stocksNormalActionPerformed
+    private void stocksIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stocksIconActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_stocksNormalActionPerformed
+    }//GEN-LAST:event_stocksIconActionPerformed
 
     /**
      * @param args the command line arguments
@@ -602,11 +642,12 @@ public void onRun(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton CryptoNormal;
     private javax.swing.JPanel SIdeBarPanel;
+    private javax.swing.JToggleButton SavingsIcon;
     private javax.swing.JPanel WholePanel;
     private javax.swing.JTextField amountLabel;
-    private javax.swing.JToggleButton budgetNormal;
+    private javax.swing.JToggleButton budgetIcon;
+    private javax.swing.JToggleButton cryptoIcon;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JToggleButton editInfoPage;
     private javax.swing.JComboBox<String> employmentStatus;
@@ -625,7 +666,6 @@ public void onRun(){
     private javax.swing.JToggleButton mainMenu;
     private javax.swing.JTextField netWorthLabel;
     private javax.swing.JButton saveBtn;
-    private javax.swing.JToggleButton savingsNormal;
-    private javax.swing.JToggleButton stocksNormal;
+    private javax.swing.JToggleButton stocksIcon;
     // End of variables declaration//GEN-END:variables
 }
