@@ -44,9 +44,9 @@ public class EditBudgetPage extends javax.swing.JFrame {
     }
     
    public void onRun(){
+       try{
        Constant.DoConnect();
        calcs();
-       putFieldString(incomeField,"net_income");
        homeField.setText(null);
        homeField.setText(home.toString());
        shoppingField.setText(null);
@@ -81,6 +81,13 @@ public class EditBudgetPage extends javax.swing.JFrame {
        updateBar(budgetNeeds, budgetWants, budgetSavings);
        updateBar();
        updateSecondBar();
+       }
+       catch(Exception e){System.out.println("Some error caught");}
+         finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
+        }
    }
  
     public void calcs(){
@@ -247,7 +254,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
     }
     public void putFieldString(javax.swing.JTextField JtexTield, String column){
         try{
-            String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -265,7 +272,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
 
     public Double getIncome(){
         try{
-            String SQL= "SELECT net_income From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT net_income From "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 Double val = rs.getDouble("net_income");
@@ -283,7 +290,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
    
    public Double getField(String column){
         try{
-            String SQL= "SELECT " + column +" From ROOT.PBUDGET WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From "+ Constant.dbName + ".PBUDGET WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 Double var = rs.getDouble(column); 
@@ -338,8 +345,6 @@ public class EditBudgetPage extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         otherField = new javax.swing.JTextField();
-        jLabel20 = new javax.swing.JLabel();
-        incomeField = new javax.swing.JTextField();
         allCharts = new javax.swing.JPanel();
         myChartPanel2 = new javax.swing.JPanel();
         myChartPanel1 = new javax.swing.JPanel();
@@ -513,92 +518,93 @@ public class EditBudgetPage extends javax.swing.JFrame {
         otherField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         otherField.setForeground(new java.awt.Color(63, 64, 76));
 
-        jLabel20.setBackground(new java.awt.Color(29, 45, 68));
-        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(63, 64, 76));
-        jLabel20.setText("Income:");
-
-        incomeField.setBackground(new java.awt.Color(240, 235, 216));
-        incomeField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        incomeField.setForeground(new java.awt.Color(63, 64, 76));
-        incomeField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                incomeFieldActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout dataEntryPanelLayout = new javax.swing.GroupLayout(dataEntryPanel);
         dataEntryPanel.setLayout(dataEntryPanelLayout);
         dataEntryPanelLayout.setHorizontalGroup(
             dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dataEntryPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel11)
                     .addComponent(jLabel7)
                     .addComponent(jLabel9)
                     .addComponent(jLabel8)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel20))
+                    .addComponent(jLabel13))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(entertainmentField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(diningAndDrinksField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(travelField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(autoAndCommutingField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(shoppingField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(homeField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(dataEntryPanelLayout.createSequentialGroup()
-                        .addComponent(incomeField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66)
+                        .addGap(54, 54, 54)
                         .addComponent(jLabel14)
                         .addGap(18, 18, 18)
                         .addComponent(feesField))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dataEntryPanelLayout.createSequentialGroup()
-                        .addComponent(entertainmentField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(211, 211, 211))
-                    .addGroup(dataEntryPanelLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
                         .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(diningAndDrinksField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(travelField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(autoAndCommutingField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(shoppingField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(homeField, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dataEntryPanelLayout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dataEntryPanelLayout.createSequentialGroup()
-                                        .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel18)
-                                            .addComponent(jLabel16))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(otherField, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(educationField, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dataEntryPanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel17)
-                                        .addGap(12, 12, 12)
-                                        .addComponent(loansField, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(dataEntryPanelLayout.createSequentialGroup()
-                                .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(dataEntryPanelLayout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jLabel15))
-                                    .addComponent(jLabel12))
+                                .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel18)
+                                    .addComponent(jLabel16))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(billsAndUtilitiesField)
-                                    .addComponent(personalCareField))))))
-                .addGap(0, 38, Short.MAX_VALUE))
+                                    .addComponent(otherField, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(educationField, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dataEntryPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel17)
+                                .addGap(12, 12, 12)
+                                .addComponent(loansField, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(dataEntryPanelLayout.createSequentialGroup()
+                        .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(dataEntryPanelLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel15))
+                            .addComponent(jLabel12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(billsAndUtilitiesField)
+                            .addComponent(personalCareField))))
+                .addGap(0, 32, Short.MAX_VALUE))
         );
         dataEntryPanelLayout.setVerticalGroup(
             dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(dataEntryPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(dataEntryPanelLayout.createSequentialGroup()
+                            .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(feesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel14))
+                            .addGap(167, 167, 167))
+                        .addGroup(dataEntryPanelLayout.createSequentialGroup()
+                            .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(personalCareField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel15))
+                            .addGap(12, 12, 12)
+                            .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(billsAndUtilitiesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel12))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel17)
+                                .addComponent(loansField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(educationField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel16))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(otherField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel18))))
                     .addGroup(dataEntryPanelLayout.createSequentialGroup()
-                        .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(incomeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(feesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel20))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(homeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
@@ -617,32 +623,12 @@ public class EditBudgetPage extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
-                            .addComponent(travelField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(dataEntryPanelLayout.createSequentialGroup()
-                        .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(personalCareField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel15))
-                        .addGap(12, 12, 12)
-                        .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(billsAndUtilitiesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel17)
-                            .addComponent(loansField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(travelField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(educationField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(otherField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel18))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(entertainmentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                            .addComponent(jLabel13)
+                            .addComponent(entertainmentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         InfoPanel.add(dataEntryPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(506, 15, 470, -1));
@@ -675,7 +661,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
         updateBTn.setBackground(new java.awt.Color(29, 45, 68));
         updateBTn.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         updateBTn.setForeground(new java.awt.Color(255, 255, 255));
-        updateBTn.setText("Update");
+        updateBTn.setText("Preview");
         updateBTn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateBTnActionPerformed(evt);
@@ -929,10 +915,10 @@ public class EditBudgetPage extends javax.swing.JFrame {
                 education = Double.parseDouble(edu1);
                 other = Double.parseDouble(other1);
 
-                /* System.out.println(netIncome);
+                // System.out.println(netIncome);
                 System.out.println(home + " " + shopping1 + " " + dineAndDrinks + " " + auto + " " + dineAndDrinks + " " +
                     billsAndUtils + " " +  entertainment + " " + fees + " " + personalCare + " " + loans + " " + education + " " + other);
-                */
+                
                 doCalcs();
                 getCurrentState(netIncome,budgetTotal);
                 updateBar(budgetNeeds, budgetWants, budgetSavings);
@@ -943,6 +929,11 @@ public class EditBudgetPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Please Enter Only Numbers");
         }catch(Exception ex){
             JOptionPane.showMessageDialog(rootPane, "An Error Occurred");
+        }
+         finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
         }
     }//GEN-LAST:event_updateBTnActionPerformed
 
@@ -1062,7 +1053,8 @@ public class EditBudgetPage extends javax.swing.JFrame {
                 String[] options={"Yes", "No"};
                 int t =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Save?", "Confirm Save", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
                 if(t==JOptionPane.YES_OPTION){
-                    String sql = "UPDATE ROOT.PBUDGET SET \"HOME\" = ?, \"SHOPPING\" = ?, \"DINING_AND_DRINKS\" = ?, \"AUTO\" = ?, \"TRAVEL\" = ?, \"BILLS\" = ?, \"ENTERTAINMENT\" = ?, \"FEES\" = ?, \"PERSONAL\" = ?, \"LOANS\" = ?, \"EDUCATION\" = ?, \"OTHER\" = ? WHERE USERNAME = ?" +"";
+                    String sql = "UPDATE "+ Constant.dbName + ".PBUDGET SET `HOME` = ?, `SHOPPING` = ?, `DINING_AND_DRINKS` = ?, `AUTO` = ?, `TRAVEL` = ?, `BILLS` = ?, `ENTERTAINMENT` = ?, `FEES` = ?, `PERSONAL` = ?, `LOANS` = ?,`EDUCATION` = ?, `OTHER` = ? WHERE USERNAME = ?";
+                    String sql1 = "UPDATE "+ Constant.dbName + ".PBUDGET SET \"HOME\" = ?, \"SHOPPING\" = ?, \"DINING_AND_DRINKS\" = ?, \"AUTO\" = ?, \"TRAVEL\" = ?, \"BILLS\" = ?, \"ENTERTAINMENT\" = ?, \"FEES\" = ?, \"PERSONAL\" = ?, \"LOANS\" = ?, \"EDUCATION\" = ?, \"OTHER\" = ? WHERE USERNAME = ?" +"";
                     PreparedStatement statement = Constant.con.prepareStatement(sql);
                     statement.setDouble(1, home);
                     statement.setDouble(2, shopping);
@@ -1087,6 +1079,11 @@ public class EditBudgetPage extends javax.swing.JFrame {
             System.out.println(ex.toString());
             JOptionPane.showMessageDialog(rootPane, "Unable to Save");
         }
+         finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
+        }
     }//GEN-LAST:event_saveBTnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
@@ -1099,10 +1096,6 @@ public class EditBudgetPage extends javax.swing.JFrame {
             this.hide();
         }
     }//GEN-LAST:event_backBtnActionPerformed
-
-    private void incomeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incomeFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_incomeFieldActionPerformed
 
     private void mainMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuMouseClicked
         int dialogButton = JOptionPane.YES_NO_OPTION;
@@ -1262,7 +1255,6 @@ public class EditBudgetPage extends javax.swing.JFrame {
     private javax.swing.JTextField feesField;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JTextField homeField;
-    private javax.swing.JTextField incomeField;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1275,7 +1267,6 @@ public class EditBudgetPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

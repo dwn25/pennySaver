@@ -186,7 +186,7 @@ public class Main extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Please Enter A Password");
             }
             else{
-            String SQL= "SELECT password From ROOT.PUSERS WHERE username= '"+User1+"'";    
+            String SQL= "SELECT password From sql9303230.PUSERS WHERE username= '"+User1+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String hj = rs.getString("Password");
@@ -214,6 +214,11 @@ public class Main extends javax.swing.JFrame {
         catch(SQLException err){
             System.out.println(err.toString());
             JOptionPane.showMessageDialog(rootPane, "INCORRECT!! Please try again");
+        }
+         finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
         }
     }//GEN-LAST:event_loginBtnActionPerformed
 

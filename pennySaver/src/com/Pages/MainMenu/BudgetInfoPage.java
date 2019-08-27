@@ -42,6 +42,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     }
     
    public void onRun(){
+       try{
        Constant.DoConnect();
        calcs();
        putFieldString(incomeField,"net_income");
@@ -74,6 +75,12 @@ public class BudgetInfoPage extends javax.swing.JFrame {
        adviceTextArea.setText(mainAdvice);
        updateBar(budgetNeeds, budgetWants, budgetSavings);
        menuInit();
+       }catch(Exception e){}
+       finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
+        }
    }
     
      public void calcs(){
@@ -117,12 +124,16 @@ public class BudgetInfoPage extends javax.swing.JFrame {
             cryptoIcon.setEnabled(crypto);
         }catch(Exception e){
             System.out.println("Unable to fetch Menus");
+        }finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
         }
     }
     
         public boolean getMenu(String column){
         try{
-            String SQL= "SELECT "+ column+" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT "+ column+" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 boolean val = rs.getBoolean(column);
@@ -139,7 +150,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         
        public void putFieldString(javax.swing.JTextField JtexTield, String column){
         try{
-            String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -155,7 +166,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
        
     public void getFieldString(javax.swing.JTextField JtexTield, String column){
         try{
-            String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -171,7 +182,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
 
     public Double getIncome(){
         try{
-            String SQL= "SELECT net_income From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT net_income From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 Double val = rs.getDouble("net_income");
@@ -188,7 +199,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
    
    public Double getField(String column){
         try{
-            String SQL= "SELECT " + column +" From ROOT.PBUDGET WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From  "+ Constant.dbName + ".PBUDGET WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 Double var = rs.getDouble(column); 

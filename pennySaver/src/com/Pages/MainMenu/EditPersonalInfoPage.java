@@ -25,11 +25,19 @@ public class EditPersonalInfoPage extends javax.swing.JFrame {
     }
 
 public void onRun(){
+    try{
         Constant.DoConnect();
         putFieldString(incomeField,"net_income");
         getField(netWorthLabel,"net_worth");
         getField(amountLabel,"monthly_savings");
+        setEmployment("employment_status");
         menuInit();
+    }catch(Exception e){}
+        finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
+        }
     }
     public void menuInit(){
         try{
@@ -50,12 +58,16 @@ public void onRun(){
             cryptoIcon.setEnabled(crypto);
         }catch(Exception e){
             System.out.println("Unable to fetch Menus");
+        }finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
         }
     }
     
         public boolean getMenu(String column){
         try{
-            String SQL= "SELECT "+ column+" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT "+ column+" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 boolean val = rs.getBoolean(column);
@@ -72,7 +84,7 @@ public void onRun(){
  
     public void getField(JTextField label1, String column){
         try{
-            String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -89,7 +101,7 @@ public void onRun(){
     
    public void getFieldString(JTextField label1, String column){
         try{
-            String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -105,7 +117,7 @@ public void onRun(){
     }
     public void putFieldString(javax.swing.JTextField JtexTield, String column){
         try{
-            String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -513,6 +525,22 @@ public void onRun(){
     private void editInfoPageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editInfoPageActionPerformed
     }//GEN-LAST:event_editInfoPageActionPerformed
 
+    public void setEmployment(String column){
+        try{
+            String SQL= "SELECT " + column +" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            ResultSet rs = Constant.stmt.executeQuery(SQL);
+            if(rs.next()){
+                String val = rs.getString(column);
+                employmentStatus.setSelectedItem(val);
+                }
+            else{
+                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+            } 
+        }catch(SQLException err){
+        System.out.println("Unable to fetch "+ column);
+        }        
+    }
+       
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         Constant.DoConnect();
         double netWorth=0, monthlyIncome=0, monthlySavings=0;
@@ -539,7 +567,7 @@ public void onRun(){
                     System.out.println(netWorth);
                     System.out.println(monthlyIncome);
                     System.out.println(monthlySavings);
-                    String sql = ("UPDATE ROOT.PUSERS SET employment_status = ?, net_income = ?, net_worth = ?, monthly_savings = ? WHERE username= ?");
+                    String sql = ("UPDATE  "+ Constant.dbName + ".PUSERS SET employment_status = ?, net_income = ?, net_worth = ?, monthly_savings = ? WHERE username= ?");
                     PreparedStatement statement = Constant.con.prepareStatement(sql);
                     statement.setString(1, status);
                     statement.setDouble(2, monthlyIncome);
@@ -553,6 +581,10 @@ public void onRun(){
             JOptionPane.showMessageDialog(rootPane, "Please Enter Only Numbers");
         }catch(Exception ex){
             JOptionPane.showMessageDialog(rootPane, "An Error Occurred");
+        }finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
         }
     }//GEN-LAST:event_saveBtnActionPerformed
 
@@ -565,30 +597,30 @@ public void onRun(){
                     + " This Decision Cannot Be Reversed", "Delete", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
             if(p==JOptionPane.YES_OPTION){
                 Constant.DoConnect();
-                String sql = "DELETE FROM ROOT.PUSERS WHERE USERNAME = ?";
+                String sql = "DELETE FROM  "+ Constant.dbName + ".PUSERS WHERE USERNAME = ?";
                 PreparedStatement statement = Constant.con.prepareStatement(sql);
                 statement.setString(1, Constant.currentUser);
                 statement.executeUpdate();
                 if(budget){
-                    String sql1 = "DELETE FROM ROOT.PBUDGET WHERE USERNAME = ?";
+                    String sql1 = "DELETE FROM  "+ Constant.dbName + ".PBUDGET WHERE USERNAME = ?";
                     PreparedStatement statement1 = Constant.con.prepareStatement(sql1);
                     statement.setString(1, Constant.currentUser);
                     statement1.executeUpdate();
                 }
                 if(savings){
-                    String sql1 = "DELETE FROM ROOT.PBANK WHERE USERNAME = ?";
+                    String sql1 = "DELETE FROM  "+ Constant.dbName + ".PBANK WHERE USERNAME = ?";
                     PreparedStatement statement1 = Constant.con.prepareStatement(sql1);
                     statement.setString(1, Constant.currentUser);
                     statement1.executeUpdate();
                 }
                 if(stocks){
-                    String sql1 = "DELETE FROM ROOT.PSTOCKS WHERE USERNAME = ?";
+                    String sql1 = "DELETE FROM  "+ Constant.dbName + ".PSTOCKS WHERE USERNAME = ?";
                     PreparedStatement statement1 = Constant.con.prepareStatement(sql1);
                     statement.setString(1, Constant.currentUser);
                     statement1.executeUpdate();
                 }
                 if(crypto){                   
-                    String sql1 = "DELETE FROM ROOT.PCRYPTO WHERE USERNAME = ?";
+                    String sql1 = "DELETE FROM  "+ Constant.dbName + ".PCRYPTO WHERE USERNAME = ?";
                     PreparedStatement statement1 = Constant.con.prepareStatement(sql1);
                     statement.setString(1, Constant.currentUser);
                     statement1.executeUpdate();  
@@ -602,6 +634,10 @@ public void onRun(){
         }
         }catch(SQLException e){
             
+        }finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
         }
         
     }//GEN-LAST:event_deleteBtnActionPerformed

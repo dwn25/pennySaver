@@ -407,7 +407,7 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
                         System.out.println(netWorth);
                         System.out.println(monthlyIncome);
                         System.out.println(monthlySavings);
-                        String sql = ("UPDATE ROOT.PUSERS SET employment_status = ?, net_income = ?, net_worth = ?, monthly_savings = ? WHERE username= ?");
+                        String sql = ("UPDATE  "+ Constant.dbName + ".PUSERS SET employment_status = ?, net_income = ?, net_worth = ?, monthly_savings = ? WHERE username= ?");
                         PreparedStatement statement = Constant.con.prepareStatement(sql);
                         statement.setString(1, status);
                         statement.setDouble(2, monthlyIncome);
@@ -428,6 +428,10 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
             }
         }catch(NumberFormatException err){
             JOptionPane.showMessageDialog(rootPane, "INCORRECT!! Please try again");
+        }finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
         }
     }//GEN-LAST:event_nextBtnActionPerformed
 

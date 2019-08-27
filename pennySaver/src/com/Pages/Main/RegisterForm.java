@@ -406,7 +406,7 @@ public class RegisterForm extends javax.swing.JFrame {
     }
     
     public boolean isUsernameRegistered(String username) {
-        String query = "SELECT username FROM ROOT.PUSERS WHERE username= '" + username + "'"; //get username
+        String query = "SELECT username FROM  "+ Constant.dbName + ".PUSERS WHERE username= '" + username + "'"; 
         try {
             ResultSet rs2 = Constant.stmt.executeQuery(query) ;
             if(rs2.next()){
@@ -479,7 +479,7 @@ public class RegisterForm extends javax.swing.JFrame {
                 if (t==JOptionPane.YES_OPTION){
                     byte[] encodedBytes = Base64.getEncoder().encode(pwd.getBytes());
                     String finalPWD = new String(encodedBytes);
-                    String sql = ("INSERT INTO ROOT.PUSERS( USERNAME , PASSWORD ,FIRSTNAME,  LASTNAME ,  EMAILADDRESS  )values(?,?,?,?,?)" );
+                    String sql = ("INSERT INTO  "+ Constant.dbName + ".PUSERS( USERNAME , PASSWORD ,FIRSTNAME,  LASTNAME ,  EMAILADDRESS  )values(?,?,?,?,?)" );
                     PreparedStatement statement = Constant.con.prepareStatement(sql);
                     statement.setString(1, user);
                     statement.setString(2, finalPWD);
@@ -490,7 +490,6 @@ public class RegisterForm extends javax.swing.JFrame {
                     if (rowsInserted > 0){
                         System.out.println("A new user was inserted successfully!");
                         JOptionPane.showMessageDialog(null, "Registration Succesful");
-                        Constant.IDS +=1;
                         EnterFinanceInfoPage eP = new EnterFinanceInfoPage();
                         eP.setVisible(true);
                         this.hide();
@@ -502,6 +501,11 @@ public class RegisterForm extends javax.swing.JFrame {
             }
         } catch (Exception ex) {
             Logger.getLogger(RegisterForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
         }
     }//GEN-LAST:event_RegisterBtnActionPerformed
 

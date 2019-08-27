@@ -112,7 +112,7 @@ public class StocksQuestionPage extends javax.swing.JFrame {
     private void YEsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YEsBtnActionPerformed
        Constant.hasStocks = true;
        Constant.DoConnect();
-       String sql = ("UPDATE ROOT.PUSERS SET hasstocks = ? WHERE username= ?");
+       String sql = ("UPDATE  "+ Constant.dbName + ".PUSERS SET hasstocks = ? WHERE username= ?");
        PreparedStatement statement;
         try {
             statement = Constant.con.prepareStatement(sql);
@@ -127,12 +127,17 @@ public class StocksQuestionPage extends javax.swing.JFrame {
         catch (SQLException ex) {
             Logger.getLogger(StocksQuestionPage.class.getName()).log(Level.SEVERE, null, ex);
         }
+         finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
+        }
     }//GEN-LAST:event_YEsBtnActionPerformed
 
     private void NoBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoBtn2ActionPerformed
         Constant.hasStocks = false;
        Constant.DoConnect();
-       String sql = ("UPDATE ROOT.PUSERS SET hasstocks = ? WHERE username= ?");
+       String sql = ("UPDATE  "+ Constant.dbName + ".PUSERS SET hasstocks = ? WHERE username= ?");
        PreparedStatement statement;
         try {
             statement = Constant.con.prepareStatement(sql);
@@ -146,6 +151,11 @@ public class StocksQuestionPage extends javax.swing.JFrame {
         }         
         catch (SQLException ex) {
             Logger.getLogger(StocksQuestionPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
         }
     }//GEN-LAST:event_NoBtn2ActionPerformed
 

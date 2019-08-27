@@ -30,6 +30,7 @@ public class CryptoInfoPage extends javax.swing.JFrame {
      * Creates new form CryptoPage
      */
     public CryptoInfoPage() {
+        Constant.currentUser = "don";
         setLocationRelativeTo(null);
         setResizable(false);
         initComponents();
@@ -67,19 +68,23 @@ public class CryptoInfoPage extends javax.swing.JFrame {
             cryptoIcon.setEnabled(crypto);
         }catch(Exception e){
             System.out.println("Unable to fetch Menus");
+        }finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
         }
     }
     
         public boolean getMenu(String column){
         try{
-            String SQL= "SELECT "+ column+" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT "+ column+" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 boolean val = rs.getBoolean(column);
                 return val;
                 }
             else{
-                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+                System.out.println("Unable To Find "+column);
             } 
         }catch(SQLException err){
         System.out.println("Unable to fetch income");
@@ -91,7 +96,7 @@ public class CryptoInfoPage extends javax.swing.JFrame {
        public void updateTable() throws SQLException, IOException{
        try {
            Constant.DoConnect();
-           String sql = "SELECT * FROM pcrypto WHERE username LIKE '"+Constant.currentUser+"%'" ;
+           String sql = "SELECT * FROM "+ Constant.dbName + ".PCRYPTO WHERE username LIKE '"+Constant.currentUser+"%'" ;
            Constant.rs=Constant.stmt.executeQuery(sql);
            DefaultTableModel tbl = (DefaultTableModel) jTable1.getModel();
            tbl.setRowCount(0);
@@ -121,6 +126,10 @@ public class CryptoInfoPage extends javax.swing.JFrame {
             }
        }catch (SQLException ex) {
           Logger.getLogger(StocksInfoPage.class.getName()).log(Level.SEVERE,null,ex);  
+        }finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
         }
                   
 }

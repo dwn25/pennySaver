@@ -16,7 +16,7 @@ public class Constant {
     public static String currentUser = "";
     public static String currentUserID = "";
     public static String mainAdvice = "";
-    public static int IDS = 4;
+    public static String dbName = "sql9303230";
     public static Connection con;
     public static Statement stmt;
     public static ResultSet rs;
@@ -29,7 +29,7 @@ public class Constant {
     public static boolean hasSavings = false;
 
         
-    public static void DoConnect(){
+    public static void DoConnect1(){
         try{
             //Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             //Class.forName("org.apache.derby.jdbc.ClientDriver");
@@ -45,5 +45,19 @@ public class Constant {
             System.out.println(ex.getMessage());
         }
   }
-    
+     public static void DoConnect(){
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            String url = "jdbc:mysql://sql9.freemysqlhosting.net:3306/sql9303230";
+            username="sql9303230";
+            pwd="NxwMDZzAAU";
+            con= DriverManager.getConnection(url, username, pwd);
+            stmt=con.createStatement();
+        }catch (SQLException err){
+        System.out.println(err.getMessage());
+        }
+        catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+  }   
 }

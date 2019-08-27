@@ -134,7 +134,7 @@ public class SavingsQuestionPage extends javax.swing.JFrame {
     private void yesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesBtnActionPerformed
         Constant.hasSavings = true;
         Constant.DoConnect();
-        String sql = ("UPDATE ROOT.PUSERS SET hasSavings = ? WHERE username= ?");
+        String sql = ("UPDATE  "+ Constant.dbName + ".PUSERS SET hasSavings = ? WHERE username= ?");
         PreparedStatement statement;
         try {
             statement = Constant.con.prepareStatement(sql);
@@ -148,13 +148,18 @@ public class SavingsQuestionPage extends javax.swing.JFrame {
                }         
         catch (SQLException ex) {
             Logger.getLogger(StocksQuestionPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
         }            
     }//GEN-LAST:event_yesBtnActionPerformed
 
     private void NoBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NoBtn1MouseClicked
         Constant.hasSavings = false;
         Constant.DoConnect();
-        String sql = ("UPDATE ROOT.PUSERS SET hasSavings = ? WHERE username= ?");
+        String sql = ("UPDATE  "+ Constant.dbName + " "+ Constant.dbName + ".PUSERS SET hasSavings = ? WHERE username= ?");
         PreparedStatement statement;
         try {
             statement = Constant.con.prepareStatement(sql);
@@ -167,6 +172,11 @@ public class SavingsQuestionPage extends javax.swing.JFrame {
         }
         catch (SQLException ex) {
             Logger.getLogger(StocksQuestionPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
         }    
     }//GEN-LAST:event_NoBtn1MouseClicked
 

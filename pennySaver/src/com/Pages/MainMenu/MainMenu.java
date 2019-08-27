@@ -15,23 +15,17 @@ public class MainMenu extends javax.swing.JFrame {
      * Creates new form MainMenu
      */
     public MainMenu() {
-        if(Constant.currentUser.length()<1){
-            Main m = new Main();
-            m.setVisible(true);
-        }
-        else{
-            setResizable(false);
-            initComponents();
-            setLocationRelativeTo(null);
-            onRun();
-        }
+        setResizable(false);
+        initComponents();
+        setLocationRelativeTo(null);
+        onRun();
     }
     
     
 
     public void getField(javax.swing.JLabel label1, String column){
         try{
-            String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -47,7 +41,7 @@ public class MainMenu extends javax.swing.JFrame {
     
    public void getFieldString(javax.swing.JLabel label1, String column){
         try{
-            String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -62,6 +56,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     public void onRun(){
+        try{
         Constant.DoConnect();
         getFieldString(firstName,"firstname");
         getField(netWorthLabel,"net_worth");
@@ -69,6 +64,12 @@ public class MainMenu extends javax.swing.JFrame {
         getField(takeHomeIncomeLabel,"net_income");
         getField(amountLabel,"monthly_savings");
         menuInit();
+    }catch(Exception e){}
+        finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
+        }
     }
     
     public void menuInit(){
@@ -91,12 +92,16 @@ public class MainMenu extends javax.swing.JFrame {
             cryptoIcon.setEnabled(crypto);
         }catch(Exception e){
             System.out.println("Unable to fetch Menus");
+        }finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
         }
     }
     
         public boolean getMenu(String column){
         try{
-            String SQL= "SELECT "+ column+" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT "+ column+" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 boolean val = rs.getBoolean(column);

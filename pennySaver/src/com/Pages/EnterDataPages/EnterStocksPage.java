@@ -321,7 +321,7 @@ public class EnterStocksPage extends javax.swing.JFrame {
     }
     
     public boolean isStockInTable(String symb) {
-        String query = "SELECT STOCK_SYMBOL FROM ROOT.PSTOCKS WHERE username= '" + Constant.currentUser + "'"; 
+        String query = "SELECT STOCK_SYMBOL FROM  "+ Constant.dbName + ".PSTOCKS WHERE username= '" + Constant.currentUser + "'"; 
         try {
             ResultSet rs2 = Constant.stmt.executeQuery(query) ;
             if(rs2.next()){
@@ -367,8 +367,8 @@ public class EnterStocksPage extends javax.swing.JFrame {
                 String[] options={"Yes", "No"};
                 int t =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Save?", "Confirm Save", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
                 if(t==JOptionPane.YES_OPTION){
-                    String sql = "INSERT INTO ROOT.PSTOCKS (STOCK_SYMBOL, STOCK_NUMBER, USERNAME) VALUES (?, ?, ?)";
-                    //String sql = ("INSERT INTO ROOT.PUSERS( USERNAME , PASSWORD ,FIRSTNAME,  LASTNAME ,  EMAILADDRESS  )values(?,?,?,?,?)" );
+                    String sql = "INSERT INTO  "+ Constant.dbName + ".PSTOCKS (STOCK_SYMBOL, STOCK_NUMBER, USERNAME) VALUES (?, ?, ?)";
+                    //String sql = ("INSERT INTO  "+ Constant.dbName + ".PUSERS( USERNAME , PASSWORD ,FIRSTNAME,  LASTNAME ,  EMAILADDRESS  )values(?,?,?,?,?)" );
                     PreparedStatement statement = Constant.con.prepareStatement(sql);
                     statement.setString(1, stockSymbol);
                     statement.setDouble(2, finalStockNumber);
@@ -389,6 +389,10 @@ public class EnterStocksPage extends javax.swing.JFrame {
         catch(Exception e){
             System.out.println(e);
             JOptionPane.showMessageDialog(rootPane, "ERROR OCCURED");
+        }finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
         }
     }//GEN-LAST:event_addBtnActionPerformed
 

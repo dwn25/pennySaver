@@ -347,7 +347,7 @@ public class StocksInfoPage extends javax.swing.JFrame {
    public void updateTable() throws SQLException, IOException, InterruptedException{
        try {
            Constant.DoConnect();
-           String sql = "SELECT * FROM pstocks WHERE username LIKE '"+Constant.currentUser+"%'" ;
+           String sql = "SELECT * FROM "+ Constant.dbName + ".PSTOCKS WHERE username LIKE '"+Constant.currentUser+"%'" ;
            Constant.rs=Constant.stmt.executeQuery(sql);
            DefaultTableModel tbl = (DefaultTableModel) jTable.getModel();
            tbl.setRowCount(0);
@@ -375,6 +375,10 @@ public class StocksInfoPage extends javax.swing.JFrame {
             }
        }catch (SQLException ex) {
           Logger.getLogger(StocksInfoPage.class.getName()).log(Level.SEVERE,null,ex);  
+        }finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
         }
                   
 }
@@ -398,12 +402,16 @@ public class StocksInfoPage extends javax.swing.JFrame {
             cryptoIcon.setEnabled(crypto);
         }catch(Exception e){
             System.out.println("Unable to fetch Menus");
+        }finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
         }
     }
     
         public boolean getMenu(String column){
         try{
-            String SQL= "SELECT "+ column+" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT "+ column+" From "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 boolean val = rs.getBoolean(column);

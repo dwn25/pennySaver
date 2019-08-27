@@ -30,27 +30,34 @@ public class EditSavingsPage extends javax.swing.JFrame {
     }
 
    public void onRun(){
+       try{
         Constant.DoConnect();
-        final_principal = getFieldDouble("principal");
-        rate = getFieldDouble("rate");
-        time = getFieldDouble("time");
-        interest = getFieldDouble("SAVED_INTEREST");
-        amount = getFieldDouble("SAVED_AMOUNT");
-        compoundInterest(amount,final_principal, rate, time,interest);
-        principalField.setText(null);
-        principalField.setText(final_principal.toString());
-        rateField.setText(null);
-        rateField.setText(rate.toString());       
-        timeField.setText(null);
-        timeField.setText(time.toString());      
-        interestField.setText(null);
-        interestField.setText(interest.toString());    
+            final_principal = getFieldDouble("principal");
+            rate = getFieldDouble("rate");
+            time = getFieldDouble("time");
+            interest = getFieldDouble("SAVED_INTEREST");
+            amount = getFieldDouble("SAVED_AMOUNT");
+            compoundInterest(amount,final_principal, rate, time,interest);
+            principalField.setText(null);
+            principalField.setText(final_principal.toString());
+            rateField.setText(null);
+            rateField.setText(rate.toString());       
+            timeField.setText(null);
+            timeField.setText(time.toString());      
+            interestField.setText(null);
+            interestField.setText(interest.toString());   
+        }catch(Exception e){}
+        finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
+        }
     }
    
    
    public Double getFieldDouble(String column){
         try{
-            String SQL= "SELECT " + column +" From ROOT.PBANK WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From "+ Constant.dbName + ".PBANK WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 Double var = rs.getDouble(column); 
@@ -67,7 +74,7 @@ public class EditSavingsPage extends javax.swing.JFrame {
        
       public String getFieldString(String column){
         try{
-            String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -171,6 +178,7 @@ public class EditSavingsPage extends javax.swing.JFrame {
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel18.setText("Rate:");
 
+        interestField.setEditable(false);
         interestField.setBackground(new java.awt.Color(240, 235, 216));
         interestField.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         interestField.setForeground(new java.awt.Color(63, 64, 76));
@@ -215,6 +223,7 @@ public class EditSavingsPage extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Time:");
 
+        amountField.setEditable(false);
         amountField.setBackground(new java.awt.Color(240, 235, 216));
         amountField.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         amountField.setForeground(new java.awt.Color(63, 64, 76));
@@ -495,7 +504,8 @@ public class EditSavingsPage extends javax.swing.JFrame {
                 if(f==JOptionPane.YES_OPTION){
                     System.out.println(interest);
                     System.out.println(amount);
-                    String sql = "UPDATE ROOT.PBANK SET \"PRINCIPAL\" = ?, \"RATE\" = ?, \"TIME\"  = ?, \"SAVED_INTEREST\" = ?, \"SAVED_AMOUNT\" = ? WHERE USERNAME = ?";
+                    //String sql = "UPDATE "+ Constant.dbName + ".PBUDGET SET `HOME` = ?, `SHOPPING` = ?, `DINING_AND_DRINKS` = ?, `AUTO` = ?, `TRAVEL` = ?, `BILLS` = ?, `ENTERTAINMENT` = ?, `FEES` = ?, `PERSONAL` = ?, `LOANS` = ?,`EDUCATION` = ?, `OTHER` = ? WHERE USERNAME = ?";
+                    String sql = "UPDATE "+ Constant.dbName + ".PBANK SET `PRINCIPAL` = ?, `RATE` = ?, `TIME`  = ?, `SAVED_INTEREST` = ?, `SAVED_AMOUNT` = ? WHERE USERNAME = ?";
                     PreparedStatement statement = Constant.con.prepareStatement(sql);
                     statement.setDouble(1,final_principal);
                     statement.setDouble(2,rate);
@@ -513,7 +523,12 @@ public class EditSavingsPage extends javax.swing.JFrame {
         }catch(SQLException ex){
             System.out.println(ex.toString());
             JOptionPane.showMessageDialog(rootPane, "An Error Occurred");
-        }        Constant.DoConnect();
+        }finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
+        }
+        
     }//GEN-LAST:event_updateBtnActionPerformed
 
     private void rateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rateFieldActionPerformed

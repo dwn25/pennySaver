@@ -27,39 +27,46 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     }
 
     public void onRun(){
-        Constant.DoConnect();
-        final_principal = getFieldDouble("principal");
-        rate = getFieldDouble("rate");
-        time = getFieldDouble("time");
-        interest = getFieldDouble("SAVED_INTEREST");
-        amount = getFieldDouble("SAVED_AMOUNT");
-        compoundInterest(amount,final_principal, rate, time,interest);
-        principalField.setText(null);
-        principalField.setText("$" + final_principal.toString());
-        rateField.setText(null);
-        rateField.setText(rate.toString()+"%");       
-        timeField.setText(null);
-        timeField.setText(time.toString() + " Year(s)");      
-        interestField.setText(null);
-        interestField.setText("$ "+interest.toString());    
-        totalField.setText(null);
-        totalField.setText("$" + amount.toString());  
-        employmentStatus = getFieldString("employment_status");
-        income = getIncome();
-        String monthlySavingsx = getField("monthly_savings");
-        String text  = "\n"
-                + "Based off of your monthly take home income of: $"+ income +"\n"
-                + "Emplyoment Status of :" + employmentStatus + "\n"
-                + "Monthly savings of :$" + monthlySavingsx + "\n"
-                + "Your financial information has been laid down. \n"
-                + "Adjust the values below to see your forecast";  
-        jTextArea.setText(text);
-        jTextArea.setWrapStyleWord(true);
-        jTextArea.setLineWrap(true);
-        jTextArea.setOpaque(false);
-        jTextArea.setEditable(false);
-        jTextArea.setFocusable(false);
-        menuInit();
+        try{
+            Constant.DoConnect();
+            final_principal = getFieldDouble("principal");
+            rate = getFieldDouble("rate");
+            time = getFieldDouble("time");
+            interest = getFieldDouble("SAVED_INTEREST");
+            amount = getFieldDouble("SAVED_AMOUNT");
+            compoundInterest(amount,final_principal, rate, time,interest);
+            principalField.setText(null);
+            principalField.setText("$" + final_principal.toString());
+            rateField.setText(null);
+            rateField.setText(rate.toString()+"%");       
+            timeField.setText(null);
+            timeField.setText(time.toString() + " Year(s)");      
+            interestField.setText(null);
+            interestField.setText("$ "+interest.toString());    
+            totalField.setText(null);
+            totalField.setText("$" + amount.toString());  
+            employmentStatus = getFieldString("employment_status");
+            income = getIncome();
+            String monthlySavingsx = getField("monthly_savings");
+            String text  = "\n"
+                    + "Based off of your monthly take home income of: $"+ income +"\n"
+                    + "Emplyoment Status of :" + employmentStatus + "\n"
+                    + "Monthly savings of :$" + monthlySavingsx + "\n"
+                    + "Your financial information has been laid down. \n"
+                    + "Adjust the values below to see your forecast";  
+            jTextArea.setText(text);
+            jTextArea.setWrapStyleWord(true);
+            jTextArea.setLineWrap(true);
+            jTextArea.setOpaque(false);
+            jTextArea.setEditable(false);
+            jTextArea.setFocusable(false);
+            menuInit();
+        }catch(Exception e){}
+         finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
+        }
     }
 
         public void menuInit(){
@@ -87,14 +94,14 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     
         public boolean getMenu(String column){
         try{
-            String SQL= "SELECT "+ column+" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT "+ column+" From "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 boolean val = rs.getBoolean(column);
                 return val;
                 }
             else{
-                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+                System.out.println("Unable To Find "+column);
             } 
         }catch(SQLException err){
         System.out.println("Unable to fetch income");
@@ -104,7 +111,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         
         public String getField( String column){
         try{
-            String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -121,7 +128,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     
        public Double getFieldDouble(String column){
         try{
-            String SQL= "SELECT " + column +" From ROOT.PBANK WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From "+ Constant.dbName + ".PBANK WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 Double var = rs.getDouble(column); 
@@ -138,7 +145,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
        
       public String getFieldString(String column){
         try{
-            String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -155,7 +162,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
           
     public Double getIncome(){
         try{
-            String SQL= "SELECT net_income From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT net_income From "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 Double val = rs.getDouble("net_income");

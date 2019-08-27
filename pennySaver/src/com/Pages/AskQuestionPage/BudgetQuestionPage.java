@@ -119,7 +119,7 @@ public class BudgetQuestionPage extends javax.swing.JFrame {
     private void yesBTnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesBTnActionPerformed
         Constant.hasBudget = true;
         Constant.DoConnect();
-        String sql = ("UPDATE ROOT.PUSERS SET hasbudget = ? WHERE username= ?");
+        String sql = ("UPDATE  "+ Constant.dbName + ".PUSERS SET hasbudget = ? WHERE username= ?");
         PreparedStatement statement;
         try {
             statement = Constant.con.prepareStatement(sql);
@@ -133,13 +133,18 @@ public class BudgetQuestionPage extends javax.swing.JFrame {
        }         
         catch (SQLException ex) {
             Logger.getLogger(StocksQuestionPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
         }        
     }//GEN-LAST:event_yesBTnActionPerformed
 
     private void NoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoBtnActionPerformed
         Constant.hasBudget = false;
         Constant.DoConnect();
-        String sql = ("UPDATE ROOT.PUSERS SET hasbudget = ? WHERE username= ?");
+        String sql = ("UPDATE  "+ Constant.dbName + ".PUSERS SET hasbudget = ? WHERE username= ?");
         PreparedStatement statement;
         try {
             statement = Constant.con.prepareStatement(sql);
@@ -153,7 +158,12 @@ public class BudgetQuestionPage extends javax.swing.JFrame {
        }         
         catch (SQLException ex) {
             Logger.getLogger(StocksQuestionPage.class.getName()).log(Level.SEVERE, null, ex);
-        }                 
+        } 
+         finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
+        }                
     }//GEN-LAST:event_NoBtnActionPerformed
 
     /**

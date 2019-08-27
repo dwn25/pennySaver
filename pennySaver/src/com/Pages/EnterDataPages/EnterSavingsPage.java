@@ -2,7 +2,6 @@ package com.Pages.EnterDataPages;
 
 import com.Pages.AskQuestionPage.StocksQuestionPage;
 import com.Pages.MainMenu.BudgetInfoPage;
-import com.Pages.MainMenu.MainMenu;
 import com.Support.Constant;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,7 +28,7 @@ public class EnterSavingsPage extends javax.swing.JFrame {
     
     public Double getIncome(){
         try{
-            String SQL= "SELECT net_income From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT net_income From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 Double val = rs.getDouble("net_income");
@@ -45,26 +44,33 @@ public class EnterSavingsPage extends javax.swing.JFrame {
    }
         
     public void onRun(){
-        Constant.DoConnect();
-        income = getIncome();
-        employeeStatus = getField("employment_status");
-        monthlySavings = getFieldD("monthly_savings");
-        String text  = "\n"
-                + "Based off of your monthly take home income of :$"+ income +"\n"
-                + "Emplyoment Status of: " + employeeStatus + "\n"
-                + "Monthly savings of: $" + monthlySavings + "\n"
-                + "Adjust the values below to see your forecast";  
-        jTextArea.setText(text);
-        jTextArea.setWrapStyleWord(true);
-        jTextArea.setLineWrap(true);
-        jTextArea.setOpaque(false);
-        jTextArea.setEditable(false);
-        jTextArea.setFocusable(false);
+        try{
+            Constant.DoConnect();
+            income = getIncome();
+            employeeStatus = getField("employment_status");
+            monthlySavings = getFieldD("monthly_savings");
+            String text  = "\n"
+                    + "Based off of your monthly take home income of :$"+ income +"\n"
+                    + "Emplyoment Status of: " + employeeStatus + "\n"
+                    + "Monthly savings of: $" + monthlySavings + "\n"
+                    + "Adjust the values below to see your forecast";  
+            jTextArea.setText(text);
+            jTextArea.setWrapStyleWord(true);
+            jTextArea.setLineWrap(true);
+            jTextArea.setOpaque(false);
+            jTextArea.setEditable(false);
+            jTextArea.setFocusable(false);
+        }catch(Exception e){}
+        finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
+        }
     }
 
     public String getField(String column){
         try{
-            String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -81,7 +87,7 @@ public class EnterSavingsPage extends javax.swing.JFrame {
     
    public Double getFieldD(String column){
         try{
-            String SQL= "SELECT " + column +" From ROOT.PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 Double var = rs.getDouble(column); 
@@ -192,6 +198,7 @@ public class EnterSavingsPage extends javax.swing.JFrame {
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel18.setText("Rate:");
 
+        interestField.setEditable(false);
         interestField.setBackground(new java.awt.Color(240, 235, 216));
         interestField.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         interestField.setForeground(new java.awt.Color(63, 64, 76));
@@ -235,6 +242,7 @@ public class EnterSavingsPage extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Time:");
 
+        amountField.setEditable(false);
         amountField.setBackground(new java.awt.Color(240, 235, 216));
         amountField.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         amountField.setForeground(new java.awt.Color(63, 64, 76));
@@ -569,8 +577,9 @@ public class EnterSavingsPage extends javax.swing.JFrame {
                 int f =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Save These Values?", "Confirm Save", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
                 if(f==JOptionPane.YES_OPTION){
                     if(Constant.currentUser.length()>2){
-                        String sql = "INSERT INTO ROOT.PBANK (USERNAME, PRINCIPAL, RATE, \"TIME\", SAVED_INTEREST, SAVED_AMOUNT)" +"	VALUES (?, ?, ?, ?, ?, ?)";
-                        PreparedStatement statement = Constant.con.prepareStatement(sql);
+                        String sql = "INSERT INTO  "+ Constant.dbName + ".PBANK (USERNAME, PRINCIPAL, RATE, \"TIME\", SAVED_INTEREST, SAVED_AMOUNT)" +"	VALUES (?, ?, ?, ?, ?, ?)";
+                        String temp = "INSERT INTO `"+ Constant.dbName + ".PBANK` (`USERNAME`, `PRINCIPAL`, `RATE`, `TIME`, `SAVED_INTEREST`, `SAVED_AMOUNT`) VALUES (?, ?, ?, ?, ?, ?)";
+                        PreparedStatement statement = Constant.con.prepareStatement(temp);
                         statement.setString(1, Constant.currentUser);
                         statement.setDouble(2, final_principal);
                         statement.setDouble(3, rate);
@@ -590,7 +599,12 @@ public class EnterSavingsPage extends javax.swing.JFrame {
         }catch(Exception ex){
             System.out.println(ex.toString());
             JOptionPane.showMessageDialog(rootPane, "An Error Occurred");
-        }        Constant.DoConnect();
+        }
+        finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
+        }
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void rateFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rateFieldActionPerformed
@@ -604,11 +618,39 @@ public class EnterSavingsPage extends javax.swing.JFrame {
 
     private void timeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeFieldActionPerformed
     }//GEN-LAST:event_timeFieldActionPerformed
-
+    
+    public boolean addedSavings(String username) {
+        String query = "SELECT username FROM  "+ Constant.dbName + ".PBANK WHERE username= '" + username + "'"; 
+        try {
+            ResultSet rs2 = Constant.stmt.executeQuery(query) ;
+            if(rs2.next()){
+                return true;
+            }else{
+                return false ;
+            }
+           }catch(SQLException e) {
+                e.printStackTrace();
+                return true ;
+           }
+       }
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
-            StocksQuestionPage  m = new StocksQuestionPage();
-            m.setVisible(true);
-            this.hide();
+        try{
+            Constant.DoConnect();
+            if(addedSavings(Constant.currentUser)){    
+                StocksQuestionPage  m = new StocksQuestionPage();
+                m.setVisible(true);
+                this.hide();
+            }
+            else{
+                JOptionPane.showMessageDialog(rootPane, "Please save");
+            }
+        }catch(Exception e){} 
+         finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
+        }  
+        
     }//GEN-LAST:event_nextBtnActionPerformed
 
     private void calculateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateBtnActionPerformed
@@ -643,17 +685,11 @@ public class EnterSavingsPage extends javax.swing.JFrame {
     }//GEN-LAST:event_calculateBtnActionPerformed
 
     private void budgetLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetLabelMouseClicked
-        BudgetInfoPage m = new BudgetInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
+
     }//GEN-LAST:event_budgetLabelMouseClicked
 
     private void personalInfoPageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_personalInfoPageMouseClicked
-        BudgetInfoPage m = new BudgetInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
+
     }//GEN-LAST:event_personalInfoPageMouseClicked
 
     private void budgetLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetLabel2MouseClicked

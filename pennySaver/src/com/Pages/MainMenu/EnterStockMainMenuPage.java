@@ -409,6 +409,10 @@ public class EnterStockMainMenuPage extends javax.swing.JFrame {
         catch(Exception e){
             System.out.println(e);
             JOptionPane.showMessageDialog(rootPane, "ERROR OCCURED");
+        }finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
         }
     }//GEN-LAST:event_addBtnActionPerformed
 
