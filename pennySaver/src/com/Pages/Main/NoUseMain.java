@@ -132,7 +132,7 @@ public class NoUseMain extends javax.swing.JFrame {
     private void YEsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YEsBtnActionPerformed
         Constant.DoConnect();
         String[] options={"Yes", "No"};
-        int f =  JOptionPane.showOptionDialog(null, "Are You Delete Your Account?", "Confirm Save", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        int f =  JOptionPane.showOptionDialog(null, "Do You Want To Delete Your Account?", "Confirm Save", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         if(f==JOptionPane.YES_OPTION){
             try{
                 //String sql = "DELETE FROM "+ Constant.dbName + ".PUSERS WHERE USERNAME = 'bb123' AND PASSWORD = 'VGVzdCQxMjM=' AND FIRSTNAME = 'Betty' AND LASTNAME = 'Beryl' AND EMAILADDRESS = 'bb@gmail.com' AND NET_WORTH = 9000000.0 AND NET_INCOME = 7000.0 AND MONTHLY_SAVINGS = 3000.0 AND EMPLOYMENT_STATUS = 'Self-Employed';\n";

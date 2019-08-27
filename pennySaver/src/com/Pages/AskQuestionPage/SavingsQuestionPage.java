@@ -2,8 +2,6 @@ package com.Pages.AskQuestionPage;
 
 
 import com.Pages.EnterDataPages.EnterSavingsPage;
-import com.Pages.Main.NoUseMain;
-import com.Pages.MainMenu.MainMenu;
 import com.Support.Constant;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -129,6 +127,28 @@ public class SavingsQuestionPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void NoBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoBtn1ActionPerformed
+        Constant.hasSavings = false;
+        Constant.DoConnect();
+        String sql = ("UPDATE  "+ Constant.dbName + ".PUSERS SET hasSavings = ? WHERE username= ?");
+        PreparedStatement statement;
+        try {
+            statement = Constant.con.prepareStatement(sql);
+            statement.setBoolean(1, false);
+            statement.setString(2, Constant.currentUser);
+            statement.execute();
+            StocksQuestionPage m = new StocksQuestionPage();
+            m.setLocationRelativeTo(null);
+            m.setVisible(true);
+            this.hide();
+       }         
+        catch (SQLException ex) {
+            Logger.getLogger(StocksQuestionPage.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+         finally {
+            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
+            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
+        }   
     }//GEN-LAST:event_NoBtn1ActionPerformed
 
     private void yesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesBtnActionPerformed
@@ -157,27 +177,7 @@ public class SavingsQuestionPage extends javax.swing.JFrame {
     }//GEN-LAST:event_yesBtnActionPerformed
 
     private void NoBtn1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NoBtn1MouseClicked
-        Constant.hasSavings = false;
-        Constant.DoConnect();
-        String sql = ("UPDATE  "+ Constant.dbName + " "+ Constant.dbName + ".PUSERS SET hasSavings = ? WHERE username= ?");
-        PreparedStatement statement;
-        try {
-            statement = Constant.con.prepareStatement(sql);
-            statement.setBoolean(1, false);
-            statement.setString(2, Constant.currentUser);
-            statement.execute(); 
-            StocksQuestionPage m = new StocksQuestionPage(); 
-            m.setVisible(true);
-            this.hide();
-        }
-        catch (SQLException ex) {
-            Logger.getLogger(StocksQuestionPage.class.getName()).log(Level.SEVERE, null, ex);
-        }
-         finally {
-            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
-            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
-            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
-        }    
+  
     }//GEN-LAST:event_NoBtn1MouseClicked
 
     /**

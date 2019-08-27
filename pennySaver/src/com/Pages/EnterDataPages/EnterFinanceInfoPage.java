@@ -328,7 +328,7 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
                                         .addComponent(employmentStatus, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)))))))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         dataEntryPanelLayout.setVerticalGroup(
             dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,7 +364,7 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
                 .addContainerGap(64, Short.MAX_VALUE))
         );
 
-        wholePanel.add(dataEntryPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, -1, 450));
+        wholePanel.add(dataEntryPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 280, 450));
 
         getContentPane().add(wholePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(-7, 0, 740, 540));
 

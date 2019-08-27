@@ -153,7 +153,7 @@ public class CryptoQuestionPage extends javax.swing.JFrame {
             statement.setBoolean(1, false);
             statement.setString(2, Constant.currentUser);
             statement.execute();     
-            if(Constant.hasStocks && Constant.hasCrypto && Constant.hasBudget && Constant.hasSavings){
+            if(Constant.hasStocks || Constant.hasCrypto || Constant.hasBudget || Constant.hasSavings){
                 MainMenu m = new MainMenu();
                 m.setVisible(true);
                 this.hide();
