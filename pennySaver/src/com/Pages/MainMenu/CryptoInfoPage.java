@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
  * @author DNartey
  */
 public class CryptoInfoPage extends javax.swing.JFrame {
+    ArrayList<Double> ChartTotalCryptoPrice = new ArrayList<>();
     ArrayList<Double> ChartStockNum = new ArrayList<Double>();
     ArrayList<String> ChartStockSymb = new ArrayList<String>();
 
@@ -41,6 +42,7 @@ public class CryptoInfoPage extends javax.swing.JFrame {
     public void onRun() throws SQLException, IOException{
         updateTable();
         BudgetCalcsPage.dynamicBar(budgetChart1, "Crypto Breakdown", ChartStockNum, ChartStockSymb);
+        BudgetCalcsPage.dynamicBar(budgetChart2, "Stocks Breakdown By Price", ChartTotalCryptoPrice, ChartStockSymb);
     }
     
        public void updateTable() throws SQLException, IOException{
@@ -68,6 +70,7 @@ public class CryptoInfoPage extends javax.swing.JFrame {
                      price = Crypto.getPrice(tableSymb);
                      row.add(price);
                      total = number * price;
+                     ChartTotalCryptoPrice.add(total);
                      row.add(total);
                      tbl.addRow(row);      
                  } 
@@ -94,6 +97,7 @@ public class CryptoInfoPage extends javax.swing.JFrame {
         budgetChart1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        budgetChart2 = new javax.swing.JPanel();
         headerPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         budgetChart = new javax.swing.JPanel();
@@ -116,7 +120,7 @@ public class CryptoInfoPage extends javax.swing.JFrame {
 
         InfoPanel3.setBackground(new java.awt.Color(240, 235, 216));
 
-        Edit.setBackground(new java.awt.Color(63, 64, 76));
+        Edit.setBackground(new java.awt.Color(41, 57, 80));
         Edit.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         Edit.setForeground(new java.awt.Color(255, 255, 255));
         Edit.setText("Edit");
@@ -160,34 +164,43 @@ public class CryptoInfoPage extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable1);
 
+        budgetChart2.setLayout(new java.awt.BorderLayout());
+
         javax.swing.GroupLayout InfoPanel3Layout = new javax.swing.GroupLayout(InfoPanel3);
         InfoPanel3.setLayout(InfoPanel3Layout);
         InfoPanel3Layout.setHorizontalGroup(
             InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(InfoPanel3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(InfoPanel3Layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(InfoPanel3Layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(budgetChart1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(144, Short.MAX_VALUE))
+                        .addComponent(budgetChart1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(budgetChart2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(12, 12, 12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InfoPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE)
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InfoPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(295, 295, 295))
         );
         InfoPanel3Layout.setVerticalGroup(
             InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InfoPanel3Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(budgetChart1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addContainerGap()
+                .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(budgetChart1, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
+                    .addComponent(budgetChart2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(36, 36, 36))
         );
 
-        WholePanel3.add(InfoPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 720, 510));
+        WholePanel3.add(InfoPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 740, 600));
 
         headerPanel.setBackground(new java.awt.Color(34, 47, 66));
 
@@ -203,10 +216,10 @@ public class CryptoInfoPage extends javax.swing.JFrame {
         headerPanel.setLayout(headerPanelLayout);
         headerPanelLayout.setHorizontalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addComponent(budgetChart, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 270, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,7 +231,7 @@ public class CryptoInfoPage extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        WholePanel3.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 720, 90));
+        WholePanel3.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 740, 90));
 
         SIdeBarPanel.setBackground(new java.awt.Color(29, 45, 68));
         SIdeBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -338,7 +351,7 @@ public class CryptoInfoPage extends javax.swing.JFrame {
         });
         SIdeBarPanel.add(StocksIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 140, 50));
 
-        WholePanel3.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 600));
+        WholePanel3.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 690));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -348,19 +361,12 @@ public class CryptoInfoPage extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(WholePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(WholePanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
-        EditStocksPage m = new EditStocksPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_EditActionPerformed
 
     private void mainMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuMouseClicked
         MainMenu m = new MainMenu();
@@ -446,6 +452,13 @@ public class CryptoInfoPage extends javax.swing.JFrame {
         this.hide();
     }//GEN-LAST:event_StocksIconActionPerformed
 
+    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
+        EditStocksPage m = new EditStocksPage();
+        m.setLocationRelativeTo(null);
+        m.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_EditActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -492,6 +505,7 @@ public class CryptoInfoPage extends javax.swing.JFrame {
     private javax.swing.JPanel WholePanel3;
     private javax.swing.JPanel budgetChart;
     private javax.swing.JPanel budgetChart1;
+    private javax.swing.JPanel budgetChart2;
     private javax.swing.JButton budgetIcon;
     private javax.swing.JButton budgetIcon1;
     private javax.swing.JButton editTextbtn;

@@ -188,7 +188,7 @@ public class StocksInfoPage extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        WholePanel3.add(InfoPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 750, 530));
+        WholePanel3.add(InfoPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 750, 550));
 
         headerPanel.setBackground(new java.awt.Color(34, 47, 66));
 
@@ -324,7 +324,7 @@ public class StocksInfoPage extends javax.swing.JFrame {
         });
         SIdeBarPanel.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 140, 50));
 
-        WholePanel3.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 620));
+        WholePanel3.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 640));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -364,8 +364,8 @@ public class StocksInfoPage extends javax.swing.JFrame {
                      row.add(number);
                      price = Stocks.getPrice(tableSymb);
                      row.add(price);
-                     ChartTotalStockPrice.add(price);
                      total = number * price;
+                     ChartTotalStockPrice.add(total);
                      row.add(total);
                      tbl.addRow(row);      
                  } 
@@ -415,9 +415,16 @@ public class StocksInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
-        EditStocksPage m = new EditStocksPage();
+        EnterStockMainMenuPage m = new EnterStockMainMenuPage();
         m.setLocationRelativeTo(null);
         m.setVisible(true);
+        this.setEnabled(false);
+        /*
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(StocksInfoPage.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
         this.hide();
     }//GEN-LAST:event_EditActionPerformed
 
