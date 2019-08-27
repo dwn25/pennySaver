@@ -5,7 +5,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URLConnection;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -71,6 +70,29 @@ public class Crypto {
           System.out.println("Double price: " + price);
           //System.out.println("Symbol " + pageName);
           return price;
+        }
+        finally{
+          is.close();
+        }
+  }
+
+      public static String getName(String symb) throws IOException {
+          String url = "https://www.alphavantage.co/query?"
+                + "function=CURRENCY_EXCHANGE_RATE&"
+                + "from_currency="+symb+"&"
+                + "to_currency=usd&"
+                + "apikey="+Constant.alphaVantageAPIKey;
+        System.out.println(url);
+        InputStream is = new URL(url).openStream();
+        try {
+          BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+          String jsonText = readAll(rd);
+          JsonObject jsonObject = new JsonParser().parse(jsonText).getAsJsonObject();
+          //String pageName = jsonObject.getAsJsonObject("Global Quote").get("01. symbol").getAsString();
+          String name = jsonObject.getAsJsonObject("Realtime Currency Exchange Rate").get("2. From_Currency Name").getAsString();
+          System.out.println("String name: " + name);
+          //System.out.println("Symbol " + pageName);
+          return name;
         }
         finally{
           is.close();

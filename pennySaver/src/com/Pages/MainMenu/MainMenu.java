@@ -230,22 +230,22 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel7.setText("Net Worth");
 
         netWorthLabel.setBackground(new java.awt.Color(240, 235, 216));
-        netWorthLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        netWorthLabel.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
         netWorthLabel.setForeground(new java.awt.Color(63, 64, 76));
         netWorthLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         employmentStatusLabel.setBackground(new java.awt.Color(240, 235, 216));
-        employmentStatusLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        employmentStatusLabel.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
         employmentStatusLabel.setForeground(new java.awt.Color(63, 64, 76));
         employmentStatusLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         takeHomeIncomeLabel.setBackground(new java.awt.Color(240, 235, 216));
-        takeHomeIncomeLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        takeHomeIncomeLabel.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
         takeHomeIncomeLabel.setForeground(new java.awt.Color(63, 64, 76));
         takeHomeIncomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         amountLabel.setBackground(new java.awt.Color(240, 235, 216));
-        amountLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        amountLabel.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
         amountLabel.setForeground(new java.awt.Color(63, 64, 76));
         amountLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
