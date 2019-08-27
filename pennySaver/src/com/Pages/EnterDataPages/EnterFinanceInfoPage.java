@@ -1,8 +1,8 @@
 package com.Pages.EnterDataPages;
 
+import com.Pages.AskQuestionPage.BudgetQuestionPage;
 import com.Pages.Main.Main;
 import com.Pages.MainMenu.BudgetInfoPage;
-import com.Pages.AskQuestionPage.StocksQuestionPage;
 import com.Support.Constant;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
@@ -30,7 +30,7 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
                 "» CryptoCurrency Tracking\n" +
                 "» Savings Forecast\n" +
                 "In order to proceed, we require some information about your current financial status."
-                    + " Please fill out the short form below in order to get started.";
+                + " Please fill out the short form below in order to get started.";
         jTextArea.setText(text);
         jTextArea.setWrapStyleWord(true);
         jTextArea.setLineWrap(true);
@@ -416,7 +416,7 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
                         statement.setString(5, Constant.currentUser);
                         int rowsInserted = statement.executeUpdate();
                         JOptionPane.showMessageDialog(null, "Data Save Succesful");
-                        StocksQuestionPage sQ = new StocksQuestionPage();
+                        BudgetQuestionPage sQ = new BudgetQuestionPage();
                         sQ.setLocationRelativeTo(null);
                         sQ.setVisible(true);
                         this.hide();

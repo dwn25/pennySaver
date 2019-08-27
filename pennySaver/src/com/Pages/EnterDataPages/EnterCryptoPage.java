@@ -1,7 +1,7 @@
 package com.Pages.EnterDataPages;
 
 import com.Pages.MainMenu.BudgetInfoPage;
-import com.Pages.AskQuestionPage.BudgetQuestionPage;
+import com.Pages.MainMenu.MainMenu;
 import com.Support.Constant;
 import com.Support.Stocks.Crypto;
 import java.sql.PreparedStatement;
@@ -350,7 +350,7 @@ public class EnterCryptoPage extends javax.swing.JFrame {
         int dialogButton = JOptionPane.YES_NO_OPTION;
         int dialogResult = JOptionPane.showConfirmDialog (null, "Are you sure you don't want to enter any more symbols?","Confirm Move",dialogButton);
         if(dialogResult == JOptionPane.YES_OPTION){
-            BudgetQuestionPage m = new BudgetQuestionPage();
+            MainMenu m = new MainMenu();
             m.setLocationRelativeTo(null);
             m.setVisible(true);
             this.hide();

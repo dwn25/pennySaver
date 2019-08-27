@@ -1,6 +1,8 @@
 package com.Pages.AskQuestionPage;
 
 import com.Pages.EnterDataPages.EnterCryptoPage;
+import com.Pages.Main.NoUseMain;
+import com.Pages.MainMenu.MainMenu;
 import com.Support.Constant;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -145,11 +147,16 @@ public class CryptoQuestionPage extends javax.swing.JFrame {
             statement = Constant.con.prepareStatement(sql);
             statement.setBoolean(1, false);
             statement.setString(2, Constant.currentUser);
-            statement.execute();        
-            BudgetQuestionPage m = new BudgetQuestionPage();
-            m.setLocationRelativeTo(null);
-            m.setVisible(true);
-            this.hide();
+            statement.execute();     
+            if(Constant.hasStocks && Constant.hasCrypto && Constant.hasBudget && Constant.hasSavings){
+                MainMenu m = new MainMenu();
+                m.setVisible(true);
+                this.hide();
+            }else{
+                NoUseMain  m = new NoUseMain();
+                m.setVisible(true);
+                this.hide();
+            }
                }         
         catch (SQLException ex) {
             Logger.getLogger(StocksQuestionPage.class.getName()).log(Level.SEVERE, null, ex);

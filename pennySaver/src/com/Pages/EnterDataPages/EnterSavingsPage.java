@@ -1,6 +1,6 @@
 package com.Pages.EnterDataPages;
 
-import com.Pages.Main.NoUseMain;
+import com.Pages.AskQuestionPage.StocksQuestionPage;
 import com.Pages.MainMenu.BudgetInfoPage;
 import com.Pages.MainMenu.MainMenu;
 import com.Support.Constant;
@@ -581,9 +581,6 @@ public class EnterSavingsPage extends javax.swing.JFrame {
                         if(rowsInserted > 0){
                             System.out.println("Savings: A new user was inserted successfully!");
                             JOptionPane.showMessageDialog(null, "Save Succesful");
-                            MainMenu m = new MainMenu();
-                            m.setVisible(true);
-                            this.hide();
                             }
                     }
                 }
@@ -609,15 +606,9 @@ public class EnterSavingsPage extends javax.swing.JFrame {
     }//GEN-LAST:event_timeFieldActionPerformed
 
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
-        if(Constant.hasStocks && Constant.hasCrypto && Constant.hasBudget && Constant.hasSavings){
-            NoUseMain  m = new NoUseMain();
+            StocksQuestionPage  m = new StocksQuestionPage();
             m.setVisible(true);
             this.hide();
-        }else{
-            MainMenu m = new MainMenu();
-            m.setVisible(true);
-            this.hide();
-        }
     }//GEN-LAST:event_nextBtnActionPerformed
 
     private void calculateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateBtnActionPerformed

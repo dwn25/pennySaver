@@ -13,6 +13,7 @@ import javax.swing.JTextField;
  * @author DNartey
  */
 public class EditPersonalInfoPage extends javax.swing.JFrame {
+    boolean budget, savings, stocks, crypto;
 
     /**
      * Creates new form EditInfoPage
@@ -33,7 +34,6 @@ public void onRun(){
     public void menuInit(){
         try{
             Constant.DoConnect();
-            boolean budget, savings, stocks, crypto;
             budget = getMenu("hasbudget");
             savings = getMenu("hasSavings");
             stocks = getMenu("hasStocks");
@@ -559,13 +559,45 @@ public void onRun(){
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         String[] options={"Yes", "No"};
         int t =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Delete Your Account?", "Delete", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        try{
         if(t==JOptionPane.YES_OPTION){
             int p =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Delete Your Account? \n"
                     + " This Decision Cannot Be Reversed", "Delete", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
             if(p==JOptionPane.YES_OPTION){
                 Constant.DoConnect();
+                String sql = "DELETE FROM ROOT.PUSERS WHERE USERNAME = ?";
+                PreparedStatement statement = Constant.con.prepareStatement(sql);
+                statement.setString(1, Constant.currentUser);
+                statement.executeUpdate();
+                if(budget){
+                    String sql1 = "DELETE FROM ROOT.PBUDGET WHERE USERNAME = ?";
+                    PreparedStatement statement1 = Constant.con.prepareStatement(sql1);
+                    statement.setString(1, Constant.currentUser);
+                    statement1.executeUpdate();
+                }
+                else if(savings){
+                    String sql1 = "DELETE FROM ROOT.PBANK WHERE USERNAME = ?";
+                    PreparedStatement statement1 = Constant.con.prepareStatement(sql1);
+                    statement.setString(1, Constant.currentUser);
+                     statement1.executeUpdate();
+                }
+                else if(stocks){
+                    String sql1 = "DELETE FROM ROOT.PSTOCKS WHERE USERNAME = ?";
+                    PreparedStatement statement1 = Constant.con.prepareStatement(sql1);
+                    statement.setString(1, Constant.currentUser);
+                    statement1.executeUpdate();
+                }
+                else if(crypto){                   
+                    String sql1 = "DELETE FROM ROOT.PCRYPTO WHERE USERNAME = ?";
+                    PreparedStatement statement1 = Constant.con.prepareStatement(sql1);
+                    statement.setString(1, Constant.currentUser);
+                    statement1.executeUpdate();  
+                }
                 JOptionPane.showMessageDialog(rootPane, "Succesfully Deleted Account");
             }
+        }
+        }catch(SQLException e){
+            
         }
         
     }//GEN-LAST:event_deleteBtnActionPerformed

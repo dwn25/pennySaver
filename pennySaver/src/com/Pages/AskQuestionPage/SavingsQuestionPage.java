@@ -161,17 +161,10 @@ public class SavingsQuestionPage extends javax.swing.JFrame {
             statement.setBoolean(1, false);
             statement.setString(2, Constant.currentUser);
             statement.execute(); 
-            System.out.println("Savings " + Constant.hasSavings);
-            if(Constant.hasStocks && Constant.hasCrypto && Constant.hasBudget && Constant.hasSavings){
-                MainMenu m = new MainMenu();
-                m.setVisible(true);
-                this.hide();
-            }else{
-                NoUseMain  m = new NoUseMain();
-                m.setVisible(true);
-                this.hide();
-            }
-        }         
+            StocksQuestionPage m = new StocksQuestionPage(); 
+            m.setVisible(true);
+            this.hide();
+        }
         catch (SQLException ex) {
             Logger.getLogger(StocksQuestionPage.class.getName()).log(Level.SEVERE, null, ex);
         }    
