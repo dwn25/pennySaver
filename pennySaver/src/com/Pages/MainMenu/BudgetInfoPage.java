@@ -933,15 +933,9 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_helpBtnMouseClicked
 
     private void helpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtnActionPerformed
-        String message = " Welcome to the Main Menu\n" +
-        "▸Budgetting Page : View your budget, get some advice and adjust your budget however you choose.\n" +
-        "▸Savings Page: Calculate your savings forecast, view your current forecast and update it however you choose.\n" +
-        "▸Stocks Page: View your current stock holdings.\n" +
-        "▸Crypto Page: View your current crypto holdings.\n" +
-        "▸Edit Info Page: Edit your basic information or delete account.\n" +
-        "▸Logout: Logout and return to Login Page\n";
+
         ImageIcon icon = new ImageIcon("src/com/pSHelp.png");
-        JOptionPane.showMessageDialog(rootPane, message,"Help Page", JOptionPane.INFORMATION_MESSAGE, icon);
+        JOptionPane.showMessageDialog(rootPane, Constant.message,"Help Page", JOptionPane.INFORMATION_MESSAGE, icon);
     }//GEN-LAST:event_helpBtnActionPerformed
 
     /**
