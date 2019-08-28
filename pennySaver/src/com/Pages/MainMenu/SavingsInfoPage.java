@@ -54,8 +54,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
                     + "Based off of your monthly take home income of: $"+ income +"\n"
                     + "Emplyoment Status of: " + employmentStatus + "\n"
                     + "Monthly savings of: $" + monthlySavingsx + "\n"
-                    + "Your financial information has been laid down. \n"
-                    + "Adjust the values below to see your forecast";  
+                    + "Your financial information has been laid down.";
             jTextArea.setText(text);
             jTextArea.setWrapStyleWord(true);
             jTextArea.setLineWrap(true);
