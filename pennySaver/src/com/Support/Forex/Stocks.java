@@ -49,47 +49,14 @@ public class Stocks {
           is.close();
         }
   }
-
-
-    /*public static boolean checkSymbol(String symb) throws MalformedURLException, IOException{
-        boolean isSymbol = false;
-        URL url = new URL("https://www.alphavantage.co/query?"
-                + "function=GLOBAL_QUOTE&"
-                + "symbol="+symb+"&"
-                + "outputsize=compact&"
-                + "apikey="+Constant.alphaVantageAPIKey);
-        URLConnection urlConn = url.openConnection();
-        InputStreamReader inStream = new InputStreamReader(urlConn.getInputStream());
-        BufferedReader buff = new BufferedReader(inStream);
-        String line = buff.readLine();
-        while(line != null){
-            if(line.contains("Error")){
-                isSymbol = false;
-            }
-            else{
-                isSymbol = true;
-                return isSymbol;
-            }
-            System.out.println(line);
-            line = buff.readLine();
-        }
-        return isSymbol;
-    }*/
   
-  
-      public static boolean checkSymbol(String symb) throws IOException, MalformedURLException {
+  public static boolean checkSymbol(String symb) throws IOException, MalformedURLException {
           boolean cryp = false;
           String url = "https://www.alphavantage.co/query?"
                 + "function=GLOBAL_QUOTE&"
                 + "symbol="+symb+"&"
                 + "outputsize=compact&"
                 + "apikey="+Constant.alphaVantageAPIKey;
-          
-        /*URL url = new URL("https://www.alphavantage.co/query?"
-                + "function=CURRENCY_EXCHANGE_RATE&"
-                + "from_currency="+symb+"&"
-                + "to_currency=usd&"
-                + "apikey="+Constant.alphaVantageAPIKey);*/
                 InputStream is = new URL(url).openStream();
         try {
           BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));

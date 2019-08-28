@@ -98,23 +98,5 @@ public class Crypto {
           is.close();
         }
   }
-        /*
-        URLConnection urlConn = url.openConnection();
-        InputStreamReader inStream = new InputStreamReader(urlConn.getInputStream());
-        BufferedReader buff = new BufferedReader(inStream);
-        String line = buff.readLine();
-        while(line != null){
-            if(line.contains("Error")){
-                cryp = false;
-            }
-            else{
-                cryp = true;
-                return cryp;
-            }
-            System.out.println(line);
-            line = buff.readLine();
-        }
-        return cryp;
-  }*/
       
 }
