@@ -215,13 +215,24 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         return 0.0;
     }
    
-   public String getCurrentState(Double income, Double budget){
+    public String getCurrentState(Double income, Double budget){
+       income = getIncome();
+       Double savings = income * 0.35;
+       Double savings2 = income * 0.65;
        String advice2 = "Looks like your budget is far greater than your income. Time to do some trimming to become fiscally"
-               + "responsible. You will want to take a look at your spending habbits to reduce the unnecessary spending.";
-       String advice1 = "Your budget looks good. You have a stable income that far outweighs your spending needs."
-               + "It looks like you can afford to increase how much you save each month in order to increase your net worth.";
-       String advice3 = "Your budget could use somoe real help. Pleae call 555-555-5555 in order to set up an appointment with "
-               + "out proffessionals that can set you on the right path towards fiscal responsibility.";
+               + " responsible. You will want to take a look at your spending habbits to reduce the unnecessary spending.";
+       String advice1 = "";
+       if(Constant.hasSavings){
+            advice1 = "Your budget looks good. You have a stable income that far outweighs your spending needs. "
+               + "It looks like you can afford to increase how much you save each month in order to increase your net worth. "
+               + "We recommend increasing a savings account by $"+savings;
+       } else {
+            advice1 = "Your budget looks good. You have a stable income that far outweighs your spending needs."
+               + " It looks like you can afford to increase how much you save each month in order to increase your net worth. "
+               + "We recommend creating a savings account with $"+ savings2;           
+       }
+       String advice3 = "Your budget could use some real help. Pleae call 555-GIT-GOOD in order to set up an appointment with "
+               + "our proffessionals that can set you on the right path towards fiscal responsibility.";
        if(income>budget){
            Constant.mainAdvice = advice1;
            adviceTextArea.setText(null);
@@ -523,7 +534,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         adviceTextArea.setEditable(false);
         adviceTextArea.setBackground(new java.awt.Color(240, 235, 216));
         adviceTextArea.setColumns(20);
-        adviceTextArea.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        adviceTextArea.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
         adviceTextArea.setForeground(new java.awt.Color(63, 64, 76));
         adviceTextArea.setRows(5);
         adviceTextArea.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
