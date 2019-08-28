@@ -1,10 +1,9 @@
 package com.Pages.MainMenu;
 
-import com.Pages.EditPages.EditStocksPage;
 import com.Pages.Main.Main;
 import com.Support.BudgetCalcsPage;
 import com.Support.Constant;
-import com.Support.Stocks.Stocks;
+import com.Support.Forex.Stocks;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;

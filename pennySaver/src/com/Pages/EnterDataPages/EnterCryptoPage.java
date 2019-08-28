@@ -3,7 +3,7 @@ package com.Pages.EnterDataPages;
 import com.Pages.MainMenu.BudgetInfoPage;
 import com.Pages.MainMenu.MainMenu;
 import com.Support.Constant;
-import com.Support.Stocks.Crypto;
+import com.Support.Forex.Crypto;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -5,7 +5,7 @@ import com.Pages.Main.Main;
 import com.Support.BudgetCalcsPage;
 import javax.swing.JOptionPane;
 import com.Support.Constant;
-import com.Support.Stocks.Crypto;
+import com.Support.Forex.Crypto;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;

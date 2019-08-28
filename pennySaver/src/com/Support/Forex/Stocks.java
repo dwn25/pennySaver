@@ -1,4 +1,4 @@
-package com.Support.Stocks;
+package com.Support.Forex;
 
 import com.Support.Constant;
 import java.io.IOException;

@@ -2,7 +2,7 @@ package com.Pages.EnterDataPages;
 
 import com.Pages.AskQuestionPage.CryptoQuestionPage;
 import com.Support.Constant;
-import com.Support.Stocks.Stocks;
+import com.Support.Forex.Stocks;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
