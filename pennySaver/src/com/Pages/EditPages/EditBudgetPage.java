@@ -261,7 +261,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
                 JtexTield.setText(val);
                 }
             else{
-                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+                System.out.println("Unable To Find Value");
             } 
         }catch(SQLException err){
         System.out.println("Unable to fetch "+ column);
@@ -279,7 +279,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
                 return val;
                 }
             else{
-                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+                System.out.println("Unable To Find Value");
             } 
         }catch(SQLException err){
         System.out.println("Unable to fetch income");
@@ -297,7 +297,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
                 return var;
             }
             else{
-                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+                System.out.println("Unable To Find Value");
             } 
         }catch(SQLException err){
         System.out.println("Unable to fetch "+ column);

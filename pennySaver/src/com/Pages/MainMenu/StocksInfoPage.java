@@ -418,7 +418,7 @@ public class StocksInfoPage extends javax.swing.JFrame {
                 return val;
                 }
             else{
-                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+                System.out.println("Unable To Find Value");
             } 
         }catch(SQLException err){
         System.out.println("Unable to fetch income");

@@ -49,6 +49,7 @@ public class EnterSavingsPage extends javax.swing.JFrame {
             income = getIncome();
             employeeStatus = getField("employment_status");
             monthlySavings = getFieldD("monthly_savings");
+            principalField.setText(income.toString());
             String text  = "\n"
                     + "Based off of your monthly take home income of :$"+ income +"\n"
                     + "Emplyoment Status of: " + employeeStatus + "\n"
@@ -142,7 +143,6 @@ public class EnterSavingsPage extends javax.swing.JFrame {
         firstName2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea = new javax.swing.JTextArea();
-        nextBtn = new javax.swing.JButton();
         calculateBtn = new javax.swing.JButton();
         SIdeBarPanel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -178,7 +178,7 @@ public class EnterSavingsPage extends javax.swing.JFrame {
                 saveBtnActionPerformed(evt);
             }
         });
-        wholePanel.add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 480, 150, 50));
+        wholePanel.add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 480, 300, 50));
 
         dataEntryPanel.setBackground(new java.awt.Color(240, 235, 216));
 
@@ -359,17 +359,6 @@ public class EnterSavingsPage extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea);
 
         wholePanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 440, 140));
-
-        nextBtn.setBackground(new java.awt.Color(34, 47, 66));
-        nextBtn.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
-        nextBtn.setForeground(new java.awt.Color(255, 255, 255));
-        nextBtn.setText("Next");
-        nextBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextBtnActionPerformed(evt);
-            }
-        });
-        wholePanel.add(nextBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 480, 150, 50));
 
         calculateBtn.setBackground(new java.awt.Color(34, 47, 66));
         calculateBtn.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
@@ -577,9 +566,9 @@ public class EnterSavingsPage extends javax.swing.JFrame {
                 int f =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Save These Values?", "Confirm Save", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
                 if(f==JOptionPane.YES_OPTION){
                     if(Constant.currentUser.length()>2){
-                        String sql = "INSERT INTO  "+ Constant.dbName + ".PBANK (USERNAME, PRINCIPAL, RATE, \"TIME\", SAVED_INTEREST, SAVED_AMOUNT)" +"	VALUES (?, ?, ?, ?, ?, ?)";
-                        String temp = "INSERT INTO `"+ Constant.dbName + ".PBANK` (`USERNAME`, `PRINCIPAL`, `RATE`, `TIME`, `SAVED_INTEREST`, `SAVED_AMOUNT`) VALUES (?, ?, ?, ?, ?, ?)";
-                        PreparedStatement statement = Constant.con.prepareStatement(temp);
+                        //String sql = "INSERT INTO  "+ Constant.dbName + ".PBANK (USERNAME, PRINCIPAL, RATE, \"TIME\", SAVED_INTEREST, SAVED_AMOUNT)" +"	VALUES (?, ?, ?, ?, ?, ?)";
+                        String sql = "INSERT INTO "+ Constant.dbName + ".PBANK (USERNAME, PRINCIPAL, RATE, `TIME`, SAVED_INTEREST, SAVED_AMOUNT) VALUES (?, ?, ?, ?, ?, ?)";
+                        PreparedStatement statement = Constant.con.prepareStatement(sql);
                         statement.setString(1, Constant.currentUser);
                         statement.setDouble(2, final_principal);
                         statement.setDouble(3, rate);
@@ -589,7 +578,10 @@ public class EnterSavingsPage extends javax.swing.JFrame {
                         int rowsInserted = statement.executeUpdate();
                         if(rowsInserted > 0){
                             System.out.println("Savings: A new user was inserted successfully!");
-                            JOptionPane.showMessageDialog(null, "Save Succesful");
+                            JOptionPane.showMessageDialog(null, "Save Succesful");                
+                            StocksQuestionPage  m = new StocksQuestionPage();
+                            m.setVisible(true);
+                            this.hide();
                             }
                     }
                 }
@@ -633,26 +625,6 @@ public class EnterSavingsPage extends javax.swing.JFrame {
                 return true ;
            }
        }
-    private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
-        try{
-            Constant.DoConnect();
-            if(addedSavings(Constant.currentUser)){    
-                StocksQuestionPage  m = new StocksQuestionPage();
-                m.setVisible(true);
-                this.hide();
-            }
-            else{
-                JOptionPane.showMessageDialog(rootPane, "Please save");
-            }
-        }catch(Exception e){} 
-         finally {
-            try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
-            try { Constant.stmt.close(); } catch (Exception e) { /* ignored */ }
-            try { Constant.con.close(); } catch (Exception e) { /* ignored */ }
-        }  
-        
-    }//GEN-LAST:event_nextBtnActionPerformed
-
     private void calculateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateBtnActionPerformed
         try{
             String princ1 = principalField.getText();
@@ -727,7 +699,7 @@ public class EnterSavingsPage extends javax.swing.JFrame {
     private void resetBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetBtnActionPerformed
         // TODO add your handling code here:
         principalField.setText(null);
-        principalField.setText("5000.0");
+        principalField.setText(income.toString());
         rateField.setText(null);
         rateField.setText("2.15");
         timeField.setText(null);
@@ -799,7 +771,6 @@ public class EnterSavingsPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel15;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea;
-    private javax.swing.JButton nextBtn;
     private javax.swing.JPanel personalInfoPage;
     private javax.swing.JTextField principalField;
     private javax.swing.JTextField rateField;

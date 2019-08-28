@@ -74,7 +74,7 @@ public void onRun(){
                 return val;
                 }
             else{
-                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+                System.out.println("Unable To Find Value");
             } 
         }catch(SQLException err){
         System.out.println("Unable to fetch income");
@@ -92,7 +92,7 @@ public void onRun(){
                 label1.setText(val);
                 }
             else{
-                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+                System.out.println("Unable To Find Value");
             } 
         }catch(SQLException err){
         System.out.println("Unable to fetch "+ column);
@@ -109,7 +109,7 @@ public void onRun(){
                 label1.setText(val);
                 }
             else{
-                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+                System.out.println("Unable To Find Value");
             } 
         }catch(SQLException err){
         System.out.println("Unable to fetch "+ column);
@@ -124,7 +124,7 @@ public void onRun(){
                 JtexTield.setText(val);
                 }
             else{
-                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+                System.out.println("Unable To Find Value");
             } 
         }catch(SQLException err){
         System.out.println("Unable to fetch "+ column);
@@ -189,9 +189,7 @@ public void onRun(){
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerPanelLayout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addContainerGap(56, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
         );
 
         WholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 440, 100));
@@ -534,7 +532,7 @@ public void onRun(){
                 employmentStatus.setSelectedItem(val);
                 }
             else{
-                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+                System.out.println("Unable To Find Value");
             } 
         }catch(SQLException err){
         System.out.println("Unable to fetch "+ column);

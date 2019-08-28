@@ -50,8 +50,8 @@ public class SavingsInfoPage extends javax.swing.JFrame {
             String monthlySavingsx = getField("monthly_savings");
             String text  = "\n"
                     + "Based off of your monthly take home income of: $"+ income +"\n"
-                    + "Emplyoment Status of :" + employmentStatus + "\n"
-                    + "Monthly savings of :$" + monthlySavingsx + "\n"
+                    + "Emplyoment Status of: " + employmentStatus + "\n"
+                    + "Monthly savings of: $" + monthlySavingsx + "\n"
                     + "Your financial information has been laid down. \n"
                     + "Adjust the values below to see your forecast";  
             jTextArea.setText(text);
@@ -118,7 +118,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
                 return val;
                 }
             else{
-                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+                System.out.println("Unable To Find Value");
             } 
         }catch(SQLException err){
         System.out.println("Unable to fetch "+ column);
@@ -135,7 +135,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
                 return var;
             }
             else{
-                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+                System.out.println("Unable To Find Value");
             } 
         }catch(SQLException err){
         System.out.println("Unable to fetch "+ column);
@@ -152,7 +152,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
                 return val;
                 }
             else{
-                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+                System.out.println("Unable To Find Value");
             } 
         }catch(SQLException err){
         System.out.println("Unable to fetch "+ column);
@@ -169,7 +169,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
                 return val;
                 }
             else{
-                JOptionPane.showMessageDialog(rootPane, "Unable To Find Value");
+                System.out.println("Unable To Find Value");
             } 
         }catch(SQLException err){
         System.out.println("Unable to fetch income");
