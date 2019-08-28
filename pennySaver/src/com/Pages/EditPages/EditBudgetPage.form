@@ -789,7 +789,7 @@
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Alter The categories To Generate a New Chart"/>
+                <Property name="text" type="java.lang.String" value="Alter The categories To Generate New Charts"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
