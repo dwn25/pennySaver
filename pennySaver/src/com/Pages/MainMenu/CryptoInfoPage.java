@@ -146,7 +146,6 @@ public class CryptoInfoPage extends javax.swing.JFrame {
 
         WholePanel3 = new javax.swing.JPanel();
         InfoPanel3 = new javax.swing.JPanel();
-        Edit = new javax.swing.JButton();
         budgetChart1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -173,16 +172,6 @@ public class CryptoInfoPage extends javax.swing.JFrame {
         WholePanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         InfoPanel3.setBackground(new java.awt.Color(240, 235, 216));
-
-        Edit.setBackground(new java.awt.Color(41, 57, 80));
-        Edit.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
-        Edit.setForeground(new java.awt.Color(255, 255, 255));
-        Edit.setText("Edit");
-        Edit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditActionPerformed(evt);
-            }
-        });
 
         budgetChart1.setLayout(new java.awt.BorderLayout());
 
@@ -235,10 +224,6 @@ public class CryptoInfoPage extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InfoPanel3Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 728, Short.MAX_VALUE)
                         .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InfoPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(295, 295, 295))
         );
         InfoPanel3Layout.setVerticalGroup(
             InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,9 +234,7 @@ public class CryptoInfoPage extends javax.swing.JFrame {
                     .addComponent(budgetChart2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
-                .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
 
         WholePanel3.add(InfoPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 740, 600));
@@ -520,13 +503,6 @@ public class CryptoInfoPage extends javax.swing.JFrame {
         this.hide();
     }//GEN-LAST:event_StocksIconActionPerformed
 
-    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
-        EditStocksPage m = new EditStocksPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_EditActionPerformed
-
     private void helpBtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpBtn2MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_helpBtn2MouseClicked
@@ -573,7 +549,6 @@ public class CryptoInfoPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Edit;
     private javax.swing.JPanel InfoPanel3;
     private javax.swing.JPanel SIdeBarPanel;
     private javax.swing.JButton SavingsIcon;
@@ -587,8 +562,6 @@ public class CryptoInfoPage extends javax.swing.JFrame {
     private javax.swing.JButton cryptoIcon;
     private javax.swing.JButton editTextbtn;
     private javax.swing.JPanel headerPanel;
-    private javax.swing.JButton helpBtn;
-    private javax.swing.JButton helpBtn1;
     private javax.swing.JButton helpBtn2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;

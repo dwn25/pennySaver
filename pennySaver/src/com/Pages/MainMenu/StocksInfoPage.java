@@ -4,6 +4,7 @@ import com.Pages.Main.Main;
 import com.Support.BudgetCalcsPage;
 import com.Support.Constant;
 import com.Support.Forex.Stocks;
+import java.awt.Color;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -14,6 +15,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.plaf.ColorUIResource;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -55,7 +58,6 @@ public class StocksInfoPage extends javax.swing.JFrame {
 
         WholePanel3 = new javax.swing.JPanel();
         InfoPanel3 = new javax.swing.JPanel();
-        Edit = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -82,16 +84,6 @@ public class StocksInfoPage extends javax.swing.JFrame {
         WholePanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         InfoPanel3.setBackground(new java.awt.Color(240, 235, 216));
-
-        Edit.setBackground(new java.awt.Color(41, 57, 80));
-        Edit.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
-        Edit.setForeground(new java.awt.Color(255, 255, 255));
-        Edit.setText("Edit");
-        Edit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EditActionPerformed(evt);
-            }
-        });
 
         jTable.setBackground(new java.awt.Color(240, 235, 216));
         jTable.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -158,13 +150,8 @@ public class StocksInfoPage extends javax.swing.JFrame {
         InfoPanel3Layout.setHorizontalGroup(
             InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(InfoPanel3Layout.createSequentialGroup()
-                .addGroup(InfoPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(InfoPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 748, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(InfoPanel3Layout.createSequentialGroup()
-                        .addGap(301, 301, 301)
-                        .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 748, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(InfoPanel3Layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -186,9 +173,7 @@ public class StocksInfoPage extends javax.swing.JFrame {
                             .addComponent(budgetChart1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         WholePanel3.add(InfoPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 750, 550));
@@ -478,20 +463,6 @@ public class StocksInfoPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
-    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
-        EnterStockMainMenuPage m = new EnterStockMainMenuPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.setEnabled(false);
-        /*
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(StocksInfoPage.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-        this.hide();
-    }//GEN-LAST:event_EditActionPerformed
-
     private void mainMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainMenuMouseClicked
         MainMenu m = new MainMenu();
         m.setVisible(true);
@@ -572,8 +543,16 @@ public class StocksInfoPage extends javax.swing.JFrame {
 
     private void helpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtnActionPerformed
 
+        /*UIManager UI=new UIManager();
+        UI.put("OptionPane.background", Color.white);
+        UI.put("Panel.background", Color.white);
+        */
+         UIManager UI=new UIManager();
+ UI.put("OptionPane.background",new ColorUIResource(255,0,0));
+ UI.put("Panel.background",new ColorUIResource(255,0,0));
         ImageIcon icon = new ImageIcon("src/com/pSHelp.png");
         JOptionPane.showMessageDialog(rootPane, Constant.message,"Help Page", JOptionPane.INFORMATION_MESSAGE, icon);
+        JOptionPane.showMessageDialog(rootPane,Constant.message,"SetColor",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_helpBtnActionPerformed
 
     /**
@@ -612,7 +591,6 @@ public class StocksInfoPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Edit;
     private javax.swing.JPanel InfoPanel3;
     private javax.swing.JPanel SIdeBarPanel;
     private javax.swing.JButton SavingsIcon;
