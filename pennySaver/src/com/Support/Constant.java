@@ -28,11 +28,14 @@ public class Constant {
     public static boolean hasBudget = false;
     public static boolean hasSavings = false;
     public static String message = " Welcome to the Main Menu\n" +
-        "▸Budgetting Page : View your budget, get some advice and adjust your budget however you choose.\n" +
-        "▸Savings Page: Calculate your savings forecast, view your current forecast and update it however you choose.\n" +
+        "▸Budgetting Page: View your budget, get some advice and\n"
+        +" adjust your budget however you choose.\n" +
+        "▸Savings Page: Calculate your savings forecast, view\n"
+        + " your current forecast and update it however you choose.\n" +
         "▸Stocks Page: View your current stock holdings.\n" +
         "▸Crypto Page: View your current crypto holdings.\n" +
-        "▸Edit Info Page: Edit your basic information or delete account.\n" +
+        "▸Edit Info Page: Edit your basic information or delete\n"
+        + " account.\n" +
         "▸Logout: Logout and return to Login Page\n";
         
     public static void DoConnect1(){

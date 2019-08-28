@@ -3,10 +3,11 @@ package com.Pages.MainMenu;
 import com.Pages.EditPages.EditSavingsPage;
 import com.Pages.Main.Main;
 import com.Support.Constant;
+import java.awt.Font;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -684,9 +685,13 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_helpBtnMouseClicked
 
     private void helpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtnActionPerformed
-
-        ImageIcon icon = new ImageIcon("src/com/pSHelp.png");
-        JOptionPane.showMessageDialog(rootPane, Constant.message,"Help Page", JOptionPane.INFORMATION_MESSAGE, icon);
+        JTextArea jTextArea = new JTextArea(Constant.message);
+        jTextArea.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        jTextArea.setWrapStyleWord(true);
+        jTextArea.setOpaque(true);
+        jTextArea.setEditable(false);
+        jTextArea.setFocusable(true);
+        JOptionPane.showMessageDialog(null, jTextArea,"Help Page", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_helpBtnActionPerformed
 
     /**

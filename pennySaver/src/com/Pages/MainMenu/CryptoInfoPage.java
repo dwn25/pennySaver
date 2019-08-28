@@ -1,11 +1,11 @@
 package com.Pages.MainMenu;
 
-import com.Pages.EditPages.EditStocksPage;
 import com.Pages.Main.Main;
 import com.Support.BudgetCalcsPage;
 import javax.swing.JOptionPane;
 import com.Support.Constant;
 import com.Support.Forex.Crypto;
+import java.awt.Font;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
+import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -508,8 +508,13 @@ public class CryptoInfoPage extends javax.swing.JFrame {
     }//GEN-LAST:event_helpBtn2MouseClicked
 
     private void helpBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtn2ActionPerformed
-        ImageIcon icon = new ImageIcon("src/com/pSHelp.png");
-        JOptionPane.showMessageDialog(rootPane, Constant.message,"Help Page", JOptionPane.INFORMATION_MESSAGE, icon);
+        JTextArea jTextArea = new JTextArea(Constant.message);
+        jTextArea.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        jTextArea.setWrapStyleWord(true);
+        jTextArea.setOpaque(true);
+        jTextArea.setEditable(false);
+        jTextArea.setFocusable(true);
+        JOptionPane.showMessageDialog(null, jTextArea,"Help Page", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_helpBtn2ActionPerformed
 
     /**

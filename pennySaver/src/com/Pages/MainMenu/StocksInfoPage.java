@@ -5,6 +5,7 @@ import com.Support.BudgetCalcsPage;
 import com.Support.Constant;
 import com.Support.Forex.Stocks;
 import java.awt.Color;
+import java.awt.Font;
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -14,7 +15,9 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.plaf.ColorUIResource;
 import javax.swing.table.DefaultTableModel;
@@ -543,16 +546,13 @@ public class StocksInfoPage extends javax.swing.JFrame {
 
     private void helpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtnActionPerformed
 
-        /*UIManager UI=new UIManager();
-        UI.put("OptionPane.background", Color.white);
-        UI.put("Panel.background", Color.white);
-        */
-         UIManager UI=new UIManager();
- UI.put("OptionPane.background",new ColorUIResource(255,0,0));
- UI.put("Panel.background",new ColorUIResource(255,0,0));
-        ImageIcon icon = new ImageIcon("src/com/pSHelp.png");
-        JOptionPane.showMessageDialog(rootPane, Constant.message,"Help Page", JOptionPane.INFORMATION_MESSAGE, icon);
-        JOptionPane.showMessageDialog(rootPane,Constant.message,"SetColor",JOptionPane.INFORMATION_MESSAGE);
+        JTextArea jTextArea = new JTextArea(Constant.message);
+        jTextArea.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        jTextArea.setWrapStyleWord(true);
+        jTextArea.setOpaque(true);
+        jTextArea.setEditable(false);
+        jTextArea.setFocusable(true);
+        JOptionPane.showMessageDialog(null, jTextArea,"Help Page", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_helpBtnActionPerformed
 
     /**

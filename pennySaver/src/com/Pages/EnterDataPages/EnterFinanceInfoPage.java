@@ -51,11 +51,6 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
         formatted = new javax.swing.JFormattedTextField();
         jPanel1 = new javax.swing.JPanel();
         wholePanel = new javax.swing.JPanel();
-        SIdeBarPanel = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        budgetPanel = new javax.swing.JPanel();
-        jPanel11 = new javax.swing.JPanel();
-        budgetLabel = new javax.swing.JLabel();
         pageInfoPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea = new javax.swing.JTextArea();
@@ -63,6 +58,7 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
         headerPanel = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         dataEntryPanel = new javax.swing.JPanel();
         employmentStatus = new javax.swing.JComboBox<>();
         monthlySavingsField = new javax.swing.JTextField();
@@ -102,41 +98,6 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
 
         wholePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        SIdeBarPanel.setBackground(new java.awt.Color(29, 45, 68));
-        SIdeBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
-        SIdeBarPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 100, 100));
-
-        budgetPanel.setBackground(new java.awt.Color(240, 235, 216));
-        budgetPanel.setForeground(new java.awt.Color(63, 64, 76));
-        budgetPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                budgetPanelMouseClicked(evt);
-            }
-        });
-        budgetPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel11.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        budgetPanel.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
-
-        budgetLabel.setBackground(new java.awt.Color(240, 235, 216));
-        budgetLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        budgetLabel.setForeground(new java.awt.Color(63, 64, 76));
-        budgetLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        budgetLabel.setText("Personal Info");
-        budgetLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                budgetLabelMouseClicked(evt);
-            }
-        });
-        budgetPanel.add(budgetLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
-
-        SIdeBarPanel.add(budgetPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 120, 40));
-
-        wholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 550));
-
         pageInfoPanel.setBackground(new java.awt.Color(240, 235, 216));
         pageInfoPanel.setForeground(new java.awt.Color(255, 255, 255));
         pageInfoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -150,7 +111,7 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
         jTextArea.setBorder(null);
         jScrollPane2.setViewportView(jTextArea);
 
-        pageInfoPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 440));
+        pageInfoPanel.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 440));
 
         divider.setBackground(new java.awt.Color(29, 45, 68));
 
@@ -167,7 +128,7 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
 
         pageInfoPanel.add(divider, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        wholePanel.add(pageInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 330, 440));
+        wholePanel.add(pageInfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 310, 440));
 
         headerPanel.setBackground(new java.awt.Color(34, 47, 66));
 
@@ -183,26 +144,36 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Please enter your details below");
 
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
+
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
         headerPanel.setLayout(headerPanelLayout);
         headerPanelLayout.setHorizontalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE))
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE))
                 .addContainerGap())
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10)
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(headerPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel10))
+                    .addGroup(headerPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel6)))
                 .addContainerGap())
         );
 
-        wholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 610, 100));
+        wholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 100));
 
         dataEntryPanel.setBackground(new java.awt.Color(240, 235, 216));
         dataEntryPanel.setForeground(new java.awt.Color(255, 255, 255));
@@ -364,9 +335,9 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
                 .addContainerGap(64, Short.MAX_VALUE))
         );
 
-        wholePanel.add(dataEntryPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 280, 450));
+        wholePanel.add(dataEntryPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 280, 450));
 
-        getContentPane().add(wholePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(-7, 0, 740, 540));
+        getContentPane().add(wholePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 540));
 
         pack();
         setLocationRelativeTo(null);
@@ -457,20 +428,6 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
     private void formattedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formattedActionPerformed
     }//GEN-LAST:event_formattedActionPerformed
 
-    private void budgetLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetLabelMouseClicked
-        BudgetInfoPage m = new BudgetInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_budgetLabelMouseClicked
-
-    private void budgetPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetPanelMouseClicked
-        BudgetInfoPage m = new BudgetInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_budgetPanelMouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -511,9 +468,6 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancel;
-    private javax.swing.JPanel SIdeBarPanel;
-    private javax.swing.JLabel budgetLabel;
-    private javax.swing.JPanel budgetPanel;
     private javax.swing.JPanel dataEntryPanel;
     private javax.swing.JPanel divider;
     private javax.swing.JComboBox<String> employmentStatus;
@@ -528,7 +482,6 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

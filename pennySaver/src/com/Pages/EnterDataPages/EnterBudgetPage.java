@@ -29,6 +29,10 @@ public class EnterBudgetPage extends javax.swing.JFrame {
     private void initComponents() {
 
         wholePanel = new javax.swing.JPanel();
+        headerPanel = new javax.swing.JPanel();
+        firstName1 = new javax.swing.JLabel();
+        firstName2 = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
         InfoPanel = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -60,28 +64,55 @@ public class EnterBudgetPage extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         otherField = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        SIdeBarPanel = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        personalInfoPage = new javax.swing.JPanel();
-        jPanel11 = new javax.swing.JPanel();
-        budgetLabel = new javax.swing.JLabel();
-        stocksInfo = new javax.swing.JPanel();
-        jPanel13 = new javax.swing.JPanel();
-        budgetLabel2 = new javax.swing.JLabel();
-        stocksInfo1 = new javax.swing.JPanel();
-        jPanel14 = new javax.swing.JPanel();
-        budgetLabel3 = new javax.swing.JLabel();
-        stockPanel = new javax.swing.JPanel();
-        jPanel12 = new javax.swing.JPanel();
-        budgetLabel1 = new javax.swing.JLabel();
-        headerPanel = new javax.swing.JPanel();
-        firstName1 = new javax.swing.JLabel();
-        firstName2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         wholePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        headerPanel.setBackground(new java.awt.Color(34, 47, 66));
+
+        firstName1.setBackground(new java.awt.Color(34, 47, 66));
+        firstName1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        firstName1.setForeground(new java.awt.Color(255, 255, 255));
+        firstName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        firstName1.setText("Please fill out the spending categories ");
+
+        firstName2.setBackground(new java.awt.Color(34, 47, 66));
+        firstName2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        firstName2.setForeground(new java.awt.Color(255, 255, 255));
+        firstName2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        firstName2.setText("Budget Setup");
+
+        logo.setBackground(new java.awt.Color(34, 47, 66));
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
+
+        javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
+        headerPanel.setLayout(headerPanelLayout);
+        headerPanelLayout.setHorizontalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
+                .addComponent(logo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(firstName2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(firstName1, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)))
+        );
+        headerPanelLayout.setVerticalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(firstName2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(firstName1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logo)
+                .addContainerGap())
+        );
+
+        wholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 100));
 
         InfoPanel.setBackground(new java.awt.Color(240, 235, 216));
 
@@ -270,23 +301,24 @@ public class EnterBudgetPage extends javax.swing.JFrame {
         InfoPanelLayout.setHorizontalGroup(
             InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(InfoPanelLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
                 .addContainerGap())
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InfoPanelLayout.createSequentialGroup()
+            .addGroup(InfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator1)
-                    .addComponent(submitBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(InfoPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jSeparator1)
+                        .addContainerGap())
+                    .addGroup(InfoPanelLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
                         .addGroup(InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(InfoPanelLayout.createSequentialGroup()
                                 .addGroup(InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(travelField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -296,7 +328,7 @@ public class EnterBudgetPage extends javax.swing.JFrame {
                                 .addGroup(InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(shoppingField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -314,7 +346,7 @@ public class EnterBudgetPage extends javax.swing.JFrame {
                                     .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(InfoPanelLayout.createSequentialGroup()
                                         .addGap(18, 18, 18)
@@ -325,9 +357,14 @@ public class EnterBudgetPage extends javax.swing.JFrame {
                                             .addComponent(entertainmentField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InfoPanelLayout.createSequentialGroup()
                                         .addGap(18, 18, 18)
-                                        .addComponent(educationField, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addComponent(cancelBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(29, 29, 29))
+                                        .addComponent(educationField, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addContainerGap(70, Short.MAX_VALUE))))
+            .addGroup(InfoPanelLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cancelBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+                    .addComponent(submitBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         InfoPanelLayout.setVerticalGroup(
             InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,7 +377,7 @@ public class EnterBudgetPage extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(InfoPanelLayout.createSequentialGroup()
                         .addGroup(InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -389,169 +426,16 @@ public class EnterBudgetPage extends javax.swing.JFrame {
                         .addGroup(InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel18)
                             .addComponent(otherField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
+                .addGap(16, 16, 16)
                 .addComponent(submitBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cancelBtn)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        wholePanel.add(InfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 440, 390));
+        wholePanel.add(InfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 530, 380));
 
-        SIdeBarPanel.setBackground(new java.awt.Color(29, 45, 68));
-        SIdeBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/pSsmallLogo.png"))); // NOI18N
-        SIdeBarPanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 100));
-
-        personalInfoPage.setBackground(new java.awt.Color(29, 45, 68));
-        personalInfoPage.setForeground(new java.awt.Color(160, 170, 178));
-        personalInfoPage.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                personalInfoPageMouseClicked(evt);
-            }
-        });
-        personalInfoPage.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel11.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel11.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        personalInfoPage.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
-
-        budgetLabel.setBackground(new java.awt.Color(41, 57, 80));
-        budgetLabel.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        budgetLabel.setForeground(new java.awt.Color(255, 255, 255));
-        budgetLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        budgetLabel.setText("Personal Info");
-        budgetLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                budgetLabelMouseClicked(evt);
-            }
-        });
-        personalInfoPage.add(budgetLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
-
-        SIdeBarPanel.add(personalInfoPage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 120, 40));
-
-        stocksInfo.setBackground(new java.awt.Color(29, 45, 68));
-        stocksInfo.setForeground(new java.awt.Color(160, 170, 178));
-        stocksInfo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                stocksInfoMouseClicked(evt);
-            }
-        });
-        stocksInfo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel13.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel13.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        stocksInfo.add(jPanel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
-
-        budgetLabel2.setBackground(new java.awt.Color(41, 57, 80));
-        budgetLabel2.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        budgetLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        budgetLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        budgetLabel2.setText("Stocks Input");
-        budgetLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                budgetLabel2MouseClicked(evt);
-            }
-        });
-        stocksInfo.add(budgetLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
-
-        stocksInfo1.setBackground(new java.awt.Color(29, 45, 68));
-        stocksInfo1.setForeground(new java.awt.Color(160, 170, 178));
-        stocksInfo1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                stocksInfo1MouseClicked(evt);
-            }
-        });
-        stocksInfo1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel14.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel14.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        stocksInfo1.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
-
-        budgetLabel3.setBackground(new java.awt.Color(41, 57, 80));
-        budgetLabel3.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        budgetLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        budgetLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        budgetLabel3.setText("Crypto Input");
-        budgetLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                budgetLabel3MouseClicked(evt);
-            }
-        });
-        stocksInfo1.add(budgetLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
-
-        stocksInfo.add(stocksInfo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 120, 40));
-
-        SIdeBarPanel.add(stocksInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 120, -1));
-
-        stockPanel.setBackground(new java.awt.Color(240, 235, 216));
-        stockPanel.setForeground(new java.awt.Color(63, 64, 76));
-        stockPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                stockPanelMouseClicked(evt);
-            }
-        });
-        stockPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel12.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel12.setForeground(new java.awt.Color(204, 204, 204));
-        jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        stockPanel.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 10, 40));
-
-        budgetLabel1.setBackground(new java.awt.Color(240, 235, 216));
-        budgetLabel1.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        budgetLabel1.setForeground(new java.awt.Color(63, 64, 76));
-        budgetLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        budgetLabel1.setText("Budget Entry");
-        budgetLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                budgetLabel1MouseClicked(evt);
-            }
-        });
-        stockPanel.add(budgetLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 40));
-
-        SIdeBarPanel.add(stockPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, -1, 40));
-
-        wholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 470));
-
-        headerPanel.setBackground(new java.awt.Color(34, 47, 66));
-
-        firstName1.setBackground(new java.awt.Color(34, 47, 66));
-        firstName1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        firstName1.setForeground(new java.awt.Color(255, 255, 255));
-        firstName1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        firstName1.setText("Please fill out the spending categories ");
-
-        firstName2.setBackground(new java.awt.Color(34, 47, 66));
-        firstName2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        firstName2.setForeground(new java.awt.Color(255, 255, 255));
-        firstName2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        firstName2.setText("Budget Setup");
-
-        javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
-        headerPanel.setLayout(headerPanelLayout);
-        headerPanelLayout.setHorizontalGroup(
-            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(firstName2, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
-            .addComponent(firstName1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        headerPanelLayout.setVerticalGroup(
-            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(firstName2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(firstName1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        wholePanel.add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 440, 80));
-
-        getContentPane().add(wholePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(wholePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 480));
 
         pack();
         setLocationRelativeTo(null);
@@ -681,50 +565,6 @@ public class EnterBudgetPage extends javax.swing.JFrame {
 
     }//GEN-LAST:event_homeFieldActionPerformed
 
-    private void budgetLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetLabelMouseClicked
-        BudgetInfoPage m = new BudgetInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_budgetLabelMouseClicked
-
-    private void personalInfoPageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_personalInfoPageMouseClicked
-        BudgetInfoPage m = new BudgetInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_personalInfoPageMouseClicked
-
-    private void budgetLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetLabel2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_budgetLabel2MouseClicked
-
-    private void stocksInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksInfoMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stocksInfoMouseClicked
-
-    private void budgetLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetLabel3MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_budgetLabel3MouseClicked
-
-    private void stocksInfo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stocksInfo1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stocksInfo1MouseClicked
-
-    private void budgetLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_budgetLabel1MouseClicked
-        BudgetInfoPage m = new BudgetInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_budgetLabel1MouseClicked
-
-    private void stockPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stockPanelMouseClicked
-        BudgetInfoPage m = new BudgetInfoPage();
-        m.setLocationRelativeTo(null);
-        m.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_stockPanelMouseClicked
-
     
     /**
      * @param args the command line arguments
@@ -770,13 +610,8 @@ public class EnterBudgetPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel InfoPanel;
-    private javax.swing.JPanel SIdeBarPanel;
     private javax.swing.JTextField autoAndCommutingField;
     private javax.swing.JTextField billsAndUtilitiesField;
-    private javax.swing.JLabel budgetLabel;
-    private javax.swing.JLabel budgetLabel1;
-    private javax.swing.JLabel budgetLabel2;
-    private javax.swing.JLabel budgetLabel3;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JTextField diningAndDrinksField;
     private javax.swing.JTextField educationField;
@@ -798,23 +633,15 @@ public class EnterBudgetPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField loansField;
+    private javax.swing.JLabel logo;
     private javax.swing.JTextField otherField;
     private javax.swing.JTextField personalCareField;
-    private javax.swing.JPanel personalInfoPage;
     private javax.swing.JTextField shoppingField;
-    private javax.swing.JPanel stockPanel;
-    private javax.swing.JPanel stocksInfo;
-    private javax.swing.JPanel stocksInfo1;
     private javax.swing.JButton submitBtn;
     private javax.swing.JTextField travelField;
     private javax.swing.JPanel wholePanel;

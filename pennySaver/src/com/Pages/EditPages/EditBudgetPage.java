@@ -15,6 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.NumberFormat;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -365,6 +366,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
         editTextbtn = new javax.swing.JButton();
         logoutBtn = new javax.swing.JButton();
         budgetIcon1 = new javax.swing.JButton();
+        helpBtn = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -834,6 +836,20 @@ public class EditBudgetPage extends javax.swing.JFrame {
         });
         SIdeBarPanel.add(budgetIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 140, 50));
 
+        helpBtn.setBackground(new java.awt.Color(41, 57, 80));
+        helpBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/HelpButtonNormal.jpg"))); // NOI18N
+        helpBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                helpBtnMouseClicked(evt);
+            }
+        });
+        helpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpBtnActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(helpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 140, 50));
+
         WholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 700));
 
         getContentPane().add(WholePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 700));
@@ -1197,6 +1213,20 @@ public class EditBudgetPage extends javax.swing.JFrame {
 
     }//GEN-LAST:event_budgetIcon1ActionPerformed
 
+    private void helpBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_helpBtnMouseClicked
+
+    private void helpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtnActionPerformed
+        JTextArea jTextArea = new JTextArea(Constant.message);
+        jTextArea.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        jTextArea.setWrapStyleWord(true);
+        jTextArea.setOpaque(true);
+        jTextArea.setEditable(false);
+        jTextArea.setFocusable(true);
+        JOptionPane.showMessageDialog(null, jTextArea,"Help Page", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_helpBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1254,6 +1284,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
     private javax.swing.JTextField entertainmentField;
     private javax.swing.JTextField feesField;
     private javax.swing.JPanel headerPanel;
+    private javax.swing.JButton helpBtn;
     private javax.swing.JTextField homeField;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;

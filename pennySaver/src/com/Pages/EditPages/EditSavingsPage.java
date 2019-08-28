@@ -8,10 +8,12 @@ import com.Pages.MainMenu.MainMenu;
 import com.Pages.MainMenu.SavingsInfoPage;
 import com.Pages.MainMenu.StocksInfoPage;
 import com.Support.Constant;
+import java.awt.Font;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -142,6 +144,8 @@ public class EditSavingsPage extends javax.swing.JFrame {
         editTextbtn = new javax.swing.JButton();
         logoutBtn = new javax.swing.JButton();
         budgetIcon = new javax.swing.JButton();
+        helpBtn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -158,7 +162,7 @@ public class EditSavingsPage extends javax.swing.JFrame {
                 updateBtnActionPerformed(evt);
             }
         });
-        wholePanel.add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 400, 150, 50));
+        wholePanel.add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 420, 200, 75));
 
         dataEntryPanel.setBackground(new java.awt.Color(240, 235, 216));
 
@@ -252,24 +256,26 @@ public class EditSavingsPage extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(dataEntryPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(amountField, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(dataEntryPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel19)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(interestField, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(dataEntryPanelLayout.createSequentialGroup()
                         .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(rateField, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(principalField)
-                            .addComponent(timeField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE))))
-                .addContainerGap(13, Short.MAX_VALUE))
+                        .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(principalField, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(rateField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                                .addComponent(timeField))))
+                    .addGroup(dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dataEntryPanelLayout.createSequentialGroup()
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(amountField))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, dataEntryPanelLayout.createSequentialGroup()
+                            .addComponent(jLabel19)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(interestField, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         dataEntryPanelLayout.setVerticalGroup(
             dataEntryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,7 +347,7 @@ public class EditSavingsPage extends javax.swing.JFrame {
                 backBtnActionPerformed(evt);
             }
         });
-        wholePanel.add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 400, 150, 50));
+        wholePanel.add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, 200, 75));
 
         calculateBtn.setBackground(new java.awt.Color(34, 47, 66));
         calculateBtn.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
@@ -352,7 +358,7 @@ public class EditSavingsPage extends javax.swing.JFrame {
                 calculateBtnActionPerformed(evt);
             }
         });
-        wholePanel.add(calculateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 150, 50));
+        wholePanel.add(calculateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 200, 75));
 
         resetBtn.setBackground(new java.awt.Color(34, 47, 66));
         resetBtn.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
@@ -363,7 +369,7 @@ public class EditSavingsPage extends javax.swing.JFrame {
                 resetBtnActionPerformed(evt);
             }
         });
-        wholePanel.add(resetBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 150, 50));
+        wholePanel.add(resetBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 200, 75));
 
         SIdeBarPanel2.setBackground(new java.awt.Color(29, 45, 68));
         SIdeBarPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -469,7 +475,28 @@ public class EditSavingsPage extends javax.swing.JFrame {
         });
         SIdeBarPanel2.add(budgetIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 140, 50));
 
-        wholePanel.add(SIdeBarPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 470));
+        helpBtn.setBackground(new java.awt.Color(41, 57, 80));
+        helpBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/HelpButtonNormal.jpg"))); // NOI18N
+        helpBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                helpBtnMouseClicked(evt);
+            }
+        });
+        helpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpBtnActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel2.add(helpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 140, 50));
+
+        wholePanel.add(SIdeBarPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 530));
+
+        jLabel2.setBackground(new java.awt.Color(34, 47, 66));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(63, 64, 76));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Your current Savings Forecast have been loaded");
+        wholePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 440, -1));
 
         getContentPane().add(wholePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -692,6 +719,20 @@ public class EditSavingsPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_budgetIconActionPerformed
 
+    private void helpBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_helpBtnMouseClicked
+
+    private void helpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtnActionPerformed
+        JTextArea jTextArea = new JTextArea(Constant.message);
+        jTextArea.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        jTextArea.setWrapStyleWord(true);
+        jTextArea.setOpaque(true);
+        jTextArea.setEditable(false);
+        jTextArea.setFocusable(true);
+        JOptionPane.showMessageDialog(null, jTextArea,"Help Page", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_helpBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -741,10 +782,12 @@ public class EditSavingsPage extends javax.swing.JFrame {
     private javax.swing.JLabel firstName1;
     private javax.swing.JLabel firstName2;
     private javax.swing.JPanel headerPanel;
+    private javax.swing.JButton helpBtn;
     private javax.swing.JTextField interestField;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
