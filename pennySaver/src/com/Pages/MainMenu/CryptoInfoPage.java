@@ -31,7 +31,6 @@ public class CryptoInfoPage extends javax.swing.JFrame {
      * Creates new form CryptoPage
      */
     public CryptoInfoPage() {
-        Constant.currentUser = "don";
         setLocationRelativeTo(null);
         setResizable(false);
         initComponents();
