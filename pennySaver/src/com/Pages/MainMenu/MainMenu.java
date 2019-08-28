@@ -4,6 +4,7 @@ import com.Pages.Main.Main;
 import com.Support.Constant;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,7 +26,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     public void getField(javax.swing.JLabel label1, String column){
         try{
-            String SQL= "SELECT " + column +" From "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -41,7 +42,7 @@ public class MainMenu extends javax.swing.JFrame {
     
    public void getFieldString(javax.swing.JLabel label1, String column){
         try{
-            String SQL= "SELECT " + column +" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From  "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -101,7 +102,7 @@ public class MainMenu extends javax.swing.JFrame {
     
         public boolean getMenu(String column){
         try{
-            String SQL= "SELECT "+ column+" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT "+ column+" From  "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 boolean val = rs.getBoolean(column);
@@ -137,6 +138,7 @@ public class MainMenu extends javax.swing.JFrame {
         cryptoIcon = new javax.swing.JButton();
         editTextbtn = new javax.swing.JButton();
         logoutBtn = new javax.swing.JButton();
+        helpBtn = new javax.swing.JButton();
         InfoPanel = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         netWorthLabel = new javax.swing.JLabel();
@@ -267,7 +269,21 @@ public class MainMenu extends javax.swing.JFrame {
         });
         SIdeBarPanel.add(logoutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 140, 50));
 
-        WholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 470));
+        helpBtn.setBackground(new java.awt.Color(41, 57, 80));
+        helpBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/HelpButtonNormal.jpg"))); // NOI18N
+        helpBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                helpBtnMouseClicked(evt);
+            }
+        });
+        helpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpBtnActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(helpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 140, 50));
+
+        WholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 520));
 
         InfoPanel.setBackground(new java.awt.Color(240, 235, 216));
 
@@ -369,10 +385,10 @@ public class MainMenu extends javax.swing.JFrame {
                         .addGroup(InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 1, Short.MAX_VALUE)
+                        .addGap(0, 26, Short.MAX_VALUE)
                         .addGroup(InfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InfoPanelLayout.createSequentialGroup()
-                                .addGap(0, 31, Short.MAX_VALUE)
+                                .addGap(0, 56, Short.MAX_VALUE)
                                 .addComponent(takeHomeIncomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)
                                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -389,7 +405,7 @@ public class MainMenu extends javax.swing.JFrame {
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
 
-        WholePanel.add(InfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 600, 380));
+        WholePanel.add(InfoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 600, 430));
 
         headerPanel.setBackground(new java.awt.Color(34, 47, 66));
 
@@ -434,7 +450,7 @@ public class MainMenu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(WholePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 468, Short.MAX_VALUE)
+            .addComponent(WholePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -510,6 +526,22 @@ public class MainMenu extends javax.swing.JFrame {
         this.hide();
     }//GEN-LAST:event_budgetIconActionPerformed
 
+    private void helpBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_helpBtnMouseClicked
+
+    private void helpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtnActionPerformed
+        String message = " Welcome to the Main Menu\n" +
+        "▸Budgetting Page : View your budget, get some advice and adjust your budget however you choose.\n" +
+        "▸Savings Page: Calculate your savings forecast, view your current forecast and update it however you choose.\n" +
+        "▸Stocks Page: View your current stock holdings.\n" +
+        "▸Crypto Page: View your current crypto holdings.\n" +
+        "▸Edit Info Page: Edit your basic information or delete account.\n" +
+        "▸Logout: Logout and return to Login Page\n";
+        ImageIcon icon = new ImageIcon("src/com/pSHelp.png");
+        JOptionPane.showMessageDialog(rootPane, message,"Help Page", JOptionPane.INFORMATION_MESSAGE, icon);
+    }//GEN-LAST:event_helpBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -558,6 +590,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel employmentStatusLabel;
     private javax.swing.JLabel firstName;
     private javax.swing.JPanel headerPanel;
+    private javax.swing.JButton helpBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel18;

@@ -361,7 +361,7 @@ public class EnterCryptoPage extends javax.swing.JFrame {
     }
     
    public boolean isStockInTable(String symb) {
-        String query = "SELECT CRYPTO_SYMBOL FROM  "+ Constant.dbName + ".PCRYPTO WHERE username= '" + Constant.currentUser + "'"; 
+        String query = "SELECT CRYPTO_SYMBOL FROM  "+ Constant.tableName + ".PCRYPTO WHERE username= '" + Constant.currentUser + "'"; 
         try {
             ResultSet rs2 = Constant.stmt.executeQuery(query) ;
             if(rs2.next()){
@@ -406,7 +406,7 @@ public class EnterCryptoPage extends javax.swing.JFrame {
                 String[] options={"Yes", "No"};
                 int t =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Save?", "Confirm Save", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
                 if(t==JOptionPane.YES_OPTION){
-                    String sql = "INSERT INTO  "+ Constant.dbName + ".PCRYPTO (CRYPTO_SYMBOL, CRYPTO_NUMBER, USERNAME) VALUES (?, ?, ?)";
+                    String sql = "INSERT INTO  "+ Constant.tableName + ".PCRYPTO (CRYPTO_SYMBOL, CRYPTO_NUMBER, USERNAME) VALUES (?, ?, ?)";
                     PreparedStatement statement = Constant.con.prepareStatement(sql);
                     statement.setString(1, stockSymbol);
                     statement.setDouble(2, finalStockNumber);

@@ -135,8 +135,8 @@ public class NoUseMain extends javax.swing.JFrame {
         int f =  JOptionPane.showOptionDialog(null, "Do You Want To Delete Your Account?", "Confirm Save", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
         if(f==JOptionPane.YES_OPTION){
             try{
-                //String sql = "DELETE FROM "+ Constant.dbName + ".PUSERS WHERE USERNAME = 'bb123' AND PASSWORD = 'VGVzdCQxMjM=' AND FIRSTNAME = 'Betty' AND LASTNAME = 'Beryl' AND EMAILADDRESS = 'bb@gmail.com' AND NET_WORTH = 9000000.0 AND NET_INCOME = 7000.0 AND MONTHLY_SAVINGS = 3000.0 AND EMPLOYMENT_STATUS = 'Self-Employed';\n";
-                String sql = "DELETE FROM "+ Constant.dbName + ".PUSERS WHERE USERNAME = ?";
+                //String sql = "DELETE FROM "+ Constant.tableName + ".PUSERS WHERE USERNAME = 'bb123' AND PASSWORD = 'VGVzdCQxMjM=' AND FIRSTNAME = 'Betty' AND LASTNAME = 'Beryl' AND EMAILADDRESS = 'bb@gmail.com' AND NET_WORTH = 9000000.0 AND NET_INCOME = 7000.0 AND MONTHLY_SAVINGS = 3000.0 AND EMPLOYMENT_STATUS = 'Self-Employed';\n";
+                String sql = "DELETE FROM "+ Constant.tableName + ".PUSERS WHERE USERNAME = ?";
                 PreparedStatement statement = Constant.con.prepareStatement(sql);
                 statement.setString(1, Constant.currentUser);
                 int rowsInserted = statement.executeUpdate();

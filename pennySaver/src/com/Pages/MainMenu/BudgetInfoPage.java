@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.NumberFormat;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -133,7 +134,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     
         public boolean getMenu(String column){
         try{
-            String SQL= "SELECT "+ column+" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT "+ column+" From  "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 boolean val = rs.getBoolean(column);
@@ -150,7 +151,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         
        public void putFieldString(javax.swing.JTextField JtexTield, String column){
         try{
-            String SQL= "SELECT " + column +" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From  "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -166,7 +167,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
        
     public void getFieldString(javax.swing.JTextField JtexTield, String column){
         try{
-            String SQL= "SELECT " + column +" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From  "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -182,7 +183,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
 
     public Double getIncome(){
         try{
-            String SQL= "SELECT net_income From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT net_income From  "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 Double val = rs.getDouble("net_income");
@@ -199,7 +200,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
    
    public Double getField(String column){
         try{
-            String SQL= "SELECT " + column +" From  "+ Constant.dbName + ".PBUDGET WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From  "+ Constant.tableName + ".PBUDGET WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 Double var = rs.getDouble(column); 
@@ -351,6 +352,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         editTextbtn = new javax.swing.JButton();
         logoutBtn = new javax.swing.JButton();
         budgetIcon = new javax.swing.JButton();
+        helpBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -703,7 +705,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
                 Edit1ActionPerformed(evt);
             }
         });
-        WholePanel.add(Edit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 440, 130, 40));
+        WholePanel.add(Edit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 450, 130, 40));
 
         SIdeBarPanel.setBackground(new java.awt.Color(29, 45, 68));
         SIdeBarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -809,7 +811,21 @@ public class BudgetInfoPage extends javax.swing.JFrame {
         });
         SIdeBarPanel.add(budgetIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 140, 50));
 
-        WholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 480));
+        helpBtn.setBackground(new java.awt.Color(41, 57, 80));
+        helpBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/HelpButtonNormal.jpg"))); // NOI18N
+        helpBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                helpBtnMouseClicked(evt);
+            }
+        });
+        helpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpBtnActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(helpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 140, 50));
+
+        WholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -912,6 +928,22 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     private void budgetIconActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_budgetIconActionPerformed
     }//GEN-LAST:event_budgetIconActionPerformed
 
+    private void helpBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_helpBtnMouseClicked
+
+    private void helpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtnActionPerformed
+        String message = " Welcome to the Main Menu\n" +
+        "▸Budgetting Page : View your budget, get some advice and adjust your budget however you choose.\n" +
+        "▸Savings Page: Calculate your savings forecast, view your current forecast and update it however you choose.\n" +
+        "▸Stocks Page: View your current stock holdings.\n" +
+        "▸Crypto Page: View your current crypto holdings.\n" +
+        "▸Edit Info Page: Edit your basic information or delete account.\n" +
+        "▸Logout: Logout and return to Login Page\n";
+        ImageIcon icon = new ImageIcon("src/com/pSHelp.png");
+        JOptionPane.showMessageDialog(rootPane, message,"Help Page", JOptionPane.INFORMATION_MESSAGE, icon);
+    }//GEN-LAST:event_helpBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -966,6 +998,7 @@ public class BudgetInfoPage extends javax.swing.JFrame {
     private javax.swing.JTextField entertainmentField;
     private javax.swing.JTextField feesField;
     private javax.swing.JPanel headerPanel;
+    private javax.swing.JButton helpBtn;
     private javax.swing.JTextField homeField;
     private javax.swing.JTextField incomeField;
     private javax.swing.JLabel jLabel1;

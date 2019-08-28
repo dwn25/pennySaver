@@ -129,7 +129,7 @@ public class SavingsQuestionPage extends javax.swing.JFrame {
     private void NoBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoBtn1ActionPerformed
         Constant.hasSavings = false;
         Constant.DoConnect();
-        String sql = ("UPDATE  "+ Constant.dbName + ".PUSERS SET hasSavings = ? WHERE username= ?");
+        String sql = ("UPDATE  "+ Constant.tableName + ".PUSERS SET hasSavings = ? WHERE username= ?");
         PreparedStatement statement;
         try {
             statement = Constant.con.prepareStatement(sql);
@@ -154,7 +154,7 @@ public class SavingsQuestionPage extends javax.swing.JFrame {
     private void yesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesBtnActionPerformed
         Constant.hasSavings = true;
         Constant.DoConnect();
-        String sql = ("UPDATE  "+ Constant.dbName + ".PUSERS SET hasSavings = ? WHERE username= ?");
+        String sql = ("UPDATE  "+ Constant.tableName + ".PUSERS SET hasSavings = ? WHERE username= ?");
         PreparedStatement statement;
         try {
             statement = Constant.con.prepareStatement(sql);

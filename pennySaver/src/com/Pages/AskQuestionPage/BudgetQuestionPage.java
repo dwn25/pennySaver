@@ -119,7 +119,7 @@ public class BudgetQuestionPage extends javax.swing.JFrame {
     private void yesBTnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesBTnActionPerformed
         Constant.hasBudget = true;
         Constant.DoConnect();
-        String sql = ("UPDATE  "+ Constant.dbName + ".PUSERS SET hasbudget = ? WHERE username= ?");
+        String sql = ("UPDATE  "+ Constant.tableName + ".PUSERS SET hasbudget = ? WHERE username= ?");
         PreparedStatement statement;
         try {
             statement = Constant.con.prepareStatement(sql);
@@ -144,7 +144,7 @@ public class BudgetQuestionPage extends javax.swing.JFrame {
     private void NoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoBtnActionPerformed
         Constant.hasBudget = false;
         Constant.DoConnect();
-        String sql = ("UPDATE  "+ Constant.dbName + ".PUSERS SET hasbudget = ? WHERE username= ?");
+        String sql = ("UPDATE  "+ Constant.tableName + ".PUSERS SET hasbudget = ? WHERE username= ?");
         PreparedStatement statement;
         try {
             statement = Constant.con.prepareStatement(sql);

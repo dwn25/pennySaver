@@ -28,7 +28,7 @@ public class EnterSavingsPage extends javax.swing.JFrame {
     
     public Double getIncome(){
         try{
-            String SQL= "SELECT net_income From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT net_income From  "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 Double val = rs.getDouble("net_income");
@@ -71,7 +71,7 @@ public class EnterSavingsPage extends javax.swing.JFrame {
 
     public String getField(String column){
         try{
-            String SQL= "SELECT " + column +" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From  "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -88,7 +88,7 @@ public class EnterSavingsPage extends javax.swing.JFrame {
     
    public Double getFieldD(String column){
         try{
-            String SQL= "SELECT " + column +" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From  "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 Double var = rs.getDouble(column); 
@@ -566,8 +566,8 @@ public class EnterSavingsPage extends javax.swing.JFrame {
                 int f =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Save These Values?", "Confirm Save", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
                 if(f==JOptionPane.YES_OPTION){
                     if(Constant.currentUser.length()>2){
-                        //String sql = "INSERT INTO  "+ Constant.dbName + ".PBANK (USERNAME, PRINCIPAL, RATE, \"TIME\", SAVED_INTEREST, SAVED_AMOUNT)" +"	VALUES (?, ?, ?, ?, ?, ?)";
-                        String sql = "INSERT INTO "+ Constant.dbName + ".PBANK (USERNAME, PRINCIPAL, RATE, `TIME`, SAVED_INTEREST, SAVED_AMOUNT) VALUES (?, ?, ?, ?, ?, ?)";
+                        //String sql = "INSERT INTO  "+ Constant.tableName + ".PBANK (USERNAME, PRINCIPAL, RATE, \"TIME\", SAVED_INTEREST, SAVED_AMOUNT)" +"	VALUES (?, ?, ?, ?, ?, ?)";
+                        String sql = "INSERT INTO "+ Constant.tableName + ".PBANK (USERNAME, PRINCIPAL, RATE, `TIME`, SAVED_INTEREST, SAVED_AMOUNT) VALUES (?, ?, ?, ?, ?, ?)";
                         PreparedStatement statement = Constant.con.prepareStatement(sql);
                         statement.setString(1, Constant.currentUser);
                         statement.setDouble(2, final_principal);
@@ -612,7 +612,7 @@ public class EnterSavingsPage extends javax.swing.JFrame {
     }//GEN-LAST:event_timeFieldActionPerformed
     
     public boolean addedSavings(String username) {
-        String query = "SELECT username FROM  "+ Constant.dbName + ".PBANK WHERE username= '" + username + "'"; 
+        String query = "SELECT username FROM  "+ Constant.tableName + ".PBANK WHERE username= '" + username + "'"; 
         try {
             ResultSet rs2 = Constant.stmt.executeQuery(query) ;
             if(rs2.next()){

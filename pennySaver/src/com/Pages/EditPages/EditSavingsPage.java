@@ -57,7 +57,7 @@ public class EditSavingsPage extends javax.swing.JFrame {
    
    public Double getFieldDouble(String column){
         try{
-            String SQL= "SELECT " + column +" From "+ Constant.dbName + ".PBANK WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From "+ Constant.tableName + ".PBANK WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 Double var = rs.getDouble(column); 
@@ -74,7 +74,7 @@ public class EditSavingsPage extends javax.swing.JFrame {
        
       public String getFieldString(String column){
         try{
-            String SQL= "SELECT " + column +" From "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -504,8 +504,8 @@ public class EditSavingsPage extends javax.swing.JFrame {
                 if(f==JOptionPane.YES_OPTION){
                     System.out.println(interest);
                     System.out.println(amount);
-                    //String sql = "UPDATE "+ Constant.dbName + ".PBUDGET SET `HOME` = ?, `SHOPPING` = ?, `DINING_AND_DRINKS` = ?, `AUTO` = ?, `TRAVEL` = ?, `BILLS` = ?, `ENTERTAINMENT` = ?, `FEES` = ?, `PERSONAL` = ?, `LOANS` = ?,`EDUCATION` = ?, `OTHER` = ? WHERE USERNAME = ?";
-                    String sql = "UPDATE "+ Constant.dbName + ".PBANK SET `PRINCIPAL` = ?, `RATE` = ?, `TIME`  = ?, `SAVED_INTEREST` = ?, `SAVED_AMOUNT` = ? WHERE USERNAME = ?";
+                    //String sql = "UPDATE "+ Constant.tableName + ".PBUDGET SET `HOME` = ?, `SHOPPING` = ?, `DINING_AND_DRINKS` = ?, `AUTO` = ?, `TRAVEL` = ?, `BILLS` = ?, `ENTERTAINMENT` = ?, `FEES` = ?, `PERSONAL` = ?, `LOANS` = ?,`EDUCATION` = ?, `OTHER` = ? WHERE USERNAME = ?";
+                    String sql = "UPDATE "+ Constant.tableName + ".PBANK SET `PRINCIPAL` = ?, `RATE` = ?, `TIME`  = ?, `SAVED_INTEREST` = ?, `SAVED_AMOUNT` = ? WHERE USERNAME = ?";
                     PreparedStatement statement = Constant.con.prepareStatement(sql);
                     statement.setDouble(1,final_principal);
                     statement.setDouble(2,rate);

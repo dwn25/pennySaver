@@ -5,6 +5,7 @@ import com.Support.Constant;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -67,7 +68,7 @@ public void onRun(){
     
         public boolean getMenu(String column){
         try{
-            String SQL= "SELECT "+ column+" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT "+ column+" From  "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 boolean val = rs.getBoolean(column);
@@ -84,7 +85,7 @@ public void onRun(){
  
     public void getField(JTextField label1, String column){
         try{
-            String SQL= "SELECT " + column +" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From  "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -101,7 +102,7 @@ public void onRun(){
     
    public void getFieldString(JTextField label1, String column){
         try{
-            String SQL= "SELECT " + column +" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From  "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -117,7 +118,7 @@ public void onRun(){
     }
     public void putFieldString(javax.swing.JTextField JtexTield, String column){
         try{
-            String SQL= "SELECT " + column +" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From  "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -151,6 +152,7 @@ public void onRun(){
         editInfoPage = new javax.swing.JToggleButton();
         cryptoIcon = new javax.swing.JToggleButton();
         stocksIcon = new javax.swing.JToggleButton();
+        helpBtn = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -304,6 +306,20 @@ public void onRun(){
             }
         });
         SIdeBarPanel.add(stocksIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 130, 50));
+
+        helpBtn.setBackground(new java.awt.Color(41, 57, 80));
+        helpBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/HelpButtonNormal.jpg"))); // NOI18N
+        helpBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                helpBtnMouseClicked(evt);
+            }
+        });
+        helpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpBtnActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(helpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 140, 50));
 
         WholePanel.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 490));
 
@@ -525,7 +541,7 @@ public void onRun(){
 
     public void setEmployment(String column){
         try{
-            String SQL= "SELECT " + column +" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From  "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -565,7 +581,7 @@ public void onRun(){
                     System.out.println(netWorth);
                     System.out.println(monthlyIncome);
                     System.out.println(monthlySavings);
-                    String sql = ("UPDATE  "+ Constant.dbName + ".PUSERS SET employment_status = ?, net_income = ?, net_worth = ?, monthly_savings = ? WHERE username= ?");
+                    String sql = ("UPDATE  "+ Constant.tableName + ".PUSERS SET employment_status = ?, net_income = ?, net_worth = ?, monthly_savings = ? WHERE username= ?");
                     PreparedStatement statement = Constant.con.prepareStatement(sql);
                     statement.setString(1, status);
                     statement.setDouble(2, monthlyIncome);
@@ -595,30 +611,30 @@ public void onRun(){
                     + " This Decision Cannot Be Reversed", "Delete", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
             if(p==JOptionPane.YES_OPTION){
                 Constant.DoConnect();
-                String sql = "DELETE FROM  "+ Constant.dbName + ".PUSERS WHERE USERNAME = ?";
+                String sql = "DELETE FROM  "+ Constant.tableName + ".PUSERS WHERE USERNAME = ?";
                 PreparedStatement statement = Constant.con.prepareStatement(sql);
                 statement.setString(1, Constant.currentUser);
                 statement.executeUpdate();
                 if(budget){
-                    String sql1 = "DELETE FROM  "+ Constant.dbName + ".PBUDGET WHERE USERNAME = ?";
+                    String sql1 = "DELETE FROM  "+ Constant.tableName + ".PBUDGET WHERE USERNAME = ?";
                     PreparedStatement statement1 = Constant.con.prepareStatement(sql1);
                     statement.setString(1, Constant.currentUser);
                     statement1.executeUpdate();
                 }
                 if(savings){
-                    String sql1 = "DELETE FROM  "+ Constant.dbName + ".PBANK WHERE USERNAME = ?";
+                    String sql1 = "DELETE FROM  "+ Constant.tableName + ".PBANK WHERE USERNAME = ?";
                     PreparedStatement statement1 = Constant.con.prepareStatement(sql1);
                     statement.setString(1, Constant.currentUser);
                     statement1.executeUpdate();
                 }
                 if(stocks){
-                    String sql1 = "DELETE FROM  "+ Constant.dbName + ".PSTOCKS WHERE USERNAME = ?";
+                    String sql1 = "DELETE FROM  "+ Constant.tableName + ".PSTOCKS WHERE USERNAME = ?";
                     PreparedStatement statement1 = Constant.con.prepareStatement(sql1);
                     statement.setString(1, Constant.currentUser);
                     statement1.executeUpdate();
                 }
                 if(crypto){                   
-                    String sql1 = "DELETE FROM  "+ Constant.dbName + ".PCRYPTO WHERE USERNAME = ?";
+                    String sql1 = "DELETE FROM  "+ Constant.tableName + ".PCRYPTO WHERE USERNAME = ?";
                     PreparedStatement statement1 = Constant.con.prepareStatement(sql1);
                     statement.setString(1, Constant.currentUser);
                     statement1.executeUpdate();  
@@ -673,6 +689,22 @@ public void onRun(){
         // TODO add your handling code here:
     }//GEN-LAST:event_stocksIconActionPerformed
 
+    private void helpBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_helpBtnMouseClicked
+
+    private void helpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtnActionPerformed
+        String message = " Welcome to the Main Menu\n" +
+        "▸Budgetting Page : View your budget, get some advice and adjust your budget however you choose.\n" +
+        "▸Savings Page: Calculate your savings forecast, view your current forecast and update it however you choose.\n" +
+        "▸Stocks Page: View your current stock holdings.\n" +
+        "▸Crypto Page: View your current crypto holdings.\n" +
+        "▸Edit Info Page: Edit your basic information or delete account.\n" +
+        "▸Logout: Logout and return to Login Page\n";
+        ImageIcon icon = new ImageIcon("src/com/pSHelp.png");
+        JOptionPane.showMessageDialog(rootPane, message,"Help Page", JOptionPane.INFORMATION_MESSAGE, icon);
+    }//GEN-LAST:event_helpBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -720,6 +752,7 @@ public void onRun(){
     private javax.swing.JToggleButton editInfoPage;
     private javax.swing.JComboBox<String> employmentStatus;
     private javax.swing.JPanel headerPanel;
+    private javax.swing.JButton helpBtn;
     private javax.swing.JTextField incomeField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel19;

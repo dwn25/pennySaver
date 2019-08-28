@@ -11,11 +11,11 @@ import java.sql.Statement;
  * @author DNartey
  */
 public class Constant {
-    
     public static String alphaVantageAPIKey = "I58H97J6G9Y75TXB";
     public static String currentUser = "";
     public static String currentUserID = "";
     public static String mainAdvice = "";
+    public static String tableName = "sql9303230";
     public static String dbName = "sql9303230";
     public static Connection con;
     public static Statement stmt;
@@ -44,11 +44,12 @@ public class Constant {
         catch(Exception ex){
             System.out.println(ex.getMessage());
         }
-  }
+    }
+    
      public static void DoConnect(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
-            String url = "jdbc:mysql://sql9.freemysqlhosting.net:3306/sql9303230";
+            String url = "jdbc:mysql://sql9.freemysqlhosting.net:3306/" + dbName;
             username="sql9303230";
             pwd="NxwMDZzAAU";
             con= DriverManager.getConnection(url, username, pwd);

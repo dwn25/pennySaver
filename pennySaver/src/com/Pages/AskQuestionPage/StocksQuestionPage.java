@@ -112,7 +112,7 @@ public class StocksQuestionPage extends javax.swing.JFrame {
     private void YEsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YEsBtnActionPerformed
        Constant.hasStocks = true;
        Constant.DoConnect();
-       String sql = ("UPDATE  "+ Constant.dbName + ".PUSERS SET hasstocks = ? WHERE username= ?");
+       String sql = ("UPDATE  "+ Constant.tableName + ".PUSERS SET hasstocks = ? WHERE username= ?");
        PreparedStatement statement;
         try {
             statement = Constant.con.prepareStatement(sql);
@@ -137,7 +137,7 @@ public class StocksQuestionPage extends javax.swing.JFrame {
     private void NoBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoBtn2ActionPerformed
         Constant.hasStocks = false;
        Constant.DoConnect();
-       String sql = ("UPDATE  "+ Constant.dbName + ".PUSERS SET hasstocks = ? WHERE username= ?");
+       String sql = ("UPDATE  "+ Constant.tableName + ".PUSERS SET hasstocks = ? WHERE username= ?");
        PreparedStatement statement;
         try {
             statement = Constant.con.prepareStatement(sql);

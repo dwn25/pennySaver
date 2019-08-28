@@ -19,12 +19,12 @@ import java.nio.charset.Charset;
 public class Stocks {
     
     private static String readAll(Reader rd) throws IOException {
-        StringBuilder sb = new StringBuilder();
-        int cp;
-        while ((cp = rd.read()) != -1) {
-          sb.append((char) cp);
+        StringBuilder stringB = new StringBuilder();
+        int integerP;
+        while ((integerP = rd.read()) != -1){
+            stringB.append((char) integerP);
         }
-        return sb.toString();
+        return stringB.toString();
     }
 
   public static Double getPrice(String symb) throws IOException {
@@ -51,28 +51,28 @@ public class Stocks {
   }
   
   public static boolean checkSymbol(String symb) throws IOException, MalformedURLException {
-          boolean cryp = false;
-          String url = "https://www.alphavantage.co/query?"
-                + "function=GLOBAL_QUOTE&"
-                + "symbol="+symb+"&"
-                + "outputsize=compact&"
-                + "apikey="+Constant.alphaVantageAPIKey;
-                InputStream is = new URL(url).openStream();
-        try {
-          BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-          String jsonText = readAll(rd);
-          JsonObject jsonObject = new JsonParser().parse(jsonText).getAsJsonObject();
-          Double price = jsonObject.getAsJsonObject("Global Quote").get("05. price").getAsDouble();
-          System.out.println("Price:  " + price);
-          cryp = true;
-          return cryp;
-        }
-        catch(Exception e){
+       boolean cryp = false;
+       String url = "https://www.alphavantage.co/query?"
+             + "function=GLOBAL_QUOTE&"
+             + "symbol="+symb+"&"
+             + "outputsize=compact&"
+             + "apikey="+Constant.alphaVantageAPIKey;
+             InputStream is = new URL(url).openStream();
+       try{
+           BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+           String jsonText = readAll(rd);
+           JsonObject jsonObject = new JsonParser().parse(jsonText).getAsJsonObject();
+           Double price = jsonObject.getAsJsonObject("Global Quote").get("05. price").getAsDouble();
+           System.out.println("Price:  " + price);
+           cryp = true;
+           return cryp;
+       }catch(Exception e){
           cryp = false;
           return cryp;
-        }
-        finally{
-          is.close();
-        }
-      }
+       }
+       finally{
+           is.close();
+       }
+  }
+
 }

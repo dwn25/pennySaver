@@ -5,6 +5,7 @@ import com.Pages.Main.Main;
 import com.Support.Constant;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -94,7 +95,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     
         public boolean getMenu(String column){
         try{
-            String SQL= "SELECT "+ column+" From "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT "+ column+" From "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 boolean val = rs.getBoolean(column);
@@ -111,7 +112,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         
         public String getField( String column){
         try{
-            String SQL= "SELECT " + column +" From "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -128,7 +129,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     
        public Double getFieldDouble(String column){
         try{
-            String SQL= "SELECT " + column +" From "+ Constant.dbName + ".PBANK WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From "+ Constant.tableName + ".PBANK WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 Double var = rs.getDouble(column); 
@@ -145,7 +146,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
        
       public String getFieldString(String column){
         try{
-            String SQL= "SELECT " + column +" From "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -162,7 +163,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
           
     public Double getIncome(){
         try{
-            String SQL= "SELECT net_income From "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT net_income From "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 Double val = rs.getDouble("net_income");
@@ -230,6 +231,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         editTextbtn = new javax.swing.JButton();
         logoutBtn = new javax.swing.JButton();
         budgetIcon = new javax.swing.JButton();
+        helpBtn = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -555,6 +557,20 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         });
         SIdeBarPanel2.add(budgetIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 140, 50));
 
+        helpBtn.setBackground(new java.awt.Color(41, 57, 80));
+        helpBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/HelpButtonNormal.jpg"))); // NOI18N
+        helpBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                helpBtnMouseClicked(evt);
+            }
+        });
+        helpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpBtnActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel2.add(helpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 140, 50));
+
         WholePanel3.add(SIdeBarPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 520));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -663,6 +679,22 @@ public class SavingsInfoPage extends javax.swing.JFrame {
         
     }//GEN-LAST:event_budgetIconActionPerformed
 
+    private void helpBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_helpBtnMouseClicked
+
+    private void helpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtnActionPerformed
+        String message = " Welcome to the Main Menu\n" +
+        "▸Budgetting Page : View your budget, get some advice and adjust your budget however you choose.\n" +
+        "▸Savings Page: Calculate your savings forecast, view your current forecast and update it however you choose.\n" +
+        "▸Stocks Page: View your current stock holdings.\n" +
+        "▸Crypto Page: View your current crypto holdings.\n" +
+        "▸Edit Info Page: Edit your basic information or delete account.\n" +
+        "▸Logout: Logout and return to Login Page\n";
+        ImageIcon icon = new ImageIcon("src/com/pSHelp.png");
+        JOptionPane.showMessageDialog(rootPane, message,"Help Page", JOptionPane.INFORMATION_MESSAGE, icon);
+    }//GEN-LAST:event_helpBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -701,8 +733,6 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Edit;
     private javax.swing.JPanel InfoPanel3;
-    private javax.swing.JPanel SIdeBarPanel;
-    private javax.swing.JPanel SIdeBarPanel1;
     private javax.swing.JPanel SIdeBarPanel2;
     private javax.swing.JButton SavingsIcon;
     private javax.swing.JButton StocksIcon;
@@ -711,6 +741,7 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     private javax.swing.JButton cryptoIcon;
     private javax.swing.JButton editTextbtn;
     private javax.swing.JPanel headerPanel;
+    private javax.swing.JButton helpBtn;
     private javax.swing.JTextField interestField;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
@@ -720,16 +751,12 @@ public class SavingsInfoPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea;
     private javax.swing.JButton logoutBtn;
-    private javax.swing.JButton mainMenu;
-    private javax.swing.JButton mainMenu1;
     private javax.swing.JButton mainMenu2;
     private javax.swing.JTextField principalField;
     private javax.swing.JTextField rateField;

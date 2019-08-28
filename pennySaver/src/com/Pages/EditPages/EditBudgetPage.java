@@ -254,7 +254,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
     }
     public void putFieldString(javax.swing.JTextField JtexTield, String column){
         try{
-            String SQL= "SELECT " + column +" From "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 String val = rs.getString(column);
@@ -272,7 +272,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
 
     public Double getIncome(){
         try{
-            String SQL= "SELECT net_income From "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT net_income From "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 Double val = rs.getDouble("net_income");
@@ -290,7 +290,7 @@ public class EditBudgetPage extends javax.swing.JFrame {
    
    public Double getField(String column){
         try{
-            String SQL= "SELECT " + column +" From "+ Constant.dbName + ".PBUDGET WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT " + column +" From "+ Constant.tableName + ".PBUDGET WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 Double var = rs.getDouble(column); 
@@ -1053,8 +1053,8 @@ public class EditBudgetPage extends javax.swing.JFrame {
                 String[] options={"Yes", "No"};
                 int t =  JOptionPane.showOptionDialog(null, "Are You Sure You Want To Save?", "Confirm Save", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
                 if(t==JOptionPane.YES_OPTION){
-                    String sql = "UPDATE "+ Constant.dbName + ".PBUDGET SET `HOME` = ?, `SHOPPING` = ?, `DINING_AND_DRINKS` = ?, `AUTO` = ?, `TRAVEL` = ?, `BILLS` = ?, `ENTERTAINMENT` = ?, `FEES` = ?, `PERSONAL` = ?, `LOANS` = ?,`EDUCATION` = ?, `OTHER` = ? WHERE USERNAME = ?";
-                    String sql1 = "UPDATE "+ Constant.dbName + ".PBUDGET SET \"HOME\" = ?, \"SHOPPING\" = ?, \"DINING_AND_DRINKS\" = ?, \"AUTO\" = ?, \"TRAVEL\" = ?, \"BILLS\" = ?, \"ENTERTAINMENT\" = ?, \"FEES\" = ?, \"PERSONAL\" = ?, \"LOANS\" = ?, \"EDUCATION\" = ?, \"OTHER\" = ? WHERE USERNAME = ?" +"";
+                    String sql = "UPDATE "+ Constant.tableName + ".PBUDGET SET `HOME` = ?, `SHOPPING` = ?, `DINING_AND_DRINKS` = ?, `AUTO` = ?, `TRAVEL` = ?, `BILLS` = ?, `ENTERTAINMENT` = ?, `FEES` = ?, `PERSONAL` = ?, `LOANS` = ?,`EDUCATION` = ?, `OTHER` = ? WHERE USERNAME = ?";
+                    String sql1 = "UPDATE "+ Constant.tableName + ".PBUDGET SET \"HOME\" = ?, \"SHOPPING\" = ?, \"DINING_AND_DRINKS\" = ?, \"AUTO\" = ?, \"TRAVEL\" = ?, \"BILLS\" = ?, \"ENTERTAINMENT\" = ?, \"FEES\" = ?, \"PERSONAL\" = ?, \"LOANS\" = ?, \"EDUCATION\" = ?, \"OTHER\" = ? WHERE USERNAME = ?" +"";
                     PreparedStatement statement = Constant.con.prepareStatement(sql);
                     statement.setDouble(1, home);
                     statement.setDouble(2, shopping);

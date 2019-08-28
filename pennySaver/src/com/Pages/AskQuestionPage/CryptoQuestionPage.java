@@ -121,7 +121,7 @@ public class CryptoQuestionPage extends javax.swing.JFrame {
     private void YEsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YEsBtnActionPerformed
         Constant.hasCrypto = true;
         Constant.DoConnect();
-        String sql = ("UPDATE  "+ Constant.dbName + ".PUSERS SET hasCrypto = ? WHERE username= ?");
+        String sql = ("UPDATE  "+ Constant.tableName + ".PUSERS SET hasCrypto = ? WHERE username= ?");
         PreparedStatement statement;
         try {
             statement = Constant.con.prepareStatement(sql);
@@ -146,7 +146,7 @@ public class CryptoQuestionPage extends javax.swing.JFrame {
     private void NoBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoBtn2ActionPerformed
         Constant.hasCrypto = false;
         Constant.DoConnect();
-        String sql = ("UPDATE  "+ Constant.dbName + ".PUSERS SET hasCrypto = ? WHERE username= ?");
+        String sql = ("UPDATE  "+ Constant.tableName + ".PUSERS SET hasCrypto = ? WHERE username= ?");
         PreparedStatement statement;
         try {
             statement = Constant.con.prepareStatement(sql);

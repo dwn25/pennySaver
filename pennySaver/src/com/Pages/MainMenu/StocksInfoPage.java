@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -72,6 +73,7 @@ public class StocksInfoPage extends javax.swing.JFrame {
         logoutBtn = new javax.swing.JButton();
         budgetIcon = new javax.swing.JButton();
         stocksIcon = new javax.swing.JToggleButton();
+        helpBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -325,6 +327,20 @@ public class StocksInfoPage extends javax.swing.JFrame {
         });
         SIdeBarPanel.add(stocksIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 140, 50));
 
+        helpBtn.setBackground(new java.awt.Color(41, 57, 80));
+        helpBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/HelpButtonNormal.jpg"))); // NOI18N
+        helpBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                helpBtnMouseClicked(evt);
+            }
+        });
+        helpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpBtnActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(helpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 140, 50));
+
         WholePanel3.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 640));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -346,7 +362,7 @@ public class StocksInfoPage extends javax.swing.JFrame {
    public void updateTable() throws SQLException, IOException, InterruptedException{
        try {
            Constant.DoConnect();
-           String sql = "SELECT * FROM "+ Constant.dbName + ".PSTOCKS WHERE username LIKE '"+Constant.currentUser+"%'" ;
+           String sql = "SELECT * FROM "+ Constant.tableName + ".PSTOCKS WHERE username LIKE '"+Constant.currentUser+"%'" ;
            Constant.rs=Constant.stmt.executeQuery(sql);
            DefaultTableModel tbl = (DefaultTableModel) jTable.getModel();
            tbl.setRowCount(0);
@@ -410,7 +426,7 @@ public class StocksInfoPage extends javax.swing.JFrame {
     
         public boolean getMenu(String column){
         try{
-            String SQL= "SELECT "+ column+" From "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT "+ column+" From "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 boolean val = rs.getBoolean(column);
@@ -550,6 +566,22 @@ public class StocksInfoPage extends javax.swing.JFrame {
 
     }//GEN-LAST:event_stocksIconActionPerformed
 
+    private void helpBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpBtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_helpBtnMouseClicked
+
+    private void helpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtnActionPerformed
+        String message = " Welcome to the Main Menu\n" +
+        "▸Budgetting Page : View your budget, get some advice and adjust your budget however you choose.\n" +
+        "▸Savings Page: Calculate your savings forecast, view your current forecast and update it however you choose.\n" +
+        "▸Stocks Page: View your current stock holdings.\n" +
+        "▸Crypto Page: View your current crypto holdings.\n" +
+        "▸Edit Info Page: Edit your basic information or delete account.\n" +
+        "▸Logout: Logout and return to Login Page\n";
+        ImageIcon icon = new ImageIcon("src/com/pSHelp.png");
+        JOptionPane.showMessageDialog(rootPane, message,"Help Page", JOptionPane.INFORMATION_MESSAGE, icon);
+    }//GEN-LAST:event_helpBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -598,6 +630,7 @@ public class StocksInfoPage extends javax.swing.JFrame {
     private javax.swing.JButton cryptoIcon;
     private javax.swing.JButton editTextbtn;
     private javax.swing.JPanel headerPanel;
+    private javax.swing.JButton helpBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;

@@ -406,7 +406,7 @@ public class RegisterForm extends javax.swing.JFrame {
     }
     
     public boolean isUsernameRegistered(String username) {
-        String query = "SELECT username FROM  "+ Constant.dbName + ".PUSERS WHERE username= '" + username + "'"; 
+        String query = "SELECT username FROM  "+ Constant.tableName + ".PUSERS WHERE username= '" + username + "'"; 
         try {
             ResultSet rs2 = Constant.stmt.executeQuery(query) ;
             if(rs2.next()){
@@ -479,7 +479,7 @@ public class RegisterForm extends javax.swing.JFrame {
                 if (t==JOptionPane.YES_OPTION){
                     byte[] encodedBytes = Base64.getEncoder().encode(pwd.getBytes());
                     String finalPWD = new String(encodedBytes);
-                    String sql = ("INSERT INTO  "+ Constant.dbName + ".PUSERS( USERNAME , PASSWORD ,FIRSTNAME,  LASTNAME ,  EMAILADDRESS  )values(?,?,?,?,?)" );
+                    String sql = ("INSERT INTO  "+ Constant.tableName + ".PUSERS( USERNAME , PASSWORD ,FIRSTNAME,  LASTNAME ,  EMAILADDRESS  )values(?,?,?,?,?)" );
                     PreparedStatement statement = Constant.con.prepareStatement(sql);
                     statement.setString(1, user);
                     statement.setString(2, finalPWD);

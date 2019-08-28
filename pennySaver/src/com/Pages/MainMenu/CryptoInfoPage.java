@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -77,7 +78,7 @@ public class CryptoInfoPage extends javax.swing.JFrame {
     
         public boolean getMenu(String column){
         try{
-            String SQL= "SELECT "+ column+" From  "+ Constant.dbName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
+            String SQL= "SELECT "+ column+" From  "+ Constant.tableName + ".PUSERS WHERE username= '"+Constant.currentUser+"'";    
             ResultSet rs = Constant.stmt.executeQuery(SQL);
             if(rs.next()){
                 boolean val = rs.getBoolean(column);
@@ -96,7 +97,7 @@ public class CryptoInfoPage extends javax.swing.JFrame {
        public void updateTable() throws SQLException, IOException{
        try {
            Constant.DoConnect();
-           String sql = "SELECT * FROM "+ Constant.dbName + ".PCRYPTO WHERE username LIKE '"+Constant.currentUser+"%'" ;
+           String sql = "SELECT * FROM "+ Constant.tableName + ".PCRYPTO WHERE username LIKE '"+Constant.currentUser+"%'" ;
            Constant.rs=Constant.stmt.executeQuery(sql);
            DefaultTableModel tbl = (DefaultTableModel) jTable1.getModel();
            tbl.setRowCount(0);
@@ -163,6 +164,7 @@ public class CryptoInfoPage extends javax.swing.JFrame {
         cryptoIcon = new javax.swing.JButton();
         SavingsIcon1 = new javax.swing.JButton();
         StocksIcon = new javax.swing.JButton();
+        helpBtn2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -403,6 +405,20 @@ public class CryptoInfoPage extends javax.swing.JFrame {
         });
         SIdeBarPanel.add(StocksIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 140, 50));
 
+        helpBtn2.setBackground(new java.awt.Color(41, 57, 80));
+        helpBtn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/Logos/MenuButtons/HelpButtonNormal.jpg"))); // NOI18N
+        helpBtn2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                helpBtn2MouseClicked(evt);
+            }
+        });
+        helpBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpBtn2ActionPerformed(evt);
+            }
+        });
+        SIdeBarPanel.add(helpBtn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 630, 140, 50));
+
         WholePanel3.add(SIdeBarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 690));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -413,7 +429,7 @@ public class CryptoInfoPage extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(WholePanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
+            .addComponent(WholePanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -511,6 +527,22 @@ public class CryptoInfoPage extends javax.swing.JFrame {
         this.hide();
     }//GEN-LAST:event_EditActionPerformed
 
+    private void helpBtn2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpBtn2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_helpBtn2MouseClicked
+
+    private void helpBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtn2ActionPerformed
+        String message = " Welcome to the Main Menu\n" +
+        "▸Budgetting Page : View your budget, get some advice and adjust your budget however you choose.\n" +
+        "▸Savings Page: Calculate your savings forecast, view your current forecast and update it however you choose.\n" +
+        "▸Stocks Page: View your current stock holdings.\n" +
+        "▸Crypto Page: View your current crypto holdings.\n" +
+        "▸Edit Info Page: Edit your basic information or delete account.\n" +
+        "▸Logout: Logout and return to Login Page\n";
+        ImageIcon icon = new ImageIcon("src/com/pSHelp.png");
+        JOptionPane.showMessageDialog(rootPane, message,"Help Page", JOptionPane.INFORMATION_MESSAGE, icon);
+    }//GEN-LAST:event_helpBtn2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -562,6 +594,9 @@ public class CryptoInfoPage extends javax.swing.JFrame {
     private javax.swing.JButton cryptoIcon;
     private javax.swing.JButton editTextbtn;
     private javax.swing.JPanel headerPanel;
+    private javax.swing.JButton helpBtn;
+    private javax.swing.JButton helpBtn1;
+    private javax.swing.JButton helpBtn2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;

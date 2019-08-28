@@ -407,7 +407,7 @@ public class EnterFinanceInfoPage extends javax.swing.JFrame {
                         System.out.println(netWorth);
                         System.out.println(monthlyIncome);
                         System.out.println(monthlySavings);
-                        String sql = ("UPDATE  "+ Constant.dbName + ".PUSERS SET employment_status = ?, net_income = ?, net_worth = ?, monthly_savings = ? WHERE username= ?");
+                        String sql = ("UPDATE  "+ Constant.tableName + ".PUSERS SET employment_status = ?, net_income = ?, net_worth = ?, monthly_savings = ? WHERE username= ?");
                         PreparedStatement statement = Constant.con.prepareStatement(sql);
                         statement.setString(1, status);
                         statement.setDouble(2, monthlyIncome);
