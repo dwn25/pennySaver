@@ -213,7 +213,7 @@ public class Main extends javax.swing.JFrame {
         }
         catch(SQLException err){
             System.out.println(err.toString());
-            JOptionPane.showMessageDialog(rootPane, "INCORRECT!! Please try again");
+            JOptionPane.showMessageDialog(rootPane, "An Error Occurred");
         }
          finally {
             try { Constant.rs.close(); } catch (Exception e) { /* ignored */ }
